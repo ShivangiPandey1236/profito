@@ -1,8 +1,11 @@
 import React from 'react'
+import Layout from './components/Layout'
 
 function App() {
   return (
-    <div>App</div>
+    <Layout>
+      {/* Everything removed except Header and Footer inside Layout */}
+    </Layout>
   )
 }
 
