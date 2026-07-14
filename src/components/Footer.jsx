@@ -96,7 +96,7 @@ export default function Footer() {
             <div className="flex items-center gap-4 bg-zinc-950 border border-zinc-800 rounded-xl py-3.5 px-6 min-w-[240px] shadow-lg transition-transform duration-200 hover:-translate-y-1 hover:border-zinc-700">
               <div className="flex items-center justify-center bg-zinc-900 p-2.5 rounded-xl border border-zinc-800">
                 <svg className="w-7 h-7 text-[#12A2F0]" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12.24 10.285V13.4h6.887c-.275 1.565-1.88 4.604-6.887 4.604-4.33 0-7.866-3.577-7.866-8s3.536-8 7.866-8c2.46 0 4.105 1.025 5.047 1.926l2.427-2.334C17.955 2.192 15.34 1 12.24 1 5.98 1 1 5.98 1 12.24s4.98 11.24 11.24 11.24c6.54 0 10.88-4.6 10.88-11.08 0-.743-.08-1.32-.178-1.889H12.24z"/>
+                  <path d="M12.24 10.285V13.4h6.887c-.275 1.565-1.88 4.604-6.887 4.604-4.33 0-7.866-3.577-7.866-8s3.536-8 7.866-8c2.46 0 4.105 1.025 5.047 1.926l2.427-2.334C17.955 2.192 15.34 1 12.24 1 5.98 1 1 5.98 1 12.24s4.98 11.24 11.24 11.24c6.54 0 10.88-4.6 10.88-11.08 0-.743-.08-1.32-.178-1.889H12.24z" />
                 </svg>
               </div>
               <div className="flex flex-col text-left">
@@ -149,9 +149,9 @@ export default function Footer() {
       </div>
 
       {/* ── Main Footer Body ── bg-[#222] */}
-      <div className="relative bg-[#222] pt-16 pb-12 overflow-hidden">
+      <div className="relative bg-[#222] pt-16 overflow-hidden">
         {/* Tech grid/dot background pattern overlay */}
-        <div 
+        <div
           className="absolute inset-0 opacity-[0.03] pointer-events-none"
           style={{
             backgroundImage: `radial-gradient(circle at 1px 1px, rgba(255,255,255,1) 1.5px, transparent 0)`,
@@ -162,151 +162,151 @@ export default function Footer() {
         <div className="relative w-full max-w-[1600px] mx-auto px-8 z-10">
 
 
-        {/* Main Columns Grid */}
-        <div className="grid grid-cols-5 gap-12 max-[1200px]:grid-cols-3 max-[768px]:grid-cols-2 max-[480px]:grid-cols-1 mb-16">
-          
-          {/* Column 1: Brand Info */}
-          <div className="flex flex-col gap-6 text-left max-[1200px]:col-span-3 max-[768px]:col-span-2 max-[480px]:col-span-1">
-            <a href="/" className="flex items-center">
-              <img src={logo} alt="ezrankings logo" className="h-11 max-h-11 object-contain" />
-            </a>
-            <p className="text-zinc-400 text-[0.9rem] leading-relaxed max-w-sm">
-              A digital marketing agency focused on full-funnel business growth. Connecting branding with visibility, traffic, lead generation, and revenue growth.
-            </p>
-            
-            {/* Social Media Icons */}
-            <div className="flex gap-2.5 mt-2 flex-wrap">
-              {/* Facebook */}
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center w-9 h-9 rounded-full bg-zinc-950 border border-zinc-900 text-zinc-400 transition-all duration-200 hover:bg-zinc-800 hover:text-white" aria-label="Facebook">
-                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c4.56-.93 8-4.96 8-9.75z"/>
-                </svg>
-              </a>
-              {/* Instagram */}
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center w-9 h-9 rounded-full bg-zinc-950 border border-zinc-900 text-zinc-400 transition-all duration-200 hover:bg-zinc-800 hover:text-white" aria-label="Instagram">
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2.3" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
-                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
-                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
-                </svg>
-              </a>
-              {/* LinkedIn */}
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center w-9 h-9 rounded-full bg-zinc-950 border border-zinc-900 text-zinc-400 transition-all duration-200 hover:bg-zinc-800 hover:text-white" aria-label="LinkedIn">
-                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-                </svg>
-              </a>
-              {/* X / Twitter */}
-              <a href="https://x.com" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center w-9 h-9 rounded-full bg-zinc-950 border border-zinc-900 text-zinc-400 transition-all duration-200 hover:bg-zinc-800 hover:text-white" aria-label="X (Twitter)">
-                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                </svg>
-              </a>
+          {/* Main Columns Grid */}
+          <div className="grid grid-cols-5 gap-12 max-[1200px]:grid-cols-3 max-[768px]:grid-cols-2 max-[480px]:grid-cols-1 mb-16">
 
+            {/* Column 1: Brand Info */}
+            <div className="flex flex-col gap-6 text-left max-[1200px]:col-span-3 max-[768px]:col-span-2 max-[480px]:col-span-1">
+              <a href="/" className="flex items-center">
+                <img src={logo} alt="ezrankings logo" className="h-11 max-h-11 object-contain" />
+              </a>
+              <p className="text-zinc-400 text-[0.9rem] leading-relaxed max-w-sm">
+                A digital marketing agency focused on full-funnel business growth. Connecting branding with visibility, traffic, lead generation, and revenue growth.
+              </p>
+
+              {/* Social Media Icons */}
+              <div className="flex gap-2.5 mt-2 flex-wrap">
+                {/* Facebook */}
+                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center w-9 h-9 rounded-full bg-zinc-950 border border-zinc-900 text-zinc-400 transition-all duration-200 hover:bg-zinc-800 hover:text-white" aria-label="Facebook">
+                  <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c4.56-.93 8-4.96 8-9.75z" />
+                  </svg>
+                </a>
+                {/* Instagram */}
+                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center w-9 h-9 rounded-full bg-zinc-950 border border-zinc-900 text-zinc-400 transition-all duration-200 hover:bg-zinc-800 hover:text-white" aria-label="Instagram">
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2.3" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                  </svg>
+                </a>
+                {/* LinkedIn */}
+                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center w-9 h-9 rounded-full bg-zinc-950 border border-zinc-900 text-zinc-400 transition-all duration-200 hover:bg-zinc-800 hover:text-white" aria-label="LinkedIn">
+                  <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                  </svg>
+                </a>
+                {/* X / Twitter */}
+                <a href="https://x.com" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center w-9 h-9 rounded-full bg-zinc-950 border border-zinc-900 text-zinc-400 transition-all duration-200 hover:bg-zinc-800 hover:text-white" aria-label="X (Twitter)">
+                  <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                  </svg>
+                </a>
+
+              </div>
             </div>
+
+            {/* Navigation Columns */}
+            {navigationColumns.map((col, idx) => (
+              <div key={idx} className="flex flex-col text-left">
+                <h4 className="relative text-[0.85rem] font-black uppercase tracking-wider text-white mb-6 pb-2.5 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-8 after:h-[2px] after:bg-primary">
+                  {col.title}
+                </h4>
+                <ul className="list-none flex flex-col gap-3">
+                  {col.links.map((link, linkIdx) => (
+                    <li key={linkIdx}>
+                      <a
+                        href={link.href}
+                        className="relative text-zinc-400 text-[0.88rem] font-semibold transition-all duration-200 hover:text-primary inline-block after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-[1.5px] after:bg-primary after:transition-all after:duration-250 hover:after:w-full"
+                      >
+                        {link.name}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+
           </div>
 
-          {/* Navigation Columns */}
-          {navigationColumns.map((col, idx) => (
-            <div key={idx} className="flex flex-col text-left">
-              <h4 className="relative text-[0.85rem] font-black uppercase tracking-wider text-white mb-6 pb-2.5 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-8 after:h-[2px] after:bg-primary">
-                {col.title}
-              </h4>
-              <ul className="list-none flex flex-col gap-3">
-                {col.links.map((link, linkIdx) => (
-                  <li key={linkIdx}>
-                    <a 
-                      href={link.href} 
-                      className="relative text-zinc-400 text-[0.88rem] font-semibold transition-all duration-200 hover:text-primary inline-block after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-[1.5px] after:bg-primary after:transition-all after:duration-250 hover:after:w-full"
-                    >
-                      {link.name}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-
-        </div>
-
-        {/* Bottom Section: Badges */}
-        <div className="border-t border-zinc-900 pt-8 mt-12 pb-8">
-          <div className="flex justify-center items-center gap-4 flex-wrap">
-            {/* 1. Copyscape badge */}
-            <div className="bg-white border border-zinc-200 rounded-md py-1.5 px-3 flex items-center gap-2 select-none h-10 shadow-sm">
-              <span className="w-4.5 h-4.5 rounded-full bg-zinc-800 text-white flex items-center justify-center font-bold text-[9px]">C</span>
-              <div className="flex flex-col text-left">
-                <span className="text-[6px] text-zinc-500 font-extrabold uppercase leading-none">PROTECTED BY</span>
-                <span className="text-[9px] text-zinc-850 font-black tracking-tight leading-none mt-0.5">COPYSCAPE</span>
-              </div>
-            </div>
-
-            {/* 2. DMCA badge */}
-            <div className="bg-white border border-zinc-200 rounded-md overflow-hidden flex items-center select-none h-10 shadow-sm">
-              <div className="bg-[#0070bc] text-white font-extrabold px-2 h-full flex items-center text-[9px] tracking-tight">DMCA</div>
-              <div className="text-zinc-800 font-extrabold px-2 h-full flex items-center text-[8px] tracking-wider uppercase bg-white">PROTECTED</div>
-            </div>
-
-            {/* 3. ISO 9001:2015 */}
-            <div className="bg-white border border-zinc-200 rounded-md py-1.5 px-3 flex flex-col items-center justify-center select-none h-10 shadow-sm min-w-[70px]">
-              <span className="text-[10px] text-zinc-900 font-black tracking-widest leading-none">ISO</span>
-              <span className="text-[6px] text-zinc-500 font-bold tracking-tight leading-none mt-1">9001:2015</span>
-            </div>
-
-            {/* 4. Red Herring 100 Winner */}
-            <div className="bg-white border border-zinc-200 rounded-md py-1.5 px-3 flex items-center gap-1.5 select-none h-10 shadow-sm">
-              <span className="w-4.5 h-4.5 rounded-full bg-red-600 text-white flex items-center justify-center font-black text-[8px] italic">R</span>
-              <div className="flex flex-col text-left">
-                <span className="text-[6px] text-red-600 font-extrabold uppercase leading-none">RED HERRING</span>
-                <span className="text-[8.5px] text-zinc-850 font-black tracking-tight leading-none mt-0.5">100 WINNER</span>
-              </div>
-            </div>
-
-            {/* 5. Clutch badge */}
-            <div className="bg-white border border-zinc-200 rounded-md py-1.5 px-3 flex items-center gap-1.5 select-none h-10 shadow-sm">
-              <svg className="w-3.5 h-3.5 text-zinc-900" viewBox="0 0 24 24" fill="currentColor">
-                <rect x="2" y="2" width="6" height="6" rx="1" />
-                <rect x="2" y="9" width="6" height="6" rx="1" />
-                <rect x="2" y="16" width="6" height="6" rx="1" />
-                <rect x="9" y="2" width="13" height="6" rx="1" />
-                <rect x="9" y="9" width="13" height="6" rx="1" />
-                <rect x="9" y="16" width="13" height="6" rx="1" />
-              </svg>
-              <span className="text-[10px] text-zinc-900 font-extrabold tracking-tight">Clutch</span>
-            </div>
-
-            {/* 6. Google Partner */}
-            <div className="bg-white border border-zinc-200 rounded-md py-1 px-3.5 flex items-center justify-center select-none h-10 shadow-sm">
-              <div className="flex flex-col text-left justify-center h-full">
-                <div className="flex items-center text-[10px] font-bold tracking-tight leading-none">
-                  <span className="text-blue-500">G</span>
-                  <span className="text-red-500">o</span>
-                  <span className="text-yellow-500">o</span>
-                  <span className="text-blue-500">g</span>
-                  <span className="text-green-500">l</span>
-                  <span className="text-red-500">e</span>
+          {/* Bottom Section: Badges */}
+          <div className="border-t border-zinc-900 pt-8 mt-12 pb-8">
+            <div className="flex justify-center items-center gap-4 flex-wrap">
+              {/* 1. Copyscape badge */}
+              <div className="bg-white border border-zinc-200 rounded-md py-1.5 px-3 flex items-center gap-2 select-none h-10 shadow-sm">
+                <span className="w-4.5 h-4.5 rounded-full bg-zinc-800 text-white flex items-center justify-center font-bold text-[9px]">C</span>
+                <div className="flex flex-col text-left">
+                  <span className="text-[6px] text-zinc-500 font-extrabold uppercase leading-none">PROTECTED BY</span>
+                  <span className="text-[9px] text-zinc-850 font-black tracking-tight leading-none mt-0.5">COPYSCAPE</span>
                 </div>
-                <span className="text-[7px] text-zinc-400 font-extrabold tracking-widest uppercase leading-none mt-1">Partner</span>
               </div>
-            </div>
 
-            {/* 7. HubSpot */}
-            <div className="bg-white border border-zinc-200 rounded-md py-1.5 px-3 flex items-center gap-1.5 select-none h-10 shadow-sm">
-              <div className="flex items-center">
-                <svg className="w-3.5 h-3.5 text-[#ff7a59]" viewBox="0 0 24 24" fill="currentColor">
-                  <circle cx="12" cy="6" r="3.2" />
-                  <circle cx="6" cy="15" r="3.2" />
-                  <circle cx="18" cy="15" r="3.2" />
-                  <line x1="12" y1="6" x2="6" y2="15" stroke="#ff7a59" strokeWidth="2.2" />
-                  <line x1="12" y1="6" x2="18" y2="15" stroke="#ff7a59" strokeWidth="2.2" />
-                  <line x1="6" y1="15" x2="18" y2="15" stroke="#ff7a59" strokeWidth="2.2" />
+              {/* 2. DMCA badge */}
+              <div className="bg-white border border-zinc-200 rounded-md overflow-hidden flex items-center select-none h-10 shadow-sm">
+                <div className="bg-[#0070bc] text-white font-extrabold px-2 h-full flex items-center text-[9px] tracking-tight">DMCA</div>
+                <div className="text-zinc-800 font-extrabold px-2 h-full flex items-center text-[8px] tracking-wider uppercase bg-white">PROTECTED</div>
+              </div>
+
+              {/* 3. ISO 9001:2015 */}
+              <div className="bg-white border border-zinc-200 rounded-md py-1.5 px-3 flex flex-col items-center justify-center select-none h-10 shadow-sm min-w-[70px]">
+                <span className="text-[10px] text-zinc-900 font-black tracking-widest leading-none">ISO</span>
+                <span className="text-[6px] text-zinc-500 font-bold tracking-tight leading-none mt-1">9001:2015</span>
+              </div>
+
+              {/* 4. Red Herring 100 Winner */}
+              <div className="bg-white border border-zinc-200 rounded-md py-1.5 px-3 flex items-center gap-1.5 select-none h-10 shadow-sm">
+                <span className="w-4.5 h-4.5 rounded-full bg-red-600 text-white flex items-center justify-center font-black text-[8px] italic">R</span>
+                <div className="flex flex-col text-left">
+                  <span className="text-[6px] text-red-600 font-extrabold uppercase leading-none">RED HERRING</span>
+                  <span className="text-[8.5px] text-zinc-850 font-black tracking-tight leading-none mt-0.5">100 WINNER</span>
+                </div>
+              </div>
+
+              {/* 5. Clutch badge */}
+              <div className="bg-white border border-zinc-200 rounded-md py-1.5 px-3 flex items-center gap-1.5 select-none h-10 shadow-sm">
+                <svg className="w-3.5 h-3.5 text-zinc-900" viewBox="0 0 24 24" fill="currentColor">
+                  <rect x="2" y="2" width="6" height="6" rx="1" />
+                  <rect x="2" y="9" width="6" height="6" rx="1" />
+                  <rect x="2" y="16" width="6" height="6" rx="1" />
+                  <rect x="9" y="2" width="13" height="6" rx="1" />
+                  <rect x="9" y="9" width="13" height="6" rx="1" />
+                  <rect x="9" y="16" width="13" height="6" rx="1" />
                 </svg>
+                <span className="text-[10px] text-zinc-900 font-extrabold tracking-tight">Clutch</span>
               </div>
-              <span className="text-[10px] text-zinc-900 font-extrabold tracking-tight">HubSpot</span>
-            </div>
 
-          </div>
-        </div>{/* end badges inner container */}
+              {/* 6. Google Partner */}
+              <div className="bg-white border border-zinc-200 rounded-md py-1 px-3.5 flex items-center justify-center select-none h-10 shadow-sm">
+                <div className="flex flex-col text-left justify-center h-full">
+                  <div className="flex items-center text-[10px] font-bold tracking-tight leading-none">
+                    <span className="text-blue-500">G</span>
+                    <span className="text-red-500">o</span>
+                    <span className="text-yellow-500">o</span>
+                    <span className="text-blue-500">g</span>
+                    <span className="text-green-500">l</span>
+                    <span className="text-red-500">e</span>
+                  </div>
+                  <span className="text-[7px] text-zinc-400 font-extrabold tracking-widest uppercase leading-none mt-1">Partner</span>
+                </div>
+              </div>
+
+              {/* 7. HubSpot */}
+              <div className="bg-white border border-zinc-200 rounded-md py-1.5 px-3 flex items-center gap-1.5 select-none h-10 shadow-sm">
+                <div className="flex items-center">
+                  <svg className="w-3.5 h-3.5 text-[#ff7a59]" viewBox="0 0 24 24" fill="currentColor">
+                    <circle cx="12" cy="6" r="3.2" />
+                    <circle cx="6" cy="15" r="3.2" />
+                    <circle cx="18" cy="15" r="3.2" />
+                    <line x1="12" y1="6" x2="6" y2="15" stroke="#ff7a59" strokeWidth="2.2" />
+                    <line x1="12" y1="6" x2="18" y2="15" stroke="#ff7a59" strokeWidth="2.2" />
+                    <line x1="6" y1="15" x2="18" y2="15" stroke="#ff7a59" strokeWidth="2.2" />
+                  </svg>
+                </div>
+                <span className="text-[10px] text-zinc-900 font-extrabold tracking-tight">HubSpot</span>
+              </div>
+
+            </div>
+          </div>{/* end badges inner container */}
 
         </div>{/* end max-w-[1600px] container */}
       </div>{/* end bg-[#222] main body */}
@@ -317,7 +317,7 @@ export default function Footer() {
           {/* Section Label */}
           <div className="flex items-center gap-2 mb-4">
             <svg className="w-4 h-4 text-primary shrink-0" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
             </svg>
             <span className="text-primary text-[0.78rem] font-extrabold uppercase tracking-[0.12em]">Other Locations We Serve</span>
           </div>
@@ -349,7 +349,7 @@ export default function Footer() {
       <div className="border-t border-zinc-900 bg-[#0a0a0a]">
         <div className="w-full max-w-[1600px] mx-auto px-8 py-4 flex justify-between items-center gap-4 max-[640px]:flex-col max-[640px]:text-center">
           <p className="text-zinc-500 text-[0.82rem]">
-            © {new Date().getFullYear()} EZ Rankings. All Rights Reserved.
+            © {new Date().getFullYear()} Profito Interactive. All Rights Reserved.
           </p>
           <div className="flex gap-6">
             <a href="#privacy" className="text-zinc-500 text-[0.82rem] font-semibold hover:text-white transition-colors duration-150">Privacy</a>
