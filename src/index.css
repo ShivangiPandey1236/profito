@@ -128,3 +128,28 @@ a {
   transform: scaleX(1);
   transform-origin: left center;
 }
+
+/* Sub-item Link Blue Pipe Hover Effect */
+.sub-item-link {
+  position: relative;
+}
+
+.sub-item-link::before {
+  content: '';
+  position: absolute;
+  left: 6px;
+  top: 50%;
+  transform: translateY(-50%) scaleY(0);
+  width: 3px;
+  height: 14px;
+  background-color: var(--color-primary);
+  border-radius: 9999px;
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s ease;
+  transform-origin: center;
+  opacity: 0;
+}
+
+.sub-item-link:hover::before {
+  transform: translateY(-50%) scaleY(1);
+  opacity: 1;
+}

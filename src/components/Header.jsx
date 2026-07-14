@@ -399,7 +399,7 @@ export default function Header() {
                               <li key={itemIdx}>
                                 <a
                                   href={`#${subItem.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`}
-                                  className="text-[0.85rem] font-semibold text-zinc-700 hover:text-primary hover:bg-primary/6 hover:translate-x-1 rounded-lg px-2 py-1 transition-all duration-200 block text-left -mx-2"
+                                  className="text-[0.85rem] font-semibold text-zinc-700 hover:text-primary hover:bg-primary/6 hover:translate-x-1 rounded-lg pl-2 pr-2 hover:pl-4 py-1 transition-all duration-200 block text-left -mx-2 sub-item-link"
                                 >
                                   {subItem}
                                 </a>
@@ -459,7 +459,7 @@ export default function Header() {
                             <a
                               key={itemIdx}
                               href={`#${subItem.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`}
-                              className="block py-1 px-2 -mx-2 rounded-lg text-[#555555] text-[0.9rem] font-semibold transition-all duration-200 hover:text-primary hover:bg-primary/6 hover:translate-x-1"
+                              className="block py-1 pl-2 pr-2 hover:pl-4 -mx-2 rounded-lg text-[#555555] text-[0.9rem] font-semibold transition-all duration-200 hover:text-primary hover:bg-primary/6 hover:translate-x-1 sub-item-link"
                               onClick={() => setIsOpen(false)}
                             >
                               {subItem}
