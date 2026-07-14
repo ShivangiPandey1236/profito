@@ -105,3 +105,26 @@ a {
   color: inherit;
   text-decoration: none;
 }
+
+/* Top Bar Link Underline Hover Effect */
+.top-bar-link {
+  position: relative;
+}
+
+.top-bar-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 2px;
+  background-color: currentColor;
+  transform: scaleX(0);
+  transform-origin: right center;
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.top-bar-link:hover::after {
+  transform: scaleX(1);
+  transform-origin: left center;
+}
