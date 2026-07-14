@@ -11,27 +11,323 @@ export default function Header() {
   const navItems = [
     {
       name: 'Digital Marketing',
-      dropdownItems: ['SEO Services', 'PPC Management', 'Social Media Marketing', 'Content Marketing']
+      columns: [
+        {
+          sections: [
+            {
+              title: 'AI Search & Visibility',
+              items: [
+                'LLMO Services',
+                'AI Search Optimization (AI SEO)',
+                'Generative Engine Optimization (GEO)',
+                'Answer Engine Optimization (AEO)',
+                'Hybrid Engine Optimization (HEO)',
+                'AI Brand Visibility'
+              ]
+            }
+          ]
+        },
+        {
+          sections: [
+            {
+              title: 'SEO Services',
+              items: [
+                'Best SEO Company',
+                'SEO Services',
+                'Enterprise SEO',
+                'Local SEO',
+                'Ecommerce SEO',
+                'Technical SEO',
+                'Small Business SEO',
+                'Authority Building Plan'
+              ]
+            }
+          ]
+        },
+        {
+          sections: [
+            {
+              title: 'Content & Link Building',
+              items: [
+                'Content Marketing',
+                'Link Building',
+                'Blogging Outreach'
+              ]
+            },
+            {
+              title: 'Paid Advertising (PPC)',
+              items: [
+                'PPC Management',
+                'Google Ads',
+                'Performance Marketing',
+                'Lead Generation',
+                'Bing Ads Management',
+                'Ecommerce PPC',
+                'Shopping Ads Management',
+                'Conversion Rate Optimization'
+              ]
+            }
+          ]
+        },
+        {
+          sections: [
+            {
+              title: 'Social Media & Video',
+              items: [
+                'Social Media Marketing',
+                'Organic Social',
+                'Meta Ads',
+                'Instagram Ads',
+                'YouTube Video Marketing',
+                'Marketplace Marketing',
+                'Amazon Marketing'
+              ]
+            },
+            {
+              title: 'Packages',
+              items: [
+                'Digital Marketing Packages',
+                'SEO Packages',
+                'Local SEO Packages',
+                'Ecommerce SEO Packages',
+                'PPC Packages',
+                'Social Media Packages',
+                'ASO Packages'
+              ]
+            }
+          ]
+        }
+      ]
     },
     {
       name: 'Web & App',
-      dropdownItems: ['Web Development', 'App Development', 'UI/UX Design', 'E-commerce Solutions']
+      columns: [
+        {
+          sections: [
+            {
+              title: 'Web Development',
+              items: [
+                'Custom Web Development',
+                'WordPress Development',
+                'PHP Development',
+                'Laravel Development',
+                'ASP .Net Development',
+                'CMS Development',
+                'Shopify Development',
+                'Magento Development',
+                'WooCommerce Development',
+                'Headless / Jamstack Dev',
+                'Web Application Development',
+                'API Development & Integration',
+                'Website Maintenance & Support',
+                'Website Migration',
+                'Development Packages'
+              ]
+            }
+          ]
+        },
+        {
+          sections: [
+            {
+              title: 'Website Design',
+              items: [
+                'Website Design',
+                'UI / UX Design',
+                'Responsive Design',
+                'Website Redesign',
+                'Landing Page Design',
+                'Website Design Packages'
+              ]
+            }
+          ]
+        },
+        {
+          sections: [
+            {
+              title: 'Mobile Apps',
+              items: [
+                'Mobile App Development',
+                'Android App Development',
+                'iOS App Development',
+                'Cross-Platform App Development',
+                'App Store Optimization (ASO)',
+                'App Maintenance & Support'
+              ]
+            }
+          ]
+        }
+      ]
     },
     {
       name: 'AI Automation',
-      dropdownItems: ['Chatbot Integration', 'Workflow Automation', 'AI Consulting', 'Data Scraping']
+      columns: [
+        {
+          sections: [
+            {
+              title: 'AI Marketing Automation',
+              items: [
+                'Marketing Automation',
+                'CRM Automation',
+                'Email & Workflow Automation',
+                'Lead Nurturing Automation'
+              ]
+            }
+          ]
+        },
+        {
+          sections: [
+            {
+              title: 'AI Solutions by Industry',
+              items: [
+                'AI Automation for Ecommerce',
+                'AI Automation for SaaS',
+                'AI Automation for B2B'
+              ]
+            }
+          ]
+        },
+        {
+          sections: [
+            {
+              title: 'AI Development & Consulting',
+              items: [
+                'AI Chatbot Development',
+                'AI Agent Development',
+                'AI Integration Services',
+                'Custom AI Solutions',
+                'AI Consulting'
+              ]
+            }
+          ]
+        }
+      ]
     },
     {
       name: 'Branding',
-      dropdownItems: ['Logo Design', 'Brand Identity', 'Graphic Design', 'Corporate Branding']
+      columns: [
+        {
+          sections: [
+            {
+              title: 'Brand Strategy',
+              items: [
+                'Brand Management',
+                'Brand Identity',
+                'Brand Positioning',
+                'Brand Guidelines',
+                'Rebranding'
+              ]
+            }
+          ]
+        },
+        {
+          sections: [
+            {
+              title: 'Creative Design',
+              items: [
+                'Logo Design',
+                'Graphic Design',
+                'Packaging Design',
+                'Motion Graphics',
+                'Video Production',
+                'Infographic Design',
+                'Social Media Creatives'
+              ]
+            }
+          ]
+        },
+        {
+          sections: [
+            {
+              title: 'Brand Promotion & ORM',
+              items: [
+                'Digital Branding',
+                'Online Reputation Management (ORM)',
+                'Online Response Management',
+                'Personal Branding',
+                'Influencer Marketing'
+              ]
+            }
+          ]
+        }
+      ]
     },
     {
       name: 'Industries',
-      dropdownItems: ['E-commerce', 'Healthcare', 'Real Estate', 'Education', 'Finance']
+      columns: [
+        {
+          sections: [
+            {
+              title: 'Technology',
+              items: ['SaaS', 'B2B', 'IT & Technology', 'Startups']
+            },
+            {
+              title: 'Ecommerce & Retail',
+              items: ['Ecommerce', 'Retail', 'Fashion & Apparel', 'D2C Brands']
+            }
+          ]
+        },
+        {
+          sections: [
+            {
+              title: 'Healthcare & Wellness',
+              items: ['Healthcare', 'Dental', 'Doctors & Clinics', 'Fitness & Wellness', 'Pharma']
+            },
+            {
+              title: 'Professional Services',
+              items: ['Law Firms', 'Accounting & Finance', 'Insurance', 'Consulting']
+            }
+          ]
+        },
+        {
+          sections: [
+            {
+              title: 'Real Estate & Industrial',
+              items: ['Real Estate', 'Construction', 'Manufacturing', 'Interior Design']
+            },
+            {
+              title: 'Local & Lifestyle',
+              items: ['Education', 'Hospitality & Travel', 'Restaurants', 'Automotive']
+            }
+          ]
+        }
+      ]
     },
     {
       name: 'About',
-      dropdownItems: ['Our Team', 'Our History', 'Testimonials', 'Careers']
+      columns: [
+        {
+          sections: [
+            {
+              title: 'Our Work',
+              items: ['Case Studies', 'Our Portfolio', 'Client Testimonials']
+            }
+          ]
+        },
+        {
+          sections: [
+            {
+              title: 'Company',
+              items: ['About Us', 'Our Team', 'Awards & Recognition', 'Careers']
+            }
+          ]
+        },
+        {
+          sections: [
+            {
+              title: 'Insights & Contact',
+              items: ['Insights / Blog', 'Write For Us', 'Help Center', 'Contact Us']
+            }
+          ]
+        },
+        {
+          sections: [
+            {
+              title: 'Partner / White Label',
+              items: ['Digital Marketing Reseller', 'Become White Label Partner', 'Become Franchise Partner']
+            }
+          ]
+        }
+      ]
     }
   ]
 
@@ -73,8 +369,8 @@ export default function Header() {
       </div>
 
       {/* Main Header Navigation */}
-      <div className="bg-white text-black h-[70px] flex items-center border-b border-black/8 shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
-        <div className="w-full max-w-[1200px] mx-auto px-6 flex justify-between items-center h-full">
+      <div className="bg-white text-black h-[70px] flex items-center border-b border-black/8 shadow-[0_4px_20px_rgba(0,0,0,0.03)] relative">
+        <div className="w-full max-w-[1200px] mx-auto px-6 flex justify-between items-center h-full relative">
           {/* Logo */}
           <a href="/" className="flex items-center">
             <img src={logo} alt="ezrankings logo" className="h-12 max-h-12 object-contain" />
@@ -83,24 +379,36 @@ export default function Header() {
           {/* Desktop Navigation Links */}
           <nav className="flex items-center gap-7 h-full max-[992px]:hidden">
             {navItems.map((item, index) => (
-              <div 
-                key={index} 
-                className="relative flex items-center h-full group"
-                onMouseEnter={() => setActiveDropdown(index)}
-                onMouseLeave={() => setActiveDropdown(null)}
+              <div
+                key={index}
+                className="flex items-center h-full group"
               >
                 <button className="bg-transparent border-none cursor-pointer font-sans text-[0.95rem] font-semibold text-black flex items-center gap-1.5 py-4 transition-colors duration-150 hover:text-primary group-hover:text-primary">
                   {item.name} <ChevronDown size={14} className="transition-all duration-250 opacity-70 group-hover:rotate-180 group-hover:opacity-100" />
                 </button>
-                <div className={`absolute top-full left-1/2 -translate-x-1/2 bg-white border border-black/8 rounded-xl shadow-[0_10px_30px_rgba(0,0,0,0.1)] p-3 min-w-[230px] flex flex-col gap-1.5 transition-all duration-250 z-50 ${activeDropdown === index ? 'opacity-100 pointer-events-auto translate-y-0' : 'opacity-0 pointer-events-none translate-y-2.5'}`}>
-                  {item.dropdownItems.map((dropItem, idx) => (
-                    <a 
-                      key={idx} 
-                      href={`#${dropItem.toLowerCase().replace(/\s+/g, '-')}`} 
-                      className="p-2.5 px-3.5 rounded-lg text-[0.9rem] font-medium text-[#333333] transition-all duration-150 block hover:bg-primary/6 hover:text-primary hover:translate-x-1"
-                    >
-                      {dropItem}
-                    </a>
+                <div className="absolute top-full left-6 right-6 bg-white border border-black/8 rounded-2xl shadow-[0_15px_40px_rgba(0,0,0,0.08)] p-8 transition-opacity duration-150 z-50 flex gap-8 before:content-[''] before:absolute before:bottom-full before:left-0 before:right-0 before:h-4 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto">
+                  {item.columns.map((column, colIdx) => (
+                    <div key={colIdx} className="flex-1 flex flex-col gap-6 pl-6 border-l border-black/5 first:border-l-0 first:pl-0">
+                      {column.sections.map((section, secIdx) => (
+                        <div key={secIdx} className="flex flex-col gap-3">
+                          <h4 className="text-[0.8rem] font-extrabold tracking-wider !text-primary uppercase flex items-center gap-2 relative pl-2.5 before:content-[''] before:absolute before:left-0 before:top-[1.5px] before:w-[3px] before:h-[13px] before:bg-primary before:rounded-sm text-left">
+                            {section.title}
+                          </h4>
+                          <ul className="flex flex-col gap-1 text-left">
+                            {section.items.map((subItem, itemIdx) => (
+                              <li key={itemIdx}>
+                                <a
+                                  href={`#${subItem.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`}
+                                  className="text-[0.85rem] font-semibold text-zinc-700 hover:text-primary hover:bg-primary/6 hover:translate-x-1 rounded-lg px-2 py-1 transition-all duration-200 block text-left -mx-2"
+                                >
+                                  {subItem}
+                                </a>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      ))}
+                    </div>
                   ))}
                 </div>
               </div>
@@ -109,15 +417,15 @@ export default function Header() {
 
           {/* CTA Action */}
           <div className="max-[992px]:hidden">
-            <a href="#proposal" className="bg-primary text-white border border-primary rounded-full py-3 px-6 font-semibold inline-flex items-center gap-2 text-[0.95rem] shadow-[0_4px_14px_rgba(18,162,240,0.25)] transition-all duration-250 hover:bg-black hover:border-black hover:text-white hover:-translate-y-0.5 hover:shadow-[0_6px_20px_rgba(0,0,0,0.15)] group">
+            <a href="#proposal" className="bg-primary !text-white border border-primary rounded-full py-3 px-6 font-semibold inline-flex items-center gap-2 text-[0.95rem] shadow-[0_4px_14px_rgba(18,162,240,0.25)] transition-all duration-250 hover:bg-black hover:border-black hover:!text-white hover:-translate-y-0.5 hover:shadow-[0_6px_20px_rgba(0,0,0,0.15)] group">
               Get a Free Proposal <ArrowRight size={16} className="transition-transform duration-150 group-hover:translate-x-[3px]" />
             </a>
           </div>
 
           {/* Mobile Menu Button */}
-          <button 
-            className="hidden max-[992px]:flex bg-black/3 border border-black/8 text-black cursor-pointer p-2 rounded-lg items-center justify-center transition-all duration-150 hover:bg-black/8" 
-            onClick={toggleMenu} 
+          <button
+            className="hidden max-[992px]:flex bg-black/3 border border-black/8 text-black cursor-pointer p-2 rounded-lg items-center justify-center transition-all duration-150 hover:bg-black/8"
+            onClick={toggleMenu}
             aria-label="Toggle Navigation Menu"
             aria-expanded={isOpen}
           >
@@ -131,29 +439,42 @@ export default function Header() {
         <nav className="flex flex-col gap-4">
           {navItems.map((item, index) => (
             <div key={index} className="border-b border-black/5 pb-3">
-              <button 
-                className="w-full flex justify-between items-center bg-transparent border-none font-sans text-[1.05rem] font-semibold text-black py-2 cursor-pointer text-left" 
+              <button
+                className="w-full flex justify-between items-center bg-transparent border-none font-sans text-[1.05rem] font-semibold text-black py-2 cursor-pointer text-left"
                 onClick={() => setActiveDropdown(activeDropdown === index ? null : index)}
               >
                 <span>{item.name}</span>
                 <ChevronDown size={16} className={`transition-transform duration-250 ${activeDropdown === index ? 'rotate-180' : ''}`} />
               </button>
-              <div className={`overflow-hidden flex flex-col gap-2 pl-4 transition-all duration-250 ${activeDropdown === index ? 'max-h-[500px] pt-2 pb-2' : 'max-h-0'}`}>
-                {item.dropdownItems.map((dropItem, idx) => (
-                  <a 
-                    key={idx} 
-                    href={`#${dropItem.toLowerCase().replace(/\s+/g, '-')}`} 
-                    className="block py-1.5 text-[#555555] text-[0.95rem] font-medium transition-colors duration-150 hover:text-primary"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    {dropItem}
-                  </a>
+              <div className={`overflow-hidden flex flex-col gap-4 pl-4 transition-all duration-250 ${activeDropdown === index ? 'max-h-[1000px] pt-2 pb-2' : 'max-h-0'}`}>
+                {item.columns.map((column, colIdx) => (
+                  <div key={colIdx} className="flex flex-col gap-3">
+                    {column.sections.map((section, secIdx) => (
+                      <div key={secIdx} className="flex flex-col gap-2">
+                        <h5 className="text-[0.8rem] font-bold !text-primary uppercase tracking-wider pl-2 border-l-2 border-primary text-left">
+                          {section.title}
+                        </h5>
+                        <div className="flex flex-col gap-1 pl-2 text-left">
+                          {section.items.map((subItem, itemIdx) => (
+                            <a
+                              key={itemIdx}
+                              href={`#${subItem.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`}
+                              className="block py-1 px-2 -mx-2 rounded-lg text-[#555555] text-[0.9rem] font-semibold transition-all duration-200 hover:text-primary hover:bg-primary/6 hover:translate-x-1"
+                              onClick={() => setIsOpen(false)}
+                            >
+                              {subItem}
+                            </a>
+                          ))}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
                 ))}
               </div>
             </div>
           ))}
           <div className="mt-6 pt-4">
-            <a href="#proposal" className="bg-primary text-white border border-primary rounded-full py-3 px-6 font-semibold inline-flex items-center gap-2 text-[0.95rem] shadow-[0_4px_14px_rgba(18,162,240,0.25)] transition-all duration-250 hover:bg-black hover:border-black hover:text-white hover:-translate-y-0.5 hover:shadow-[0_6px_20px_rgba(0,0,0,0.15)] group w-full justify-center" onClick={() => setIsOpen(false)}>
+            <a href="#proposal" className="bg-primary !text-white border border-primary rounded-full py-3 px-6 font-semibold inline-flex items-center gap-2 text-[0.95rem] shadow-[0_4px_14px_rgba(18,162,240,0.25)] transition-all duration-250 hover:bg-black hover:border-black hover:!text-white hover:-translate-y-0.5 hover:shadow-[0_6px_20px_rgba(0,0,0,0.15)] group w-full justify-center" onClick={() => { setIsOpen(false); setActiveDropdown(null); }}>
               Get a Free Proposal <ArrowRight size={16} className="transition-transform duration-150 group-hover:translate-x-[3px]" />
             </a>
           </div>
