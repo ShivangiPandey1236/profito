@@ -326,7 +326,7 @@ export default function Header() {
     <header className="fixed top-0 left-0 right-0 z-50 flex flex-col">
       {/* Top Info Bar */}
       <div className="bg-black border-b border-border-color py-2 text-[0.85rem] font-medium max-[576px]:hidden">
-        <div className="w-full max-w-[1200px] mx-auto px-6 flex justify-center items-center">
+        <div className="w-full max-w-[1600px] mx-auto px-8 flex justify-center items-center">
           <div className="flex items-center gap-5 flex-wrap">
             <a href="tel:+919560133711" className="text-white inline-flex items-center gap-2 transition-colors duration-150 hover:text-primary top-bar-link">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
@@ -361,7 +361,7 @@ export default function Header() {
 
       {/* Main Header Navigation */}
       <div className="bg-white text-black h-[70px] flex items-center border-b border-black/8 shadow-[0_4px_20px_rgba(0,0,0,0.03)] relative">
-        <div className="w-full max-w-[1200px] mx-auto px-6 flex justify-between items-center h-full relative">
+        <div className="w-full max-w-[1600px] mx-auto px-8 flex justify-between items-center h-full relative">
           {/* Logo */}
           <a href="/" className="flex items-center">
             <img src={logo} alt="ezrankings logo" className="h-12 max-h-12 object-contain" />
@@ -377,7 +377,7 @@ export default function Header() {
                 <button className="bg-transparent border-none cursor-pointer font-sans text-[0.95rem] font-semibold text-black flex items-center gap-1.5 py-4 transition-colors duration-150 hover:text-primary group-hover:text-primary">
                   {item.name} <ChevronDown size={14} className="transition-all duration-250 opacity-70 group-hover:rotate-180 group-hover:opacity-100" />
                 </button>
-                <div className="absolute top-full left-6 right-6 bg-white border border-black/8 rounded-2xl shadow-[0_15px_40px_rgba(0,0,0,0.08)] p-8 transition-opacity duration-150 z-50 flex gap-8 before:content-[''] before:absolute before:bottom-full before:left-0 before:right-0 before:h-4 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto">
+                <div className="absolute top-full left-8 right-8 bg-white border border-black/8 rounded-2xl shadow-[0_15px_40px_rgba(0,0,0,0.08)] p-8 transition-opacity duration-150 z-50 flex gap-8 before:content-[''] before:absolute before:bottom-full before:left-0 before:right-0 before:h-4 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto">
                   {item.columns.map((column, colIdx) => (
                     <div key={colIdx} className="flex-1 flex flex-col gap-6 pl-6 border-l border-black/5 first:border-l-0 first:pl-0">
                       {column.sections.map((section, secIdx) => (

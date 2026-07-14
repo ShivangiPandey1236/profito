@@ -16,7 +16,7 @@ export default function Footer() {
 
   return (
     <footer className="bg-bg-surface border-t border-border-color pt-20 mt-auto">
-      <div className="w-full max-w-[1200px] mx-auto px-6 pb-16">
+      <div className="w-full max-w-[1600px] mx-auto px-8 pb-16">
         <div className="grid grid-cols-4 gap-10 max-[992px]:grid-cols-2 max-[576px]:grid-cols-1">
           {/* Brand Info */}
           <div className="flex flex-col gap-5">
@@ -122,7 +122,7 @@ export default function Footer() {
 
       {/* Bottom Bar */}
       <div className="border-t border-border-color py-8 bg-black">
-        <div className="w-full max-w-[1200px] mx-auto px-6 flex justify-between items-center gap-4 max-[768px]:flex-col max-[768px]:text-center">
+        <div className="w-full max-w-[1600px] mx-auto px-8 flex justify-between items-center gap-4 max-[768px]:flex-col max-[768px]:text-center">
           <p className="text-text-muted text-[0.9rem]">
             © {new Date().getFullYear()} Profito Inc. All rights reserved.
           </p>
