@@ -1,138 +1,369 @@
-import React, { useState } from 'react'
-import { TrendingUp, ArrowRight, Check } from 'lucide-react'
+import React from 'react'
 import logo from '../assets/logo-pr (1).png'
-export default function Footer() {
-  const [email, setEmail] = useState('')
-  const [subscribed, setSubscribed] = useState(false)
 
-  const handleSubscribe = (e) => {
-    e.preventDefault()
-    if (email.trim()) {
-      setSubscribed(true)
-      setEmail('')
-      setTimeout(() => setSubscribed(false), 5000)
+// Star Icon Helper
+const Star = ({ filled }) => (
+  <svg className={`w-3.5 h-3.5 ${filled ? 'text-amber-500' : 'text-zinc-600'}`} fill="currentColor" viewBox="0 0 20 20">
+    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+  </svg>
+)
+
+// Half Star Helper using SVG gradient
+const HalfStar = () => (
+  <svg className="w-3.5 h-3.5 text-amber-500" viewBox="0 0 20 20" fill="currentColor">
+    <defs>
+      <linearGradient id="halfStarGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="50%" stopColor="#f59e0b" />
+        <stop offset="50%" stopColor="#52525b" />
+      </linearGradient>
+    </defs>
+    <path fill="url(#halfStarGrad)" d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+  </svg>
+)
+
+// Rating Stars Renderer
+const RatingStars = ({ rating }) => {
+  const stars = []
+  const floorRating = Math.floor(rating)
+  for (let i = 1; i <= 5; i++) {
+    if (i <= floorRating) {
+      stars.push(<Star key={i} filled={true} />)
+    } else if (i - 0.5 <= rating) {
+      stars.push(<HalfStar key={i} />)
+    } else {
+      stars.push(<Star key={i} filled={false} />)
     }
   }
+  return <div className="flex gap-1">{stars}</div>
+}
+
+export default function Footer() {
+  const navigationColumns = [
+    {
+      title: 'TOP SERVICES',
+      links: [
+        { name: 'SEM Marketing', href: '#sem-marketing' },
+        { name: 'Small Business SEO', href: '#small-business-seo' },
+        { name: 'Authority Building Plan', href: '#authority-building-plan' },
+        { name: 'SEO by Industry', href: '#seo-by-industry' },
+        { name: 'White Label PPC', href: '#white-label-ppc' },
+        { name: 'White Label Social Media', href: '#white-label-social-media' }
+      ]
+    },
+    {
+      title: 'LEARNING CENTER',
+      links: [
+        { name: 'Industry Insight', href: '#industry-insight' },
+        { name: 'Digital Marketing Strategy', href: '#digital-marketing-strategy' },
+        { name: 'Hybrid Engine Optimization (HEO)', href: '#hybrid-engine-optimization-heo' },
+        { name: 'AI Automation for Ecommerce', href: '#ai-automation-for-ecommerce' },
+        { name: 'AI Automation for SaaS', href: '#ai-automation-for-saas' },
+        { name: 'Social Media Strategy', href: '#social-media-strategy' }
+      ]
+    },
+    {
+      title: 'RESOURCES & TOOLS',
+      links: [
+        { name: 'QR Code Generator', href: '#qr-code-generator' },
+        { name: 'Help Center', href: '#help-center' },
+        { name: 'Case Studies', href: '#case-studies' },
+        { name: 'Our Portfolio', href: '#our-portfolio' },
+        { name: 'Client Testimonials', href: '#client-testimonials' },
+        { name: 'Offers & Discounts', href: '#offers-discounts' }
+      ]
+    },
+    {
+      title: 'COMPANY',
+      links: [
+        { name: 'About Us', href: '#about-us' },
+        { name: 'Our Team', href: '#our-team' },
+        { name: 'Careers', href: '#careers' },
+        { name: 'Write For Us', href: '#write-for-us' },
+        { name: 'Contact Us', href: '#contact-us' },
+        { name: 'Sitemap', href: '#sitemap' }
+      ]
+    }
+  ]
 
   return (
-    <footer className="bg-bg-surface border-t border-border-color pt-20 mt-auto">
-      <div className="w-full max-w-[1600px] mx-auto px-8 pb-16">
-        <div className="grid grid-cols-4 gap-10 max-[992px]:grid-cols-2 max-[576px]:grid-cols-1">
-          {/* Brand Info */}
-          <div className="flex flex-col gap-5">
-            <a href="/" className="flex items-center gap-2 text-[1.6rem] font-bold text-white">
-              {/* <div className="text-primary flex items-center">
-                <TrendingUp size={24} />
-              </div> */}
-              <a href="/" className="flex items-center">
-                          <img src={logo} alt="ezrankings logo" className="h-12 max-h-12 object-contain" />
-                        </a>
-              {/* <span className="font-bold">Profito</span> */}
+    <footer className="relative bg-black text-white pt-16 pb-12 overflow-hidden border-t border-zinc-900">
+      {/* Tech grid/dot background pattern overlay */}
+      <div 
+        className="absolute inset-0 opacity-[0.03] pointer-events-none"
+        style={{
+          backgroundImage: `radial-gradient(circle at 1px 1px, rgba(255,255,255,1) 1.5px, transparent 0)`,
+          backgroundSize: '28px 28px'
+        }}
+      ></div>
+
+      <div className="relative w-full max-w-[1600px] mx-auto px-8 z-10">
+        
+        {/* Top Section: Trust Ratings */}
+        <div className="flex justify-center items-center gap-6 flex-wrap mb-16">
+          {/* Google rating card */}
+          <div className="flex items-center gap-4 bg-zinc-950/80 border border-zinc-900 rounded-xl py-3.5 px-6 min-w-[240px] shadow-lg transition-transform duration-200 hover:-translate-y-1 hover:border-zinc-800">
+            <div className="flex items-center justify-center bg-zinc-900/60 p-2.5 rounded-xl border border-zinc-800">
+              <svg className="w-7 h-7 text-amber-500" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12.24 10.285V13.4h6.887c-.275 1.565-1.88 4.604-6.887 4.604-4.33 0-7.866-3.577-7.866-8s3.536-8 7.866-8c2.46 0 4.105 1.025 5.047 1.926l2.427-2.334C17.955 2.192 15.34 1 12.24 1 5.98 1 1 5.98 1 12.24s4.98 11.24 11.24 11.24c6.54 0 10.88-4.6 10.88-11.08 0-.743-.08-1.32-.178-1.889H12.24z"/>
+              </svg>
+            </div>
+            <div className="flex flex-col text-left">
+              <span className="text-[0.7rem] font-extrabold tracking-widest text-zinc-400 uppercase leading-none mb-1.5">GOOGLE</span>
+              <div className="flex items-center gap-2">
+                <RatingStars rating={4.5} />
+                <span className="text-sm font-extrabold text-white leading-none mt-0.5">4.5</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Clutch rating card */}
+          <div className="flex items-center gap-4 bg-zinc-950/80 border border-zinc-900 rounded-xl py-3.5 px-6 min-w-[240px] shadow-lg transition-transform duration-200 hover:-translate-y-1 hover:border-zinc-800">
+            <div className="flex items-center justify-center bg-zinc-900/60 p-2.5 rounded-xl border border-zinc-800">
+              <svg className="w-7 h-7 text-amber-500" viewBox="0 0 24 24" fill="currentColor">
+                <rect x="3" y="3" width="6" height="6" rx="1.5" />
+                <rect x="3" y="11" width="6" height="6" rx="1.5" />
+                <rect x="3" y="19" width="6" height="6" rx="1.5" />
+                <rect x="11" y="3" width="10" height="6" rx="1.5" />
+                <rect x="11" y="11" width="10" height="6" rx="1.5" />
+                <rect x="11" y="19" width="10" height="6" rx="1.5" />
+              </svg>
+            </div>
+            <div className="flex flex-col text-left">
+              <span className="text-[0.7rem] font-extrabold tracking-widest text-zinc-400 uppercase leading-none mb-1.5">CLUTCH</span>
+              <div className="flex items-center gap-2">
+                <RatingStars rating={4.6} />
+                <span className="text-sm font-extrabold text-white leading-none mt-0.5">4.6</span>
+              </div>
+            </div>
+          </div>
+
+          {/* GoodFirm rating card */}
+          <div className="flex items-center gap-4 bg-zinc-950/80 border border-zinc-900 rounded-xl py-3.5 px-6 min-w-[240px] shadow-lg transition-transform duration-200 hover:-translate-y-1 hover:border-zinc-800">
+            <div className="flex items-center justify-center bg-zinc-900/60 p-2.5 rounded-xl border border-zinc-800">
+              <svg className="w-7 h-7 text-amber-500" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2c-.55 0-1 .45-1 1v1.17c-.77.13-1.5.38-2.17.75L7.66 3.75c-.39-.39-1.02-.39-1.41 0-.39.39-.39 1.02 0 1.41l1.17 1.17c-.37.67-.62 1.4-.75 2.17H5.5c-.55 0-1 .45-1 1s.45 1 1 1h1.17c.13.77.38 1.5.75 2.17l-1.17 1.17c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0l1.17-1.17c.67.37 1.4.62 2.17.75v1.17c0 .55.45 1 1 1s1-.45 1-1v-1.17c.77-.13 1.5-.38 2.17-.75l1.17 1.17c.39.39 1.02.39 1.41 0 .39-.39.39-1.02 0-1.41l-1.17-1.17c.37-.67.62-1.4.75-2.17h1.17c.55 0 1-.45 1-1s-.45-1-1-1h-1.17c-.13-.77-.38-1.5-.75-2.17l1.17-1.17c.39-.39.39-1.02 0-1.41-.39-.39-1.02-.39-1.41 0l-1.17 1.17c-.67-.37-1.4-.62-2.17-.75V3c0-.55-.45-1-1-1zm0 7a3 3 0 110 6 3 3 0 010-6z" />
+              </svg>
+            </div>
+            <div className="flex flex-col text-left">
+              <span className="text-[0.7rem] font-extrabold tracking-widest text-zinc-400 uppercase leading-none mb-1.5">GOODFIRM</span>
+              <div className="flex items-center gap-2">
+                <RatingStars rating={4.8} />
+                <span className="text-sm font-extrabold text-white leading-none mt-0.5">4.8</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Divider */}
+        <div className="border-t border-zinc-900 w-full mb-16"></div>
+
+        {/* Main Columns Grid */}
+        <div className="grid grid-cols-5 gap-12 max-[1200px]:grid-cols-3 max-[768px]:grid-cols-2 max-[480px]:grid-cols-1 mb-16">
+          
+          {/* Column 1: Brand Info */}
+          <div className="flex flex-col gap-6 text-left max-[1200px]:col-span-3 max-[768px]:col-span-2 max-[480px]:col-span-1">
+            <a href="/" className="flex items-center">
+              <img src={logo} alt="ezrankings logo" className="h-11 max-h-11 object-contain" />
             </a>
-            <p className="text-text-secondary text-[0.95rem] leading-relaxed">
-              Empowering individuals and businesses to track, analyze, and multiply their wealth with institutional-grade intelligence.
+            <p className="text-zinc-400 text-[0.9rem] leading-relaxed max-w-sm">
+              A digital marketing agency focused on full-funnel business growth. Connecting branding with visibility, traffic, lead generation, and revenue growth.
             </p>
-            <div className="flex gap-3 mt-2">
-              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center w-[38px] h-[38px] rounded-full bg-white/[0.02] border border-border-color text-text-secondary transition-all duration-250 hover:bg-primary/10 hover:border-primary hover:text-primary hover:-translate-y-[3px] hover:shadow-glow" aria-label="Twitter">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+            
+            {/* Social Media Icons */}
+            <div className="flex gap-2.5 mt-2 flex-wrap">
+              {/* Facebook */}
+              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center w-9 h-9 rounded-full bg-zinc-950 border border-zinc-900 text-zinc-400 transition-all duration-200 hover:bg-zinc-800 hover:text-white" aria-label="Facebook">
+                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c4.56-.93 8-4.96 8-9.75z"/>
                 </svg>
               </a>
-              <a href="#" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center w-[38px] h-[38px] rounded-full bg-white/[0.02] border border-border-color text-text-secondary transition-all duration-250 hover:bg-primary/10 hover:border-primary hover:text-primary hover:-translate-y-[3px] hover:shadow-glow" aria-label="GitHub">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" width="24" height="24" fill="currentColor">
-                  <path d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06H297V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z" />
-                </svg>
-                {/* <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/>
-                  <path d="M9 18c-4.51 2-5-2-7-2"/>
-                </svg> */}
-              </a>
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center w-[38px] h-[38px] rounded-full bg-white/[0.02] border border-border-color text-text-secondary transition-all duration-250 hover:bg-primary/10 hover:border-primary hover:text-primary hover:-translate-y-[3px] hover:shadow-glow" aria-label="LinkedIn">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-                  <rect width="4" height="12" x="2" y="9" />
-                  <circle cx="4" cy="4" r="2" />
+              {/* Instagram */}
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center w-9 h-9 rounded-full bg-zinc-950 border border-zinc-900 text-zinc-400 transition-all duration-200 hover:bg-zinc-800 hover:text-white" aria-label="Instagram">
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2.3" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
                 </svg>
               </a>
-              <a href="https://slack.com" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center w-[38px] h-[38px] rounded-full bg-white/[0.02] border border-border-color text-text-secondary transition-all duration-250 hover:bg-primary/10 hover:border-primary hover:text-primary hover:-translate-y-[3px] hover:shadow-glow" aria-label="Slack">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="24" height="24" fill="currentColor">
-                  <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9S160.5 370.8 224.1 370.8 339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.3 0-74.7-33.4-74.7-74.7s33.4-74.7 74.7-74.7 74.7 33.4 74.7 74.7-33.4 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.9-26.9 26.9s-26.9-12-26.9-26.9 12-26.9 26.9-26.9 26.9 12 26.9 26.9zM398.8 80c-17.8-17.8-41.5-27.6-66.7-27.6H115.9C63.5 52.4 21 94.9 21 147.3v217.4c0 52.4 42.5 94.9 94.9 94.9h216.2c25.2 0 48.9-9.8 66.7-27.6 17.8-17.8 27.6-41.5 27.6-66.7V147.3c0-25.2-9.8-48.9-27.6-66.7zM384 364.7c0 28.7-23.2 51.9-51.9 51.9H115.9c-28.7 0-51.9-23.2-51.9-51.9V147.3c0-28.7 23.2-51.9 51.9-51.9h216.2c28.7 0 51.9 23.2 51.9 51.9v217.4z" />
+              {/* LinkedIn */}
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center w-9 h-9 rounded-full bg-zinc-950 border border-zinc-900 text-zinc-400 transition-all duration-200 hover:bg-zinc-800 hover:text-white" aria-label="LinkedIn">
+                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                </svg>
+              </a>
+              {/* X / Twitter */}
+              <a href="https://x.com" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center w-9 h-9 rounded-full bg-zinc-950 border border-zinc-900 text-zinc-400 transition-all duration-200 hover:bg-zinc-800 hover:text-white" aria-label="X (Twitter)">
+                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                </svg>
+              </a>
+              {/* YouTube */}
+              <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center w-9 h-9 rounded-full bg-zinc-950 border border-zinc-900 text-zinc-400 transition-all duration-200 hover:bg-zinc-800 hover:text-white" aria-label="YouTube">
+                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M23.498 6.163a3.003 3.003 0 00-2.11-2.11C19.518 3.5 12 3.5 12 3.5s-7.518 0-9.388.553a3.003 3.003 0 00-2.11 2.11C0 8.033 0 12 0 12s0 3.967.502 5.837a3.003 3.003 0 002.11 2.11c1.87.553 9.388.553 9.388.553s7.518 0 9.388-.553a3.003 3.003 0 002.11-2.11C24 15.967 24 12 24 12s0-3.967-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                </svg>
+              </a>
+              {/* Behance */}
+              <a href="https://behance.net" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center w-9 h-9 rounded-full bg-zinc-950 border border-zinc-900 text-zinc-400 transition-all duration-200 hover:bg-zinc-800 hover:text-white" aria-label="Behance">
+                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M8.22 5.38c.65 0 1.25.08 1.78.23.53.15.98.39 1.34.72.36.33.64.74.83 1.23.19.49.29 1.09.29 1.79 0 .62-.08 1.17-.23 1.66a3.86 3.86 0 01-.68 1.28c-.29.35-.66.62-1.11.83.6.21 1.09.52 1.48.95.39.43.59 1.03.59 1.8 0 .77-.11 1.42-.33 1.95-.22.53-.54.96-.96 1.28-.42.32-.93.55-1.53.69-.6.14-1.29.21-2.07.21H0V5.38h8.22zm-2.7 5.14h2.24c.32 0 .61-.03.88-.09.27-.06.5-.16.69-.3.19-.14.34-.33.45-.57.11-.24.16-.54.16-.91 0-.39-.05-.7-.15-.93a1.59 1.59 0 00-.43-.57 2.03 2.03 0 00-.67-.32 3.65 3.65 0 00-.89-.1H5.52v3.79zm0 6.64h2.52c.35 0 .67-.03.96-.1.29-.07.54-.18.75-.34.21-.16.37-.37.49-.63.12-.26.18-.59.18-.99 0-.4-.06-.73-.17-.98-.11-.25-.27-.45-.48-.6-.21-.15-.47-.25-.78-.31-.31-.06-.65-.09-1.03-.09H5.52v4.04zm12.39-7.39c.67 0 1.29.11 1.86.33.57.22 1.06.56 1.47 1.02.41.46.72 1.03.93 1.71.21.68.32 1.48.32 2.4h-7.15c.03.62.13 1.13.31 1.54.18.41.42.73.72.96.3.23.64.39 1.02.48.38.09.77.13 1.17.13.62 0 1.16-.09 1.63-.26.47-.17.88-.41 1.22-.72l1.13 1.62c-.52.54-1.16.96-1.92 1.27-.76.31-1.63.46-2.6.46-1 0-1.89-.15-2.67-.45-.78-.3-1.44-.73-1.97-1.28-.53-.55-.93-1.23-1.2-2.03-.27-.8-.4-1.72-.4-2.76 0-1.02.13-1.93.4-2.73.27-.8.67-1.47 1.2-2.02.53-.55 1.19-.97 1.97-1.26.78-.29 1.68-.44 2.7-.44zm2.14 4.09c-.04-.54-.14-1-.3-1.37a2.29 2.29 0 00-.73-.91c-.32-.23-.7-.35-1.16-.35-.47 0-.87.11-1.2.33-.33.22-.59.52-.77.9-.18.38-.28.85-.31 1.4h4.47zm-5.06-6.19h5.68V8.9h-5.68V7.71z"/>
                 </svg>
               </a>
             </div>
           </div>
 
-          {/* Column 2: Product */}
-          <div>
-            <h4 className="text-[0.9rem] font-bold uppercase tracking-wider text-white mb-6">Platform</h4>
-            <ul className="list-none flex flex-col gap-3.5">
-              <li><a href="#features" className="text-text-secondary text-[0.95rem] font-medium transition-all duration-150 hover:text-primary hover:pl-1">Portfolio Tracker</a></li>
-              <li><a href="#analytics" className="text-text-secondary text-[0.95rem] font-medium transition-all duration-150 hover:text-primary hover:pl-1">Yield Analytics</a></li>
-              <li><a href="#tax" className="text-text-secondary text-[0.95rem] font-medium transition-all duration-150 hover:text-primary hover:pl-1">Tax Reports</a></li>
-              <li><a href="#security" className="text-text-secondary text-[0.95rem] font-medium transition-all duration-150 hover:text-primary hover:pl-1">Security Vault</a></li>
-            </ul>
+          {/* Navigation Columns */}
+          {navigationColumns.map((col, idx) => (
+            <div key={idx} className="flex flex-col text-left">
+              <h4 className="relative text-[0.85rem] font-black uppercase tracking-wider text-white mb-6 pb-2.5 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-8 after:h-[2px] after:bg-primary">
+                {col.title}
+              </h4>
+              <ul className="list-none flex flex-col gap-3">
+                {col.links.map((link, linkIdx) => (
+                  <li key={linkIdx}>
+                    <a 
+                      href={link.href} 
+                      className="group/link relative text-zinc-400 text-[0.88rem] font-semibold transition-all duration-200 hover:text-primary hover:pl-1 inline-block"
+                    >
+                      {link.name}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+
+        </div>
+
+        {/* Bottom Section: Badges */}
+        <div className="border-t border-zinc-900 pt-8 mt-12 pb-8">
+          <div className="flex justify-center items-center gap-4 flex-wrap">
+            {/* 1. Copyscape badge */}
+            <div className="bg-white border border-zinc-200 rounded-md py-1.5 px-3 flex items-center gap-2 select-none h-10 shadow-sm">
+              <span className="w-4.5 h-4.5 rounded-full bg-zinc-800 text-white flex items-center justify-center font-bold text-[9px]">C</span>
+              <div className="flex flex-col text-left">
+                <span className="text-[6px] text-zinc-500 font-extrabold uppercase leading-none">PROTECTED BY</span>
+                <span className="text-[9px] text-zinc-850 font-black tracking-tight leading-none mt-0.5">COPYSCAPE</span>
+              </div>
+            </div>
+
+            {/* 2. DMCA badge */}
+            <div className="bg-white border border-zinc-200 rounded-md overflow-hidden flex items-center select-none h-10 shadow-sm">
+              <div className="bg-[#0070bc] text-white font-extrabold px-2 h-full flex items-center text-[9px] tracking-tight">DMCA</div>
+              <div className="text-zinc-800 font-extrabold px-2 h-full flex items-center text-[8px] tracking-wider uppercase bg-white">PROTECTED</div>
+            </div>
+
+            {/* 3. ISO 9001:2015 */}
+            <div className="bg-white border border-zinc-200 rounded-md py-1.5 px-3 flex flex-col items-center justify-center select-none h-10 shadow-sm min-w-[70px]">
+              <span className="text-[10px] text-zinc-900 font-black tracking-widest leading-none">ISO</span>
+              <span className="text-[6px] text-zinc-500 font-bold tracking-tight leading-none mt-1">9001:2015</span>
+            </div>
+
+            {/* 4. Red Herring 100 Winner */}
+            <div className="bg-white border border-zinc-200 rounded-md py-1.5 px-3 flex items-center gap-1.5 select-none h-10 shadow-sm">
+              <span className="w-4.5 h-4.5 rounded-full bg-red-600 text-white flex items-center justify-center font-black text-[8px] italic">R</span>
+              <div className="flex flex-col text-left">
+                <span className="text-[6px] text-red-600 font-extrabold uppercase leading-none">RED HERRING</span>
+                <span className="text-[8.5px] text-zinc-850 font-black tracking-tight leading-none mt-0.5">100 WINNER</span>
+              </div>
+            </div>
+
+            {/* 5. Clutch badge */}
+            <div className="bg-white border border-zinc-200 rounded-md py-1.5 px-3 flex items-center gap-1.5 select-none h-10 shadow-sm">
+              <svg className="w-3.5 h-3.5 text-zinc-900" viewBox="0 0 24 24" fill="currentColor">
+                <rect x="2" y="2" width="6" height="6" rx="1" />
+                <rect x="2" y="9" width="6" height="6" rx="1" />
+                <rect x="2" y="16" width="6" height="6" rx="1" />
+                <rect x="9" y="2" width="13" height="6" rx="1" />
+                <rect x="9" y="9" width="13" height="6" rx="1" />
+                <rect x="9" y="16" width="13" height="6" rx="1" />
+              </svg>
+              <span className="text-[10px] text-zinc-900 font-extrabold tracking-tight">Clutch</span>
+            </div>
+
+            {/* 6. Google Partner */}
+            <div className="bg-white border border-zinc-200 rounded-md py-1 px-3.5 flex items-center justify-center select-none h-10 shadow-sm">
+              <div className="flex flex-col text-left justify-center h-full">
+                <div className="flex items-center text-[10px] font-bold tracking-tight leading-none">
+                  <span className="text-blue-500">G</span>
+                  <span className="text-red-500">o</span>
+                  <span className="text-yellow-500">o</span>
+                  <span className="text-blue-500">g</span>
+                  <span className="text-green-500">l</span>
+                  <span className="text-red-500">e</span>
+                </div>
+                <span className="text-[7px] text-zinc-400 font-extrabold tracking-widest uppercase leading-none mt-1">Partner</span>
+              </div>
+            </div>
+
+            {/* 7. HubSpot */}
+            <div className="bg-white border border-zinc-200 rounded-md py-1.5 px-3 flex items-center gap-1.5 select-none h-10 shadow-sm">
+              <div className="flex items-center">
+                <svg className="w-3.5 h-3.5 text-[#ff7a59]" viewBox="0 0 24 24" fill="currentColor">
+                  <circle cx="12" cy="6" r="3.2" />
+                  <circle cx="6" cy="15" r="3.2" />
+                  <circle cx="18" cy="15" r="3.2" />
+                  <line x1="12" y1="6" x2="6" y2="15" stroke="#ff7a59" strokeWidth="2.2" />
+                  <line x1="12" y1="6" x2="18" y2="15" stroke="#ff7a59" strokeWidth="2.2" />
+                  <line x1="6" y1="15" x2="18" y2="15" stroke="#ff7a59" strokeWidth="2.2" />
+                </svg>
+              </div>
+              <span className="text-[10px] text-zinc-900 font-extrabold tracking-tight">HubSpot</span>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+      {/* Other Locations Strip */}
+      <div className="relative border-t border-zinc-900 bg-black">
+        <div className="w-full max-w-[1600px] mx-auto px-8 py-6">
+          {/* Section Label */}
+          <div className="flex items-center gap-2 mb-4">
+            <svg className="w-4 h-4 text-primary shrink-0" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+            </svg>
+            <span className="text-primary text-[0.78rem] font-extrabold uppercase tracking-[0.12em]">Other Locations We Serve</span>
           </div>
 
-          {/* Column 3: Company */}
-          <div>
-            <h4 className="text-[0.9rem] font-bold uppercase tracking-wider text-white mb-6">Company</h4>
-            <ul className="list-none flex flex-col gap-3.5">
-              <li><a href="#about" className="text-text-secondary text-[0.95rem] font-medium transition-all duration-150 hover:text-primary hover:pl-1">About Us</a></li>
-              <li>
-                <a href="#careers" className="inline-flex items-center gap-2 text-text-secondary text-[0.95rem] font-medium transition-all duration-150 hover:text-primary hover:pl-1">
-                  Careers <span className="text-[0.65rem] font-bold bg-primary/15 text-primary py-0.5 px-2 rounded-full uppercase tracking-wider border border-primary/25">Hiring</span>
+          {/* Locations List */}
+          <div className="flex flex-wrap items-center gap-0">
+            {[
+              'California', 'Dallas', 'New York', 'Los Angeles', 'Pennsylvania',
+              'San Diego', 'Canada', 'SEO Delhi', 'PPC Delhi', 'ORM Delhi',
+              'Local SEO Delhi', 'Design Delhi', 'Development Delhi'
+            ].map((location, idx, arr) => (
+              <span key={idx} className="flex items-center">
+                <a
+                  href={`#${location.toLowerCase().replace(/\s+/g, '-')}`}
+                  className="relative text-zinc-400 text-[0.82rem] font-semibold transition-all duration-200 hover:text-primary whitespace-nowrap py-1 after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-[1.5px] after:bg-primary after:transition-all after:duration-200 hover:after:w-full"
+                >
+                  {location}
                 </a>
-              </li>
-              <li><a href="#press" className="text-text-secondary text-[0.95rem] font-medium transition-all duration-150 hover:text-primary hover:pl-1">Press Kit</a></li>
-              <li><a href="#contact" className="text-text-secondary text-[0.95rem] font-medium transition-all duration-150 hover:text-primary hover:pl-1">Contact Support</a></li>
-            </ul>
-          </div>
-
-          {/* Column 4: Newsletter */}
-          <div className="flex flex-col gap-4">
-            <h4 className="text-[0.9rem] font-bold uppercase tracking-wider text-white mb-6">Stay Updated</h4>
-            <p className="text-text-secondary text-[0.95rem] leading-normal">Subscribe to our newsletter for insights on profit-optimization strategies.</p>
-
-            <form onSubmit={handleSubscribe} className="mt-2">
-              {subscribed ? (
-                <div className="flex items-center gap-2 text-primary text-[0.95rem] font-semibold bg-primary/8 py-3 px-5 rounded-full border border-primary/20 animate-fade-in">
-                  <Check size={18} />
-                  <span>Subscribed successfully!</span>
-                </div>
-              ) : (
-                <div className="flex relative w-full">
-                  <input
-                    type="email"
-                    required
-                    placeholder="Enter your email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    className="w-full py-3 pl-5 pr-14 bg-white/[0.03] border border-border-color rounded-full text-white font-sans text-[0.95rem] transition-all duration-250 focus:outline-none focus:border-primary focus:bg-white/[0.05] focus:ring-3 focus:ring-primary/15 placeholder:text-text-muted"
-                    aria-label="Email address for newsletter"
-                  />
-                  <button type="submit" className="absolute right-[5px] top-[5px] bottom-[5px] w-[34px] h-[34px] rounded-full bg-primary border-none text-black flex items-center justify-center cursor-pointer transition-all duration-250 hover:bg-primary-hover hover:scale-105" aria-label="Subscribe">
-                    <ArrowRight size={18} />
-                  </button>
-                </div>
-              )}
-            </form>
+                {idx < arr.length - 1 && (
+                  <span className="mx-2.5 text-zinc-700 text-[0.6rem] select-none">◆</span>
+                )}
+              </span>
+            ))}
           </div>
         </div>
       </div>
 
-      {/* Bottom Bar */}
-      <div className="border-t border-border-color py-8 bg-black">
-        <div className="w-full max-w-[1600px] mx-auto px-8 flex justify-between items-center gap-4 max-[768px]:flex-col max-[768px]:text-center">
-          <p className="text-text-muted text-[0.9rem]">
-            © {new Date().getFullYear()} Profito Inc. All rights reserved.
+      {/* Bottom Copyright Bar */}
+      <div className="border-t border-zinc-900 bg-[#0a0a0a]">
+        <div className="w-full max-w-[1600px] mx-auto px-8 py-4 flex justify-between items-center gap-4 max-[640px]:flex-col max-[640px]:text-center">
+          <p className="text-zinc-500 text-[0.82rem]">
+            © {new Date().getFullYear()} EZ Rankings. All Rights Reserved.
           </p>
           <div className="flex gap-6">
-            <a href="#privacy" className="text-text-muted text-[0.9rem] font-medium hover:text-white transition-colors duration-150">Privacy Policy</a>
-            <a href="#terms" className="text-text-muted text-[0.9rem] font-medium hover:text-white transition-colors duration-150">Terms of Service</a>
-            <a href="#cookies" className="text-text-muted text-[0.9rem] font-medium hover:text-white transition-colors duration-150">Cookie Policy</a>
+            <a href="#privacy" className="text-zinc-500 text-[0.82rem] font-semibold hover:text-white transition-colors duration-150">Privacy</a>
+            <a href="#terms" className="text-zinc-500 text-[0.82rem] font-semibold hover:text-white transition-colors duration-150">Terms</a>
+            <a href="#sitemap" className="text-zinc-500 text-[0.82rem] font-semibold hover:text-white transition-colors duration-150">Sitemap</a>
           </div>
         </div>
       </div>
+
     </footer>
   )
 }
