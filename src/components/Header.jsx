@@ -89,10 +89,7 @@ export default function Header() {
                 'Digital Marketing Packages',
                 'SEO Packages',
                 'Local SEO Packages',
-                'Ecommerce SEO Packages',
-                'PPC Packages',
-                'Social Media Packages',
-                'ASO Packages'
+                'Ecommerce SEO Packages'
               ]
             }
           ]
@@ -115,13 +112,7 @@ export default function Header() {
                 'CMS Development',
                 'Shopify Development',
                 'Magento Development',
-                'WooCommerce Development',
-                'Headless / Jamstack Dev',
-                'Web Application Development',
-                'API Development & Integration',
-                'Website Maintenance & Support',
-                'Website Migration',
-                'Development Packages'
+                'WooCommerce Development'
               ]
             }
           ]
