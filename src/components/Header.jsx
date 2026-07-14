@@ -355,7 +355,7 @@ export default function Header() {
               <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"></path>
               </svg>
-              <span>contactus@ezrankings.com</span>
+              <span>sales@profitointeractive.com</span>
             </a>
             <span className="text-white/20 select-none">|</span>
             <a href="https://wa.me/919560133711" target="_blank" rel="noopener noreferrer" className="text-white inline-flex items-center gap-2 transition-colors duration-150 hover:text-[#25d366] top-bar-link">
