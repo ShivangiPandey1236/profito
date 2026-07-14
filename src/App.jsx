@@ -1,10 +1,11 @@
 import React from 'react'
 import Layout from './components/Layout'
+import Hero from './components/Hero'
 
 function App() {
   return (
     <Layout>
-      {/* Everything removed except Header and Footer inside Layout */}
+      <Hero />
     </Layout>
   )
 }

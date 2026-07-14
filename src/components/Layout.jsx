@@ -9,7 +9,7 @@ export default function Layout({ children }) {
       <Header />
 
       {/* Main Page Content */}
-      <main className="grow pt-[106px] max-[576px]:pt-[70px]">
+      <main className="grow">
         {children}
       </main>
 
