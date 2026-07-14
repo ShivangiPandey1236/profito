@@ -5,7 +5,7 @@ import Hero from './components/Hero'
 function App() {
   return (
     <Layout>
-      <Hero />
+      {/* <Hero /> */}
     </Layout>
   )
 }
