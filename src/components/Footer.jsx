@@ -3,17 +3,17 @@ import logo from '../assets/logo-pr (1).png'
 
 // Star Icon Helper
 const Star = ({ filled }) => (
-  <svg className={`w-3.5 h-3.5 ${filled ? 'text-amber-500' : 'text-zinc-600'}`} fill="currentColor" viewBox="0 0 20 20">
+  <svg className={`w-3.5 h-3.5 ${filled ? 'text-[#12A2F0]' : 'text-zinc-600'}`} fill="currentColor" viewBox="0 0 20 20">
     <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
   </svg>
 )
 
 // Half Star Helper using SVG gradient
 const HalfStar = () => (
-  <svg className="w-3.5 h-3.5 text-amber-500" viewBox="0 0 20 20" fill="currentColor">
+  <svg className="w-3.5 h-3.5 text-[#12A2F0]" viewBox="0 0 20 20" fill="currentColor">
     <defs>
       <linearGradient id="halfStarGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-        <stop offset="50%" stopColor="#f59e0b" />
+        <stop offset="50%" stopColor="#12A2F0" />
         <stop offset="50%" stopColor="#52525b" />
       </linearGradient>
     </defs>
@@ -86,76 +86,81 @@ export default function Footer() {
   ]
 
   return (
-    <footer className="relative bg-black text-white pt-16 pb-12 overflow-hidden border-t border-zinc-900">
-      {/* Tech grid/dot background pattern overlay */}
-      <div 
-        className="absolute inset-0 opacity-[0.03] pointer-events-none"
-        style={{
-          backgroundImage: `radial-gradient(circle at 1px 1px, rgba(255,255,255,1) 1.5px, transparent 0)`,
-          backgroundSize: '28px 28px'
-        }}
-      ></div>
+    <footer className="relative text-white overflow-hidden">
 
-      <div className="relative w-full max-w-[1600px] mx-auto px-8 z-10">
-        
-        {/* Top Section: Trust Ratings */}
-        <div className="flex justify-center items-center gap-6 flex-wrap mb-16">
-          {/* Google rating card */}
-          <div className="flex items-center gap-4 bg-zinc-950/80 border border-zinc-900 rounded-xl py-3.5 px-6 min-w-[240px] shadow-lg transition-transform duration-200 hover:-translate-y-1 hover:border-zinc-800">
-            <div className="flex items-center justify-center bg-zinc-900/60 p-2.5 rounded-xl border border-zinc-800">
-              <svg className="w-7 h-7 text-amber-500" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12.24 10.285V13.4h6.887c-.275 1.565-1.88 4.604-6.887 4.604-4.33 0-7.866-3.577-7.866-8s3.536-8 7.866-8c2.46 0 4.105 1.025 5.047 1.926l2.427-2.334C17.955 2.192 15.34 1 12.24 1 5.98 1 1 5.98 1 12.24s4.98 11.24 11.24 11.24c6.54 0 10.88-4.6 10.88-11.08 0-.743-.08-1.32-.178-1.889H12.24z"/>
-              </svg>
-            </div>
-            <div className="flex flex-col text-left">
-              <span className="text-[0.7rem] font-extrabold tracking-widest text-zinc-400 uppercase leading-none mb-1.5">GOOGLE</span>
-              <div className="flex items-center gap-2">
-                <RatingStars rating={4.5} />
-                <span className="text-sm font-extrabold text-white leading-none mt-0.5">4.5</span>
+      {/* ── Ratings Band ── full-width black */}
+      <div className="bg-[#000] border-t border-zinc-900 border-b border-zinc-900 py-14">
+        <div className="w-full max-w-[1600px] mx-auto px-8">
+          <div className="flex justify-center items-center gap-6 flex-wrap">
+            {/* Google rating card */}
+            <div className="flex items-center gap-4 bg-zinc-950 border border-zinc-800 rounded-xl py-3.5 px-6 min-w-[240px] shadow-lg transition-transform duration-200 hover:-translate-y-1 hover:border-zinc-700">
+              <div className="flex items-center justify-center bg-zinc-900 p-2.5 rounded-xl border border-zinc-800">
+                <svg className="w-7 h-7 text-[#12A2F0]" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12.24 10.285V13.4h6.887c-.275 1.565-1.88 4.604-6.887 4.604-4.33 0-7.866-3.577-7.866-8s3.536-8 7.866-8c2.46 0 4.105 1.025 5.047 1.926l2.427-2.334C17.955 2.192 15.34 1 12.24 1 5.98 1 1 5.98 1 12.24s4.98 11.24 11.24 11.24c6.54 0 10.88-4.6 10.88-11.08 0-.743-.08-1.32-.178-1.889H12.24z"/>
+                </svg>
+              </div>
+              <div className="flex flex-col text-left">
+                <span className="text-[0.7rem] font-extrabold tracking-widest text-zinc-400 uppercase leading-none mb-1.5">GOOGLE</span>
+                <div className="flex items-center gap-2">
+                  <RatingStars rating={4.5} />
+                  <span className="text-sm font-extrabold text-white leading-none mt-0.5">4.5</span>
+                </div>
               </div>
             </div>
-          </div>
 
-          {/* Clutch rating card */}
-          <div className="flex items-center gap-4 bg-zinc-950/80 border border-zinc-900 rounded-xl py-3.5 px-6 min-w-[240px] shadow-lg transition-transform duration-200 hover:-translate-y-1 hover:border-zinc-800">
-            <div className="flex items-center justify-center bg-zinc-900/60 p-2.5 rounded-xl border border-zinc-800">
-              <svg className="w-7 h-7 text-amber-500" viewBox="0 0 24 24" fill="currentColor">
-                <rect x="3" y="3" width="6" height="6" rx="1.5" />
-                <rect x="3" y="11" width="6" height="6" rx="1.5" />
-                <rect x="3" y="19" width="6" height="6" rx="1.5" />
-                <rect x="11" y="3" width="10" height="6" rx="1.5" />
-                <rect x="11" y="11" width="10" height="6" rx="1.5" />
-                <rect x="11" y="19" width="10" height="6" rx="1.5" />
-              </svg>
-            </div>
-            <div className="flex flex-col text-left">
-              <span className="text-[0.7rem] font-extrabold tracking-widest text-zinc-400 uppercase leading-none mb-1.5">CLUTCH</span>
-              <div className="flex items-center gap-2">
-                <RatingStars rating={4.6} />
-                <span className="text-sm font-extrabold text-white leading-none mt-0.5">4.6</span>
+            {/* Clutch rating card */}
+            <div className="flex items-center gap-4 bg-zinc-950 border border-zinc-800 rounded-xl py-3.5 px-6 min-w-[240px] shadow-lg transition-transform duration-200 hover:-translate-y-1 hover:border-zinc-700">
+              <div className="flex items-center justify-center bg-zinc-900 p-2.5 rounded-xl border border-zinc-800">
+                <svg className="w-7 h-7 text-[#12A2F0]" viewBox="0 0 24 24" fill="currentColor">
+                  <rect x="3" y="3" width="6" height="6" rx="1.5" />
+                  <rect x="3" y="11" width="6" height="6" rx="1.5" />
+                  <rect x="3" y="19" width="6" height="6" rx="1.5" />
+                  <rect x="11" y="3" width="10" height="6" rx="1.5" />
+                  <rect x="11" y="11" width="10" height="6" rx="1.5" />
+                  <rect x="11" y="19" width="10" height="6" rx="1.5" />
+                </svg>
+              </div>
+              <div className="flex flex-col text-left">
+                <span className="text-[0.7rem] font-extrabold tracking-widest text-zinc-400 uppercase leading-none mb-1.5">CLUTCH</span>
+                <div className="flex items-center gap-2">
+                  <RatingStars rating={4.6} />
+                  <span className="text-sm font-extrabold text-white leading-none mt-0.5">4.6</span>
+                </div>
               </div>
             </div>
-          </div>
 
-          {/* GoodFirm rating card */}
-          <div className="flex items-center gap-4 bg-zinc-950/80 border border-zinc-900 rounded-xl py-3.5 px-6 min-w-[240px] shadow-lg transition-transform duration-200 hover:-translate-y-1 hover:border-zinc-800">
-            <div className="flex items-center justify-center bg-zinc-900/60 p-2.5 rounded-xl border border-zinc-800">
-              <svg className="w-7 h-7 text-amber-500" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 2c-.55 0-1 .45-1 1v1.17c-.77.13-1.5.38-2.17.75L7.66 3.75c-.39-.39-1.02-.39-1.41 0-.39.39-.39 1.02 0 1.41l1.17 1.17c-.37.67-.62 1.4-.75 2.17H5.5c-.55 0-1 .45-1 1s.45 1 1 1h1.17c.13.77.38 1.5.75 2.17l-1.17 1.17c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0l1.17-1.17c.67.37 1.4.62 2.17.75v1.17c0 .55.45 1 1 1s1-.45 1-1v-1.17c.77-.13 1.5-.38 2.17-.75l1.17 1.17c.39.39 1.02.39 1.41 0 .39-.39.39-1.02 0-1.41l-1.17-1.17c.37-.67.62-1.4.75-2.17h1.17c.55 0 1-.45 1-1s-.45-1-1-1h-1.17c-.13-.77-.38-1.5-.75-2.17l1.17-1.17c.39-.39.39-1.02 0-1.41-.39-.39-1.02-.39-1.41 0l-1.17 1.17c-.67-.37-1.4-.62-2.17-.75V3c0-.55-.45-1-1-1zm0 7a3 3 0 110 6 3 3 0 010-6z" />
-              </svg>
-            </div>
-            <div className="flex flex-col text-left">
-              <span className="text-[0.7rem] font-extrabold tracking-widest text-zinc-400 uppercase leading-none mb-1.5">GOODFIRM</span>
-              <div className="flex items-center gap-2">
-                <RatingStars rating={4.8} />
-                <span className="text-sm font-extrabold text-white leading-none mt-0.5">4.8</span>
+            {/* GoodFirm rating card */}
+            <div className="flex items-center gap-4 bg-zinc-950 border border-zinc-800 rounded-xl py-3.5 px-6 min-w-[240px] shadow-lg transition-transform duration-200 hover:-translate-y-1 hover:border-zinc-700">
+              <div className="flex items-center justify-center bg-zinc-900 p-2.5 rounded-xl border border-zinc-800">
+                <svg className="w-7 h-7 text-[#12A2F0]" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2c-.55 0-1 .45-1 1v1.17c-.77.13-1.5.38-2.17.75L7.66 3.75c-.39-.39-1.02-.39-1.41 0-.39.39-.39 1.02 0 1.41l1.17 1.17c-.37.67-.62 1.4-.75 2.17H5.5c-.55 0-1 .45-1 1s.45 1 1 1h1.17c.13.77.38 1.5.75 2.17l-1.17 1.17c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0l1.17-1.17c.67.37 1.4.62 2.17.75v1.17c0 .55.45 1 1 1s1-.45 1-1v-1.17c.77-.13 1.5-.38 2.17-.75l1.17 1.17c.39.39 1.02.39 1.41 0 .39-.39.39-1.02 0-1.41l-1.17-1.17c.37-.67.62-1.4.75-2.17h1.17c.55 0 1-.45 1-1s-.45-1-1-1h-1.17c-.13-.77-.38-1.5-.75-2.17l1.17-1.17c.39-.39.39-1.02 0-1.41-.39-.39-1.02-.39-1.41 0l-1.17 1.17c-.67-.37-1.4-.62-2.17-.75V3c0-.55-.45-1-1-1zm0 7a3 3 0 110 6 3 3 0 010-6z" />
+                </svg>
+              </div>
+              <div className="flex flex-col text-left">
+                <span className="text-[0.7rem] font-extrabold tracking-widest text-zinc-400 uppercase leading-none mb-1.5">GOODFIRM</span>
+                <div className="flex items-center gap-2">
+                  <RatingStars rating={4.8} />
+                  <span className="text-sm font-extrabold text-white leading-none mt-0.5">4.8</span>
+                </div>
               </div>
             </div>
           </div>
         </div>
+      </div>
 
-        {/* Divider */}
-        <div className="border-t border-zinc-900 w-full mb-16"></div>
+      {/* ── Main Footer Body ── bg-[#222] */}
+      <div className="relative bg-[#222] pt-16 pb-12 overflow-hidden">
+        {/* Tech grid/dot background pattern overlay */}
+        <div 
+          className="absolute inset-0 opacity-[0.03] pointer-events-none"
+          style={{
+            backgroundImage: `radial-gradient(circle at 1px 1px, rgba(255,255,255,1) 1.5px, transparent 0)`,
+            backgroundSize: '28px 28px'
+          }}
+        ></div>
+
+        <div className="relative w-full max-w-[1600px] mx-auto px-8 z-10">
+
 
         {/* Main Columns Grid */}
         <div className="grid grid-cols-5 gap-12 max-[1200px]:grid-cols-3 max-[768px]:grid-cols-2 max-[480px]:grid-cols-1 mb-16">
@@ -197,18 +202,7 @@ export default function Footer() {
                   <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
                 </svg>
               </a>
-              {/* YouTube */}
-              <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center w-9 h-9 rounded-full bg-zinc-950 border border-zinc-900 text-zinc-400 transition-all duration-200 hover:bg-zinc-800 hover:text-white" aria-label="YouTube">
-                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M23.498 6.163a3.003 3.003 0 00-2.11-2.11C19.518 3.5 12 3.5 12 3.5s-7.518 0-9.388.553a3.003 3.003 0 00-2.11 2.11C0 8.033 0 12 0 12s0 3.967.502 5.837a3.003 3.003 0 002.11 2.11c1.87.553 9.388.553 9.388.553s7.518 0 9.388-.553a3.003 3.003 0 002.11-2.11C24 15.967 24 12 24 12s0-3.967-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-                </svg>
-              </a>
-              {/* Behance */}
-              <a href="https://behance.net" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center w-9 h-9 rounded-full bg-zinc-950 border border-zinc-900 text-zinc-400 transition-all duration-200 hover:bg-zinc-800 hover:text-white" aria-label="Behance">
-                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M8.22 5.38c.65 0 1.25.08 1.78.23.53.15.98.39 1.34.72.36.33.64.74.83 1.23.19.49.29 1.09.29 1.79 0 .62-.08 1.17-.23 1.66a3.86 3.86 0 01-.68 1.28c-.29.35-.66.62-1.11.83.6.21 1.09.52 1.48.95.39.43.59 1.03.59 1.8 0 .77-.11 1.42-.33 1.95-.22.53-.54.96-.96 1.28-.42.32-.93.55-1.53.69-.6.14-1.29.21-2.07.21H0V5.38h8.22zm-2.7 5.14h2.24c.32 0 .61-.03.88-.09.27-.06.5-.16.69-.3.19-.14.34-.33.45-.57.11-.24.16-.54.16-.91 0-.39-.05-.7-.15-.93a1.59 1.59 0 00-.43-.57 2.03 2.03 0 00-.67-.32 3.65 3.65 0 00-.89-.1H5.52v3.79zm0 6.64h2.52c.35 0 .67-.03.96-.1.29-.07.54-.18.75-.34.21-.16.37-.37.49-.63.12-.26.18-.59.18-.99 0-.4-.06-.73-.17-.98-.11-.25-.27-.45-.48-.6-.21-.15-.47-.25-.78-.31-.31-.06-.65-.09-1.03-.09H5.52v4.04zm12.39-7.39c.67 0 1.29.11 1.86.33.57.22 1.06.56 1.47 1.02.41.46.72 1.03.93 1.71.21.68.32 1.48.32 2.4h-7.15c.03.62.13 1.13.31 1.54.18.41.42.73.72.96.3.23.64.39 1.02.48.38.09.77.13 1.17.13.62 0 1.16-.09 1.63-.26.47-.17.88-.41 1.22-.72l1.13 1.62c-.52.54-1.16.96-1.92 1.27-.76.31-1.63.46-2.6.46-1 0-1.89-.15-2.67-.45-.78-.3-1.44-.73-1.97-1.28-.53-.55-.93-1.23-1.2-2.03-.27-.8-.4-1.72-.4-2.76 0-1.02.13-1.93.4-2.73.27-.8.67-1.47 1.2-2.02.53-.55 1.19-.97 1.97-1.26.78-.29 1.68-.44 2.7-.44zm2.14 4.09c-.04-.54-.14-1-.3-1.37a2.29 2.29 0 00-.73-.91c-.32-.23-.7-.35-1.16-.35-.47 0-.87.11-1.2.33-.33.22-.59.52-.77.9-.18.38-.28.85-.31 1.4h4.47zm-5.06-6.19h5.68V8.9h-5.68V7.71z"/>
-                </svg>
-              </a>
+
             </div>
           </div>
 
@@ -223,7 +217,7 @@ export default function Footer() {
                   <li key={linkIdx}>
                     <a 
                       href={link.href} 
-                      className="group/link relative text-zinc-400 text-[0.88rem] font-semibold transition-all duration-200 hover:text-primary hover:pl-1 inline-block"
+                      className="relative text-zinc-400 text-[0.88rem] font-semibold transition-all duration-200 hover:text-primary inline-block after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-[1.5px] after:bg-primary after:transition-all after:duration-250 hover:after:w-full"
                     >
                       {link.name}
                     </a>
@@ -312,9 +306,10 @@ export default function Footer() {
             </div>
 
           </div>
-        </div>
+        </div>{/* end badges inner container */}
 
-      </div>
+        </div>{/* end max-w-[1600px] container */}
+      </div>{/* end bg-[#222] main body */}
 
       {/* Other Locations Strip */}
       <div className="relative border-t border-zinc-900 bg-black">
