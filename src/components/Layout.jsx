@@ -14,7 +14,7 @@ export default function Layout({ children }) {
       </main>
 
       {/* Reusable Footer */}
-      <Footer />
+      {/* <Footer /> */}
     </div>
   )
 }

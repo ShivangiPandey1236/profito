@@ -204,7 +204,7 @@ export default function Hero() {
         {/* Tag Pills */}
         <div className="hero-tags">
           {tags.map((tag, i) => (
-            <span key={i} className="hero-tag">{tag}</span>
+            <span key={i} className="hero-tag" style={{ animationDelay: `${0.5 + i * 0.07}s` }}>{tag}</span>
           ))}
         </div>
 
@@ -231,7 +231,7 @@ export default function Hero() {
           <span className="hero-trust-divider" />
           <div className="hero-trust-checks">
             {['No Long-term Contracts', 'Dedicated Account Manager', 'Proven ROI'].map((item, i) => (
-              <span key={i} className="hero-trust-check">
+              <span key={i} className="hero-trust-check" style={{ animationDelay: `${0.7 + i * 0.1}s` }}>
                 <CheckCircle size={13} />
                 {item}
               </span>
@@ -242,7 +242,7 @@ export default function Hero() {
         {/* Stats Row */}
         <div ref={statsRef} className="hero-stats">
           {stats.map((s, i) => (
-            <div key={i} className="hero-stat">
+            <div key={i} className="hero-stat" style={{ animationDelay: `${i * 0.12}s` }}>
               <div className="hero-stat-value">{s.value}</div>
               <div className="hero-stat-label">{s.label}</div>
             </div>
