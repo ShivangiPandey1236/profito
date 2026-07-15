@@ -8,6 +8,7 @@ function App() {
   return (
     <Layout>
       <Hero />
+      <div className="section-divider" />
       {/* <Services /> */}
       <About />
     </Layout>

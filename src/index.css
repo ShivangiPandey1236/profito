@@ -974,6 +974,23 @@ a {
 }
 
 /* ===========================
+   SECTION DIVIDER
+   =========================== */
+
+.section-divider {
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(18, 162, 240, 0.15) 15%,
+    rgba(18, 162, 240, 0.45) 50%,
+    rgba(18, 162, 240, 0.15) 85%,
+    transparent 100%
+  );
+}
+
+/* ===========================
    ABOUT SECTION
    =========================== */
 
@@ -1000,10 +1017,10 @@ a {
   gap: 20px;
   /* hidden until IntersectionObserver fires */
   opacity: 0;
-  transform: translateY(32px);
+  transform: translateY(28px);
   transition:
-    opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+    opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .about-content.is-visible {
@@ -1068,7 +1085,7 @@ a {
 .about-para {
   font-family: var(--font-sans);
   font-size: clamp(0.92rem, 1.4vw, 1.05rem);
-  font-weight: 400;
+  font-weight: 300;
   line-height: 1.75;
   color: #444444;
   margin: 0;
@@ -1107,7 +1124,7 @@ a {
 }
 
 .about-content.is-visible .about-bullet {
-  animation: aboutBulletSlide 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: aboutBulletSlide 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 @keyframes aboutBulletSlide {
@@ -1155,8 +1172,8 @@ a {
   opacity: 0;
   transform: translateY(18px);
   transition:
-    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .about-cta-wrap.is-visible {
@@ -1209,10 +1226,10 @@ a {
   justify-content: center;
   /* hidden until IntersectionObserver fires */
   opacity: 0;
-  transform: translateY(36px);
+  transform: translateY(28px);
   transition:
-    opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.18s,
-    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.18s;
+    opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.15s,
+    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.15s;
 }
 
 .about-image-wrap.is-visible {
