@@ -7,7 +7,7 @@ import About from './components/About'
 function App() {
   return (
     <Layout>
-      <Hero />
+      {/* <Hero /> */}
       {/* <div className="section-divider" /> */}
       {/* <Services /> */}
       {/* <About /> */}
