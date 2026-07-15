@@ -8,9 +8,9 @@ function App() {
   return (
     <Layout>
       <Hero />
-      <div className="section-divider" />
+      {/* <div className="section-divider" /> */}
       {/* <Services /> */}
-      <About />
+      {/* <About /> */}
     </Layout>
   )
 }
