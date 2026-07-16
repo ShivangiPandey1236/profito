@@ -2,7 +2,9 @@ import React from 'react'
 import Hero from '../Hero'
 import About from '../About'
 import StatsSection from '../StatsSection'
-
+import CTASection from '../CTASection'
+import ClientsSection from '../ClientsSection'
+import Services from '../Services'
 function Home() {
     return (
         <div>
@@ -11,6 +13,12 @@ function Home() {
             <About></About>
             <div className="section-divider" />
             <StatsSection></StatsSection>
+            {/* <div className="section-divider" /> */}
+            <CTASection />
+            {/* <div className="section-divider" /> */}
+            <ClientsSection />
+             <div className="section-divider" />
+            <Services/>
         </div>
     )
 }

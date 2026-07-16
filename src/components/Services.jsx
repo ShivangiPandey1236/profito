@@ -81,8 +81,8 @@ export default function Services() {
         </div>
 
         <h2 className="services-title">
-          Full-Stack Digital Growth,{' '}
-          <span className="services-title-highlight">Powered by AI</span>
+          AI-Powered Digital{' '}
+          <span className="services-title-highlight"> Growth Solutions</span>
         </h2>
 
         <p className="services-subtitle">
