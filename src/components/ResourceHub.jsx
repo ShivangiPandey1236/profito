@@ -148,7 +148,7 @@ export default function ResourceHub() {
               <p className="resource-featured-excerpt">{FEATURED.excerpt}</p>
               <a href="#download" className="resource-featured-btn">
                Read more
-                <DownloadIcon />
+                <ArrowIcon />
               </a>
             </div>
           </div>
