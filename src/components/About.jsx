@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react'
 import { CheckCircle, ChevronDown } from 'lucide-react'
-import agencyImg from '../assets/profito-about-us.png'
+import agencyImg from '../assets/about.png'
 
 const bullets = [
   'AI-Driven, Performance-Focused Marketing',

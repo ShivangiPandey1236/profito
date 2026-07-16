@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react'
 import { ArrowRight, Star, CheckCircle } from 'lucide-react'
-import leftHand from '../assets/left-h.png'
-import rightHand from '../assets/right-h.png'
+// import leftHand from '../assets/left-h.png'
+// import rightHand from '../assets/right-h.png'
 
 export default function Hero() {
   const canvasRef = useRef(null)
@@ -13,111 +13,244 @@ export default function Hero() {
     const ctx = canvas.getContext('2d')
 
     let animFrame
-    let particles = []
     let width, height
 
+    // ── Node network ──────────────────────────────────────────
+    let nodes = []
+    const NODE_COUNT = 55
+    const LINK_DIST  = 160
+
+    // ── Morphing blobs ────────────────────────────────────────
+    const blobs = [
+      { cx: 0.15, cy: 0.22, baseR: 0.30, phase: 0,    speed: 0.00045, color: [18, 162, 240] },
+      { cx: 0.82, cy: 0.60, baseR: 0.26, phase: 2.1,  speed: 0.00055, color: [62, 187, 255] },
+      { cx: 0.50, cy: 0.90, baseR: 0.22, phase: 4.3,  speed: 0.00035, color: [0,  120, 200] },
+      { cx: 0.68, cy: 0.10, baseR: 0.18, phase: 1.1,  speed: 0.00065, color: [18, 162, 240] },
+    ]
+
+    // ── Pulsing rings ─────────────────────────────────────────
+    const rings = [
+      { cx: 0.18, cy: 0.30, maxR: 180, phase: 0,   speed: 0.0008 },
+      { cx: 0.80, cy: 0.70, maxR: 150, phase: 2.5, speed: 0.0010 },
+      { cx: 0.50, cy: 0.50, maxR: 200, phase: 5.0, speed: 0.0006 },
+    ]
+
+    // ── Comets ────────────────────────────────────────────────
+    const comets = Array.from({ length: 6 }, (_, i) => ({
+      x: Math.random() * 1.2 - 0.1,
+      y: Math.random() * 0.8,
+      len: 80 + Math.random() * 120,
+      speed: 0.00018 + Math.random() * 0.00012,
+      alpha: 0.25 + Math.random() * 0.25,
+      angle: -0.35 + Math.random() * 0.15,
+    }))
+
+    // ── Floating diamonds ─────────────────────────────────────
+    const diamonds = Array.from({ length: 12 }, () => ({
+      x: Math.random(),
+      y: Math.random(),
+      s: 4 + Math.random() * 8,
+      rot: Math.random() * Math.PI,
+      rotSpeed: (Math.random() - 0.5) * 0.008,
+      dy: -0.00008 - Math.random() * 0.00006,
+      alpha: 0.06 + Math.random() * 0.10,
+    }))
+
     function resize() {
-      width = canvas.width = canvas.offsetWidth
+      width  = canvas.width  = canvas.offsetWidth
       height = canvas.height = canvas.offsetHeight
+      createNodes()
     }
 
-    function createParticles() {
-      particles = []
-      const count = Math.floor((width * height) / 14000)
-      for (let i = 0; i < count; i++) {
-        particles.push({
-          x: Math.random() * width,
-          y: Math.random() * height,
-          r: Math.random() * 1.8 + 0.3,
-          dx: (Math.random() - 0.5) * 0.3,
-          dy: (Math.random() - 0.5) * 0.3,
-          opacity: Math.random() * 0.5 + 0.15,
-          pulse: Math.random() * Math.PI * 2,
-          pulseSpeed: Math.random() * 0.02 + 0.005,
-        })
-      }
+    function createNodes() {
+      nodes = Array.from({ length: NODE_COUNT }, () => ({
+        x:  Math.random() * width,
+        y:  Math.random() * height,
+        dx: (Math.random() - 0.5) * 0.5,
+        dy: (Math.random() - 0.5) * 0.5,
+        r:  1.4 + Math.random() * 1.8,
+        pulse: Math.random() * Math.PI * 2,
+        pulseSpeed: 0.012 + Math.random() * 0.018,
+      }))
     }
 
-    function drawOrbs(t) {
-      // Very subtle blue radial tints on white canvas
-      const orbs = [
-        { x: width * 0.12, y: height * 0.25, r: width * 0.38, color: 'rgba(18,162,240,0.05)', dx: Math.sin(t * 0.0005) * 40, dy: Math.cos(t * 0.0007) * 30 },
-        { x: width * 0.85, y: height * 0.55, r: width * 0.32, color: 'rgba(18,162,240,0.04)', dx: Math.cos(t * 0.0006) * 35, dy: Math.sin(t * 0.0005) * 25 },
-        { x: width * 0.5,  y: height * 0.85, r: width * 0.28, color: 'rgba(62,187,255,0.03)', dx: Math.sin(t * 0.0004) * 20, dy: Math.cos(t * 0.0008) * 15 },
-      ]
-      orbs.forEach(orb => {
-        const grad = ctx.createRadialGradient(
-          orb.x + orb.dx, orb.y + orb.dy, 0,
-          orb.x + orb.dx, orb.y + orb.dy, orb.r
-        )
-        grad.addColorStop(0, orb.color)
-        grad.addColorStop(1, 'rgba(255,255,255,0)')
+    // ── Draw ──────────────────────────────────────────────────
+    function drawBackground() {
+      const bg = ctx.createLinearGradient(0, 0, width, height)
+      bg.addColorStop(0,   '#ffffff')
+      bg.addColorStop(0.5, '#f4faff')
+      bg.addColorStop(1,   '#eaf5ff')
+      ctx.fillStyle = bg
+      ctx.fillRect(0, 0, width, height)
+    }
+
+    function drawBlobs(t) {
+      blobs.forEach(b => {
+        const cx = b.cx * width  + Math.sin(t * b.speed)        * 60
+        const cy = b.cy * height + Math.cos(t * b.speed * 0.7)  * 40
+        const r  = b.baseR * Math.min(width, height) * (0.9 + 0.1 * Math.sin(t * b.speed * 1.3 + b.phase))
+        const g  = ctx.createRadialGradient(cx, cy, 0, cx, cy, r)
+        const [rr, gg, bb] = b.color
+        g.addColorStop(0,   `rgba(${rr},${gg},${bb},0.07)`)
+        g.addColorStop(0.5, `rgba(${rr},${gg},${bb},0.03)`)
+        g.addColorStop(1,   `rgba(${rr},${gg},${bb},0)`)
         ctx.beginPath()
-        ctx.arc(orb.x + orb.dx, orb.y + orb.dy, orb.r, 0, Math.PI * 2)
-        ctx.fillStyle = grad
+        ctx.arc(cx, cy, r, 0, Math.PI * 2)
+        ctx.fillStyle = g
         ctx.fill()
       })
     }
 
     function drawGrid(t) {
-      const spacing = 60
-      const offsetX = (t * 0.02) % spacing
-      const offsetY = (t * 0.015) % spacing
-      ctx.strokeStyle = 'rgba(18,162,240,0.025)'
-      ctx.lineWidth = 1
+      const sp = 55
+      const ox = (t * 0.018) % sp
+      const oy = (t * 0.013) % sp
+      ctx.strokeStyle = 'rgba(18,162,240,0.028)'
+      ctx.lineWidth = 0.8
       ctx.beginPath()
-      for (let x = -spacing + offsetX; x < width + spacing; x += spacing) {
-        ctx.moveTo(x, 0)
-        ctx.lineTo(x, height)
+      for (let x = -sp + ox; x < width + sp; x += sp) {
+        ctx.moveTo(x, 0); ctx.lineTo(x, height)
       }
-      for (let y = -spacing + offsetY; y < height + spacing; y += spacing) {
-        ctx.moveTo(0, y)
-        ctx.lineTo(width, y)
+      for (let y = -sp + oy; y < height + sp; y += sp) {
+        ctx.moveTo(0, y); ctx.lineTo(width, y)
       }
       ctx.stroke()
     }
 
-    function tick(t) {
-      ctx.clearRect(0, 0, width, height)
-
-      // White background with very faint primary-blue diagonal tint
-      const bg = ctx.createLinearGradient(0, 0, width, height)
-      bg.addColorStop(0, '#ffffff')
-      bg.addColorStop(0.5, '#f6fbff')
-      bg.addColorStop(1, '#ffffff')
-      ctx.fillStyle = bg
-      ctx.fillRect(0, 0, width, height)
-
-      drawGrid(t)
-      drawOrbs(t)
-
-      // Particles — tiny faint blue dots
-      particles.forEach(p => {
-        p.pulse += p.pulseSpeed
-        const alpha = p.opacity * 0.15 * (0.5 + 0.5 * Math.sin(p.pulse))
+    function drawPulsingRings(t) {
+      rings.forEach(ring => {
+        const progress = (Math.sin(t * ring.speed + ring.phase) + 1) / 2  // 0 → 1
+        const r   = ring.maxR * progress
+        const alpha = 0.18 * (1 - progress)
         ctx.beginPath()
-        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2)
-        ctx.fillStyle = `rgba(18,162,240,${alpha})`
-        ctx.fill()
-        p.x += p.dx
-        p.y += p.dy
-        if (p.x < 0) p.x = width
-        if (p.x > width) p.x = 0
-        if (p.y < 0) p.y = height
-        if (p.y > height) p.y = 0
+        ctx.arc(ring.cx * width, ring.cy * height, r, 0, Math.PI * 2)
+        ctx.strokeStyle = `rgba(18,162,240,${alpha})`
+        ctx.lineWidth = 1.5
+        ctx.stroke()
+        // second ring offset
+        const r2   = ring.maxR * progress * 0.6
+        const alpha2 = 0.10 * (1 - progress)
+        ctx.beginPath()
+        ctx.arc(ring.cx * width, ring.cy * height, r2, 0, Math.PI * 2)
+        ctx.strokeStyle = `rgba(62,187,255,${alpha2})`
+        ctx.lineWidth = 1
+        ctx.stroke()
+      })
+    }
+
+    function drawNodes(t) {
+      // update positions
+      nodes.forEach(n => {
+        n.pulse += n.pulseSpeed
+        n.x += n.dx
+        n.y += n.dy
+        if (n.x < 0 || n.x > width)  n.dx *= -1
+        if (n.y < 0 || n.y > height) n.dy *= -1
       })
 
+      // draw links
+      ctx.lineWidth = 0.7
+      for (let i = 0; i < nodes.length; i++) {
+        for (let j = i + 1; j < nodes.length; j++) {
+          const dx = nodes[i].x - nodes[j].x
+          const dy = nodes[i].y - nodes[j].y
+          const dist = Math.sqrt(dx * dx + dy * dy)
+          if (dist < LINK_DIST) {
+            const alpha = (1 - dist / LINK_DIST) * 0.18
+            ctx.strokeStyle = `rgba(18,162,240,${alpha})`
+            ctx.beginPath()
+            ctx.moveTo(nodes[i].x, nodes[i].y)
+            ctx.lineTo(nodes[j].x, nodes[j].y)
+            ctx.stroke()
+          }
+        }
+      }
+
+      // draw node dots
+      nodes.forEach(n => {
+        const glow = 0.5 + 0.5 * Math.sin(n.pulse)
+        const alpha = 0.35 + 0.25 * glow
+        ctx.beginPath()
+        ctx.arc(n.x, n.y, n.r * (0.85 + 0.15 * glow), 0, Math.PI * 2)
+        ctx.fillStyle = `rgba(18,162,240,${alpha})`
+        ctx.fill()
+        // subtle glow halo
+        const halo = ctx.createRadialGradient(n.x, n.y, 0, n.x, n.y, n.r * 5)
+        halo.addColorStop(0,   `rgba(18,162,240,${0.07 * glow})`)
+        halo.addColorStop(1,   'rgba(18,162,240,0)')
+        ctx.beginPath()
+        ctx.arc(n.x, n.y, n.r * 5, 0, Math.PI * 2)
+        ctx.fillStyle = halo
+        ctx.fill()
+      })
+    }
+
+    function drawComets(t) {
+      comets.forEach(c => {
+        c.x += c.speed
+        if (c.x > 1.2) c.x = -0.2
+        const sx = c.x * width
+        const sy = c.y * height + Math.sin(t * 0.0005 + c.x * 10) * 30
+        const ex = sx - Math.cos(c.angle) * c.len
+        const ey = sy - Math.sin(c.angle) * c.len
+        const g  = ctx.createLinearGradient(sx, sy, ex, ey)
+        g.addColorStop(0,   `rgba(18,162,240,${c.alpha})`)
+        g.addColorStop(0.4, `rgba(62,187,255,${c.alpha * 0.4})`)
+        g.addColorStop(1,   'rgba(18,162,240,0)')
+        ctx.strokeStyle = g
+        ctx.lineWidth = 1.5
+        ctx.lineCap = 'round'
+        ctx.beginPath()
+        ctx.moveTo(sx, sy)
+        ctx.lineTo(ex, ey)
+        ctx.stroke()
+        // bright head
+        ctx.beginPath()
+        ctx.arc(sx, sy, 2, 0, Math.PI * 2)
+        ctx.fillStyle = `rgba(18,162,240,${c.alpha * 1.2})`
+        ctx.fill()
+      })
+    }
+
+    function drawDiamonds(t) {
+      diamonds.forEach(d => {
+        d.y += d.dy
+        d.rot += d.rotSpeed
+        if (d.y < -0.05) d.y = 1.05
+        const x = d.x * width
+        const y = d.y * height + Math.sin(t * 0.0004 + d.x * 8) * 12
+        ctx.save()
+        ctx.translate(x, y)
+        ctx.rotate(d.rot)
+        ctx.strokeStyle = `rgba(18,162,240,${d.alpha})`
+        ctx.lineWidth = 1
+        ctx.beginPath()
+        ctx.moveTo(0, -d.s)
+        ctx.lineTo(d.s * 0.6, 0)
+        ctx.lineTo(0, d.s)
+        ctx.lineTo(-d.s * 0.6, 0)
+        ctx.closePath()
+        ctx.stroke()
+        ctx.restore()
+      })
+    }
+
+    function tick(t) {
+      ctx.clearRect(0, 0, width, height)
+      drawBackground()
+      drawGrid(t)
+      drawBlobs(t)
+      drawPulsingRings(t)
+      drawComets(t)
+      drawNodes(t)
+      drawDiamonds(t)
       animFrame = requestAnimationFrame(tick)
     }
 
     resize()
-    createParticles()
     animFrame = requestAnimationFrame(tick)
 
-    const ro = new ResizeObserver(() => {
-      resize()
-      createParticles()
-    })
+    const ro = new ResizeObserver(() => resize())
     ro.observe(canvas)
 
     // ---- Scroll-triggered entrance for stats grid ----
@@ -164,21 +297,21 @@ export default function Hero() {
       {/* Animated Canvas Background */}
       <canvas ref={canvasRef} className="hero-canvas" aria-hidden="true" />
 
-      {/* Left Hand — Human */}
-      <img
+      {/* Left Hand — Human (commented out) */}
+      {/* <img
         src={leftHand}
         alt=""
         aria-hidden="true"
         className="hero-hand hero-hand-left"
-      />
+      /> */}
 
-      {/* Right Hand — Robot / AI */}
-      <img
+      {/* Right Hand — Robot / AI (commented out) */}
+      {/* <img
         src={rightHand}
         alt=""
         aria-hidden="true"
         className="hero-hand hero-hand-right"
-      />
+      /> */}
 
       {/* Content */}
       <div className="hero-inner">

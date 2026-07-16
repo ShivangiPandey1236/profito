@@ -17,20 +17,20 @@ function Home() {
             <div className="section-divider" />
             <About></About>
             <div className="section-divider" />
-            {/* <StatsSection></StatsSection> */}
+            <StatsSection></StatsSection>
             {/* <div className="section-divider" /> */}
-            {/* <CTASection /> */}
+            <CTASection />
             {/* <div className="section-divider" /> */}
-            {/* <ClientsSection /> */}
+            <ClientsSection />
              <div className="section-divider" />
-            {/* <Services/> */}
+            <Services/>
             <div className="section-divider" />
-            {/* <IndustriesSection /> */}
+            <IndustriesSection />
             <div className="section-divider" />
-            {/* <TestimonialsSection /> */}
-            {/* <FAQSection /> */}
+            <TestimonialsSection />
+            <FAQSection />
             <div className="section-divider" />
-            {/* <ResourceHub /> */}
+            <ResourceHub />
         </div>
     )
 }
