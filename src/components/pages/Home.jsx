@@ -7,6 +7,8 @@ import ClientsSection from '../ClientsSection'
 import Services from '../Services'
 import IndustriesSection from '../IndustriesSection'
 import TestimonialsSection from '../TestimonialsSection'
+import FAQSection from '../FAQSection'
+import ResourceHub from '../ResourceHub'
 
 function Home() {
     return (
@@ -26,6 +28,9 @@ function Home() {
             <IndustriesSection />
             <div className="section-divider" />
             <TestimonialsSection />
+            <FAQSection />
+            <div className="section-divider" />
+            <ResourceHub />
         </div>
     )
 }
