@@ -8,14 +8,14 @@ const ARTICLES = [
     title: 'Complete Guide to Pay-Per-Click Advertising',
     excerpt: 'Everything you need to know about PPC — from campaign structure and bidding strategies to ad copy and landing page optimisation for maximum ROAS.',
     img: ppcImg,
-    type: 'download',   // ↓ download icon
+    type: 'external',   // ↓ download icon
   },
   {
     category: 'CLOUD TECH',
     title: 'Top 10 Cloud Server Providers in India in 2025',
     excerpt: 'An in-depth comparison of India\'s leading cloud platforms — performance benchmarks, pricing models, SLA guarantees, and which fits your business best.',
     img: ppc2Img,
-    type: 'download',
+    type: 'external',
   },
   {
     category: 'DIGITAL MARKETING',
@@ -147,7 +147,7 @@ export default function ResourceHub() {
               <h3 className="resource-featured-title">{FEATURED.title}</h3>
               <p className="resource-featured-excerpt">{FEATURED.excerpt}</p>
               <a href="#download" className="resource-featured-btn">
-                Download PDF
+               Read more
                 <DownloadIcon />
               </a>
             </div>
