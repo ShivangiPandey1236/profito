@@ -15,7 +15,7 @@ function Home() {
         <div>
             <Hero></Hero>
             <div className="section-divider" />
-            {/* <About></About> */}
+            <About></About>
             <div className="section-divider" />
             {/* <StatsSection></StatsSection> */}
             {/* <div className="section-divider" /> */}

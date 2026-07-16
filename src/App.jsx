@@ -12,7 +12,7 @@ function App() {
       {/* <Hero /> */}
       {/* <div className="section-divider" /> */}
       {/* <Services /> */}
-      <About />
+      {/* <About /> */}
     </Layout>
   )
 }
