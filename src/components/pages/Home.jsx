@@ -5,6 +5,8 @@ import StatsSection from '../StatsSection'
 import CTASection from '../CTASection'
 import ClientsSection from '../ClientsSection'
 import Services from '../Services'
+import IndustriesSection from '../IndustriesSection'
+
 function Home() {
     return (
         <div>
@@ -19,6 +21,8 @@ function Home() {
             <ClientsSection />
              <div className="section-divider" />
             <Services/>
+            <div className="section-divider" />
+            <IndustriesSection />
         </div>
     )
 }
