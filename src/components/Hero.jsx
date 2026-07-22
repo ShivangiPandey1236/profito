@@ -1,11 +1,11 @@
 import React, { useEffect, useRef } from 'react'
 import { ArrowRight, Star, CheckCircle } from 'lucide-react'
- import leftHand from '../assets/left-h.png'
-import rightHand from '../assets/right-h.png'
+import leftHand from '../assets/left-side.png'
+import rightHand from '../assets/right-side.png'
 
 export default function Hero() {
   const canvasRef = useRef(null)
-  const statsRef  = useRef(null)
+  const statsRef = useRef(null)
 
   useEffect(() => {
     const canvas = canvasRef.current
@@ -18,19 +18,19 @@ export default function Hero() {
     // ── Node network ──────────────────────────────────────────
     let nodes = []
     const NODE_COUNT = 55
-    const LINK_DIST  = 160
+    const LINK_DIST = 160
 
     // ── Morphing blobs ────────────────────────────────────────
     const blobs = [
-      { cx: 0.15, cy: 0.22, baseR: 0.30, phase: 0,    speed: 0.00045, color: [18, 162, 240] },
-      { cx: 0.82, cy: 0.60, baseR: 0.26, phase: 2.1,  speed: 0.00055, color: [62, 187, 255] },
-      { cx: 0.50, cy: 0.90, baseR: 0.22, phase: 4.3,  speed: 0.00035, color: [0,  120, 200] },
-      { cx: 0.68, cy: 0.10, baseR: 0.18, phase: 1.1,  speed: 0.00065, color: [18, 162, 240] },
+      { cx: 0.15, cy: 0.22, baseR: 0.30, phase: 0, speed: 0.00045, color: [18, 162, 240] },
+      { cx: 0.82, cy: 0.60, baseR: 0.26, phase: 2.1, speed: 0.00055, color: [62, 187, 255] },
+      { cx: 0.50, cy: 0.90, baseR: 0.22, phase: 4.3, speed: 0.00035, color: [0, 120, 200] },
+      { cx: 0.68, cy: 0.10, baseR: 0.18, phase: 1.1, speed: 0.00065, color: [18, 162, 240] },
     ]
 
     // ── Pulsing rings ─────────────────────────────────────────
     const rings = [
-      { cx: 0.18, cy: 0.30, maxR: 180, phase: 0,   speed: 0.0008 },
+      { cx: 0.18, cy: 0.30, maxR: 180, phase: 0, speed: 0.0008 },
       { cx: 0.80, cy: 0.70, maxR: 150, phase: 2.5, speed: 0.0010 },
       { cx: 0.50, cy: 0.50, maxR: 200, phase: 5.0, speed: 0.0006 },
     ]
@@ -57,18 +57,18 @@ export default function Hero() {
     }))
 
     function resize() {
-      width  = canvas.width  = canvas.offsetWidth
+      width = canvas.width = canvas.offsetWidth
       height = canvas.height = canvas.offsetHeight
       createNodes()
     }
 
     function createNodes() {
       nodes = Array.from({ length: NODE_COUNT }, () => ({
-        x:  Math.random() * width,
-        y:  Math.random() * height,
+        x: Math.random() * width,
+        y: Math.random() * height,
         dx: (Math.random() - 0.5) * 0.5,
         dy: (Math.random() - 0.5) * 0.5,
-        r:  1.4 + Math.random() * 1.8,
+        r: 1.4 + Math.random() * 1.8,
         pulse: Math.random() * Math.PI * 2,
         pulseSpeed: 0.012 + Math.random() * 0.018,
       }))
@@ -77,23 +77,23 @@ export default function Hero() {
     // ── Draw ──────────────────────────────────────────────────
     function drawBackground() {
       const bg = ctx.createLinearGradient(0, 0, width, height)
-      bg.addColorStop(0,   '#ffffff')
+      bg.addColorStop(0, '#ffffff')
       bg.addColorStop(0.5, '#f4faff')
-      bg.addColorStop(1,   '#eaf5ff')
+      bg.addColorStop(1, '#eaf5ff')
       ctx.fillStyle = bg
       ctx.fillRect(0, 0, width, height)
     }
 
     function drawBlobs(t) {
       blobs.forEach(b => {
-        const cx = b.cx * width  + Math.sin(t * b.speed)        * 60
-        const cy = b.cy * height + Math.cos(t * b.speed * 0.7)  * 40
-        const r  = b.baseR * Math.min(width, height) * (0.9 + 0.1 * Math.sin(t * b.speed * 1.3 + b.phase))
-        const g  = ctx.createRadialGradient(cx, cy, 0, cx, cy, r)
+        const cx = b.cx * width + Math.sin(t * b.speed) * 60
+        const cy = b.cy * height + Math.cos(t * b.speed * 0.7) * 40
+        const r = b.baseR * Math.min(width, height) * (0.9 + 0.1 * Math.sin(t * b.speed * 1.3 + b.phase))
+        const g = ctx.createRadialGradient(cx, cy, 0, cx, cy, r)
         const [rr, gg, bb] = b.color
-        g.addColorStop(0,   `rgba(${rr},${gg},${bb},0.07)`)
+        g.addColorStop(0, `rgba(${rr},${gg},${bb},0.07)`)
         g.addColorStop(0.5, `rgba(${rr},${gg},${bb},0.03)`)
-        g.addColorStop(1,   `rgba(${rr},${gg},${bb},0)`)
+        g.addColorStop(1, `rgba(${rr},${gg},${bb},0)`)
         ctx.beginPath()
         ctx.arc(cx, cy, r, 0, Math.PI * 2)
         ctx.fillStyle = g
@@ -120,7 +120,7 @@ export default function Hero() {
     function drawPulsingRings(t) {
       rings.forEach(ring => {
         const progress = (Math.sin(t * ring.speed + ring.phase) + 1) / 2  // 0 → 1
-        const r   = ring.maxR * progress
+        const r = ring.maxR * progress
         const alpha = 0.18 * (1 - progress)
         ctx.beginPath()
         ctx.arc(ring.cx * width, ring.cy * height, r, 0, Math.PI * 2)
@@ -128,7 +128,7 @@ export default function Hero() {
         ctx.lineWidth = 1.5
         ctx.stroke()
         // second ring offset
-        const r2   = ring.maxR * progress * 0.6
+        const r2 = ring.maxR * progress * 0.6
         const alpha2 = 0.10 * (1 - progress)
         ctx.beginPath()
         ctx.arc(ring.cx * width, ring.cy * height, r2, 0, Math.PI * 2)
@@ -144,7 +144,7 @@ export default function Hero() {
         n.pulse += n.pulseSpeed
         n.x += n.dx
         n.y += n.dy
-        if (n.x < 0 || n.x > width)  n.dx *= -1
+        if (n.x < 0 || n.x > width) n.dx *= -1
         if (n.y < 0 || n.y > height) n.dy *= -1
       })
 
@@ -176,8 +176,8 @@ export default function Hero() {
         ctx.fill()
         // subtle glow halo
         const halo = ctx.createRadialGradient(n.x, n.y, 0, n.x, n.y, n.r * 5)
-        halo.addColorStop(0,   `rgba(18,162,240,${0.07 * glow})`)
-        halo.addColorStop(1,   'rgba(18,162,240,0)')
+        halo.addColorStop(0, `rgba(18,162,240,${0.07 * glow})`)
+        halo.addColorStop(1, 'rgba(18,162,240,0)')
         ctx.beginPath()
         ctx.arc(n.x, n.y, n.r * 5, 0, Math.PI * 2)
         ctx.fillStyle = halo
@@ -193,10 +193,10 @@ export default function Hero() {
         const sy = c.y * height + Math.sin(t * 0.0005 + c.x * 10) * 30
         const ex = sx - Math.cos(c.angle) * c.len
         const ey = sy - Math.sin(c.angle) * c.len
-        const g  = ctx.createLinearGradient(sx, sy, ex, ey)
-        g.addColorStop(0,   `rgba(18,162,240,${c.alpha})`)
+        const g = ctx.createLinearGradient(sx, sy, ex, ey)
+        g.addColorStop(0, `rgba(18,162,240,${c.alpha})`)
         g.addColorStop(0.4, `rgba(62,187,255,${c.alpha * 0.4})`)
-        g.addColorStop(1,   'rgba(18,162,240,0)')
+        g.addColorStop(1, 'rgba(18,162,240,0)')
         ctx.strokeStyle = g
         ctx.lineWidth = 1.5
         ctx.lineCap = 'round'
@@ -277,25 +277,41 @@ export default function Hero() {
   }, [])
 
   const stats = [
-    { value: '16K+', label: 'Happy Clients' },
-    { value: '15+', label: 'Years Experience' },
-    { value: '98%', label: 'Client Retention' },
-    { value: '4.9★', label: 'Google Rating' },
+    {
+      highlight: '15%',
+      title: 'HIGHER QUALIFIED LEAD GROWTH',
+      subtext: 'For clients who connect their data',
+    },
+    {
+      highlight: '94K',
+      title: 'CLIENT MENTIONS IN AI SOURCES',
+      subtext: 'AI Visibility Trackable in RevenueCloudFX',
+    },
+    {
+      highlight: '#1 RATED',
+      title: 'AGENCY ON CLUTCH & G2',
+      subtext: 'Verified from 700+ third-party reviews',
+    },
+    {
+      highlight: '30',
+      title: 'YEARS OF PROVEN RESULTS',
+      subtext: 'Driving measurable ROI for clients',
+    },
   ]
 
   const tags = [
-    'AI Search Optimization',
+ 
     'SEO Services',
     'PPC Management',
     'Social Media Marketing',
     'Web Development',
-    'AI Automation',
+   
   ]
 
   return (
     <section className="hero-section">
       {/* Animated Canvas Background */}
-      {/* <canvas ref={canvasRef} className="hero-canvas" aria-hidden="true" /> */}
+      <canvas ref={canvasRef} className="hero-canvas" aria-hidden="true" />
 
       {/* Left Hand — Human (commented out) */}
       <img
@@ -323,15 +339,16 @@ export default function Hero() {
 
         {/* Heading */}
         <h1 className="hero-title">
-          AI-Enabled<br></br>{' '}
+          Grow Faster with
+<br></br>{' '}
           <span className="hero-title-highlight">
-          Digital Marketing Agency
+           AI-Powered Marketing
           </span>
         </h1>
 
         {/* Subheading */}
         <p className="hero-subtitle">
-        Profito Interactive delivers ROI-driven digital marketing solutions that boost visibility, traffic, and business growth.
+          Profito Interactive delivers ROI-driven digital marketing solutions that boost visibility, traffic, and business growth.
         </p>
 
         {/* Tag Pills */}
@@ -356,8 +373,7 @@ export default function Hero() {
         <div className="hero-trust">
           <div className="hero-trust-stars">
             {[...Array(5)].map((_, i) => (
-              <Star key={i} size={14} fill="#12a2f0
-" stroke="none" />
+              <Star key={i} size={14} fill="#12a2f0" stroke="none" />
             ))}
             <span className="hero-trust-label">4.9 / 5 on Google</span>
           </div>
@@ -373,11 +389,14 @@ export default function Hero() {
         </div>
 
         {/* Stats Row */}
-        <div ref={statsRef} className="hero-stats">
+        <div ref={statsRef} className="hero-stats is-visible">
           {stats.map((s, i) => (
             <div key={i} className="hero-stat" style={{ animationDelay: `${i * 0.12}s` }}>
-              <div className="hero-stat-value">{s.value}</div>
-              <div className="hero-stat-label">{s.label}</div>
+              <div className="hero-stat-title">
+                <span className="hero-stat-highlight">{s.highlight}</span>{' '}
+                {s.title}
+              </div>
+              <div className="hero-stat-subtext">{s.subtext}</div>
             </div>
           ))}
         </div>

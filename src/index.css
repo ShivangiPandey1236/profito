@@ -319,7 +319,7 @@ a {
 }
 
 .hero-hand-right {
-  right: 0px;
+  right: -30px;
   width: clamp(280px, 30vw, 520px);
   transform-origin: bottom right;
   animation:
@@ -602,16 +602,30 @@ a {
 }
 
 /* Stats */
+@keyframes heroStatFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .hero-stats {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
   width: 100%;
-  /* max-width: 960px;
-  background: rgba(18,162,240,0.08);
-  border: 1px solid rgba(18,162,240,0.15);
-  border-radius: 20px; */
-  overflow: hidden;
+  max-width: 1320px;
+  margin: 20px auto 0;
+  position: relative;
+  padding: 32px 16px;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  border: 1px solid rgba(18, 162, 240, 0.15);
+  box-shadow: 0 12px 36px -10px rgba(18, 162, 240, 0.08);
 
   /* Scroll-triggered fade-up — starts hidden */
   opacity: 0;
@@ -628,44 +642,119 @@ a {
 }
 
 .hero-stat {
-  background: rgba(255, 255, 255, 0.92);
-  backdrop-filter: blur(8px);
-  padding: 65px 28px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   text-align: center;
-  transition: background var(--transition-normal), transform var(--transition-normal), box-shadow var(--transition-normal);
-  border: 1px solid rgba(18, 162, 240, 0.15);
-  border-radius: 20px;
+  padding: 16px 24px;
+  transition: transform var(--transition-normal), background var(--transition-normal);
+  border-radius: 14px;
   /* Start hidden — animated by parent .is-visible */
   opacity: 0;
   transform: translateY(18px);
 }
 
 .hero-stats.is-visible .hero-stat {
-  animation: heroStatCount 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: heroStatFadeUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Vertical Hairline Dividers between stat columns (Desktop) */
+.hero-stat:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 10%;
+  height: 80%;
+  width: 1px;
+  background: linear-gradient(
+    to bottom,
+    rgba(18, 162, 240, 0.04),
+    rgba(18, 162, 240, 0.3),
+    rgba(18, 162, 240, 0.04)
+  );
+  transition: background 0.3s ease;
 }
 
 .hero-stat:hover {
-  background: rgba(18, 162, 240, 0.06);
+  background: rgba(18, 162, 240, 0.04);
   transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(18, 162, 240, 0.12);
 }
 
-.hero-stat-value {
+.hero-stat:hover:not(:last-child)::after {
+  background: linear-gradient(
+    to bottom,
+    rgba(18, 162, 240, 0.1),
+    var(--color-primary),
+    rgba(18, 162, 240, 0.1)
+  );
+}
+
+/* Subtle top glow indicator on hover */
+.hero-stat::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: 50%;
+  transform: translateX(-50%) scaleX(0);
+  width: 48px;
+  height: 3px;
+  background: var(--color-primary);
+  border-radius: 3px;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 0 10px rgba(18, 162, 240, 0.7);
+}
+
+.hero-stat:hover::before {
+  transform: translateX(-50%) scaleX(1);
+}
+
+/* Top Bold Title */
+.hero-stat-title {
   font-family: var(--font-sans);
-  font-size: clamp(1.6rem, 3vw, 2.3rem);
+  font-size: clamp(0.88rem, 1.15vw, 1rem);
   font-weight: 800;
-  color: var(--color-primary);
-  letter-spacing: -0.03em;
-  line-height: 1;
+  line-height: 1.35;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: #1e293b;
   margin-bottom: 8px;
+  max-width: 260px;
+  transition: color var(--transition-fast);
 }
 
-.hero-stat-label {
+.hero-stat:hover .hero-stat-title {
+  color: #0f172a;
+}
+
+/* Highlight metric styling using Primary Color */
+.hero-stat-highlight {
+  color: var(--color-primary);
+  font-weight: 800;
+  display: inline-block;
+  transition: transform 0.25s ease, color 0.25s ease;
+}
+
+.hero-stat:hover .hero-stat-highlight {
+  color: var(--color-primary-hover);
+  transform: scale(1.05);
+}
+
+/* Subtext / Description */
+.hero-stat-subtext {
   font-family: var(--font-sans);
-  font-size: 0.82rem;
-  font-weight: 500;
-  color: #666666;
-  letter-spacing: 0.01em;
+  font-style: italic;
+  font-size: clamp(0.8rem, 1vw, 0.88rem);
+  font-weight: 400;
+  color: #64748b;
+  line-height: 1.45;
+  max-width: 250px;
+  transition: color var(--transition-fast);
+}
+
+.hero-stat:hover .hero-stat-subtext {
+  color: #334155;
 }
 
 /* Responsive */
@@ -1465,7 +1554,7 @@ a {
 
 .stat-number {
   font-family: var(--font-sans);
-  font-size: clamp(3.2rem, 6vw, 5.2rem);
+ font-size: clamp(2.4rem, 4.5vw, 4rem);
   font-weight: 800;
   color: var(--color-primary);
   line-height: 1;

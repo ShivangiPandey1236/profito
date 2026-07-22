@@ -43,11 +43,11 @@ export default function CTASection() {
         {/* Heading block */}
         <div className="cta-heading-block">
           <h2 className="cta-title">
-            Ready to Improve Your{' '}
-            <span className="cta-title-highlight">Digital Performance?</span>
+            Let's Grow {' '}
+            <span className="cta-title-highlight">Your Brand with AI</span>
           </h2>
           <p className="cta-subtitle">
-            Get a free consultation and learn how we optimise every channel for growth
+           Let's grow your business together.
           </p>
         </div>
 
