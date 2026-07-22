@@ -15,22 +15,22 @@ function Home() {
         <div>
             <Hero></Hero>
             <div className="section-divider" />
-            <About></About>
+            {/* <About></About> */}
             <div className="section-divider" />
-            <StatsSection></StatsSection>
+            {/* <StatsSection></StatsSection> */}
             {/* <div className="section-divider" /> */}
-            <CTASection />
+            {/* <CTASection /> */}
             {/* <div className="section-divider" /> */}
-            <ClientsSection />
-             <div className="section-divider" />
-            <Services/>
+            {/* <ClientsSection /> */}
             <div className="section-divider" />
-            <IndustriesSection />
+            {/* <Services/> */}
             <div className="section-divider" />
-            <TestimonialsSection />
-            <FAQSection />
+            {/* <IndustriesSection /> */}
             <div className="section-divider" />
-            <ResourceHub />
+            {/* <TestimonialsSection /> */}
+            {/* <FAQSection /> */}
+            <div className="section-divider" />
+            {/* <ResourceHub /> */}
         </div>
     )
 }

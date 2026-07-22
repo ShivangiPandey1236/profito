@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react'
 import { ArrowRight, Star, CheckCircle } from 'lucide-react'
-// import leftHand from '../assets/left-h.png'
-// import rightHand from '../assets/right-h.png'
+ import leftHand from '../assets/left-h.png'
+import rightHand from '../assets/right-h.png'
 
 export default function Hero() {
   const canvasRef = useRef(null)
@@ -295,23 +295,23 @@ export default function Hero() {
   return (
     <section className="hero-section">
       {/* Animated Canvas Background */}
-      <canvas ref={canvasRef} className="hero-canvas" aria-hidden="true" />
+      {/* <canvas ref={canvasRef} className="hero-canvas" aria-hidden="true" /> */}
 
       {/* Left Hand — Human (commented out) */}
-      {/* <img
+      <img
         src={leftHand}
         alt=""
         aria-hidden="true"
         className="hero-hand hero-hand-left"
-      /> */}
+      />
 
       {/* Right Hand — Robot / AI (commented out) */}
-      {/* <img
+      <img
         src={rightHand}
         alt=""
         aria-hidden="true"
         className="hero-hand hero-hand-right"
-      /> */}
+      />
 
       {/* Content */}
       <div className="hero-inner">
