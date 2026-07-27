@@ -314,20 +314,20 @@ export default function Hero() {
       <canvas ref={canvasRef} className="hero-canvas" aria-hidden="true" />
 
       {/* Left Hand — Human (commented out) */}
-      {/* <img
+      <img
         src={leftHand}
         alt=""
         aria-hidden="true"
         className="hero-hand hero-hand-left"
-      /> */}
+      />
 
       {/* Right Hand — Robot / AI (commented out) */}
-      {/* <img
+      <img
         src={rightHand}
         alt=""
         aria-hidden="true"
         className="hero-hand hero-hand-right"
-      /> */}
+      />
 
       {/* Content */}
       <div className="hero-inner">
