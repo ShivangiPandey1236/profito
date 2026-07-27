@@ -26,8 +26,8 @@ function Home() {
             <Services/>
             <div className="section-divider" />
             <IndustriesSection />
-            <div className="section-divider" />
-            <TestimonialsSection />
+            {/* <div className="section-divider" /> */}
+            {/* <TestimonialsSection /> */}
             <FAQSection />
             <div className="section-divider" />
             <ResourceHub />
