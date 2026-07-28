@@ -1616,7 +1616,7 @@ a {
 
 .cta-section {
   position: relative;
-  background: #0a0a0a;
+  background: #222;
   padding: 90px 80px;
   overflow: hidden;
 }
@@ -3049,7 +3049,7 @@ a {
 
 .faq-section {
   position: relative;
-  background: #0a0a0a;
+  background: #222;
   padding: 100px 80px;
   overflow: hidden;
 }
