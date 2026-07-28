@@ -3,17 +3,17 @@ import logo from '../assets/logo-pr (1).png'
 
 // Star Icon Helper
 const Star = ({ filled }) => (
-  <svg className={`w-3.5 h-3.5 ${filled ? 'text-[#12A2F0]' : 'text-zinc-600'}`} fill="currentColor" viewBox="0 0 20 20">
+  <svg className={`w-3.5 h-3.5 ${filled ? 'text-[#2196F3]' : 'text-zinc-600'}`} fill="currentColor" viewBox="0 0 20 20">
     <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
   </svg>
 )
 
 // Half Star Helper using SVG gradient
 const HalfStar = () => (
-  <svg className="w-3.5 h-3.5 text-[#12A2F0]" viewBox="0 0 20 20" fill="currentColor">
+  <svg className="w-3.5 h-3.5 text-[#2196F3]" viewBox="0 0 20 20" fill="currentColor">
     <defs>
       <linearGradient id="halfStarGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-        <stop offset="50%" stopColor="#12A2F0" />
+        <stop offset="50%" stopColor="#2196F3" />
         <stop offset="50%" stopColor="#52525b" />
       </linearGradient>
     </defs>
@@ -95,7 +95,7 @@ export default function Footer() {
             {/* Google rating card */}
             <div className="flex items-center gap-4 bg-zinc-950 border border-zinc-800 rounded-xl py-3.5 px-6 min-w-[240px] shadow-lg transition-transform duration-200 hover:-translate-y-1 hover:border-zinc-700">
               <div className="flex items-center justify-center bg-zinc-900 p-2.5 rounded-xl border border-zinc-800">
-                <svg className="w-7 h-7 text-[#12A2F0]" viewBox="0 0 24 24" fill="currentColor">
+                <svg className="w-7 h-7 text-[#2196F3]" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M12.24 10.285V13.4h6.887c-.275 1.565-1.88 4.604-6.887 4.604-4.33 0-7.866-3.577-7.866-8s3.536-8 7.866-8c2.46 0 4.105 1.025 5.047 1.926l2.427-2.334C17.955 2.192 15.34 1 12.24 1 5.98 1 1 5.98 1 12.24s4.98 11.24 11.24 11.24c6.54 0 10.88-4.6 10.88-11.08 0-.743-.08-1.32-.178-1.889H12.24z" />
                 </svg>
               </div>
@@ -111,7 +111,7 @@ export default function Footer() {
             {/* Clutch rating card */}
             <div className="flex items-center gap-4 bg-zinc-950 border border-zinc-800 rounded-xl py-3.5 px-6 min-w-[240px] shadow-lg transition-transform duration-200 hover:-translate-y-1 hover:border-zinc-700">
               <div className="flex items-center justify-center bg-zinc-900 p-2.5 rounded-xl border border-zinc-800">
-                <svg className="w-7 h-7 text-[#12A2F0]" viewBox="0 0 24 24" fill="currentColor">
+                <svg className="w-7 h-7 text-[#2196F3]" viewBox="0 0 24 24" fill="currentColor">
                   <rect x="3" y="3" width="6" height="6" rx="1.5" />
                   <rect x="3" y="11" width="6" height="6" rx="1.5" />
                   <rect x="3" y="19" width="6" height="6" rx="1.5" />
@@ -132,7 +132,7 @@ export default function Footer() {
             {/* GoodFirm rating card */}
             <div className="flex items-center gap-4 bg-zinc-950 border border-zinc-800 rounded-xl py-3.5 px-6 min-w-[240px] shadow-lg transition-transform duration-200 hover:-translate-y-1 hover:border-zinc-700">
               <div className="flex items-center justify-center bg-zinc-900 p-2.5 rounded-xl border border-zinc-800">
-                <svg className="w-7 h-7 text-[#12A2F0]" viewBox="0 0 24 24" fill="currentColor">
+                <svg className="w-7 h-7 text-[#2196F3]" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M12 2c-.55 0-1 .45-1 1v1.17c-.77.13-1.5.38-2.17.75L7.66 3.75c-.39-.39-1.02-.39-1.41 0-.39.39-.39 1.02 0 1.41l1.17 1.17c-.37.67-.62 1.4-.75 2.17H5.5c-.55 0-1 .45-1 1s.45 1 1 1h1.17c.13.77.38 1.5.75 2.17l-1.17 1.17c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0l1.17-1.17c.67.37 1.4.62 2.17.75v1.17c0 .55.45 1 1 1s1-.45 1-1v-1.17c.77-.13 1.5-.38 2.17-.75l1.17 1.17c.39.39 1.02.39 1.41 0 .39-.39.39-1.02 0-1.41l-1.17-1.17c.37-.67.62-1.4.75-2.17h1.17c.55 0 1-.45 1-1s-.45-1-1-1h-1.17c-.13-.77-.38-1.5-.75-2.17l1.17-1.17c.39-.39.39-1.02 0-1.41-.39-.39-1.02-.39-1.41 0l-1.17 1.17c-.67-.37-1.4-.62-2.17-.75V3c0-.55-.45-1-1-1zm0 7a3 3 0 110 6 3 3 0 010-6z" />
                 </svg>
               </div>

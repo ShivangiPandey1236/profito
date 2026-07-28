@@ -22,10 +22,10 @@ export default function Hero() {
 
     // ── Morphing blobs ────────────────────────────────────────
     const blobs = [
-      { cx: 0.15, cy: 0.22, baseR: 0.30, phase: 0, speed: 0.00045, color: [18, 162, 240] },
-      { cx: 0.82, cy: 0.60, baseR: 0.26, phase: 2.1, speed: 0.00055, color: [62, 187, 255] },
-      { cx: 0.50, cy: 0.90, baseR: 0.22, phase: 4.3, speed: 0.00035, color: [0, 120, 200] },
-      { cx: 0.68, cy: 0.10, baseR: 0.18, phase: 1.1, speed: 0.00065, color: [18, 162, 240] },
+      { cx: 0.15, cy: 0.22, baseR: 0.30, phase: 0, speed: 0.00045, color: [33, 150, 243] },
+      { cx: 0.82, cy: 0.60, baseR: 0.26, phase: 2.1, speed: 0.00055, color: [100, 181, 246] },
+      { cx: 0.50, cy: 0.90, baseR: 0.22, phase: 4.3, speed: 0.00035, color: [25, 118, 210] },
+      { cx: 0.68, cy: 0.10, baseR: 0.18, phase: 1.1, speed: 0.00065, color: [33, 150, 243] },
     ]
 
     // ── Pulsing rings ─────────────────────────────────────────
@@ -105,7 +105,7 @@ export default function Hero() {
       const sp = 55
       const ox = (t * 0.018) % sp
       const oy = (t * 0.013) % sp
-      ctx.strokeStyle = 'rgba(18,162,240,0.028)'
+      ctx.strokeStyle = 'rgba(33,150,243,0.028)'
       ctx.lineWidth = 0.8
       ctx.beginPath()
       for (let x = -sp + ox; x < width + sp; x += sp) {
@@ -124,7 +124,7 @@ export default function Hero() {
         const alpha = 0.18 * (1 - progress)
         ctx.beginPath()
         ctx.arc(ring.cx * width, ring.cy * height, r, 0, Math.PI * 2)
-        ctx.strokeStyle = `rgba(18,162,240,${alpha})`
+        ctx.strokeStyle = `rgba(33,150,243,${alpha})`
         ctx.lineWidth = 1.5
         ctx.stroke()
         // second ring offset
@@ -132,7 +132,7 @@ export default function Hero() {
         const alpha2 = 0.10 * (1 - progress)
         ctx.beginPath()
         ctx.arc(ring.cx * width, ring.cy * height, r2, 0, Math.PI * 2)
-        ctx.strokeStyle = `rgba(62,187,255,${alpha2})`
+        ctx.strokeStyle = `rgba(100,181,246,${alpha2})`
         ctx.lineWidth = 1
         ctx.stroke()
       })
@@ -157,7 +157,7 @@ export default function Hero() {
           const dist = Math.sqrt(dx * dx + dy * dy)
           if (dist < LINK_DIST) {
             const alpha = (1 - dist / LINK_DIST) * 0.18
-            ctx.strokeStyle = `rgba(18,162,240,${alpha})`
+            ctx.strokeStyle = `rgba(33,150,243,${alpha})`
             ctx.beginPath()
             ctx.moveTo(nodes[i].x, nodes[i].y)
             ctx.lineTo(nodes[j].x, nodes[j].y)
@@ -172,12 +172,12 @@ export default function Hero() {
         const alpha = 0.35 + 0.25 * glow
         ctx.beginPath()
         ctx.arc(n.x, n.y, n.r * (0.85 + 0.15 * glow), 0, Math.PI * 2)
-        ctx.fillStyle = `rgba(18,162,240,${alpha})`
+        ctx.fillStyle = `rgba(33,150,243,${alpha})`
         ctx.fill()
         // subtle glow halo
         const halo = ctx.createRadialGradient(n.x, n.y, 0, n.x, n.y, n.r * 5)
-        halo.addColorStop(0, `rgba(18,162,240,${0.07 * glow})`)
-        halo.addColorStop(1, 'rgba(18,162,240,0)')
+        halo.addColorStop(0, `rgba(33,150,243,${0.07 * glow})`)
+        halo.addColorStop(1, 'rgba(33,150,243,0)')
         ctx.beginPath()
         ctx.arc(n.x, n.y, n.r * 5, 0, Math.PI * 2)
         ctx.fillStyle = halo
@@ -194,9 +194,9 @@ export default function Hero() {
         const ex = sx - Math.cos(c.angle) * c.len
         const ey = sy - Math.sin(c.angle) * c.len
         const g = ctx.createLinearGradient(sx, sy, ex, ey)
-        g.addColorStop(0, `rgba(18,162,240,${c.alpha})`)
-        g.addColorStop(0.4, `rgba(62,187,255,${c.alpha * 0.4})`)
-        g.addColorStop(1, 'rgba(18,162,240,0)')
+        g.addColorStop(0, `rgba(33,150,243,${c.alpha})`)
+        g.addColorStop(0.4, `rgba(100,181,246,${c.alpha * 0.4})`)
+        g.addColorStop(1, 'rgba(33,150,243,0)')
         ctx.strokeStyle = g
         ctx.lineWidth = 1.5
         ctx.lineCap = 'round'
@@ -207,7 +207,7 @@ export default function Hero() {
         // bright head
         ctx.beginPath()
         ctx.arc(sx, sy, 2, 0, Math.PI * 2)
-        ctx.fillStyle = `rgba(18,162,240,${c.alpha * 1.2})`
+        ctx.fillStyle = `rgba(33,150,243,${c.alpha * 1.2})`
         ctx.fill()
       })
     }
@@ -222,7 +222,7 @@ export default function Hero() {
         ctx.save()
         ctx.translate(x, y)
         ctx.rotate(d.rot)
-        ctx.strokeStyle = `rgba(18,162,240,${d.alpha})`
+        ctx.strokeStyle = `rgba(33,150,243,${d.alpha})`
         ctx.lineWidth = 1
         ctx.beginPath()
         ctx.moveTo(0, -d.s)
@@ -373,7 +373,7 @@ export default function Hero() {
         <div className="hero-trust">
           <div className="hero-trust-stars">
             {[...Array(5)].map((_, i) => (
-              <Star key={i} size={14} fill="#12a2f0" stroke="none" />
+              <Star key={i} size={14} fill="#2196F3" stroke="none" />
             ))}
             <span className="hero-trust-label">4.9 / 5 on Google</span>
           </div>
