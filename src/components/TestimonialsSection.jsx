@@ -47,8 +47,8 @@ const Stars = ({ count = 5 }) => (
 const VISIBLE = 2 // how many review cards visible at once
 
 export default function TestimonialsSection() {
-  const sectionRef  = useRef(null)
-  const headingRef  = useRef(null)
+  const sectionRef = useRef(null)
+  const headingRef = useRef(null)
   const [current, setCurrent] = useState(0)
   const [animDir, setAnimDir] = useState(null) // 'left' | 'right'
   const [isAnimating, setIsAnimating] = useState(false)
@@ -84,7 +84,7 @@ export default function TestimonialsSection() {
   useEffect(() => {
     const handler = (e) => {
       if (e.key === 'ArrowRight') slide('right')
-      if (e.key === 'ArrowLeft')  slide('left')
+      if (e.key === 'ArrowLeft') slide('left')
     }
     window.addEventListener('keydown', handler)
     return () => window.removeEventListener('keydown', handler)
@@ -126,7 +126,7 @@ export default function TestimonialsSection() {
               disabled={isAnimating}
             >
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                <path d="M15 18l-6-6 6-6"/>
+                <path d="M15 18l-6-6 6-6" />
               </svg>
             </button>
             <button
@@ -136,7 +136,7 @@ export default function TestimonialsSection() {
               disabled={isAnimating}
             >
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                <path d="M9 18l6-6-6-6"/>
+                <path d="M9 18l6-6-6-6" />
               </svg>
             </button>
           </div>
@@ -154,7 +154,7 @@ export default function TestimonialsSection() {
             <a href="#contact" className="testimonials-cta-btn">
               View Verified Reviews
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                <path d="M5 12h14M12 5l7 7-7 7"/>
+                <path d="M5 12h14M12 5l7 7-7 7" />
               </svg>
             </a>
             <div className="testimonials-cta-meta">
