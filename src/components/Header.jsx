@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 import { ChevronDown, Menu, X, ArrowRight } from 'lucide-react'
 import logo from '../assets/logo-pr (1).png'
+
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false)
@@ -363,9 +365,9 @@ export default function Header() {
       <div className="bg-white text-black h-[70px] flex items-center border-b border-black/8 shadow-[0_4px_20px_rgba(0,0,0,0.03)] relative">
         <div className="w-full max-w-[1600px] mx-auto px-8 flex justify-between items-center h-full relative">
           {/* Logo */}
-          <a href="/" className="flex items-center">
+          <Link to="/" className="flex items-center">
             <img src={logo} alt="ezrankings logo" className="h-12 max-h-12 object-contain" />
-          </a>
+          </Link>
 
           {/* Desktop Navigation Links */}
           <nav className="flex items-center gap-7 h-full max-[992px]:hidden">
@@ -386,16 +388,28 @@ export default function Header() {
                             {section.title}
                           </h4>
                           <ul className="flex flex-col gap-1 text-left">
-                            {section.items.map((subItem, itemIdx) => (
-                              <li key={itemIdx}>
-                                <a
-                                  href={`#${subItem.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`}
-                                  className="text-[0.85rem] font-semibold text-zinc-700 hover:text-primary hover:bg-primary/6 hover:translate-x-1 rounded-lg pl-2 pr-2 hover:pl-4 py-1 transition-all duration-200 block text-left -mx-2 sub-item-link"
-                                >
-                                  {subItem}
-                                </a>
-                              </li>
-                            ))}
+                            {section.items.map((subItem, itemIdx) => {
+                              const isAboutUs = subItem === 'About Us';
+                              return (
+                                <li key={itemIdx}>
+                                  {isAboutUs ? (
+                                    <Link
+                                      to="/about"
+                                      className="text-[0.85rem] font-semibold text-zinc-700 hover:text-primary hover:bg-primary/6 hover:translate-x-1 rounded-lg pl-2 pr-2 hover:pl-4 py-1 transition-all duration-200 block text-left -mx-2 sub-item-link"
+                                    >
+                                      {subItem}
+                                    </Link>
+                                  ) : (
+                                    <a
+                                      href={`#${subItem.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`}
+                                      className="text-[0.85rem] font-semibold text-zinc-700 hover:text-primary hover:bg-primary/6 hover:translate-x-1 rounded-lg pl-2 pr-2 hover:pl-4 py-1 transition-all duration-200 block text-left -mx-2 sub-item-link"
+                                    >
+                                      {subItem}
+                                    </a>
+                                  )}
+                                </li>
+                              );
+                            })}
                           </ul>
                         </div>
                       ))}
@@ -446,16 +460,28 @@ export default function Header() {
                           {section.title}
                         </h5>
                         <div className="flex flex-col gap-1 pl-2 text-left">
-                          {section.items.map((subItem, itemIdx) => (
-                            <a
-                              key={itemIdx}
-                              href={`#${subItem.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`}
-                              className="block py-1 pl-2 pr-2 hover:pl-4 -mx-2 rounded-lg text-[#555555] text-[0.9rem] font-semibold transition-all duration-200 hover:text-primary hover:bg-primary/6 hover:translate-x-1 sub-item-link"
-                              onClick={() => setIsOpen(false)}
-                            >
-                              {subItem}
-                            </a>
-                          ))}
+                          {section.items.map((subItem, itemIdx) => {
+                            const isAboutUs = subItem === 'About Us';
+                            return isAboutUs ? (
+                              <Link
+                                key={itemIdx}
+                                to="/about"
+                                className="block py-1 pl-2 pr-2 hover:pl-4 -mx-2 rounded-lg text-[#555555] text-[0.9rem] font-semibold transition-all duration-200 hover:text-primary hover:bg-primary/6 hover:translate-x-1 sub-item-link"
+                                onClick={() => setIsOpen(false)}
+                              >
+                                {subItem}
+                              </Link>
+                            ) : (
+                              <a
+                                key={itemIdx}
+                                href={`#${subItem.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`}
+                                className="block py-1 pl-2 pr-2 hover:pl-4 -mx-2 rounded-lg text-[#555555] text-[0.9rem] font-semibold transition-all duration-200 hover:text-primary hover:bg-primary/6 hover:translate-x-1 sub-item-link"
+                                onClick={() => setIsOpen(false)}
+                              >
+                                {subItem}
+                              </a>
+                            );
+                          })}
                         </div>
                       </div>
                     ))}

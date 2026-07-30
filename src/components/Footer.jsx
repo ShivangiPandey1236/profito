@@ -1,5 +1,7 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import logo from '../assets/logo-pr (1).png'
+
 
 // Star Icon Helper
 const Star = ({ filled }) => (
@@ -75,7 +77,7 @@ export default function Footer() {
     {
       title: 'COMPANY',
       links: [
-        { name: 'About Us', href: '#about-us' },
+        { name: 'About Us', href: '/about' },
         { name: 'Our Team', href: '#our-team' },
         { name: 'Careers', href: '#careers' },
         { name: 'Write For Us', href: '#write-for-us' },
@@ -167,9 +169,9 @@ export default function Footer() {
 
             {/* Column 1: Brand Info */}
             <div className="flex flex-col gap-6 text-left max-[1200px]:col-span-3 max-[768px]:col-span-2 max-[480px]:col-span-1">
-              <a href="/" className="flex items-center">
+              <Link to="/" className="flex items-center">
                 <img src={logo} alt="ezrankings logo" className="h-11 max-h-11 object-contain" />
-              </a>
+              </Link>
               <p className="text-zinc-400 text-[0.9rem] leading-relaxed max-w-sm">
                 A digital marketing agency focused on full-funnel business growth. Connecting branding with visibility, traffic, lead generation, and revenue growth.
               </p>
@@ -215,12 +217,21 @@ export default function Footer() {
                 <ul className="list-none flex flex-col gap-3">
                   {col.links.map((link, linkIdx) => (
                     <li key={linkIdx}>
-                      <a
-                        href={link.href}
-                        className="relative text-zinc-400 text-[0.88rem] font-semibold transition-all duration-200 hover:text-primary inline-block after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-[1.5px] after:bg-primary after:transition-all after:duration-250 hover:after:w-full"
-                      >
-                        {link.name}
-                      </a>
+                      {link.href.startsWith('/') ? (
+                        <Link
+                          to={link.href}
+                          className="relative text-zinc-400 text-[0.88rem] font-semibold transition-all duration-200 hover:text-primary inline-block after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-[1.5px] after:bg-primary after:transition-all after:duration-250 hover:after:w-full"
+                        >
+                          {link.name}
+                        </Link>
+                      ) : (
+                        <a
+                          href={link.href}
+                          className="relative text-zinc-400 text-[0.88rem] font-semibold transition-all duration-200 hover:text-primary inline-block after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-[1.5px] after:bg-primary after:transition-all after:duration-250 hover:after:w-full"
+                        >
+                          {link.name}
+                        </a>
+                      )}
                     </li>
                   ))}
                 </ul>

@@ -3963,3 +3963,23 @@ a {
     padding: 20px 20px 24px;
   }
 }
+
+/* About Page Container Styling */
+.about-page {
+  padding-top: 160px;
+  padding-bottom: 100px;
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: #ffffff;
+}
+
+.about-page h1 {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 800;
+  color: #0a0a0a;
+  margin: 0;
+}

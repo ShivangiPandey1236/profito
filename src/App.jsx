@@ -1,18 +1,16 @@
 import React from 'react'
+import { Routes, Route } from 'react-router-dom'
 import Layout from './components/Layout'
-import Hero from './components/Hero'
-import Services from './components/Services'
-import About from './components/About'
 import Home from './components/pages/Home'
+import About from './pages/About'
 
 function App() {
   return (
     <Layout>
-      <Home/>
-      {/* <Hero /> */}
-      {/* <div className="section-divider" /> */}
-      {/* <Services /> */}
-      {/* <About /> */}
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+      </Routes>
     </Layout>
   )
 }
