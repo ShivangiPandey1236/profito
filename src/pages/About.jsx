@@ -43,8 +43,12 @@ import indiaTvImg from '../assets/indiatv-logo.jpg';
 import CTASection from '../components/CTASection';
 
 const About = () => {
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
   const containerRef = useRef(null);
+
+  useEffect(() => {
+    setIsVisible(true);
+  }, []);
 
   // Leadership Carousel State
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -270,23 +274,6 @@ const About = () => {
     setTouchEnd(null);
   };
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (containerRef.current) {
-      observer.observe(containerRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
-
   const timelineEvents = [
     { year: '2014', title: 'Agency Founded' },
     { year: '2017', title: '100+ Successful Projects' },
@@ -400,7 +387,7 @@ const About = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start mb-16">
           
           {/* Left Column: Heading, Intro, CTAs & Stats Strip (Span 6) */}
-          <div className={`lg:col-span-6 flex flex-col transition-all duration-1000 transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
+          <div className="lg:col-span-6 flex flex-col">
             
             {/* Badge matching Hero Badge */}
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#2196F3]/10 border border-[#2196F3]/30 text-primary font-bold text-xs uppercase tracking-wider mb-6 w-fit shadow-xs">
@@ -487,7 +474,7 @@ const About = () => {
           </div>
 
           {/* Middle Column: Vertical Timeline (Span 2) */}
-          <div id="timeline" className={`lg:col-span-2 flex flex-col items-center justify-center py-6 relative transition-all duration-1000 delay-200 transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
+          <div id="timeline" className="lg:col-span-2 flex flex-col items-center justify-center py-6 relative">
             <div className="relative flex flex-col items-center space-y-9 sm:space-y-10 my-auto">
               
               {/* Vertical connecting line */}
@@ -510,7 +497,7 @@ const About = () => {
           </div>
 
           {/* Right Column: "Trusted by Businesses Worldwide" Card (Span 4) */}
-          <div className={`lg:col-span-4 transition-all duration-1000 delay-300 transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
+          <div className="lg:col-span-4">
             <div className="bg-gradient-to-b from-[#f4faff] via-white to-[#eaf5ff] border border-[#2196F3]/20 shadow-[0_15px_40px_rgba(33,150,243,0.1)] rounded-3xl p-6 sm:p-8 relative overflow-hidden flex flex-col justify-between h-full hover:shadow-[0_20px_50px_rgba(33,150,243,0.15)] transition-all duration-500">
               
               {/* Ambient Background Glow */}
@@ -561,7 +548,7 @@ const About = () => {
                 <div className="w-full h-3 bg-primary/10 rounded-full overflow-hidden p-0.5">
                   <div
                     className="h-full bg-gradient-to-r from-primary via-[#42a5f5] to-primary rounded-full transition-all duration-1000 shadow-xs"
-                    style={{ width: isVisible ? '92%' : '0%' }}
+                    style={{ width: '92%' }}
                   />
                 </div>
               </div>
@@ -572,7 +559,7 @@ const About = () => {
         </div>
 
         {/* SECTION 2: 4 Top Feature Cards */}
-        <div className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 transition-all duration-1000 delay-500 transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'} mb-24`}>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-24">
           {features.map((feat, idx) => {
             const Icon = feat.icon;
             return (
