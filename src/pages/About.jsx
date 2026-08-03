@@ -18,9 +18,14 @@ import {
   ShieldCheck,
   HeartHandshake,
   ChevronLeft,
-  ChevronRight
+  ChevronRight,
+  PartyPopper,
+  Heart
 } from 'lucide-react';
 import teamImg from '../assets/team.jpeg';
+import teamCelebrationImg from '../assets/profito_team_celebration.png';
+import teamCollaborationImg from '../assets/profito_team_collaboration.png';
+import teamMeetingImg from '../assets/profito_team_meeting.png';
 
 const About = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -28,6 +33,27 @@ const About = () => {
 
   // Leadership Carousel State
   const [currentIndex, setCurrentIndex] = useState(0);
+
+  // Life at Profito Carousel State
+  const [lifeSlideIndex, setLifeSlideIndex] = useState(0);
+
+  const lifeSlides = [
+    {
+      main: teamCollaborationImg,
+      topRight: teamMeetingImg,
+      bottomRight: teamCelebrationImg,
+    },
+    {
+      main: teamMeetingImg,
+      topRight: teamCelebrationImg,
+      bottomRight: teamCollaborationImg,
+    },
+    {
+      main: teamCelebrationImg,
+      topRight: teamCollaborationImg,
+      bottomRight: teamMeetingImg,
+    },
+  ];
   const [visibleCount, setVisibleCount] = useState(4);
   const [isAutoplay, setIsAutoplay] = useState(true);
   const [touchStart, setTouchStart] = useState(null);
@@ -697,6 +723,201 @@ const About = () => {
                   />
                 ))}
               </div>
+            </div>
+          </div>
+
+          {/* SECTION 5: LIFE AT PROFITO */}
+          <div className="mt-24 pt-12 pb-14 px-6 sm:px-10 lg:px-14 bg-white rounded-3xl border border-[#2196F3]/15 shadow-[0_20px_50px_rgba(33,150,243,0.06)] relative overflow-hidden">
+            {/* Background Decorative Polka Dots */}
+            <div className="absolute top-6 left-8 opacity-25 pointer-events-none hidden sm:block">
+              <div className="grid grid-cols-4 gap-1.5">
+                {[...Array(12)].map((_, i) => (
+                  <div key={i} className="w-1.5 h-1.5 rounded-full bg-[#2196F3]" />
+                ))}
+              </div>
+            </div>
+            <div className="absolute top-6 right-8 opacity-25 pointer-events-none hidden sm:block">
+              <div className="grid grid-cols-4 gap-1.5">
+                {[...Array(12)].map((_, i) => (
+                  <div key={i} className="w-1.5 h-1.5 rounded-full bg-[#2196F3]" />
+                ))}
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+              
+              {/* Left Column: Heading, Intro, 2x2 Features Grid & CTA */}
+              <div className="lg:col-span-5 flex flex-col items-start">
+                
+                {/* Header Tag */}
+                <div className="flex items-center gap-2 mb-1">
+                  <span className="w-7 h-1 bg-[#bcd32e] rounded-full inline-block" />
+                  <span className="text-base font-black tracking-wider text-[#0a0a0a] uppercase">LIFE AT</span>
+                </div>
+
+                {/* Big Title & Underline */}
+                <div className="mb-5">
+                  <h2 className="text-5xl sm:text-6xl lg:text-7xl font-black text-primary tracking-tight leading-none" style={{ color: '#2196F3' }}>
+                    PROFITO
+                  </h2>
+                  <div className="w-24 h-1.5 bg-[#bcd32e] rounded-full mt-2" />
+                </div>
+
+                {/* Paragraph */}
+                <p className="text-[#444444] text-base sm:text-lg leading-relaxed font-medium mb-8 max-w-md" style={{ color: '#444444' }}>
+                  At Profito, we believe great work happens in a great environment. It’s about people, passion, growth and creating impact together.
+                </p>
+
+                {/* 2x2 Feature Grid */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-8 w-full max-w-md">
+                  {/* Feature 1: Collaborate */}
+                  <div className="flex items-start gap-3.5">
+                    <div className="w-12 h-12 rounded-2xl bg-[#2196F3]/10 text-primary border border-[#2196F3]/20 flex items-center justify-center shrink-0 shadow-2xs">
+                      <Users className="w-5 h-5 text-primary" />
+                    </div>
+                    <div>
+                      <h4 className="font-extrabold text-base text-[#0a0a0a] leading-tight mb-1" style={{ color: '#0a0a0a' }}>
+                        Collaborate
+                      </h4>
+                      <p className="text-xs text-[#555555] font-medium leading-relaxed" style={{ color: '#555555' }}>
+                        We work together, share ideas and create solutions.
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Feature 2: Grow */}
+                  <div className="flex items-start gap-3.5">
+                    <div className="w-12 h-12 rounded-2xl bg-[#2196F3]/10 text-primary border border-[#2196F3]/20 flex items-center justify-center shrink-0 shadow-2xs">
+                      <TrendingUp className="w-5 h-5 text-primary" />
+                    </div>
+                    <div>
+                      <h4 className="font-extrabold text-base text-[#0a0a0a] leading-tight mb-1" style={{ color: '#0a0a0a' }}>
+                        Grow
+                      </h4>
+                      <p className="text-xs text-[#555555] font-medium leading-relaxed" style={{ color: '#555555' }}>
+                        Continuous learning and new opportunities every day.
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Feature 3: Celebrate */}
+                  <div className="flex items-start gap-3.5">
+                    <div className="w-12 h-12 rounded-2xl bg-[#2196F3]/10 text-primary border border-[#2196F3]/20 flex items-center justify-center shrink-0 shadow-2xs">
+                      <PartyPopper className="w-5 h-5 text-primary" />
+                    </div>
+                    <div>
+                      <h4 className="font-extrabold text-base text-[#0a0a0a] leading-tight mb-1" style={{ color: '#0a0a0a' }}>
+                        Celebrate
+                      </h4>
+                      <p className="text-xs text-[#555555] font-medium leading-relaxed" style={{ color: '#555555' }}>
+                        We celebrate wins, big and small.
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Feature 4: Well-being */}
+                  <div className="flex items-start gap-3.5">
+                    <div className="w-12 h-12 rounded-2xl bg-[#2196F3]/10 text-primary border border-[#2196F3]/20 flex items-center justify-center shrink-0 shadow-2xs">
+                      <Heart className="w-5 h-5 text-primary" />
+                    </div>
+                    <div>
+                      <h4 className="font-extrabold text-base text-[#0a0a0a] leading-tight mb-1" style={{ color: '#0a0a0a' }}>
+                        Well-being
+                      </h4>
+                      <p className="text-xs text-[#555555] font-medium leading-relaxed" style={{ color: '#555555' }}>
+                        Balance, respect, and a positive vibe.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* CTA Button */}
+                <a
+                  href="#contact"
+                  className="bg-[#bcd32e] hover:bg-[#a6bb24] text-[#0a0a0a] font-black text-sm sm:text-base px-8 py-3.5 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-0.5 inline-flex items-center gap-3 group cursor-pointer"
+                >
+                  <span>Explore Life at Profito</span>
+                  <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+                </a>
+
+              </div>
+
+              {/* Right Column: Interactive Mosaic Photo Collage Carousel */}
+              <div className="lg:col-span-7 relative">
+                
+                {/* Left Navigation Button */}
+                <button
+                  onClick={() => setLifeSlideIndex((prev) => (prev <= 0 ? lifeSlides.length - 1 : prev - 1))}
+                  className="w-11 h-11 rounded-full bg-[#bcd32e] hover:bg-[#a6bb24] text-[#0a0a0a] flex items-center justify-center shadow-lg absolute -left-4 sm:-left-5 top-1/2 -translate-y-1/2 z-20 transition-all duration-300 hover:scale-110 active:scale-95 cursor-pointer"
+                  aria-label="Previous life slide"
+                >
+                  <ChevronLeft className="w-6 h-6 text-[#0a0a0a]" />
+                </button>
+
+                {/* Right Navigation Button */}
+                <button
+                  onClick={() => setLifeSlideIndex((prev) => (prev >= lifeSlides.length - 1 ? 0 : prev + 1))}
+                  className="w-11 h-11 rounded-full bg-[#bcd32e] hover:bg-[#a6bb24] text-[#0a0a0a] flex items-center justify-center shadow-lg absolute -right-4 sm:-right-5 top-1/2 -translate-y-1/2 z-20 transition-all duration-300 hover:scale-110 active:scale-95 cursor-pointer"
+                  aria-label="Next life slide"
+                >
+                  <ChevronRight className="w-6 h-6 text-[#0a0a0a]" />
+                </button>
+
+                {/* Photo Grid Collage matching user screenshot */}
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-4 items-stretch">
+                  
+                  {/* Main Large Left Photo (Col span 7) */}
+                  <div className="md:col-span-7 rounded-3xl overflow-hidden shadow-lg border border-black/5 h-[340px] sm:h-[450px] group relative bg-gray-100">
+                    <img 
+                      src={lifeSlides[lifeSlideIndex].main} 
+                      alt="Life at Profito collaboration"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
+
+                  {/* Stacked 2 Photos on Right (Col span 5) */}
+                  <div className="md:col-span-5 flex flex-col gap-4 justify-between">
+                    
+                    {/* Top Right Photo */}
+                    <div className="rounded-3xl overflow-hidden shadow-lg border border-black/5 h-[162px] sm:h-[217px] group relative bg-gray-100">
+                      <img 
+                        src={lifeSlides[lifeSlideIndex].topRight} 
+                        alt="Life at Profito meeting"
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                    </div>
+
+                    {/* Bottom Right Photo */}
+                    <div className="rounded-3xl overflow-hidden shadow-lg border border-black/5 h-[162px] sm:h-[217px] group relative bg-gray-100">
+                      <img 
+                        src={lifeSlides[lifeSlideIndex].bottomRight} 
+                        alt="Life at Profito celebration"
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                    </div>
+
+                  </div>
+
+                </div>
+
+                {/* Pagination Dots underneath collage */}
+                <div className="flex items-center justify-center gap-2 mt-6">
+                  {lifeSlides.map((_, dotIdx) => (
+                    <button
+                      key={dotIdx}
+                      onClick={() => setLifeSlideIndex(dotIdx)}
+                      className={`h-2.5 rounded-full transition-all duration-300 cursor-pointer ${
+                        lifeSlideIndex === dotIdx 
+                          ? 'w-8 bg-[#bcd32e] shadow-xs' 
+                          : 'w-2.5 bg-[#2196F3]/25 hover:bg-[#2196F3]/60'
+                      }`}
+                      aria-label={`Go to life slide ${dotIdx + 1}`}
+                    />
+                  ))}
+                </div>
+
+              </div>
+
             </div>
           </div>
 
