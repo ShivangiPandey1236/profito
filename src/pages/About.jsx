@@ -26,6 +26,21 @@ import teamImg from '../assets/team.jpeg';
 import teamCelebrationImg from '../assets/profito_team_celebration.png';
 import teamCollaborationImg from '../assets/profito_team_collaboration.png';
 import teamMeetingImg from '../assets/profito_team_meeting.png';
+import googleAdwordsImg from '../assets/googleadwords.png';
+import gemLogoImg from '../assets/gem-logo-n2-200120.png';
+import gemLogo1Img from '../assets/gem-logo-n2-200120 (1).png';
+import isoLogoImg from '../assets/iso-logo.png';
+import godaddyImg from '../assets/godaddy.png';
+import paypalImg from '../assets/paypal.png';
+import seoCertImg from '../assets/seocertication.png';
+import zopperLogoImg from '../assets/zopper-logo1.png';
+import businessTodayImg from '../assets/businesstoday.png';
+import designRushImg from '../assets/Designrush.png';
+import etImg from '../assets/et.png';
+import zeeNewsImg from '../assets/zee-news.png';
+import siliconIndiaImg from '../assets/siliconindia.png';
+import indiaTvImg from '../assets/indiatv-logo.jpg';
+import CTASection from '../components/CTASection';
 
 const About = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -52,6 +67,65 @@ const About = () => {
       main: teamCelebrationImg,
       topRight: teamCollaborationImg,
       bottomRight: teamMeetingImg,
+    },
+  ];
+
+  const awardsList = [
+    { img: googleAdwordsImg, title: 'Google Partner Certified' },
+    { img: gemLogoImg, title: 'GeM Registered Seller' },
+    { img: gemLogo1Img, title: 'GeM Official Partner' },
+    { img: seoCertImg, title: 'SEO Excellence Certified' },
+    { img: isoLogoImg, title: 'ISO 27001 Certified' },
+    { img: godaddyImg, title: 'GoDaddy Verified Partner' },
+    { img: paypalImg, title: 'PayPal Merchant Partner' },
+    { img: zopperLogoImg, title: 'Enterprise Solutions Partner' },
+  ];
+
+  const publicationsList = [
+    { img: businessTodayImg, title: 'Business Today' },
+    { img: designRushImg, title: 'DesignRush' },
+    { img: etImg, title: 'The Economic Times' },
+    { img: zeeNewsImg, title: 'Zee News' },
+    { img: siliconIndiaImg, title: 'Silicon India' },
+    { img: indiaTvImg, title: 'India TV News' },
+    { img: businessTodayImg, title: 'Business Today Digital' },
+    { img: etImg, title: 'ET BrandEquity' },
+    { img: designRushImg, title: 'DesignRush Partner' },
+    { img: zeeNewsImg, title: 'Zee Business' },
+    { img: siliconIndiaImg, title: 'SiliconIndia Magazine' },
+    { img: indiaTvImg, title: 'India TV' },
+    { img: businessTodayImg, title: 'Business Today' },
+    { img: etImg, title: 'The Economic Times' },
+    { img: designRushImg, title: 'DesignRush' },
+    { img: zeeNewsImg, title: 'Zee News' },
+    { img: siliconIndiaImg, title: 'Silicon India' },
+    { img: indiaTvImg, title: 'India TV News' },
+  ];
+
+  const certificationsList = [
+    {
+      title: 'Google Partner',
+      description: 'Certified Google Partner with proven expertise in Search, Display & Analytics',
+      badge: 'CERTIFIED',
+      type: 'google',
+    },
+    {
+      title: 'Meta Business',
+      description: 'Official Meta Business Partner for Facebook & Instagram advertising solutions',
+      badge: 'PARTNER',
+      type: 'meta',
+    },
+    {
+      title: 'HubSpot Certified',
+      description: 'HubSpot certified professionals delivering inbound marketing excellence',
+      badge: 'CERTIFIED',
+      type: 'hubspot',
+    },
+    {
+      title: 'Bing Ads Certified',
+      description: 'Microsoft Bing Ads certified for search advertising & campaign management',
+      badge: 'CERTIFIED',
+      type: 'bing',
     },
   ];
   const [visibleCount, setVisibleCount] = useState(4);
@@ -529,10 +603,16 @@ const About = () => {
         </div>
 
         {/* SECTION 3: WHY CHOOSE US (8-Card Grid matching user mockup image) */}
-        <div id="why-choose-us" className="pt-8 border-t border-[#2196F3]/15">
-          
+        <div 
+          id="why-choose-us" 
+          className="mt-24 pt-12 pb-14 px-6 sm:px-10 lg:px-14 bg-gradient-to-b from-white via-[#f4faff] to-white rounded-3xl border border-[#2196F3]/15 shadow-[0_20px_50px_rgba(33,150,243,0.06)] relative overflow-hidden"
+        >
+          {/* Ambient Decorative Background Glows */}
+          <div className="absolute -top-24 -right-24 w-80 h-80 bg-[#2196F3]/10 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute -bottom-24 -left-24 w-80 h-80 bg-[#bcd32e]/15 rounded-full blur-3xl pointer-events-none" />
+
           {/* Section Header */}
-          <div className="text-center max-w-3xl mx-auto mb-16">
+          <div className="text-center max-w-3xl mx-auto mb-16 relative z-10">
             <div className="inline-flex items-center gap-2 mb-3">
               <span className="w-8 h-0.5 bg-primary rounded-full" />
               <span className="text-xs font-black tracking-widest text-primary uppercase">WHY CHOOSE US</span>
@@ -552,7 +632,7 @@ const About = () => {
           </div>
 
           {/* 8 Cards Grid (2 rows of 4 cols) */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 relative z-10">
             {whyChooseUsCards.map((card, idx) => {
               const Icon = card.icon;
               return (
@@ -919,6 +999,184 @@ const About = () => {
               </div>
 
             </div>
+          </div>
+
+          {/* SECTION 6: AWARDS AND RECOGNITIONS */}
+          <div className="mt-24 pt-12 pb-14 px-6 sm:px-10 lg:px-14 bg-gradient-to-b from-[#f4faff] via-white to-[#f4faff] rounded-3xl border border-[#2196F3]/15 shadow-[0_20px_50px_rgba(33,150,243,0.06)] relative overflow-hidden">
+            
+            {/* Ambient Accent Glows */}
+            <div className="absolute -top-24 -left-24 w-72 h-72 bg-[#2196F3]/10 rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute -bottom-24 -right-24 w-72 h-72 bg-[#bcd32e]/15 rounded-full blur-3xl pointer-events-none" />
+
+            {/* Section Header */}
+            <div className="text-center max-w-4xl mx-auto mb-10 relative z-10">
+              {/* Headline */}
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-[#0a0a0a]" style={{ color: '#0a0a0a' }}>
+                Awards <span className="text-[#2196F3]">And Recognitions</span>
+              </h2>
+
+              {/* Decorative Accent Line with Dot Node */}
+              <div className="flex items-center justify-center gap-1.5 my-4">
+                <span className="w-10 sm:w-14 h-0.5 bg-[#bcd32e] rounded-full" />
+                <span className="w-3 h-3 rounded-full bg-[#bcd32e] border-2 border-white shadow-xs" />
+                <span className="w-10 sm:w-14 h-0.5 bg-[#bcd32e] rounded-full" />
+              </div>
+
+              {/* Description Paragraphs matching mockup */}
+              <div className="space-y-1 text-[#555555] text-sm sm:text-base leading-relaxed font-medium max-w-3xl mx-auto" style={{ color: '#555555' }}>
+                <p>Our marketing and IT outsourcing solutions are crafted around vital ‘building blocks’ tailored to your business plan.</p>
+                <p>We assess & customise strategies based on your goals, digital presence, and competition.</p>
+                <p className="font-semibold text-[#0a0a0a]" style={{ color: '#0a0a0a' }}>
+                  With our creative, results-driven approach, you will get only the best!
+                </p>
+              </div>
+            </div>
+
+            {/* 8-Card Logo Grid */}
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5 sm:gap-6 max-w-[1280px] mx-auto relative z-10">
+              {awardsList.map((award, idx) => (
+                <div
+                  key={idx}
+                  className="bg-white border border-[#2196F3]/15 hover:border-[#2196F3]/40 rounded-2xl p-5 sm:p-6 flex items-center justify-center shadow-[0_6px_20px_rgba(33,150,243,0.05)] hover:shadow-[0_15px_35px_rgba(33,150,243,0.14)] transition-all duration-300 hover:-translate-y-1.5 h-32 sm:h-36 group cursor-pointer"
+                >
+                  <img
+                    src={award.img}
+                    alt={award.title}
+                    className="max-h-20 sm:max-h-24 max-w-[85%] object-contain group-hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+              ))}
+            </div>
+
+          </div>
+
+          {/* SECTION 7: FEATURED ON / MEDIA PUBLICATIONS */}
+          <div className="mt-24 pt-12 pb-14 px-6 sm:px-10 lg:px-14 bg-[#ffffff] rounded-3xl border border-[#2196F3]/15 shadow-[0_20px_50px_rgba(33,150,243,0.06)] relative overflow-hidden">
+            
+            {/* Ambient Decorative Accent Glows */}
+            <div className="absolute top-0 right-1/4 w-80 h-80 bg-[#2196F3]/10 rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute bottom-0 left-1/4 w-80 h-80 bg-[#bcd32e]/15 rounded-full blur-3xl pointer-events-none" />
+
+            {/* Section Header */}
+            <div className="text-center max-w-4xl mx-auto mb-10 relative z-10">
+              {/* Top Tag Label */}
+              <div className="inline-flex items-center gap-2 mb-3">
+                <span className="w-8 h-0.5 bg-[#bcd32e] rounded-full" />
+                <span className="text-xs font-black tracking-widest text-[#2196F3] uppercase">PRESS & PUBLICATIONS</span>
+              </div>
+
+              {/* Main Headline */}
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-[#0a0a0a]" style={{ color: '#0a0a0a' }}>
+                Featured On / <span className="text-[#2196F3]">Media Publications</span>
+              </h2>
+
+              {/* Subtitle Description */}
+              <p className="text-[#555555] text-sm sm:text-base leading-relaxed font-medium max-w-2xl mx-auto mt-3" style={{ color: '#555555' }}>
+                Featured on leading industry platforms and publications for our expertise in digital marketing and business growth.
+              </p>
+            </div>
+
+            {/* 18-Card Logo Grid (6 cols x 3 rows) */}
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 sm:gap-5 max-w-[1360px] mx-auto relative z-10">
+              {publicationsList.map((pub, idx) => (
+                <div
+                  key={idx}
+                  className="bg-white border border-[#2196F3]/15 hover:border-[#2196F3]/40 rounded-2xl p-4 sm:p-5 flex items-center justify-center shadow-[0_4px_16px_rgba(33,150,243,0.05)] hover:shadow-[0_12px_28px_rgba(33,150,243,0.14)] transition-all duration-300 hover:-translate-y-1 h-24 sm:h-28 group cursor-pointer"
+                >
+                  <img
+                    src={pub.img}
+                    alt={pub.title}
+                    className="max-h-12 sm:max-h-14 max-w-[85%] object-contain group-hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+              ))}
+            </div>
+
+          </div>
+
+          {/* SECTION 8: CERTIFICATIONS & PARTNERSHIPS */}
+          <div className="mt-24 pt-12 pb-14 px-6 sm:px-10 lg:px-14 bg-gradient-to-b from-white via-[#f4faff] to-white rounded-3xl border border-[#2196F3]/15 shadow-[0_20px_50px_rgba(33,150,243,0.06)] relative overflow-hidden">
+            
+            {/* Ambient Background Glows */}
+            <div className="absolute top-0 left-1/3 w-96 h-96 bg-[#2196F3]/10 rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute bottom-0 right-1/3 w-96 h-96 bg-[#bcd32e]/15 rounded-full blur-3xl pointer-events-none" />
+
+            {/* Section Header */}
+            <div className="text-center max-w-4xl mx-auto mb-12 relative z-10">
+              {/* Top Tag Label */}
+              <div className="inline-flex items-center gap-2 mb-3">
+                <span className="w-8 h-0.5 bg-[#bcd32e] rounded-full" />
+                <span className="text-xs font-black tracking-widest text-[#2196F3] uppercase">VERIFIED & CERTIFIED</span>
+              </div>
+
+              {/* Main Headline */}
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-[#0a0a0a]" style={{ color: '#0a0a0a' }}>
+                Certifications <span className="text-[#2196F3]">& Partnerships</span>
+              </h2>
+
+              {/* Subtitle Description */}
+              <p className="text-[#555555] text-sm sm:text-base leading-relaxed font-medium max-w-2xl mx-auto mt-3" style={{ color: '#555555' }}>
+                Our certifications and partnerships reflect our commitment to industry standards and continuous innovation.
+              </p>
+            </div>
+
+            {/* 4 Feature Cards Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-[1360px] mx-auto relative z-10">
+              {certificationsList.map((cert, idx) => (
+                <div
+                  key={idx}
+                  className="bg-white border border-[#2196F3]/15 hover:border-[#2196F3]/40 rounded-3xl p-7 sm:p-8 flex flex-col items-center text-center shadow-[0_6px_24px_rgba(33,150,243,0.06)] hover:shadow-[0_16px_40px_rgba(33,150,243,0.14)] transition-all duration-300 hover:-translate-y-2 group relative overflow-hidden min-h-[380px] justify-between cursor-pointer"
+                >
+                  {/* Icon Disc Container */}
+                  <div className="w-20 h-20 rounded-2xl bg-[#f4f7ff] border border-[#2196F3]/20 flex items-center justify-center mb-6 shadow-xs group-hover:scale-105 transition-transform duration-300">
+                    {cert.type === 'google' && (
+                      <svg className="w-10 h-10" viewBox="0 0 24 24">
+                        <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
+                        <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
+                        <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" />
+                        <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" />
+                      </svg>
+                    )}
+                    {cert.type === 'meta' && (
+                      <svg className="w-10 h-10 fill-[#1877F2]" viewBox="0 0 24 24">
+                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C20.012 23.027 24 18.062 24 12.073z"/>
+                      </svg>
+                    )}
+                    {cert.type === 'hubspot' && (
+                      <svg className="w-10 h-10 fill-[#FF7A59]" viewBox="0 0 24 24">
+                        <path d="M18.16 8.35v-2.3a2.38 2.38 0 1 0-2.38 2.3v2.33a5.53 5.53 0 0 0-3.08 1.48L7.6 8.87a2.76 2.76 0 1 0-1.8 1.44l5.07 3.28a5.57 5.57 0 0 0 .1 3.52l-2.6 2.6a2.32 2.32 0 1 0 1.63 1.63l2.6-2.6a5.56 5.56 0 1 0 5.56-10.4zm-1.19-3.48a1.19 1.19 0 1 1 0 2.38 1.19 1.19 0 0 1 0-2.38zm-12.6 5.34a1.57 1.57 0 1 1 0-3.14 1.57 1.57 0 0 1 0 3.14zm1.19 11.83a1.13 1.13 0 1 1 0-2.26 1.13 1.13 0 0 1 0 2.26zm11.44-6.04a4.37 4.37 0 1 1-4.37-4.37 4.37 4.37 0 0 1 4.37 4.37z"/>
+                      </svg>
+                    )}
+                    {cert.type === 'bing' && (
+                      <svg className="w-10 h-10 fill-[#0078D4]" viewBox="0 0 24 24">
+                        <path d="M5 3v18l5.5-3.5L18 21l-3.5-5.5L19 12l-8.5 2.5L5 3z"/>
+                      </svg>
+                    )}
+                  </div>
+
+                  {/* Title */}
+                  <h3 className="text-xl font-black text-[#0a0a0a] mb-2 leading-snug" style={{ color: '#0a0a0a' }}>
+                    {cert.title}
+                  </h3>
+
+                  {/* Description */}
+                  <p className="text-sm text-[#555555] font-medium leading-relaxed mb-6 flex-grow" style={{ color: '#555555' }}>
+                    {cert.description}
+                  </p>
+
+                  {/* Bottom Pill Badge */}
+                  <div className="bg-primary hover:bg-[#0a0a0a] text-white text-xs font-black px-6 py-2 rounded-full shadow-xs uppercase tracking-wider transition-colors duration-200">
+                    {cert.badge}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+          </div>
+
+          {/* SECTION 9: CTA SECTION */}
+          <div className="mt-24">
+            <CTASection />
           </div>
 
       </div>

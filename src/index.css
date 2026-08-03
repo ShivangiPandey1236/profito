@@ -1623,6 +1623,9 @@ a {
   background: #222;
   padding: 90px 80px;
   overflow: hidden;
+  border-radius: 1.5rem;
+  border: 1px solid rgba(33, 150, 243, 0.2);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
 }
 
 /* Decorative glow orbs */
@@ -3972,7 +3975,9 @@ a {
 .about-page-wrapper {
   color: #18181b;
 }
-
+.cta-title{
+  color:hsl(0, 0%, 100%)!important;
+}
 .about-page-wrapper h1,
 .about-page-wrapper h2,
 .about-page-wrapper h3,
