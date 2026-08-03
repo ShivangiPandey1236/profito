@@ -42,12 +42,103 @@ import siliconIndiaImg from '../assets/siliconindia.png';
 import indiaTvImg from '../assets/indiatv-logo.jpg';
 import CTASection from '../components/CTASection';
 
-const About = () => {
-  const [isVisible, setIsVisible] = useState(true);
-  const containerRef = useRef(null);
+// CountUp Component for animated number counting on scroll
+function CountUp({ end, duration = 1600, decimals = 0, suffix = "" }) {
+  const [count, setCount] = useState(0);
+  const [started, setStarted] = useState(false);
+  const elementRef = useRef(null);
 
   useEffect(() => {
-    setIsVisible(true);
+    const current = elementRef.current;
+    if (!current) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setStarted(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.2 }
+    );
+
+    observer.observe(current);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!started) return;
+
+    let startTime = null;
+    const startValue = 0;
+
+    const animate = (timestamp) => {
+      if (!startTime) startTime = timestamp;
+      const progress = Math.min((timestamp - startTime) / duration, 1);
+      const easeProgress = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+      const currentValue = startValue + easeProgress * (end - startValue);
+      setCount(currentValue);
+
+      if (progress < 1) {
+        requestAnimationFrame(animate);
+      } else {
+        setCount(end);
+      }
+    };
+
+    requestAnimationFrame(animate);
+  }, [started, end, duration]);
+
+  return (
+    <span ref={elementRef}>
+      {decimals > 0 ? count.toFixed(decimals) : Math.round(count)}
+      {suffix}
+    </span>
+  );
+}
+
+const About = () => {
+  const containerRef = useRef(null);
+  const [progressWidth, setProgressWidth] = useState('0%');
+  const progressRef = useRef(null);
+
+  useEffect(() => {
+    const root = containerRef.current;
+    if (!root) return;
+
+    const elements = root.querySelectorAll(
+      '.reveal-on-scroll, .reveal-left, .reveal-right, .reveal-scale'
+    );
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+          }
+        });
+      },
+      { threshold: 0.12 }
+    );
+
+    elements.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const el = progressRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setProgressWidth('92%');
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.3 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
   }, []);
 
   // Leadership Carousel State
@@ -390,22 +481,22 @@ const About = () => {
           <div className="lg:col-span-6 flex flex-col">
             
             {/* Badge matching Hero Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#2196F3]/10 border border-[#2196F3]/30 text-primary font-bold text-xs uppercase tracking-wider mb-6 w-fit shadow-xs">
+            <div className="reveal-left inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#2196F3]/10 border border-[#2196F3]/30 text-primary font-bold text-xs uppercase tracking-wider mb-6 w-fit shadow-xs">
               <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
               <span>ABOUT US</span>
             </div>
 
             {/* Main Headline with Hero Highlight style */}
-            <h1 className="text-4xl sm:text-5xl lg:text-[3.25rem] font-black text-[#0a0a0a] leading-[1.12] tracking-tight mb-6" style={{ color: '#0a0a0a' }}>
+            <h1 className="reveal-left reveal-delay-1 text-4xl sm:text-5xl lg:text-[3.25rem] font-black text-[#0a0a0a] leading-[1.12] tracking-tight mb-6" style={{ color: '#0a0a0a' }}>
               We Help Businesses <br className="hidden sm:inline" />
               Grow in the{' '}
-              <span className="bg-gradient-to-r from-[#2196F3] via-[#42a5f5] to-[#2196F3] bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-[#2196F3] via-[#42a5f5] to-[#2196F3] bg-clip-text text-transparent animate-text-shimmer">
                 Digital World.
               </span>
             </h1>
 
             {/* Paragraphs */}
-            <div className="space-y-4 text-[#444444] text-base sm:text-lg leading-relaxed mb-8 max-w-xl">
+            <div className="reveal-left reveal-delay-2 space-y-4 text-[#444444] text-base sm:text-lg leading-relaxed mb-8 max-w-xl">
               <p style={{ color: '#444444' }}>
                 <strong className="text-[#0a0a0a] font-extrabold" style={{ color: '#0a0a0a' }}>Profito Interactive Growth Partners</strong> is a full-service digital marketing agency dedicated to delivering innovative strategies that drive visibility, engage audiences, and accelerate business growth.
               </p>
@@ -415,10 +506,10 @@ const About = () => {
             </div>
 
             {/* CTAs matching Hero buttons */}
-            <div className="flex flex-wrap items-center gap-4 mb-10">
+            <div className="reveal-left reveal-delay-3 flex flex-wrap items-center gap-4 mb-10">
               <a
                 href="#timeline"
-                className="inline-flex items-center gap-3 bg-primary hover:bg-[#0a0a0a] text-white font-semibold text-sm px-6 py-3.5 rounded-full shadow-lg shadow-primary/25 border-2 border-primary hover:border-[#0a0a0a] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl group"
+                className="btn-shine-effect inline-flex items-center gap-3 bg-primary hover:bg-[#0a0a0a] text-white font-semibold text-sm px-6 py-3.5 rounded-full shadow-lg shadow-primary/25 border-2 border-primary hover:border-[#0a0a0a] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl group"
               >
                 <span className="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center transition-transform group-hover:rotate-45">
                   <ArrowRight className="w-3.5 h-3.5 text-white" />
@@ -436,36 +527,42 @@ const About = () => {
             </div>
 
             {/* Stats Strip matching Hero stats card styling */}
-            <div className="bg-white/90 backdrop-blur-md border border-[#2196F3]/15 shadow-[0_12px_36px_-10px_rgba(33,150,243,0.12)] rounded-2xl p-5 sm:p-6 grid grid-cols-3 gap-3 divide-x divide-zinc-200 max-w-xl hover:border-[#2196F3]/30 transition-all duration-300">
+            <div className="reveal-left reveal-delay-4 bg-white/90 backdrop-blur-md border border-[#2196F3]/15 shadow-[0_12px_36px_-10px_rgba(33,150,243,0.12)] rounded-2xl p-5 sm:p-6 grid grid-cols-3 gap-3 divide-x divide-zinc-200 max-w-xl hover:border-[#2196F3]/30 transition-all duration-300">
               {/* Stat 1 */}
-              <div className="flex items-center gap-3 px-2 sm:px-3 first:pl-0">
-                <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-[#2196F3]/10 border border-[#2196F3]/20 flex items-center justify-center text-primary shrink-0">
+              <div className="flex items-center gap-3 px-2 sm:px-3 first:pl-0 group">
+                <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-[#2196F3]/10 border border-[#2196F3]/20 flex items-center justify-center text-primary shrink-0 group-hover:scale-110 group-hover:bg-primary group-hover:text-white transition-all duration-300">
                   <Trophy className="w-5 h-5" />
                 </div>
                 <div>
-                  <div className="text-xl sm:text-2xl font-black text-[#0a0a0a] leading-none mb-1" style={{ color: '#0a0a0a' }}>12+</div>
+                  <div className="text-xl sm:text-2xl font-black text-[#0a0a0a] leading-none mb-1" style={{ color: '#0a0a0a' }}>
+                    <CountUp end={12} suffix="+" />
+                  </div>
                   <div className="text-xs font-bold text-[#555555] leading-tight" style={{ color: '#555555' }}>Years Experience</div>
                 </div>
               </div>
 
               {/* Stat 2 */}
-              <div className="flex items-center gap-3 px-2 sm:px-3">
-                <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-[#2196F3]/10 border border-[#2196F3]/20 flex items-center justify-center text-primary shrink-0">
+              <div className="flex items-center gap-3 px-2 sm:px-3 group">
+                <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-[#2196F3]/10 border border-[#2196F3]/20 flex items-center justify-center text-primary shrink-0 group-hover:scale-110 group-hover:bg-primary group-hover:text-white transition-all duration-300">
                   <Users className="w-5 h-5" />
                 </div>
                 <div>
-                  <div className="text-xl sm:text-2xl font-black text-[#0a0a0a] leading-none mb-1" style={{ color: '#0a0a0a' }}>650+</div>
+                  <div className="text-xl sm:text-2xl font-black text-[#0a0a0a] leading-none mb-1" style={{ color: '#0a0a0a' }}>
+                    <CountUp end={650} suffix="+" />
+                  </div>
                   <div className="text-xs font-bold text-[#555555] leading-tight" style={{ color: '#555555' }}>Happy Clients</div>
                 </div>
               </div>
 
               {/* Stat 3 */}
-              <div className="flex items-center gap-3 px-2 sm:px-3">
-                <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-[#2196F3]/10 border border-[#2196F3]/20 flex items-center justify-center text-primary shrink-0">
+              <div className="flex items-center gap-3 px-2 sm:px-3 group">
+                <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-[#2196F3]/10 border border-[#2196F3]/20 flex items-center justify-center text-primary shrink-0 group-hover:scale-110 group-hover:bg-primary group-hover:text-white transition-all duration-300">
                   <TrendingUp className="w-5 h-5" />
                 </div>
                 <div>
-                  <div className="text-xl sm:text-2xl font-black text-[#0a0a0a] leading-none mb-1" style={{ color: '#0a0a0a' }}>98%</div>
+                  <div className="text-xl sm:text-2xl font-black text-[#0a0a0a] leading-none mb-1" style={{ color: '#0a0a0a' }}>
+                    <CountUp end={98} suffix="%" />
+                  </div>
                   <div className="text-xs font-bold text-[#555555] leading-tight" style={{ color: '#555555' }}>Retention Rate</div>
                 </div>
               </div>
@@ -474,19 +571,19 @@ const About = () => {
           </div>
 
           {/* Middle Column: Vertical Timeline (Span 2) */}
-          <div id="timeline" className="lg:col-span-2 flex flex-col items-center justify-center py-6 relative">
+          <div id="timeline" className="reveal-on-scroll reveal-delay-2 lg:col-span-2 flex flex-col items-center justify-center py-6 relative">
             <div className="relative flex flex-col items-center space-y-9 sm:space-y-10 my-auto">
               
-              {/* Vertical connecting line */}
-              <div className="absolute top-3 bottom-3 w-0.5 bg-gradient-to-b from-[#2196F3]/20 via-[#2196F3] to-[#2196F3]/20 left-1/2 -translate-x-1/2 z-0" />
+              {/* Vertical connecting line with animated pulse gradient */}
+              <div className="timeline-pulse-line absolute top-3 bottom-3 w-0.5 left-1/2 -translate-x-1/2 z-0 rounded-full" />
 
               {timelineEvents.map((event, idx) => (
                 <div key={idx} className="relative z-10 flex flex-col items-center text-center group cursor-pointer">
                   {/* Node Dot */}
-                  <div className="w-5 h-5 rounded-full bg-primary border-4 border-white shadow-[0_0_12px_rgba(33,150,243,0.4)] group-hover:scale-125 group-hover:bg-[#0a0a0a] transition-all duration-300" />
+                  <div className="w-5 h-5 rounded-full bg-primary border-4 border-white shadow-[0_0_12px_rgba(33,150,243,0.4)] group-hover:scale-130 group-hover:bg-[#0a0a0a] transition-all duration-300" />
                   
                   {/* Event Text */}
-                  <div className="mt-1 bg-white/95 px-2.5 py-1 rounded-lg border border-[#2196F3]/20 shadow-xs group-hover:border-primary group-hover:shadow-md transition-all duration-300">
+                  <div className="mt-1 bg-white/95 px-2.5 py-1 rounded-lg border border-[#2196F3]/20 shadow-xs group-hover:border-primary group-hover:shadow-md group-hover:-translate-y-1 transition-all duration-300">
                     <span className="block font-black text-primary text-sm leading-none">{event.year}</span>
                     <span className="block text-[0.75rem] font-bold text-[#0a0a0a] mt-0.5 whitespace-nowrap" style={{ color: '#0a0a0a' }}>{event.title}</span>
                   </div>
@@ -497,18 +594,18 @@ const About = () => {
           </div>
 
           {/* Right Column: "Trusted by Businesses Worldwide" Card (Span 4) */}
-          <div className="lg:col-span-4">
+          <div className="reveal-right reveal-delay-3 lg:col-span-4" ref={progressRef}>
             <div className="bg-gradient-to-b from-[#f4faff] via-white to-[#eaf5ff] border border-[#2196F3]/20 shadow-[0_15px_40px_rgba(33,150,243,0.1)] rounded-3xl p-6 sm:p-8 relative overflow-hidden flex flex-col justify-between h-full hover:shadow-[0_20px_50px_rgba(33,150,243,0.15)] transition-all duration-500">
               
-              {/* Ambient Background Glow */}
-              <div className="absolute -top-20 -right-20 w-48 h-48 bg-primary/10 rounded-full blur-3xl pointer-events-none" />
-              <div className="absolute -bottom-20 -left-20 w-48 h-48 bg-primary/10 rounded-full blur-3xl pointer-events-none" />
+              {/* Ambient Background Glows */}
+              <div className="animate-float-orb absolute -top-20 -right-20 w-48 h-48 bg-primary/10 rounded-full blur-3xl pointer-events-none" />
+              <div className="animate-float-orb-delayed absolute -bottom-20 -left-20 w-48 h-48 bg-primary/10 rounded-full blur-3xl pointer-events-none" />
 
               <div>
                 {/* 5 Stars using Homepage #2196F3 fill */}
                 <div className="flex items-center gap-1 text-primary mb-4">
                   {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-5 h-5 fill-primary text-primary" />
+                    <Star key={i} className="animate-star-pop w-5 h-5 fill-primary text-primary" style={{ animationDelay: `${i * 0.08}s` }} />
                   ))}
                 </div>
 
@@ -543,12 +640,14 @@ const About = () => {
               <div className="pt-5 border-t border-[#2196F3]/15">
                 <div className="flex justify-between items-center mb-2">
                   <span className="font-extrabold text-sm text-[#0a0a0a]" style={{ color: '#0a0a0a' }}>Growth Success</span>
-                  <span className="font-black text-sm text-primary">92%</span>
+                  <span className="font-black text-sm text-primary">
+                    <CountUp end={92} suffix="%" />
+                  </span>
                 </div>
                 <div className="w-full h-3 bg-primary/10 rounded-full overflow-hidden p-0.5">
                   <div
-                    className="h-full bg-gradient-to-r from-primary via-[#42a5f5] to-primary rounded-full transition-all duration-1000 shadow-xs"
-                    style={{ width: '92%' }}
+                    className="h-full bg-gradient-to-r from-primary via-[#42a5f5] to-primary rounded-full transition-all duration-1200 cubic-bezier(0.16,1,0.3,1) shadow-xs"
+                    style={{ width: progressWidth }}
                   />
                 </div>
               </div>
@@ -562,10 +661,11 @@ const About = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-24">
           {features.map((feat, idx) => {
             const Icon = feat.icon;
+            const delayClass = `reveal-delay-${idx + 1}`;
             return (
               <div
                 key={idx}
-                className="bg-white border border-[#2196F3]/15 hover:border-primary shadow-xs hover:shadow-[0_12px_36px_-10px_rgba(33,150,243,0.15)] rounded-2xl p-6 transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between group"
+                className={`reveal-on-scroll ${delayClass} bg-white border border-[#2196F3]/15 hover:border-primary shadow-xs hover:shadow-[0_12px_36px_-10px_rgba(33,150,243,0.15)] rounded-2xl p-6 transition-all duration-300 hover:-translate-y-2 flex flex-col justify-between group`}
               >
                 <div>
                   {/* Icon Box */}
@@ -595,11 +695,11 @@ const About = () => {
           className="mt-24 pt-12 pb-14 px-6 sm:px-10 lg:px-14 bg-gradient-to-b from-white via-[#f4faff] to-white rounded-3xl border border-[#2196F3]/15 shadow-[0_20px_50px_rgba(33,150,243,0.06)] relative overflow-hidden"
         >
           {/* Ambient Decorative Background Glows */}
-          <div className="absolute -top-24 -right-24 w-80 h-80 bg-[#2196F3]/10 rounded-full blur-3xl pointer-events-none" />
-          <div className="absolute -bottom-24 -left-24 w-80 h-80 bg-[#bcd32e]/15 rounded-full blur-3xl pointer-events-none" />
+          <div className="animate-float-orb absolute -top-24 -right-24 w-80 h-80 bg-[#2196F3]/10 rounded-full blur-3xl pointer-events-none" />
+          <div className="animate-float-orb-delayed absolute -bottom-24 -left-24 w-80 h-80 bg-[#bcd32e]/15 rounded-full blur-3xl pointer-events-none" />
 
           {/* Section Header */}
-          <div className="text-center max-w-3xl mx-auto mb-16 relative z-10">
+          <div className="reveal-on-scroll text-center max-w-3xl mx-auto mb-16 relative z-10">
             <div className="inline-flex items-center gap-2 mb-3">
               <span className="w-8 h-0.5 bg-primary rounded-full" />
               <span className="text-xs font-black tracking-widest text-primary uppercase">WHY CHOOSE US</span>
@@ -608,7 +708,7 @@ const About = () => {
 
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#0a0a0a] tracking-tight mb-4" style={{ color: '#0a0a0a' }}>
               Excellence. Experience.{' '}
-              <span className="bg-gradient-to-r from-primary via-[#42a5f5] to-primary bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-primary via-[#42a5f5] to-primary bg-clip-text text-transparent animate-text-shimmer">
                 Every Time.
               </span>
             </h2>
@@ -622,21 +722,22 @@ const About = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 relative z-10">
             {whyChooseUsCards.map((card, idx) => {
               const Icon = card.icon;
+              const delayClass = `reveal-delay-${(idx % 4) + 1}`;
               return (
                 <div
                   key={idx}
-                  className={`relative ${card.bgStyle} border rounded-2xl p-6 sm:p-7 flex flex-col items-center text-center shadow-xs hover:shadow-[0_15px_40px_rgba(33,150,243,0.15)] transition-all duration-300 hover:-translate-y-2 group`}
+                  className={`reveal-scale ${delayClass} relative ${card.bgStyle} border rounded-2xl p-6 sm:p-7 flex flex-col items-center text-center shadow-xs hover:shadow-[0_15px_40px_rgba(33,150,243,0.15)] transition-all duration-300 hover:-translate-y-2 group`}
                 >
                   {/* Top-left Pill Badge using primary color */}
-                  <div className="absolute top-4 left-4 w-7 h-7 rounded-lg bg-primary text-white font-black text-xs flex items-center justify-center shadow-xs">
+                  <div className="absolute top-4 left-4 w-7 h-7 rounded-lg bg-primary text-white font-black text-xs flex items-center justify-center shadow-xs group-hover:scale-110 transition-transform duration-300">
                     {card.number}
                   </div>
 
                   {/* Circular Icon Disc with Primary Arc */}
-                  <div className="w-20 h-20 rounded-full bg-white border-2 border-[#2196F3]/20 shadow-md flex items-center justify-center mb-6 relative mt-2 group-hover:scale-105 transition-transform duration-300">
-                    <Icon className="w-9 h-9 text-primary" />
+                  <div className="w-20 h-20 rounded-full bg-white border-2 border-[#2196F3]/20 shadow-md flex items-center justify-center mb-6 relative mt-2 group-hover:scale-110 transition-transform duration-300">
+                    <Icon className="w-9 h-9 text-primary group-hover:rotate-6 transition-transform duration-300" />
                     {/* Bottom Arc Highlight */}
-                    <div className="absolute -bottom-1 w-10 h-1.5 bg-primary rounded-full shadow-[0_0_10px_rgba(33,150,243,0.5)]" />
+                    <div className="absolute -bottom-1 w-10 h-1.5 bg-primary rounded-full shadow-[0_0_10px_rgba(33,150,243,0.5)] group-hover:w-14 transition-all duration-300" />
                   </div>
 
                   {/* Card Title */}
@@ -661,25 +762,11 @@ const About = () => {
           {/* SECTION 4: MEET OUR LEADERSHIP CAROUSEL */}
           <div className="mt-24 pt-12 pb-14 px-4 sm:px-8 lg:px-12 bg-gradient-to-b from-white via-[#f4faff] to-[#f8fcda]/40 rounded-3xl text-[#0a0a0a] shadow-[0_20px_50px_rgba(33,150,243,0.1)] relative overflow-hidden border border-[#2196F3]/20">
             {/* Ambient Background Glows incorporating #2196F3 and #bcd32e */}
-            <div className="absolute top-0 right-0 w-96 h-96 bg-[#bcd32e]/20 rounded-full blur-3xl pointer-events-none" />
-            <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#2196F3]/15 rounded-full blur-3xl pointer-events-none" />
+            <div className="animate-float-orb absolute top-0 right-0 w-96 h-96 bg-[#bcd32e]/20 rounded-full blur-3xl pointer-events-none" />
+            <div className="animate-float-orb-delayed absolute bottom-0 left-0 w-96 h-96 bg-[#2196F3]/15 rounded-full blur-3xl pointer-events-none" />
 
             {/* Section Header */}
-            <div className="text-center max-w-4xl mx-auto mb-12 relative z-10">
-              {/* Existing Leadership header (commented out as requested):
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#bcd32e]/25 border border-[#bcd32e]/60 text-[#4c5900] font-extrabold text-xs uppercase tracking-wider mb-4 shadow-2xs">
-                <span className="w-2.5 h-2.5 rounded-full bg-[#bcd32e] animate-pulse" />
-                <span>MEET OUR LEADERSHIP</span>
-              </div>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight mb-4 text-[#0a0a0a]" style={{ color: '#0a0a0a' }}>
-                Meet Our{' '}
-                <span className="bg-gradient-to-r from-primary via-[#42a5f5] to-[#bcd32e] bg-clip-text text-transparent">
-                  Leadership
-                </span>
-              </h2>
-              */}
-
-              {/* Header matching Why Choose Us section styling */}
+            <div className="reveal-on-scroll text-center max-w-4xl mx-auto mb-12 relative z-10">
               <div className="inline-flex items-center gap-2 mb-3">
                 <span className="w-8 h-0.5 bg-primary rounded-full" />
                 <span className="text-xs font-black tracking-widest text-primary uppercase">MEET OUR LEADERSHIP</span>
@@ -688,7 +775,7 @@ const About = () => {
 
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#0a0a0a] tracking-tight mb-4" style={{ color: '#0a0a0a' }}>
                 Meet Our{' '}
-                <span className="bg-gradient-to-r from-primary via-[#42a5f5] to-primary bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-primary via-[#42a5f5] to-primary bg-clip-text text-transparent animate-text-shimmer">
                   Leadership
                 </span>
               </h2>
@@ -700,7 +787,7 @@ const About = () => {
 
             {/* Carousel Container */}
             <div 
-              className="relative max-w-[1400px] mx-auto px-2 sm:px-6 relative z-10"
+              className="reveal-on-scroll reveal-delay-2 relative max-w-[1400px] mx-auto px-2 sm:px-6 relative z-10"
               onMouseEnter={() => setIsAutoplay(false)}
               onMouseLeave={() => setIsAutoplay(true)}
               onTouchStart={handleTouchStart}
@@ -710,7 +797,7 @@ const About = () => {
               {/* Navigation Button - Left */}
               <button
                 onClick={handlePrev}
-                className="absolute -left-2 sm:-left-6 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-white hover:bg-[#bcd32e] text-[#0a0a0a] hover:text-black flex items-center justify-center backdrop-blur-md border border-[#2196F3]/30 shadow-xl transition-all duration-300 hover:scale-110 active:scale-95 group cursor-pointer"
+                className="absolute -left-2 sm:-left-6 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-white hover:bg-[#bcd32e] text-[#0a0a0a] hover:text-black flex items-center justify-center backdrop-blur-md border border-[#2196F3]/30 shadow-xl transition-all duration-300 hover:scale-115 active:scale-95 group cursor-pointer"
                 aria-label="Previous leadership member"
               >
                 <ChevronLeft className="w-6 h-6 text-primary group-hover:text-black transition-colors" />
@@ -719,7 +806,7 @@ const About = () => {
               {/* Navigation Button - Right */}
               <button
                 onClick={handleNext}
-                className="absolute -right-2 sm:-right-6 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-white hover:bg-[#bcd32e] text-[#0a0a0a] hover:text-black flex items-center justify-center backdrop-blur-md border border-[#2196F3]/30 shadow-xl transition-all duration-300 hover:scale-110 active:scale-95 group cursor-pointer"
+                className="absolute -right-2 sm:-right-6 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-white hover:bg-[#bcd32e] text-[#0a0a0a] hover:text-black flex items-center justify-center backdrop-blur-md border border-[#2196F3]/30 shadow-xl transition-all duration-300 hover:scale-115 active:scale-95 group cursor-pointer"
                 aria-label="Next leadership member"
               >
                 <ChevronRight className="w-6 h-6 text-primary group-hover:text-black transition-colors" />
@@ -747,7 +834,7 @@ const About = () => {
                         <div className={`absolute top-0 left-0 right-0 h-1.5 ${member.accentBar}`} />
 
                         {/* Circle Image Cutout with ring */}
-                        <div className="w-28 h-28 sm:w-32 sm:h-32 rounded-full overflow-hidden border-4 border-white shadow-md mb-4 shrink-0 group-hover:scale-105 transition-transform duration-300 mt-2">
+                        <div className="w-28 h-28 sm:w-32 sm:h-32 rounded-full overflow-hidden border-4 border-white shadow-md mb-4 shrink-0 group-hover:scale-108 transition-transform duration-300 mt-2">
                           <img 
                             src={teamImg} 
                             alt={member.name} 
@@ -761,7 +848,7 @@ const About = () => {
                         </h3>
 
                         {/* Role / Designation Pill Badge */}
-                        <div className={`inline-block ${member.roleBadge} font-extrabold text-xs px-3.5 py-1 rounded-full mb-3 shadow-2xs`}>
+                        <div className={`inline-block ${member.roleBadge} font-extrabold text-xs px-3.5 py-1 rounded-full mb-3 shadow-2xs group-hover:scale-105 transition-transform duration-200`}>
                           {member.role}
                         </div>
 
@@ -814,7 +901,7 @@ const About = () => {
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
               
               {/* Left Column: Heading, Intro, 2x2 Features Grid & CTA */}
-              <div className="lg:col-span-5 flex flex-col items-start">
+              <div className="reveal-left lg:col-span-5 flex flex-col items-start">
                 
                 {/* Header Tag */}
                 <div className="flex items-center gap-2 mb-1">
@@ -838,9 +925,9 @@ const About = () => {
                 {/* 2x2 Feature Grid */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-8 w-full max-w-md">
                   {/* Feature 1: Collaborate */}
-                  <div className="flex items-start gap-3.5">
-                    <div className="w-12 h-12 rounded-2xl bg-[#2196F3]/10 text-primary border border-[#2196F3]/20 flex items-center justify-center shrink-0 shadow-2xs">
-                      <Users className="w-5 h-5 text-primary" />
+                  <div className="flex items-start gap-3.5 group">
+                    <div className="w-12 h-12 rounded-2xl bg-[#2196F3]/10 text-primary border border-[#2196F3]/20 flex items-center justify-center shrink-0 shadow-2xs group-hover:bg-primary group-hover:text-white transition-all duration-300">
+                      <Users className="w-5 h-5" />
                     </div>
                     <div>
                       <h4 className="font-extrabold text-base text-[#0a0a0a] leading-tight mb-1" style={{ color: '#0a0a0a' }}>
@@ -853,9 +940,9 @@ const About = () => {
                   </div>
 
                   {/* Feature 2: Grow */}
-                  <div className="flex items-start gap-3.5">
-                    <div className="w-12 h-12 rounded-2xl bg-[#2196F3]/10 text-primary border border-[#2196F3]/20 flex items-center justify-center shrink-0 shadow-2xs">
-                      <TrendingUp className="w-5 h-5 text-primary" />
+                  <div className="flex items-start gap-3.5 group">
+                    <div className="w-12 h-12 rounded-2xl bg-[#2196F3]/10 text-primary border border-[#2196F3]/20 flex items-center justify-center shrink-0 shadow-2xs group-hover:bg-primary group-hover:text-white transition-all duration-300">
+                      <TrendingUp className="w-5 h-5" />
                     </div>
                     <div>
                       <h4 className="font-extrabold text-base text-[#0a0a0a] leading-tight mb-1" style={{ color: '#0a0a0a' }}>
@@ -868,9 +955,9 @@ const About = () => {
                   </div>
 
                   {/* Feature 3: Celebrate */}
-                  <div className="flex items-start gap-3.5">
-                    <div className="w-12 h-12 rounded-2xl bg-[#2196F3]/10 text-primary border border-[#2196F3]/20 flex items-center justify-center shrink-0 shadow-2xs">
-                      <PartyPopper className="w-5 h-5 text-primary" />
+                  <div className="flex items-start gap-3.5 group">
+                    <div className="w-12 h-12 rounded-2xl bg-[#2196F3]/10 text-primary border border-[#2196F3]/20 flex items-center justify-center shrink-0 shadow-2xs group-hover:bg-primary group-hover:text-white transition-all duration-300">
+                      <PartyPopper className="w-5 h-5" />
                     </div>
                     <div>
                       <h4 className="font-extrabold text-base text-[#0a0a0a] leading-tight mb-1" style={{ color: '#0a0a0a' }}>
@@ -883,9 +970,9 @@ const About = () => {
                   </div>
 
                   {/* Feature 4: Well-being */}
-                  <div className="flex items-start gap-3.5">
-                    <div className="w-12 h-12 rounded-2xl bg-[#2196F3]/10 text-primary border border-[#2196F3]/20 flex items-center justify-center shrink-0 shadow-2xs">
-                      <Heart className="w-5 h-5 text-primary" />
+                  <div className="flex items-start gap-3.5 group">
+                    <div className="w-12 h-12 rounded-2xl bg-[#2196F3]/10 text-primary border border-[#2196F3]/20 flex items-center justify-center shrink-0 shadow-2xs group-hover:bg-primary group-hover:text-white transition-all duration-300">
+                      <Heart className="w-5 h-5" />
                     </div>
                     <div>
                       <h4 className="font-extrabold text-base text-[#0a0a0a] leading-tight mb-1" style={{ color: '#0a0a0a' }}>
@@ -901,7 +988,7 @@ const About = () => {
                 {/* CTA Button */}
                 <a
                   href="#contact"
-                  className="bg-[#bcd32e] hover:bg-[#a6bb24] text-[#0a0a0a] font-black text-sm sm:text-base px-8 py-3.5 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-0.5 inline-flex items-center gap-3 group cursor-pointer"
+                  className="btn-shine-effect bg-[#bcd32e] hover:bg-[#a6bb24] text-[#0a0a0a] font-black text-sm sm:text-base px-8 py-3.5 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-0.5 inline-flex items-center gap-3 group cursor-pointer"
                 >
                   <span>Explore Life at Profito</span>
                   <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
@@ -910,12 +997,12 @@ const About = () => {
               </div>
 
               {/* Right Column: Interactive Mosaic Photo Collage Carousel */}
-              <div className="lg:col-span-7 relative">
+              <div className="reveal-right lg:col-span-7 relative">
                 
                 {/* Left Navigation Button */}
                 <button
                   onClick={() => setLifeSlideIndex((prev) => (prev <= 0 ? lifeSlides.length - 1 : prev - 1))}
-                  className="w-11 h-11 rounded-full bg-[#bcd32e] hover:bg-[#a6bb24] text-[#0a0a0a] flex items-center justify-center shadow-lg absolute -left-4 sm:-left-5 top-1/2 -translate-y-1/2 z-20 transition-all duration-300 hover:scale-110 active:scale-95 cursor-pointer"
+                  className="w-11 h-11 rounded-full bg-[#bcd32e] hover:bg-[#a6bb24] text-[#0a0a0a] flex items-center justify-center shadow-lg absolute -left-4 sm:-left-5 top-1/2 -translate-y-1/2 z-20 transition-all duration-300 hover:scale-115 active:scale-95 cursor-pointer"
                   aria-label="Previous life slide"
                 >
                   <ChevronLeft className="w-6 h-6 text-[#0a0a0a]" />
@@ -924,7 +1011,7 @@ const About = () => {
                 {/* Right Navigation Button */}
                 <button
                   onClick={() => setLifeSlideIndex((prev) => (prev >= lifeSlides.length - 1 ? 0 : prev + 1))}
-                  className="w-11 h-11 rounded-full bg-[#bcd32e] hover:bg-[#a6bb24] text-[#0a0a0a] flex items-center justify-center shadow-lg absolute -right-4 sm:-right-5 top-1/2 -translate-y-1/2 z-20 transition-all duration-300 hover:scale-110 active:scale-95 cursor-pointer"
+                  className="w-11 h-11 rounded-full bg-[#bcd32e] hover:bg-[#a6bb24] text-[#0a0a0a] flex items-center justify-center shadow-lg absolute -right-4 sm:-right-5 top-1/2 -translate-y-1/2 z-20 transition-all duration-300 hover:scale-115 active:scale-95 cursor-pointer"
                   aria-label="Next life slide"
                 >
                   <ChevronRight className="w-6 h-6 text-[#0a0a0a]" />
@@ -936,9 +1023,10 @@ const About = () => {
                   {/* Main Large Left Photo (Col span 7) */}
                   <div className="md:col-span-7 rounded-3xl overflow-hidden shadow-lg border border-black/5 h-[340px] sm:h-[450px] group relative bg-gray-100">
                     <img 
+                      key={`main-${lifeSlideIndex}`}
                       src={lifeSlides[lifeSlideIndex].main} 
                       alt="Life at Profito collaboration"
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 animate-fade-in"
                     />
                   </div>
 
@@ -948,18 +1036,20 @@ const About = () => {
                     {/* Top Right Photo */}
                     <div className="rounded-3xl overflow-hidden shadow-lg border border-black/5 h-[162px] sm:h-[217px] group relative bg-gray-100">
                       <img 
+                        key={`topRight-${lifeSlideIndex}`}
                         src={lifeSlides[lifeSlideIndex].topRight} 
                         alt="Life at Profito meeting"
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 animate-fade-in"
                       />
                     </div>
 
                     {/* Bottom Right Photo */}
                     <div className="rounded-3xl overflow-hidden shadow-lg border border-black/5 h-[162px] sm:h-[217px] group relative bg-gray-100">
                       <img 
+                        key={`bottomRight-${lifeSlideIndex}`}
                         src={lifeSlides[lifeSlideIndex].bottomRight} 
                         alt="Life at Profito celebration"
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 animate-fade-in"
                       />
                     </div>
 
@@ -992,11 +1082,11 @@ const About = () => {
           <div className="mt-24 pt-12 pb-14 px-6 sm:px-10 lg:px-14 bg-gradient-to-b from-[#f4faff] via-white to-[#f4faff] rounded-3xl border border-[#2196F3]/15 shadow-[0_20px_50px_rgba(33,150,243,0.06)] relative overflow-hidden">
             
             {/* Ambient Accent Glows */}
-            <div className="absolute -top-24 -left-24 w-72 h-72 bg-[#2196F3]/10 rounded-full blur-3xl pointer-events-none" />
-            <div className="absolute -bottom-24 -right-24 w-72 h-72 bg-[#bcd32e]/15 rounded-full blur-3xl pointer-events-none" />
+            <div className="animate-float-orb absolute -top-24 -left-24 w-72 h-72 bg-[#2196F3]/10 rounded-full blur-3xl pointer-events-none" />
+            <div className="animate-float-orb-delayed absolute -bottom-24 -right-24 w-72 h-72 bg-[#bcd32e]/15 rounded-full blur-3xl pointer-events-none" />
 
             {/* Section Header */}
-            <div className="text-center max-w-4xl mx-auto mb-10 relative z-10">
+            <div className="reveal-on-scroll text-center max-w-4xl mx-auto mb-10 relative z-10">
               {/* Headline */}
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-[#0a0a0a]" style={{ color: '#0a0a0a' }}>
                 Awards <span className="text-[#2196F3]">And Recognitions</span>
@@ -1005,7 +1095,7 @@ const About = () => {
               {/* Decorative Accent Line with Dot Node */}
               <div className="flex items-center justify-center gap-1.5 my-4">
                 <span className="w-10 sm:w-14 h-0.5 bg-[#bcd32e] rounded-full" />
-                <span className="w-3 h-3 rounded-full bg-[#bcd32e] border-2 border-white shadow-xs" />
+                <span className="w-3 h-3 rounded-full bg-[#bcd32e] border-2 border-white shadow-xs animate-pulse-glow" />
                 <span className="w-10 sm:w-14 h-0.5 bg-[#bcd32e] rounded-full" />
               </div>
 
@@ -1021,18 +1111,21 @@ const About = () => {
 
             {/* 8-Card Logo Grid */}
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5 sm:gap-6 max-w-[1280px] mx-auto relative z-10">
-              {awardsList.map((award, idx) => (
-                <div
-                  key={idx}
-                  className="bg-white border border-[#2196F3]/15 hover:border-[#2196F3]/40 rounded-2xl p-5 sm:p-6 flex items-center justify-center shadow-[0_6px_20px_rgba(33,150,243,0.05)] hover:shadow-[0_15px_35px_rgba(33,150,243,0.14)] transition-all duration-300 hover:-translate-y-1.5 h-32 sm:h-36 group cursor-pointer"
-                >
-                  <img
-                    src={award.img}
-                    alt={award.title}
-                    className="max-h-20 sm:max-h-24 max-w-[85%] object-contain group-hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-              ))}
+              {awardsList.map((award, idx) => {
+                const delayClass = `reveal-delay-${(idx % 4) + 1}`;
+                return (
+                  <div
+                    key={idx}
+                    className={`reveal-scale ${delayClass} bg-white border border-[#2196F3]/15 hover:border-[#2196F3]/40 rounded-2xl p-5 sm:p-6 flex items-center justify-center shadow-[0_6px_20px_rgba(33,150,243,0.05)] hover:shadow-[0_15px_35px_rgba(33,150,243,0.14)] transition-all duration-300 hover:-translate-y-1.5 h-32 sm:h-36 group cursor-pointer`}
+                  >
+                    <img
+                      src={award.img}
+                      alt={award.title}
+                      className="max-h-20 sm:max-h-24 max-w-[85%] object-contain group-hover:scale-108 transition-transform duration-300"
+                    />
+                  </div>
+                );
+              })}
             </div>
 
           </div>
@@ -1041,11 +1134,11 @@ const About = () => {
           <div className="mt-24 pt-12 pb-14 px-6 sm:px-10 lg:px-14 bg-[#ffffff] rounded-3xl border border-[#2196F3]/15 shadow-[0_20px_50px_rgba(33,150,243,0.06)] relative overflow-hidden">
             
             {/* Ambient Decorative Accent Glows */}
-            <div className="absolute top-0 right-1/4 w-80 h-80 bg-[#2196F3]/10 rounded-full blur-3xl pointer-events-none" />
-            <div className="absolute bottom-0 left-1/4 w-80 h-80 bg-[#bcd32e]/15 rounded-full blur-3xl pointer-events-none" />
+            <div className="animate-float-orb absolute top-0 right-1/4 w-80 h-80 bg-[#2196F3]/10 rounded-full blur-3xl pointer-events-none" />
+            <div className="animate-float-orb-delayed absolute bottom-0 left-1/4 w-80 h-80 bg-[#bcd32e]/15 rounded-full blur-3xl pointer-events-none" />
 
             {/* Section Header */}
-            <div className="text-center max-w-4xl mx-auto mb-10 relative z-10">
+            <div className="reveal-on-scroll text-center max-w-4xl mx-auto mb-10 relative z-10">
               {/* Top Tag Label */}
               <div className="inline-flex items-center gap-2 mb-3">
                 <span className="w-8 h-0.5 bg-[#bcd32e] rounded-full" />
@@ -1065,18 +1158,21 @@ const About = () => {
 
             {/* 18-Card Logo Grid (6 cols x 3 rows) */}
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 sm:gap-5 max-w-[1360px] mx-auto relative z-10">
-              {publicationsList.map((pub, idx) => (
-                <div
-                  key={idx}
-                  className="bg-white border border-[#2196F3]/15 hover:border-[#2196F3]/40 rounded-2xl p-4 sm:p-5 flex items-center justify-center shadow-[0_4px_16px_rgba(33,150,243,0.05)] hover:shadow-[0_12px_28px_rgba(33,150,243,0.14)] transition-all duration-300 hover:-translate-y-1 h-24 sm:h-28 group cursor-pointer"
-                >
-                  <img
-                    src={pub.img}
-                    alt={pub.title}
-                    className="max-h-12 sm:max-h-14 max-w-[85%] object-contain group-hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-              ))}
+              {publicationsList.map((pub, idx) => {
+                const delayClass = `reveal-delay-${(idx % 6) + 1}`;
+                return (
+                  <div
+                    key={idx}
+                    className={`reveal-scale ${delayClass} bg-white border border-[#2196F3]/15 hover:border-[#2196F3]/40 rounded-2xl p-4 sm:p-5 flex items-center justify-center shadow-[0_4px_16px_rgba(33,150,243,0.05)] hover:shadow-[0_12px_28px_rgba(33,150,243,0.14)] transition-all duration-300 hover:-translate-y-1 h-24 sm:h-28 group cursor-pointer`}
+                  >
+                    <img
+                      src={pub.img}
+                      alt={pub.title}
+                      className="max-h-12 sm:max-h-14 max-w-[85%] object-contain group-hover:scale-108 transition-transform duration-300"
+                    />
+                  </div>
+                );
+              })}
             </div>
 
           </div>
@@ -1085,11 +1181,11 @@ const About = () => {
           <div className="mt-24 pt-12 pb-14 px-6 sm:px-10 lg:px-14 bg-gradient-to-b from-white via-[#f4faff] to-white rounded-3xl border border-[#2196F3]/15 shadow-[0_20px_50px_rgba(33,150,243,0.06)] relative overflow-hidden">
             
             {/* Ambient Background Glows */}
-            <div className="absolute top-0 left-1/3 w-96 h-96 bg-[#2196F3]/10 rounded-full blur-3xl pointer-events-none" />
-            <div className="absolute bottom-0 right-1/3 w-96 h-96 bg-[#bcd32e]/15 rounded-full blur-3xl pointer-events-none" />
+            <div className="animate-float-orb absolute top-0 left-1/3 w-96 h-96 bg-[#2196F3]/10 rounded-full blur-3xl pointer-events-none" />
+            <div className="animate-float-orb-delayed absolute bottom-0 right-1/3 w-96 h-96 bg-[#bcd32e]/15 rounded-full blur-3xl pointer-events-none" />
 
             {/* Section Header */}
-            <div className="text-center max-w-4xl mx-auto mb-12 relative z-10">
+            <div className="reveal-on-scroll text-center max-w-4xl mx-auto mb-12 relative z-10">
               {/* Top Tag Label */}
               <div className="inline-flex items-center gap-2 mb-3">
                 <span className="w-8 h-0.5 bg-[#bcd32e] rounded-full" />
@@ -1109,60 +1205,63 @@ const About = () => {
 
             {/* 4 Feature Cards Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-[1360px] mx-auto relative z-10">
-              {certificationsList.map((cert, idx) => (
-                <div
-                  key={idx}
-                  className="bg-white border border-[#2196F3]/15 hover:border-[#2196F3]/40 rounded-3xl p-7 sm:p-8 flex flex-col items-center text-center shadow-[0_6px_24px_rgba(33,150,243,0.06)] hover:shadow-[0_16px_40px_rgba(33,150,243,0.14)] transition-all duration-300 hover:-translate-y-2 group relative overflow-hidden min-h-[380px] justify-between cursor-pointer"
-                >
-                  {/* Icon Disc Container */}
-                  <div className="w-20 h-20 rounded-2xl bg-[#f4f7ff] border border-[#2196F3]/20 flex items-center justify-center mb-6 shadow-xs group-hover:scale-105 transition-transform duration-300">
-                    {cert.type === 'google' && (
-                      <svg className="w-10 h-10" viewBox="0 0 24 24">
-                        <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
-                        <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
-                        <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" />
-                        <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" />
-                      </svg>
-                    )}
-                    {cert.type === 'meta' && (
-                      <svg className="w-10 h-10 fill-[#1877F2]" viewBox="0 0 24 24">
-                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C20.012 23.027 24 18.062 24 12.073z"/>
-                      </svg>
-                    )}
-                    {cert.type === 'hubspot' && (
-                      <svg className="w-10 h-10 fill-[#FF7A59]" viewBox="0 0 24 24">
-                        <path d="M18.16 8.35v-2.3a2.38 2.38 0 1 0-2.38 2.3v2.33a5.53 5.53 0 0 0-3.08 1.48L7.6 8.87a2.76 2.76 0 1 0-1.8 1.44l5.07 3.28a5.57 5.57 0 0 0 .1 3.52l-2.6 2.6a2.32 2.32 0 1 0 1.63 1.63l2.6-2.6a5.56 5.56 0 1 0 5.56-10.4zm-1.19-3.48a1.19 1.19 0 1 1 0 2.38 1.19 1.19 0 0 1 0-2.38zm-12.6 5.34a1.57 1.57 0 1 1 0-3.14 1.57 1.57 0 0 1 0 3.14zm1.19 11.83a1.13 1.13 0 1 1 0-2.26 1.13 1.13 0 0 1 0 2.26zm11.44-6.04a4.37 4.37 0 1 1-4.37-4.37 4.37 4.37 0 0 1 4.37 4.37z"/>
-                      </svg>
-                    )}
-                    {cert.type === 'bing' && (
-                      <svg className="w-10 h-10 fill-[#0078D4]" viewBox="0 0 24 24">
-                        <path d="M5 3v18l5.5-3.5L18 21l-3.5-5.5L19 12l-8.5 2.5L5 3z"/>
-                      </svg>
-                    )}
+              {certificationsList.map((cert, idx) => {
+                const delayClass = `reveal-delay-${idx + 1}`;
+                return (
+                  <div
+                    key={idx}
+                    className={`reveal-on-scroll ${delayClass} bg-white border border-[#2196F3]/15 hover:border-[#2196F3]/40 rounded-3xl p-7 sm:p-8 flex flex-col items-center text-center shadow-[0_6px_24px_rgba(33,150,243,0.06)] hover:shadow-[0_16px_40px_rgba(33,150,243,0.14)] transition-all duration-300 hover:-translate-y-2 group relative overflow-hidden min-h-[380px] justify-between cursor-pointer`}
+                  >
+                    {/* Icon Disc Container */}
+                    <div className="w-20 h-20 rounded-2xl bg-[#f4f7ff] border border-[#2196F3]/20 flex items-center justify-center mb-6 shadow-xs group-hover:scale-110 group-hover:bg-primary/10 transition-all duration-300">
+                      {cert.type === 'google' && (
+                        <svg className="w-10 h-10 group-hover:rotate-6 transition-transform duration-300" viewBox="0 0 24 24">
+                          <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
+                          <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
+                          <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" />
+                          <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" />
+                        </svg>
+                      )}
+                      {cert.type === 'meta' && (
+                        <svg className="w-10 h-10 fill-[#1877F2] group-hover:rotate-6 transition-transform duration-300" viewBox="0 0 24 24">
+                          <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C20.012 23.027 24 18.062 24 12.073z"/>
+                        </svg>
+                      )}
+                      {cert.type === 'hubspot' && (
+                        <svg className="w-10 h-10 fill-[#FF7A59] group-hover:rotate-6 transition-transform duration-300" viewBox="0 0 24 24">
+                          <path d="M18.16 8.35v-2.3a2.38 2.38 0 1 0-2.38 2.3v2.33a5.53 5.53 0 0 0-3.08 1.48L7.6 8.87a2.76 2.76 0 1 0-1.8 1.44l5.07 3.28a5.57 5.57 0 0 0 .1 3.52l-2.6 2.6a2.32 2.32 0 1 0 1.63 1.63l2.6-2.6a5.56 5.56 0 1 0 5.56-10.4zm-1.19-3.48a1.19 1.19 0 1 1 0 2.38 1.19 1.19 0 0 1 0-2.38zm-12.6 5.34a1.57 1.57 0 1 1 0-3.14 1.57 1.57 0 0 1 0 3.14zm1.19 11.83a1.13 1.13 0 1 1 0-2.26 1.13 1.13 0 0 1 0 2.26zm11.44-6.04a4.37 4.37 0 1 1-4.37-4.37 4.37 4.37 0 0 1 4.37 4.37z"/>
+                        </svg>
+                      )}
+                      {cert.type === 'bing' && (
+                        <svg className="w-10 h-10 fill-[#0078D4] group-hover:rotate-6 transition-transform duration-300" viewBox="0 0 24 24">
+                          <path d="M5 3v18l5.5-3.5L18 21l-3.5-5.5L19 12l-8.5 2.5L5 3z"/>
+                        </svg>
+                      )}
+                    </div>
+
+                    {/* Title */}
+                    <h3 className="text-xl font-black text-[#0a0a0a] mb-2 leading-snug" style={{ color: '#0a0a0a' }}>
+                      {cert.title}
+                    </h3>
+
+                    {/* Description */}
+                    <p className="text-sm text-[#555555] font-medium leading-relaxed mb-6 flex-grow" style={{ color: '#555555' }}>
+                      {cert.description}
+                    </p>
+
+                    {/* Bottom Pill Badge */}
+                    <div className="bg-primary hover:bg-[#0a0a0a] text-white text-xs font-black px-6 py-2 rounded-full shadow-xs uppercase tracking-wider transition-colors duration-200">
+                      {cert.badge}
+                    </div>
                   </div>
-
-                  {/* Title */}
-                  <h3 className="text-xl font-black text-[#0a0a0a] mb-2 leading-snug" style={{ color: '#0a0a0a' }}>
-                    {cert.title}
-                  </h3>
-
-                  {/* Description */}
-                  <p className="text-sm text-[#555555] font-medium leading-relaxed mb-6 flex-grow" style={{ color: '#555555' }}>
-                    {cert.description}
-                  </p>
-
-                  {/* Bottom Pill Badge */}
-                  <div className="bg-primary hover:bg-[#0a0a0a] text-white text-xs font-black px-6 py-2 rounded-full shadow-xs uppercase tracking-wider transition-colors duration-200">
-                    {cert.badge}
-                  </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
 
           </div>
 
           {/* SECTION 9: CTA SECTION */}
-          <div className="mt-24">
+          <div className="reveal-on-scroll mt-24">
             <CTASection />
           </div>
 
