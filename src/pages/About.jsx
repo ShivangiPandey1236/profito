@@ -16,12 +16,159 @@ import {
   BookOpen,
   Search,
   ShieldCheck,
-  HeartHandshake
+  HeartHandshake,
+  ChevronLeft,
+  ChevronRight
 } from 'lucide-react';
+import teamImg from '../assets/team.jpeg';
 
 const About = () => {
   const [isVisible, setIsVisible] = useState(false);
   const containerRef = useRef(null);
+
+  // Leadership Carousel State
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [visibleCount, setVisibleCount] = useState(4);
+  const [isAutoplay, setIsAutoplay] = useState(true);
+  const [touchStart, setTouchStart] = useState(null);
+  const [touchEnd, setTouchEnd] = useState(null);
+
+  const leadershipTeam = [
+    {
+      name: 'Prateek Singh',
+      role: 'Head of HR',
+      bio: 'People are our greatest asset at Profito. As Head of HR, my role goes beyond recruitment and retention; it is about fostering a culture where everyone feels valued and empowered. We invest in the employees\' growth and well-being because their success is our success!',
+      bgClass: 'bg-gradient-to-b from-[#f7fce6] via-white to-[#ecf8c0]',
+      borderColor: 'border-[#bcd32e]',
+      roleBadge: 'bg-[#bcd32e]/25 text-[#4c5900]',
+      accentBar: 'bg-[#bcd32e]',
+    },
+    {
+      name: 'Nitin Agarwal',
+      role: 'CEO, MD',
+      bio: 'As CMD of Profito, I lead a team that embodies innovation and excellence. Our vision is to surpass market expectations with a deeper understanding of tech landscape and a commitment to delivering value. We are expanding our global reach while staying true to our core values.',
+      bgClass: 'bg-gradient-to-b from-[#f0f7ff] via-white to-[#e3f2fd]',
+      borderColor: 'border-[#2196F3]/40',
+      roleBadge: 'bg-[#2196F3]/15 text-[#0066cc]',
+      accentBar: 'bg-[#2196F3]',
+    },
+    {
+      name: 'Waseem Ahmad',
+      role: 'CEO, Agency Business',
+      bio: 'As CEO, Agency Business of Profito, I work with a team dedicated to operational excellence and client satisfaction. Our success is measured by the impact of our projects, not just profits. By fostering the culture of collaboration & continuous improvement, we ensure every endeavour advances us towards our goals.',
+      bgClass: 'bg-gradient-to-b from-[#f9fde8] via-white to-[#f0f9cc]',
+      borderColor: 'border-[#bcd32e]',
+      roleBadge: 'bg-[#bcd32e]/25 text-[#4c5900]',
+      accentBar: 'bg-[#bcd32e]',
+    },
+    {
+      name: 'Himanshu Bohra',
+      role: 'Director, Marketing',
+      bio: 'Leading marketing at Profito is more than a job; it is our passion. In the digital world, we strive to connect meaningfully with our audience through innovative campaigns and compelling storytelling. Our goal is not simply sell products but to create lasting experiences.',
+      bgClass: 'bg-gradient-to-b from-[#f4faff] via-white to-[#e0f2fe]',
+      borderColor: 'border-[#2196F3]/40',
+      roleBadge: 'bg-[#2196F3]/15 text-[#0066cc]',
+      accentBar: 'bg-[#2196F3]',
+    },
+    {
+      name: 'Vikram Sharma',
+      role: 'Vice President, Technology',
+      bio: 'Technology and AI are transforming digital marketing. At Profito, we pioneer cutting-edge tools and data-driven infrastructure to empower our clients with scalable, future-proof growth strategies.',
+      bgClass: 'bg-gradient-to-b from-[#f8fce8] via-white to-[#eef8be]',
+      borderColor: 'border-[#bcd32e]',
+      roleBadge: 'bg-[#bcd32e]/25 text-[#4c5900]',
+      accentBar: 'bg-[#bcd32e]',
+    },
+    {
+      name: 'Ananya Roy',
+      role: 'Chief Operating Officer',
+      bio: 'Operational efficiency and seamless execution form the backbone of scalable marketing. We bridge strategy with flawless delivery to consistently outperform industry benchmarks.',
+      bgClass: 'bg-gradient-to-b from-[#f0f9ff] via-white to-[#dbeafe]',
+      borderColor: 'border-[#2196F3]/40',
+      roleBadge: 'bg-[#2196F3]/15 text-[#0066cc]',
+      accentBar: 'bg-[#2196F3]',
+    },
+    {
+      name: 'Rohan Verma',
+      role: 'Head of Performance',
+      bio: 'Maximizing ROI for our clients is what drives us every single day. Through rapid experimentation, precision targeting, and continuous optimization, we turn ad spend into exponential revenue growth.',
+      bgClass: 'bg-gradient-to-b from-[#f6fce5] via-white to-[#ebf8b8]',
+      borderColor: 'border-[#bcd32e]',
+      roleBadge: 'bg-[#bcd32e]/25 text-[#4c5900]',
+      accentBar: 'bg-[#bcd32e]',
+    },
+    {
+      name: 'Sneha Kapoor',
+      role: 'Creative Director',
+      bio: 'Design is not just how it looks, but how it communicates value. We craft unforgettable visual identities and compelling brand stories that captivate audiences across all digital touchpoints.',
+      bgClass: 'bg-gradient-to-b from-[#f0f7ff] via-white to-[#e0f2fe]',
+      borderColor: 'border-[#2196F3]/40',
+      roleBadge: 'bg-[#2196F3]/15 text-[#0066cc]',
+      accentBar: 'bg-[#2196F3]',
+    },
+  ];
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 640) {
+        setVisibleCount(1);
+      } else if (window.innerWidth < 768) {
+        setVisibleCount(2);
+      } else if (window.innerWidth < 1024) {
+        setVisibleCount(3);
+      } else {
+        setVisibleCount(4);
+      }
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const maxIndex = Math.max(0, leadershipTeam.length - visibleCount);
+
+  useEffect(() => {
+    if (currentIndex > maxIndex) {
+      setCurrentIndex(maxIndex);
+    }
+  }, [maxIndex, currentIndex]);
+
+  useEffect(() => {
+    if (!isAutoplay) return;
+    const timer = setInterval(() => {
+      setCurrentIndex((prev) => (prev >= maxIndex ? 0 : prev + 1));
+    }, 4500);
+    return () => clearInterval(timer);
+  }, [isAutoplay, maxIndex]);
+
+  const handlePrev = () => {
+    setCurrentIndex((prev) => (prev <= 0 ? maxIndex : prev - 1));
+  };
+
+  const handleNext = () => {
+    setCurrentIndex((prev) => (prev >= maxIndex ? 0 : prev + 1));
+  };
+
+  const handleTouchStart = (e) => {
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    if (distance > 50) {
+      handleNext();
+    } else if (distance < -50) {
+      handlePrev();
+    }
+    setTouchStart(null);
+    setTouchEnd(null);
+  };
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -417,6 +564,141 @@ const About = () => {
           </div>
 
         </div>
+
+          {/* SECTION 4: MEET OUR LEADERSHIP CAROUSEL */}
+          <div className="mt-24 pt-12 pb-14 px-4 sm:px-8 lg:px-12 bg-gradient-to-b from-white via-[#f4faff] to-[#f8fcda]/40 rounded-3xl text-[#0a0a0a] shadow-[0_20px_50px_rgba(33,150,243,0.1)] relative overflow-hidden border border-[#2196F3]/20">
+            {/* Ambient Background Glows incorporating #2196F3 and #bcd32e */}
+            <div className="absolute top-0 right-0 w-96 h-96 bg-[#bcd32e]/20 rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#2196F3]/15 rounded-full blur-3xl pointer-events-none" />
+
+            {/* Section Header */}
+            <div className="text-center max-w-4xl mx-auto mb-12 relative z-10">
+              {/* Existing Leadership header (commented out as requested):
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#bcd32e]/25 border border-[#bcd32e]/60 text-[#4c5900] font-extrabold text-xs uppercase tracking-wider mb-4 shadow-2xs">
+                <span className="w-2.5 h-2.5 rounded-full bg-[#bcd32e] animate-pulse" />
+                <span>MEET OUR LEADERSHIP</span>
+              </div>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight mb-4 text-[#0a0a0a]" style={{ color: '#0a0a0a' }}>
+                Meet Our{' '}
+                <span className="bg-gradient-to-r from-primary via-[#42a5f5] to-[#bcd32e] bg-clip-text text-transparent">
+                  Leadership
+                </span>
+              </h2>
+              */}
+
+              {/* Header matching Why Choose Us section styling */}
+              <div className="inline-flex items-center gap-2 mb-3">
+                <span className="w-8 h-0.5 bg-primary rounded-full" />
+                <span className="text-xs font-black tracking-widest text-primary uppercase">MEET OUR LEADERSHIP</span>
+                <span className="w-8 h-0.5 bg-primary rounded-full" />
+              </div>
+
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#0a0a0a] tracking-tight mb-4" style={{ color: '#0a0a0a' }}>
+                Meet Our{' '}
+                <span className="bg-gradient-to-r from-primary via-[#42a5f5] to-primary bg-clip-text text-transparent">
+                  Leadership
+                </span>
+              </h2>
+
+              <p className="text-[#555555] text-sm sm:text-base leading-relaxed max-w-3xl mx-auto font-medium" style={{ color: '#555555' }}>
+                Meet the visionaries behind Profito Interactive Growth Partners – a team of leaders with a passion for innovation and a commitment to driving success. Get to know our key leadership team:
+              </p>
+            </div>
+
+            {/* Carousel Container */}
+            <div 
+              className="relative max-w-[1400px] mx-auto px-2 sm:px-6 relative z-10"
+              onMouseEnter={() => setIsAutoplay(false)}
+              onMouseLeave={() => setIsAutoplay(true)}
+              onTouchStart={handleTouchStart}
+              onTouchMove={handleTouchMove}
+              onTouchEnd={handleTouchEnd}
+            >
+              {/* Navigation Button - Left */}
+              <button
+                onClick={handlePrev}
+                className="absolute -left-2 sm:-left-6 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-white hover:bg-[#bcd32e] text-[#0a0a0a] hover:text-black flex items-center justify-center backdrop-blur-md border border-[#2196F3]/30 shadow-xl transition-all duration-300 hover:scale-110 active:scale-95 group cursor-pointer"
+                aria-label="Previous leadership member"
+              >
+                <ChevronLeft className="w-6 h-6 text-primary group-hover:text-black transition-colors" />
+              </button>
+
+              {/* Navigation Button - Right */}
+              <button
+                onClick={handleNext}
+                className="absolute -right-2 sm:-right-6 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-white hover:bg-[#bcd32e] text-[#0a0a0a] hover:text-black flex items-center justify-center backdrop-blur-md border border-[#2196F3]/30 shadow-xl transition-all duration-300 hover:scale-110 active:scale-95 group cursor-pointer"
+                aria-label="Next leadership member"
+              >
+                <ChevronRight className="w-6 h-6 text-primary group-hover:text-black transition-colors" />
+              </button>
+
+              {/* Carousel Track */}
+              <div className="overflow-hidden py-4">
+                <div 
+                  className="flex transition-transform duration-500 ease-out"
+                  style={{
+                    transform: `translateX(-${currentIndex * (100 / visibleCount)}%)`
+                  }}
+                >
+                  {leadershipTeam.map((member, idx) => (
+                    <div
+                      key={idx}
+                      className="flex-shrink-0 px-2 sm:px-3"
+                      style={{ width: `${100 / visibleCount}%` }}
+                    >
+                      {/* Leadership Card matching page styling */}
+                      <div 
+                        className={`${member.bgClass} border-2 ${member.borderColor} rounded-2xl p-6 flex flex-col items-center text-center h-full min-h-[430px] shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group select-none relative overflow-hidden`}
+                      >
+                        {/* Top Accent Line */}
+                        <div className={`absolute top-0 left-0 right-0 h-1.5 ${member.accentBar}`} />
+
+                        {/* Circle Image Cutout with ring */}
+                        <div className="w-28 h-28 sm:w-32 sm:h-32 rounded-full overflow-hidden border-4 border-white shadow-md mb-4 shrink-0 group-hover:scale-105 transition-transform duration-300 mt-2">
+                          <img 
+                            src={teamImg} 
+                            alt={member.name} 
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
+
+                        {/* Name */}
+                        <h3 className="text-xl sm:text-2xl font-black text-[#0a0a0a] mb-1.5 leading-tight" style={{ color: '#0a0a0a' }}>
+                          {member.name}
+                        </h3>
+
+                        {/* Role / Designation Pill Badge */}
+                        <div className={`inline-block ${member.roleBadge} font-extrabold text-xs px-3.5 py-1 rounded-full mb-3 shadow-2xs`}>
+                          {member.role}
+                        </div>
+
+                        {/* Bio / Quote */}
+                        <p className="text-xs sm:text-sm font-medium italic text-[#444444] leading-relaxed text-center flex-grow" style={{ color: '#444444' }}>
+                          "{member.bio}"
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Pagination Dots */}
+              <div className="flex items-center justify-center gap-2 mt-6">
+                {Array.from({ length: maxIndex + 1 }).map((_, dotIdx) => (
+                  <button
+                    key={dotIdx}
+                    onClick={() => setCurrentIndex(dotIdx)}
+                    className={`h-2.5 rounded-full transition-all duration-300 cursor-pointer ${
+                      currentIndex === dotIdx 
+                        ? 'w-8 bg-primary shadow-xs' 
+                        : 'w-2.5 bg-primary/20 hover:bg-primary/50'
+                    }`}
+                    aria-label={`Go to slide ${dotIdx + 1}`}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
 
       </div>
     </div>
