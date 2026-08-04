@@ -390,11 +390,19 @@ export default function Header() {
                           <ul className="flex flex-col gap-1 text-left">
                             {section.items.map((subItem, itemIdx) => {
                               const isAboutUs = subItem === 'About Us';
+                              const isContactUs = subItem === 'Contact Us';
                               return (
                                 <li key={itemIdx}>
                                   {isAboutUs ? (
                                     <Link
                                       to="/about"
+                                      className="text-[0.85rem] font-semibold text-zinc-700 hover:text-primary hover:bg-primary/6 hover:translate-x-1 rounded-lg pl-2 pr-2 hover:pl-4 py-1 transition-all duration-200 block text-left -mx-2 sub-item-link"
+                                    >
+                                      {subItem}
+                                    </Link>
+                                  ) : isContactUs ? (
+                                    <Link
+                                      to="/contact-us"
                                       className="text-[0.85rem] font-semibold text-zinc-700 hover:text-primary hover:bg-primary/6 hover:translate-x-1 rounded-lg pl-2 pr-2 hover:pl-4 py-1 transition-all duration-200 block text-left -mx-2 sub-item-link"
                                     >
                                       {subItem}
@@ -440,49 +448,60 @@ export default function Header() {
       </div>
 
       {/* Mobile Drawer */}
-      <div className={`fixed left-0 right-0 bottom-0 bg-white border-t border-black/5 z-40 p-6 overflow-y-auto shadow-[0_10px_25px_rgba(0,0,0,0.05)] transition-all duration-250 top-[106px] max-[576px]:top-[70px] ${isOpen ? 'translate-y-0 opacity-100 pointer-events-auto' : '-translate-y-full opacity-0 pointer-events-none'}`}>
+      <div className={`fixed left-0 right-0 bottom-0 bg-white text-black border-t border-black/5 z-40 p-6 overflow-y-auto shadow-[0_10px_25px_rgba(0,0,0,0.05)] transition-all duration-250 top-[106px] max-[576px]:top-[70px] ${isOpen ? 'translate-y-0 opacity-100 pointer-events-auto' : '-translate-y-full opacity-0 pointer-events-none'}`}>
         <nav className="flex flex-col gap-4">
           {navItems.map((item, index) => (
             <div key={index} className="border-b border-black/5 pb-3">
               <button
-                className="w-full flex justify-between items-center bg-transparent border-none font-sans text-[1.05rem] font-semibold text-black py-2 cursor-pointer text-left"
+                className={`w-full flex justify-between items-center bg-transparent border-none font-sans text-[1.05rem] font-semibold ${activeDropdown === index ? 'text-primary' : 'text-black'} py-2 cursor-pointer text-left transition-colors duration-150`}
                 onClick={() => setActiveDropdown(activeDropdown === index ? null : index)}
               >
                 <span>{item.name}</span>
-                <ChevronDown size={16} className={`transition-transform duration-250 ${activeDropdown === index ? 'rotate-180' : ''}`} />
+                <ChevronDown size={16} className={`transition-transform duration-250 ${activeDropdown === index ? 'rotate-180 text-primary' : 'text-black'}`} />
               </button>
               <div className={`overflow-hidden flex flex-col gap-4 pl-4 transition-all duration-250 ${activeDropdown === index ? 'max-h-[1000px] pt-2 pb-2' : 'max-h-0'}`}>
                 {item.columns.map((column, colIdx) => (
                   <div key={colIdx} className="flex flex-col gap-3">
                     {column.sections.map((section, secIdx) => (
                       <div key={secIdx} className="flex flex-col gap-2">
-                        <h5 className="text-[0.8rem] font-bold !text-primary uppercase tracking-wider pl-2 border-l-2 border-primary text-left">
+                        <h4 className="text-[0.8rem] font-extrabold tracking-wider !text-primary uppercase flex items-center gap-2 relative pl-2.5 before:content-[''] before:absolute before:left-0 before:top-[1.5px] before:w-[3px] before:h-[13px] before:bg-primary before:rounded-sm text-left">
                           {section.title}
-                        </h5>
-                        <div className="flex flex-col gap-1 pl-2 text-left">
+                        </h4>
+                        <ul className="flex flex-col gap-1 text-left">
                           {section.items.map((subItem, itemIdx) => {
                             const isAboutUs = subItem === 'About Us';
-                            return isAboutUs ? (
-                              <Link
-                                key={itemIdx}
-                                to="/about"
-                                className="block py-1 pl-2 pr-2 hover:pl-4 -mx-2 rounded-lg text-[#555555] text-[0.9rem] font-semibold transition-all duration-200 hover:text-primary hover:bg-primary/6 hover:translate-x-1 sub-item-link"
-                                onClick={() => setIsOpen(false)}
-                              >
-                                {subItem}
-                              </Link>
-                            ) : (
-                              <a
-                                key={itemIdx}
-                                href={`#${subItem.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`}
-                                className="block py-1 pl-2 pr-2 hover:pl-4 -mx-2 rounded-lg text-[#555555] text-[0.9rem] font-semibold transition-all duration-200 hover:text-primary hover:bg-primary/6 hover:translate-x-1 sub-item-link"
-                                onClick={() => setIsOpen(false)}
-                              >
-                                {subItem}
-                              </a>
+                            const isContactUs = subItem === 'Contact Us';
+                            return (
+                              <li key={itemIdx}>
+                                {isAboutUs ? (
+                                  <Link
+                                    to="/about"
+                                    className="text-[0.85rem] font-semibold text-zinc-700 hover:text-primary hover:bg-primary/6 hover:translate-x-1 rounded-lg pl-2 pr-2 hover:pl-4 py-1 transition-all duration-200 block text-left -mx-2 sub-item-link"
+                                    onClick={() => setIsOpen(false)}
+                                  >
+                                    {subItem}
+                                  </Link>
+                                ) : isContactUs ? (
+                                  <Link
+                                    to="/contact-us"
+                                    className="text-[0.85rem] font-semibold text-zinc-700 hover:text-primary hover:bg-primary/6 hover:translate-x-1 rounded-lg pl-2 pr-2 hover:pl-4 py-1 transition-all duration-200 block text-left -mx-2 sub-item-link"
+                                    onClick={() => setIsOpen(false)}
+                                  >
+                                    {subItem}
+                                  </Link>
+                                ) : (
+                                  <a
+                                    href={`#${subItem.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`}
+                                    className="text-[0.85rem] font-semibold text-zinc-700 hover:text-primary hover:bg-primary/6 hover:translate-x-1 rounded-lg pl-2 pr-2 hover:pl-4 py-1 transition-all duration-200 block text-left -mx-2 sub-item-link"
+                                    onClick={() => setIsOpen(false)}
+                                  >
+                                    {subItem}
+                                  </a>
+                                )}
+                              </li>
                             );
                           })}
-                        </div>
+                        </ul>
                       </div>
                     ))}
                   </div>

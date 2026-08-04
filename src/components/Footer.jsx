@@ -81,7 +81,7 @@ export default function Footer() {
         { name: 'Our Team', href: '#our-team' },
         { name: 'Careers', href: '#careers' },
         { name: 'Write For Us', href: '#write-for-us' },
-        { name: 'Contact Us', href: '#contact-us' },
+        { name: 'Contact Us', href: '/contact-us' },
         { name: 'Sitemap', href: '#sitemap' }
       ]
     }
