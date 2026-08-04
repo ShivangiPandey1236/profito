@@ -17,7 +17,12 @@ import {
   Clock,
   MapPin,
   Navigation,
-  Star
+  Star,
+  User,
+  Globe,
+  Briefcase,
+  FileText,
+  ShieldCheck
 } from 'lucide-react';
 
 export default function ContactUs() {
@@ -251,131 +256,174 @@ export default function ContactUs() {
 
 
         {/* =========================================================
-            SECTION 2: CONTACT FORM & CARDS SECTION
+            SECTION 2: ULTRA-MODERN CONTACT FORM & CARDS SECTION
            ========================================================= */}
         <div id="contact-form-section" className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start mb-20">
           
-          {/* Left Column: Interactive Contact Form (Span 7) */}
-          <div className="lg:col-span-7 bg-white border border-[#2196F3]/15 rounded-3xl p-6 sm:p-10 shadow-lg text-left font-sans">
+          {/* Left Column: Ultra-Modern Glassmorphic Contact Form (Span 7) */}
+          <div className="lg:col-span-7 relative bg-white/90 backdrop-blur-xl border border-[#2196F3]/25 rounded-[32px] p-6 sm:p-10 lg:p-12 shadow-[0_25px_70px_-15px_rgba(33,150,243,0.15)] text-left font-sans overflow-hidden">
             
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#2196F3]/10 text-[#2196F3] font-bold text-xs uppercase tracking-wider mb-4 font-sans">
+            {/* Ambient Lighting Orbs */}
+            <div className="absolute -top-24 -right-24 w-72 h-72 bg-[#2196F3]/12 rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute -bottom-24 -left-24 w-72 h-72 bg-[#bcd32e]/20 rounded-full blur-3xl pointer-events-none" />
+
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#bcd32e]/30 border border-[#bcd32e]/60 text-[#3d4700] font-black text-xs uppercase tracking-wider mb-4 font-sans shadow-xs relative z-10">
+              <Sparkles className="w-3.5 h-3.5 text-[#3d4700]" />
               <span>GET IN TOUCH</span>
             </div>
 
-            <h2 className="text-2xl sm:text-3xl font-black text-[#0f172a] mb-3 font-sans" style={{ color: '#0f172a' }}>
+            <h2 className="text-2xl sm:text-3xl font-black text-[#0f172a] mb-2 font-sans tracking-tight relative z-10" style={{ color: '#0f172a' }}>
               Send Us a Message
             </h2>
-            <p className="text-slate-600 text-sm sm:text-base mb-8 font-sans font-medium" style={{ color: '#475569' }}>
+            <p className="text-slate-600 text-sm sm:text-base mb-8 font-sans font-medium relative z-10" style={{ color: '#475569' }}>
               Fill out the form below and our digital growth team will get back to you with a free consultation and project quote within hours.
             </p>
 
             {formSubmitted && (
-              <div className="mb-6 p-4 rounded-2xl bg-[#bcd32e]/20 border border-[#bcd32e] text-[#3c4700] font-bold flex items-center gap-3 font-sans">
+              <div className="mb-6 p-4 rounded-2xl bg-[#bcd32e]/25 border border-[#bcd32e] text-[#3c4700] font-bold flex items-center gap-3 font-sans relative z-10 shadow-sm">
                 <CheckCircle2 className="w-5 h-5 text-[#4c5900] shrink-0" />
                 <span>Thank you! Your message has been sent successfully. Our team will contact you shortly.</span>
               </div>
             )}
 
-            <form onSubmit={handleSubmit} className="space-y-5 font-sans">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <form onSubmit={handleSubmit} className="space-y-6 font-sans relative z-10">
+              
+              {/* Name & Email Row */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-xs font-black uppercase text-slate-700 mb-2 font-sans tracking-wider" style={{ color: '#334155' }}>
-                    Your Name *
+                  <label className="block text-xs font-black uppercase text-slate-700 mb-2 font-sans tracking-wider flex items-center gap-2" style={{ color: '#334155' }}>
+                    <User className="w-3.5 h-3.5 text-[#2196F3]" />
+                    <span>Your Name *</span>
                   </label>
-                  <input
-                    type="text"
-                    name="name"
-                    value={formData.name}
+                  <div className="relative group">
+                    <div className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-[#2196F3] transition-colors pointer-events-none">
+                      <User className="w-4 h-4" />
+                    </div>
+                    <input
+                      type="text"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      required
+                      placeholder="John Doe"
+                      className="w-full bg-slate-50/80 border border-slate-200/90 rounded-2xl pl-11 pr-4 py-3.5 text-sm font-semibold text-slate-900 placeholder:text-slate-400 focus:bg-white focus:border-[#2196F3] focus:ring-4 focus:ring-[#2196F3]/10 focus:outline-none transition-all shadow-2xs font-sans"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-xs font-black uppercase text-slate-700 mb-2 font-sans tracking-wider flex items-center gap-2" style={{ color: '#334155' }}>
+                    <Mail className="w-3.5 h-3.5 text-[#2196F3]" />
+                    <span>Email Address *</span>
+                  </label>
+                  <div className="relative group">
+                    <div className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-[#2196F3] transition-colors pointer-events-none">
+                      <Mail className="w-4 h-4" />
+                    </div>
+                    <input
+                      type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      required
+                      placeholder="john@example.com"
+                      className="w-full bg-slate-50/80 border border-slate-200/90 rounded-2xl pl-11 pr-4 py-3.5 text-sm font-semibold text-slate-900 placeholder:text-slate-400 focus:bg-white focus:border-[#2196F3] focus:ring-4 focus:ring-[#2196F3]/10 focus:outline-none transition-all shadow-2xs font-sans"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              {/* Phone & Website Row */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div>
+                  <label className="block text-xs font-black uppercase text-slate-700 mb-2 font-sans tracking-wider flex items-center gap-2" style={{ color: '#334155' }}>
+                    <Phone className="w-3.5 h-3.5 text-[#2196F3]" />
+                    <span>Phone Number</span>
+                  </label>
+                  <div className="relative group">
+                    <div className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-[#2196F3] transition-colors pointer-events-none">
+                      <Phone className="w-4 h-4" />
+                    </div>
+                    <input
+                      type="tel"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleChange}
+                      placeholder="+1 (555) 000-0000"
+                      className="w-full bg-slate-50/80 border border-slate-200/90 rounded-2xl pl-11 pr-4 py-3.5 text-sm font-semibold text-slate-900 placeholder:text-slate-400 focus:bg-white focus:border-[#2196F3] focus:ring-4 focus:ring-[#2196F3]/10 focus:outline-none transition-all shadow-2xs font-sans"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-xs font-black uppercase text-slate-700 mb-2 font-sans tracking-wider flex items-center gap-2" style={{ color: '#334155' }}>
+                    <Globe className="w-3.5 h-3.5 text-[#2196F3]" />
+                    <span>Website (Optional)</span>
+                  </label>
+                  <div className="relative group">
+                    <div className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-[#2196F3] transition-colors pointer-events-none">
+                      <Globe className="w-4 h-4" />
+                    </div>
+                    <input
+                      type="url"
+                      name="website"
+                      value={formData.website}
+                      onChange={handleChange}
+                      placeholder="https://yourwebsite.com"
+                      className="w-full bg-slate-50/80 border border-slate-200/90 rounded-2xl pl-11 pr-4 py-3.5 text-sm font-semibold text-slate-900 placeholder:text-slate-400 focus:bg-white focus:border-[#2196F3] focus:ring-4 focus:ring-[#2196F3]/10 focus:outline-none transition-all shadow-2xs font-sans"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              {/* Service Select */}
+              <div>
+                <label className="block text-xs font-black uppercase text-slate-700 mb-2 font-sans tracking-wider flex items-center gap-2" style={{ color: '#334155' }}>
+                  <Briefcase className="w-3.5 h-3.5 text-[#2196F3]" />
+                  <span>Service Interested In</span>
+                </label>
+                <div className="relative group">
+                  <select
+                    name="service"
+                    value={formData.service}
+                    onChange={handleChange}
+                    className="w-full bg-slate-50/80 border border-slate-200/90 rounded-2xl px-4 py-3.5 text-sm font-bold text-slate-900 focus:bg-white focus:border-[#2196F3] focus:ring-4 focus:ring-[#2196F3]/10 focus:outline-none transition-all shadow-2xs font-sans cursor-pointer"
+                  >
+                    <option value="SEO & AI Visibility">SEO & AI Visibility (LLMO / GEO)</option>
+                    <option value="Paid Advertising (PPC)">Paid Advertising (Google / Meta Ads)</option>
+                    <option value="Web & App Development">Web & App Development</option>
+                    <option value="AI Automation & Chatbots">AI Automation & Chatbots</option>
+                    <option value="Branding & Creative Design">Branding & Creative Design</option>
+                  </select>
+                </div>
+              </div>
+
+              {/* Message Input */}
+              <div>
+                <label className="block text-xs font-black uppercase text-slate-700 mb-2 font-sans tracking-wider flex items-center gap-2" style={{ color: '#334155' }}>
+                  <FileText className="w-3.5 h-3.5 text-[#2196F3]" />
+                  <span>Your Message / Requirements *</span>
+                </label>
+                <div className="relative group">
+                  <textarea
+                    name="message"
+                    rows="4"
+                    value={formData.message}
                     onChange={handleChange}
                     required
-                    placeholder="John Doe"
-                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3.5 text-sm font-semibold text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-[#2196F3] focus:bg-white transition-all font-sans"
-                  />
-                </div>
-                <div>
-                  <label className="block text-xs font-black uppercase text-slate-700 mb-2 font-sans tracking-wider" style={{ color: '#334155' }}>
-                    Email Address *
-                  </label>
-                  <input
-                    type="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                    placeholder="john@example.com"
-                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3.5 text-sm font-semibold text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-[#2196F3] focus:bg-white transition-all font-sans"
+                    placeholder="Tell us about your business goals and expectations..."
+                    className="w-full bg-slate-50/80 border border-slate-200/90 rounded-2xl p-4 text-sm font-semibold text-slate-900 placeholder:text-slate-400 focus:bg-white focus:border-[#2196F3] focus:ring-4 focus:ring-[#2196F3]/10 focus:outline-none transition-all shadow-2xs font-sans"
                   />
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                <div>
-                  <label className="block text-xs font-black uppercase text-slate-700 mb-2 font-sans tracking-wider" style={{ color: '#334155' }}>
-                    Phone Number
-                  </label>
-                  <input
-                    type="tel"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    placeholder="+1 (555) 000-0000"
-                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3.5 text-sm font-semibold text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-[#2196F3] focus:bg-white transition-all font-sans"
-                  />
-                </div>
-                <div>
-                  <label className="block text-xs font-black uppercase text-slate-700 mb-2 font-sans tracking-wider" style={{ color: '#334155' }}>
-                    Website (Optional)
-                  </label>
-                  <input
-                    type="url"
-                    name="website"
-                    value={formData.website}
-                    onChange={handleChange}
-                    placeholder="https://yourwebsite.com"
-                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3.5 text-sm font-semibold text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-[#2196F3] focus:bg-white transition-all font-sans"
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label className="block text-xs font-black uppercase text-slate-700 mb-2 font-sans tracking-wider" style={{ color: '#334155' }}>
-                  Service Interested In
-                </label>
-                <select
-                  name="service"
-                  value={formData.service}
-                  onChange={handleChange}
-                  className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3.5 text-sm font-semibold text-slate-900 focus:outline-none focus:border-[#2196F3] focus:bg-white transition-all font-sans"
-                >
-                  <option value="SEO & AI Visibility">SEO & AI Visibility (LLMO / GEO)</option>
-                  <option value="Paid Advertising (PPC)">Paid Advertising (Google / Meta Ads)</option>
-                  <option value="Web & App Development">Web & App Development</option>
-                  <option value="AI Automation & Chatbots">AI Automation & Chatbots</option>
-                  <option value="Branding & Creative Design">Branding & Creative Design</option>
-                </select>
-              </div>
-
-              <div>
-                <label className="block text-xs font-black uppercase text-slate-700 mb-2 font-sans tracking-wider" style={{ color: '#334155' }}>
-                  Your Message / Requirements *
-                </label>
-                <textarea
-                  name="message"
-                  rows="4"
-                  value={formData.message}
-                  onChange={handleChange}
-                  required
-                  placeholder="Tell us about your business goals and expectations..."
-                  className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3.5 text-sm font-semibold text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-[#2196F3] focus:bg-white transition-all font-sans"
-                />
-              </div>
-
+              {/* Modern Gradient Submit Button */}
               <button
                 type="submit"
-                className="w-full bg-[#2196F3] hover:bg-[#0f172a] text-white font-bold text-base py-4 rounded-xl shadow-lg shadow-[#2196F3]/25 flex items-center justify-center gap-2 transition-all duration-300 hover:-translate-y-0.5 cursor-pointer font-sans"
+                className="w-full bg-gradient-to-r from-[#0052cc] via-[#2196F3] to-[#0052cc] bg-[length:200%_auto] hover:bg-right text-white font-extrabold text-base py-4.5 px-8 rounded-2xl shadow-xl shadow-[#2196F3]/25 flex items-center justify-center gap-3 transition-all duration-500 hover:-translate-y-1 hover:shadow-2xl cursor-pointer group font-sans"
               >
-                <Send className="w-5 h-5 text-white" />
-                <span className="text-white font-bold">Submit Proposal Request</span>
+                <Send className="w-5 h-5 text-white transition-transform group-hover:translate-x-1 group-hover:-translate-y-0.5" />
+                <span className="text-white font-black text-base tracking-wide">Submit Proposal Request</span>
               </button>
 
             </form>
