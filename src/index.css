@@ -4169,3 +4169,100 @@ a {
 .animate-star-pop {
   animation: starPop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both;
 }
+
+/* Service Page Hero Animations */
+@keyframes serviceFloat {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-12px) rotate(0.5deg);
+  }
+}
+
+@keyframes servicePulseGlow {
+  0%, 100% {
+    opacity: 0.15;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.35;
+    transform: scale(1.15);
+  }
+}
+
+@keyframes serviceSpinSlow {
+  from {
+    transform: translateY(-50%) rotate(0deg);
+  }
+  to {
+    transform: translateY(-50%) rotate(360deg);
+  }
+}
+
+@keyframes serviceDashLine {
+  0% {
+    stroke-dashoffset: 600;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes serviceFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes serviceBadgeBounce {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-6px) scale(1.08);
+  }
+}
+
+.animate-service-float {
+  animation: serviceFloat 6s ease-in-out infinite;
+}
+
+.animate-service-pulse {
+  animation: servicePulseGlow 4s ease-in-out infinite;
+}
+
+.animate-service-spin {
+  animation: serviceSpinSlow 40s linear infinite;
+}
+
+.animate-service-dash {
+  stroke-dasharray: 600;
+  animation: serviceDashLine 2.2s ease-out forwards;
+}
+
+
+.animate-service-fade-1 {
+  animation: serviceFadeUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both;
+}
+
+.animate-service-fade-2 {
+  animation: serviceFadeUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.25s both;
+}
+
+.animate-service-fade-3 {
+  animation: serviceFadeUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.4s both;
+}
+
+.animate-service-fade-4 {
+  animation: serviceFadeUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.55s both;
+}
+
+.animate-service-badge-bounce {
+  animation: serviceBadgeBounce 3s ease-in-out infinite;
+}

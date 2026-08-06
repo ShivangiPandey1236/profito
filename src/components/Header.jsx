@@ -416,12 +416,12 @@ export default function Header() {
                                       {subItem}
                                     </Link>
                                   ) : (
-                                    <a
-                                      href={`#${subItem.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`}
+                                    <Link
+                                      to={`/service/${subItem.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '')}`}
                                       className="text-[0.85rem] font-semibold text-zinc-700 hover:text-primary hover:bg-primary/6 hover:translate-x-1 rounded-lg pl-2 pr-2 hover:pl-4 py-1 transition-all duration-200 block text-left -mx-2 sub-item-link"
                                     >
                                       {subItem}
-                                    </a>
+                                    </Link>
                                   )}
                                 </li>
                               );
@@ -507,13 +507,13 @@ export default function Header() {
                                     {subItem}
                                   </Link>
                                 ) : (
-                                  <a
-                                    href={`#${subItem.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`}
+                                  <Link
+                                    to={`/service/${subItem.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '')}`}
                                     className="text-[0.85rem] font-semibold text-zinc-700 hover:text-primary hover:bg-primary/6 hover:translate-x-1 rounded-lg pl-2 pr-2 hover:pl-4 py-1 transition-all duration-200 block text-left -mx-2 sub-item-link"
                                     onClick={() => setIsOpen(false)}
                                   >
                                     {subItem}
-                                  </a>
+                                  </Link>
                                 )}
                               </li>
                             );
