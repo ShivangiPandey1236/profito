@@ -419,56 +419,96 @@ const About = () => {
       icon: Award,
       title: 'Experienced Team',
       description: 'Highly qualified and dedicated specialists committed to strategy excellence, mentorship and holistic business growth.',
-      bgStyle: 'bg-white border-[#2196F3]/15 hover:border-primary',
+      bgClass: 'bg-gradient-to-b from-[#f7fce6] via-white to-[#ecf8c0]',
+      borderColor: 'border-[#bcd32e]',
+      numberBadge: 'bg-[#bcd32e]/30 text-[#4c5900]',
+      accentBar: 'bg-[#bcd32e]',
+      iconColor: 'text-[#4c5900]',
+      iconBg: 'bg-[#f4fce0] border-2 border-[#bcd32e]/50',
     },
     {
       number: '02',
       icon: Cpu,
       title: 'Advanced Infrastructure',
       description: 'State-of-the-art marketing technology, AI tools and analytics platforms that support practical execution and innovation.',
-      bgStyle: 'bg-[#f4faff] border-[#2196F3]/20 hover:border-primary',
+      bgClass: 'bg-gradient-to-b from-[#f0f7ff] via-white to-[#e3f2fd]',
+      borderColor: 'border-[#2196F3]/40',
+      numberBadge: 'bg-[#2196F3]/20 text-[#0066cc]',
+      accentBar: 'bg-[#2196F3]',
+      iconColor: 'text-[#0066cc]',
+      iconBg: 'bg-[#e3f2fd]/60 border-2 border-[#2196F3]/40',
     },
     {
       number: '03',
       icon: BookOpen,
       title: 'Quality Execution',
       description: 'Data-integrated strategy with innovative methodologies, skill training and client-centric campaign execution.',
-      bgStyle: 'bg-white border-[#2196F3]/15 hover:border-primary',
+      bgClass: 'bg-gradient-to-b from-[#f7fce6] via-white to-[#ecf8c0]',
+      borderColor: 'border-[#bcd32e]',
+      numberBadge: 'bg-[#bcd32e]/30 text-[#4c5900]',
+      accentBar: 'bg-[#bcd32e]',
+      iconColor: 'text-[#4c5900]',
+      iconBg: 'bg-[#f4fce0] border-2 border-[#bcd32e]/50',
     },
     {
       number: '04',
       icon: Users,
       title: 'Hands-on Strategy',
       description: 'Strong emphasis on practical market exposure, performance optimization, case discussions and real-world results.',
-      bgStyle: 'bg-[#f4faff] border-[#2196F3]/20 hover:border-primary',
+      bgClass: 'bg-gradient-to-b from-[#f0f7ff] via-white to-[#e3f2fd]',
+      borderColor: 'border-[#2196F3]/40',
+      numberBadge: 'bg-[#2196F3]/20 text-[#0066cc]',
+      accentBar: 'bg-[#2196F3]',
+      iconColor: 'text-[#0066cc]',
+      iconBg: 'bg-[#e3f2fd]/60 border-2 border-[#2196F3]/40',
     },
     {
       number: '05',
       icon: Search,
       title: 'Research & Innovation',
       description: 'Encouraging continuous research culture with data analysis, experimental frameworks and technology integrations.',
-      bgStyle: 'bg-white border-[#2196F3]/15 hover:border-primary',
+      bgClass: 'bg-gradient-to-b from-[#f7fce6] via-white to-[#ecf8c0]',
+      borderColor: 'border-[#bcd32e]',
+      numberBadge: 'bg-[#bcd32e]/30 text-[#4c5900]',
+      accentBar: 'bg-[#bcd32e]',
+      iconColor: 'text-[#4c5900]',
+      iconBg: 'bg-[#f4fce0] border-2 border-[#bcd32e]/50',
     },
     {
       number: '06',
       icon: ShieldCheck,
       title: 'Ethics & Values',
       description: 'Instilling professionalism, transparent metrics, ethical practices and accountability in every marketing campaign.',
-      bgStyle: 'bg-[#f4faff] border-[#2196F3]/20 hover:border-primary',
+      bgClass: 'bg-gradient-to-b from-[#f0f7ff] via-white to-[#e3f2fd]',
+      borderColor: 'border-[#2196F3]/40',
+      numberBadge: 'bg-[#2196F3]/20 text-[#0066cc]',
+      accentBar: 'bg-[#2196F3]',
+      iconColor: 'text-[#0066cc]',
+      iconBg: 'bg-[#e3f2fd]/60 border-2 border-[#2196F3]/40',
     },
     {
       number: '07',
       icon: TrendingUp,
       title: 'Growth Support',
       description: 'Continuous guidance and support for scaling brands, competitive market analysis and long-term business pathways.',
-      bgStyle: 'bg-white border-[#2196F3]/15 hover:border-primary',
+      bgClass: 'bg-gradient-to-b from-[#f7fce6] via-white to-[#ecf8c0]',
+      borderColor: 'border-[#bcd32e]',
+      numberBadge: 'bg-[#bcd32e]/30 text-[#4c5900]',
+      accentBar: 'bg-[#bcd32e]',
+      iconColor: 'text-[#4c5900]',
+      iconBg: 'bg-[#f4fce0] border-2 border-[#bcd32e]/50',
     },
     {
       number: '08',
       icon: HeartHandshake,
       title: 'Client-Centered Care',
       description: 'Dedicated care, transparent communication, and unwavering commitment towards achieving higher return on investment.',
-      bgStyle: 'bg-[#f4faff] border-[#2196F3]/20 hover:border-primary',
+      bgClass: 'bg-gradient-to-b from-[#f0f7ff] via-white to-[#e3f2fd]',
+      borderColor: 'border-[#2196F3]/40',
+      numberBadge: 'bg-[#2196F3]/20 text-[#0066cc]',
+      accentBar: 'bg-[#2196F3]',
+      iconColor: 'text-[#0066cc]',
+      iconBg: 'bg-[#e3f2fd]/60 border-2 border-[#2196F3]/40',
     },
   ];
 
@@ -728,31 +768,34 @@ const About = () => {
               return (
                 <div
                   key={idx}
-                  className={`reveal-scale ${delayClass} relative ${card.bgStyle} border rounded-2xl p-6 sm:p-7 flex flex-col items-center text-center shadow-xs hover:shadow-[0_15px_40px_rgba(33,150,243,0.15)] transition-all duration-300 hover:-translate-y-2 group`}
+                  className={`reveal-scale ${delayClass} relative ${card.bgClass} border-2 ${card.borderColor} rounded-2xl p-6 sm:p-7 flex flex-col items-center text-center shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group select-none overflow-hidden h-full`}
                 >
-                  {/* Top-left Pill Badge using primary color */}
-                  <div className="absolute top-4 left-4 w-7 h-7 rounded-lg bg-primary text-white font-black text-xs flex items-center justify-center shadow-xs group-hover:scale-110 transition-transform duration-300">
+                  {/* Top Accent Line */}
+                  <div className={`absolute top-0 left-0 right-0 h-1.5 ${card.accentBar}`} />
+
+                  {/* Top-left Number Pill Badge */}
+                  <div className={`absolute top-4 left-4 px-2.5 py-1 rounded-full ${card.numberBadge} font-extrabold text-xs shadow-2xs group-hover:scale-105 transition-transform duration-200`}>
                     {card.number}
                   </div>
 
-                  {/* Circular Icon Disc with Primary Arc */}
-                  <div className="w-20 h-20 rounded-full bg-white border-2 border-[#2196F3]/20 shadow-md flex items-center justify-center mb-6 relative mt-2 group-hover:scale-110 transition-transform duration-300">
-                    <Icon className="w-9 h-9 text-primary group-hover:rotate-6 transition-transform duration-300" />
+                  {/* Circular Icon Cutout with ring */}
+                  <div className={`w-20 h-20 sm:w-22 sm:h-22 rounded-full ${card.iconBg} border-4 border-white shadow-md flex items-center justify-center mb-4 shrink-0 group-hover:scale-108 transition-transform duration-300 mt-3 relative`}>
+                    <Icon className={`w-8 h-8 ${card.iconColor} group-hover:rotate-6 transition-transform duration-300`} />
                     {/* Bottom Arc Highlight */}
-                    <div className="absolute -bottom-1 w-10 h-1.5 bg-primary rounded-full shadow-[0_0_10px_rgba(33,150,243,0.5)] group-hover:w-14 transition-all duration-300" />
+                    <div className={`absolute -bottom-1 w-10 h-1 rounded-full ${card.accentBar} shadow-xs group-hover:w-14 transition-all duration-300`} />
                   </div>
 
                   {/* Card Title */}
-                  <h3 className="text-lg font-black text-[#0a0a0a] mb-2 group-hover:text-primary transition-colors duration-200" style={{ color: '#0a0a0a' }}>
+                  <h3 className="text-xl font-black text-[#0a0a0a] mb-1.5 leading-tight" style={{ color: '#0a0a0a' }}>
                     {card.title}
                   </h3>
 
                   {/* Accent Line under title */}
-                  <div className="w-7 h-0.5 bg-primary/60 rounded-full mb-3 group-hover:w-12 transition-all duration-300" />
+                  <div className={`w-8 h-0.5 ${card.accentBar} rounded-full mb-3 group-hover:w-14 transition-all duration-300`} />
 
                   {/* Card Description */}
-                  <p className="text-[#555555] text-sm leading-relaxed font-medium" style={{ color: '#555555' }}>
-                    {card.description}
+                  <p className="text-xs sm:text-sm font-medium italic text-[#444444] leading-relaxed text-center flex-grow" style={{ color: '#444444' }}>
+                    "{card.description}"
                   </p>
                 </div>
               );
