@@ -14,21 +14,136 @@ import {
   Users,
   FileText,
   CheckCircle2,
-  Award
+  Award,
+  ShoppingCart,
+  Activity,
+  Scale
 } from 'lucide-react'
 import { getServiceBySlug } from '../data/services'
+import { seoServiceSectionData, seoStrategiesData } from '../data/seoServiceSectionData'
 
-function SeoOverviewSection() {
-  const keywords = [
-    { name: 'Digital Marketing Agency', pos: 1 },
-    { name: 'SEO Services India', pos: 1 },
-    { name: 'Best SEO Company', pos: 1 },
-    { name: 'Web Development Company', pos: 2 },
-    { name: 'Social Media Marketing', pos: 3 },
-  ]
+const iconMap = {
+  Award,
+  Users,
+  FileText,
+  CheckCircle2,
+  Search,
+  BarChart3
+}
+
+const strategyIconMap = {
+  ShoppingCart,
+  Activity,
+  Home,
+  Scale
+}
+
+function SeoStrategiesSection() {
+  const { titlePrefix, titleHighlight, description, cards } = seoStrategiesData
 
   return (
-    <div className="mt-16 sm:mt-20 relative">
+    <div className="mt-16 sm:mt-20 bg-gradient-to-b from-white/90 via-[#f0f6ff]/80 to-white border border-[#2196F3]/20 rounded-[36px] sm:rounded-[40px] p-6 sm:p-10 lg:p-14 shadow-[0_20px_50px_rgba(33,150,243,0.08)] relative overflow-hidden">
+      {/* Background Soft Orbs */}
+      <div className="absolute top-1/2 left-0 w-96 h-96 bg-blue-100/40 rounded-full blur-3xl pointer-events-none -z-10" />
+      <div className="absolute -top-24 -right-24 w-80 h-80 bg-[#2196F3]/10 rounded-full blur-3xl pointer-events-none -z-10" />
+
+      {/* Section Header */}
+      <div className="text-center max-w-4xl mx-auto mb-14">
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#0a0a0a] tracking-tight mb-5" style={{ color: '#0a0a0a' }}>
+          {titlePrefix}{' '}
+          <span className="bg-gradient-to-r from-[#2196F3] via-[#42a5f5] to-[#2196F3] bg-clip-text text-transparent animate-text-shimmer">
+            {titleHighlight}
+          </span>
+        </h2>
+
+        <p className="text-[#555555] text-sm sm:text-base leading-relaxed max-w-3xl mx-auto font-medium" style={{ color: '#555555' }}>
+          {description}
+        </p>
+      </div>
+
+      {/* 2x2 Strategy Cards Grid */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 relative z-10">
+        {cards.map((card) => {
+          const CardIcon = strategyIconMap[card.iconType] || ShoppingCart
+          return (
+            <div
+              key={card.id}
+              className="bg-white rounded-3xl border border-[#2196F3]/20 shadow-[0_15px_45px_rgba(33,150,243,0.08)] hover:shadow-[0_20px_50px_rgba(33,150,243,0.15)] transition-all duration-300 hover:-translate-y-1.5 overflow-hidden flex flex-col sm:flex-row group relative min-h-[220px]"
+            >
+              {/* Left Column: Blue Container with Image & Lime Icon Badge */}
+              <div className="sm:w-[48%] bg-gradient-to-br from-[#005bf0] via-[#0066ff] to-[#0040c0] relative flex items-center justify-center overflow-hidden min-h-[210px] p-4">
+
+                {/* Circular Lime Icon Badge */}
+                <div className="absolute top-4 left-4 z-20 w-12 h-12 rounded-full bg-[#bcd32e] text-[#0a0a0a] border-2 border-white shadow-md flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <CardIcon className="w-6 h-6 text-[#0a0a0a]" />
+                </div>
+
+                {/* Background Radial Glow */}
+                <div className="absolute inset-0 bg-radial from-white/20 to-transparent pointer-events-none" />
+
+                {/* Strategy Graphic Image */}
+                <img
+                  src={card.image}
+                  alt={card.title}
+                  className="w-full h-full object-contain max-h-[195px] relative z-10 group-hover:scale-105 transition-transform duration-500 drop-shadow-xl"
+                />
+              </div>
+
+              {/* Right Column: White Content Box with Stats */}
+              <div className="sm:w-[52%] bg-white p-6 sm:p-7 flex flex-col justify-between relative text-left">
+
+                {/* Title with Blue Accent Bar */}
+                <div className="flex items-center gap-2 mb-4">
+                  <span className="w-1.5 h-6 bg-[#0066ff] rounded-full inline-block" />
+                  <h3 className="text-xl font-black text-[#0a0a0a] tracking-tight" style={{ color: '#0a0a0a' }}>
+                    {card.title}
+                  </h3>
+                </div>
+
+                {/* 2 Stat Columns */}
+                <div className="grid grid-cols-2 gap-4 mb-6">
+                  {/* Stat 1 */}
+                  <div>
+                    <div className="text-2xl sm:text-3xl font-black text-[#0066ff] leading-none mb-1">
+                      {card.stat1.value}
+                    </div>
+                    <div className="text-xs font-bold text-[#555555] leading-tight" style={{ color: '#555555' }}>
+                      {card.stat1.label}
+                    </div>
+                  </div>
+
+                  {/* Stat 2 */}
+                  <div className="pl-3 border-l border-slate-100">
+                    <div className="text-2xl sm:text-3xl font-black text-[#0066ff] leading-none mb-1">
+                      {card.stat2.value}
+                    </div>
+                    <div className="text-xs font-bold text-[#555555] leading-tight" style={{ color: '#555555' }}>
+                      {card.stat2.label}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Action Arrow Circle Button */}
+                <div className="absolute bottom-5 right-5 w-9 h-9 rounded-full bg-[#0066ff] text-white flex items-center justify-center shadow-md group-hover:bg-[#0a0a0a] group-hover:scale-110 transition-all duration-300 cursor-pointer">
+                  <ArrowRight className="w-4 h-4 text-white" />
+                </div>
+
+              </div>
+
+            </div>
+          )
+        })}
+      </div>
+
+    </div>
+  )
+}
+
+function SeoOverviewSection() {
+  const { badge, titlePrefix, titleHighlight, titleSuffix, description, features, dashboard } = seoServiceSectionData
+
+  return (
+    <div className="mt-16 sm:mt-20 bg-gradient-to-b from-white/90 via-[#f0f6ff]/80 to-white border border-[#2196F3]/20 rounded-[36px] sm:rounded-[40px] p-6 sm:p-10 lg:p-14 shadow-[0_20px_50px_rgba(33,150,243,0.08)] relative overflow-hidden">
       {/* Decorative Top-Right Soft Blue Orb */}
       <div className="absolute -top-10 right-0 w-96 h-96 bg-blue-100/60 rounded-full blur-3xl pointer-events-none -z-10" />
 
@@ -40,59 +155,37 @@ function SeoOverviewSection() {
           {/* Top Pill Badge */}
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#2196F3]/10 border border-[#2196F3]/25 text-[#2196F3] font-bold text-xs uppercase tracking-wider mb-5 shadow-xs">
             <span className="w-2 h-2 rounded-full bg-[#2196F3] animate-pulse" />
-            <span>SEO THAT DRIVES REAL GROWTH</span>
+            <span>{badge}</span>
           </div>
 
           {/* Main Headline */}
-         <h2 className="text-3xl sm:text-4xl lg:text-[2.65rem] font-black !text-slate-900 leading-[1.18] tracking-tight mb-5">
-  Best <span className="text-[#2196F3]">SEO Services</span> in India for Search Engines &amp; AI Platforms
-</h2>
+          <h2 className="text-3xl sm:text-4xl lg:text-[2.65rem] font-black !text-slate-900 leading-[1.18] tracking-tight mb-5">
+            {titlePrefix}<span className="text-[#2196F3]">{titleHighlight}</span>{titleSuffix}
+          </h2>
 
           {/* Accent Line */}
           <div className="w-14 h-1 bg-[#2196F3] rounded-full mb-6" />
 
           {/* Paragraph */}
           <p className="text-slate-600 text-sm sm:text-base leading-relaxed mb-8 font-medium">
-            At Profito, we help businesses grow online with result-driven SEO strategies that improve visibility across search engines and AI-powered platforms. From keyword research to content optimization and link building, we deliver measurable results that drive traffic, leads, and long-term growth.
+            {description}
           </p>
 
-          {/* 4 Feature Items */}
+          {/* Feature Items */}
           <div className="space-y-4 w-full">
-            <div className="flex items-center gap-4 group">
-              <div className="w-11 h-11 rounded-2xl bg-[#eef6ff] border border-[#2196F3]/20 flex items-center justify-center text-[#2196F3] shrink-0 group-hover:bg-[#2196F3] group-hover:text-white transition-all duration-300 shadow-2xs">
-                <Award className="w-5 h-5" />
-              </div>
-              <span className="font-bold text-slate-800 text-sm sm:text-base group-hover:text-[#2196F3] transition-colors">
-                16+ Years of Digital Expertise
-              </span>
-            </div>
-
-            <div className="flex items-center gap-4 group">
-              <div className="w-11 h-11 rounded-2xl bg-[#eef6ff] border border-[#2196F3]/20 flex items-center justify-center text-[#2196F3] shrink-0 group-hover:bg-[#2196F3] group-hover:text-white transition-all duration-300 shadow-2xs">
-                <Users className="w-5 h-5" />
-              </div>
-              <span className="font-bold text-slate-800 text-sm sm:text-base group-hover:text-[#2196F3] transition-colors">
-                1000+ Happy Clients Across India
-              </span>
-            </div>
-
-            <div className="flex items-center gap-4 group">
-              <div className="w-11 h-11 rounded-2xl bg-[#eef6ff] border border-[#2196F3]/20 flex items-center justify-center text-[#2196F3] shrink-0 group-hover:bg-[#2196F3] group-hover:text-white transition-all duration-300 shadow-2xs">
-                <FileText className="w-5 h-5" />
-              </div>
-              <span className="font-bold text-slate-800 text-sm sm:text-base group-hover:text-[#2196F3] transition-colors">
-                Transparent Reporting &amp; Communication
-              </span>
-            </div>
-
-            <div className="flex items-center gap-4 group">
-              <div className="w-11 h-11 rounded-2xl bg-[#eef6ff] border border-[#2196F3]/20 flex items-center justify-center text-[#2196F3] shrink-0 group-hover:bg-[#2196F3] group-hover:text-white transition-all duration-300 shadow-2xs">
-                <CheckCircle2 className="w-5 h-5" />
-              </div>
-              <span className="font-bold text-slate-800 text-sm sm:text-base group-hover:text-[#2196F3] transition-colors">
-                Ethical SEO Practices for Long-Term Growth
-              </span>
-            </div>
+            {features.map((feat, idx) => {
+              const IconComp = iconMap[feat.icon] || Award
+              return (
+                <div key={idx} className="flex items-center gap-4 group">
+                  <div className="w-11 h-11 rounded-2xl bg-[#eef6ff] border border-[#2196F3]/20 flex items-center justify-center text-[#2196F3] shrink-0 group-hover:bg-[#2196F3] group-hover:text-white transition-all duration-300 shadow-2xs">
+                    <IconComp className="w-5 h-5" />
+                  </div>
+                  <span className="font-bold text-slate-800 text-sm sm:text-base group-hover:text-[#2196F3] transition-colors">
+                    {feat.title}
+                  </span>
+                </div>
+              )
+            })}
           </div>
 
         </div>
@@ -121,62 +214,32 @@ function SeoOverviewSection() {
                 {/* Logo Card */}
                 <div className="bg-white rounded-2xl p-4 border border-blue-100 shadow-sm flex items-center justify-between">
                   <div className="flex items-center gap-1.5">
-                    <span className="text-xl font-black text-slate-900 tracking-tight">profito</span>
+                    <span className="text-xl font-black text-slate-900 tracking-tight">{dashboard.branding.title}</span>
                   </div>
-                  <span className="text-[11px] font-bold text-slate-500">Your Digital Growth Partner</span>
+                  <span className="text-[11px] font-bold text-slate-500">{dashboard.branding.tagline}</span>
                 </div>
 
                 {/* Stat Rows Card */}
                 <div className="bg-white rounded-2xl p-5 border border-blue-100 shadow-md space-y-3.5 flex-1 flex flex-col justify-center">
-
-                  {/* Row 1 */}
-                  <div className="flex items-center justify-between gap-3">
-                    <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-xl bg-[#eef6ff] border border-blue-200/60 text-[#2196F3] flex items-center justify-center shrink-0">
-                        <Search className="w-5 h-5" />
+                  {dashboard.metrics.map((metric, idx) => {
+                    const MetricIcon = iconMap[metric.icon] || Search
+                    return (
+                      <div key={idx} className={`flex items-center justify-between gap-3 ${idx > 0 ? 'pt-3 border-t border-slate-100' : ''}`}>
+                        <div className="flex items-center gap-3">
+                          <div className="w-10 h-10 rounded-xl bg-[#eef6ff] border border-blue-200/60 text-[#2196F3] flex items-center justify-center shrink-0">
+                            <MetricIcon className="w-5 h-5" />
+                          </div>
+                          <div>
+                            <div className="text-xl sm:text-2xl font-black text-slate-900 leading-none mb-0.5">{metric.value}</div>
+                            <div className="text-[11px] font-bold text-slate-500">{metric.label}</div>
+                          </div>
+                        </div>
+                        <span className="inline-flex items-center gap-0.5 px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-600 font-extrabold text-xs">
+                          {metric.growth}
+                        </span>
                       </div>
-                      <div>
-                        <div className="text-xl sm:text-2xl font-black text-slate-900 leading-none mb-0.5">90%</div>
-                        <div className="text-[11px] font-bold text-slate-500">Keywords on 1st Page</div>
-                      </div>
-                    </div>
-                    <span className="inline-flex items-center gap-0.5 px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-600 font-extrabold text-xs">
-                      ↑ 32%
-                    </span>
-                  </div>
-
-                  {/* Row 2 */}
-                  <div className="flex items-center justify-between gap-3 pt-3 border-t border-slate-100">
-                    <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-xl bg-[#eef6ff] border border-blue-200/60 text-[#2196F3] flex items-center justify-center shrink-0">
-                        <BarChart3 className="w-5 h-5" />
-                      </div>
-                      <div>
-                        <div className="text-xl sm:text-2xl font-black text-slate-900 leading-none mb-0.5">48%</div>
-                        <div className="text-[11px] font-bold text-slate-500">Total Traffic Growth</div>
-                      </div>
-                    </div>
-                    <span className="inline-flex items-center gap-0.5 px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-600 font-extrabold text-xs">
-                      ↑ 21%
-                    </span>
-                  </div>
-
-                  {/* Row 3 */}
-                  <div className="flex items-center justify-between gap-3 pt-3 border-t border-slate-100">
-                    <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-xl bg-[#eef6ff] border border-blue-200/60 text-[#2196F3] flex items-center justify-center shrink-0">
-                        <Users className="w-5 h-5" />
-                      </div>
-                      <div>
-                        <div className="text-xl sm:text-2xl font-black text-slate-900 leading-none mb-0.5">63%</div>
-                        <div className="text-[11px] font-bold text-slate-500">Growth in Leads</div>
-                      </div>
-                    </div>
-                    <span className="inline-flex items-center gap-0.5 px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-600 font-extrabold text-xs">
-                      ↑ 27%
-                    </span>
-                  </div>
-
+                    )
+                  })}
                 </div>
 
               </div>
@@ -184,7 +247,7 @@ function SeoOverviewSection() {
               {/* Right Span 5: SEO Performance Doughnut */}
               <div className="md:col-span-5 bg-white rounded-2xl p-5 border border-blue-100 shadow-md flex flex-col justify-between">
                 <h4 className="text-center text-[11px] font-black text-slate-700 uppercase tracking-wider mb-2">
-                  SEO PERFORMANCE
+                  {dashboard.performanceChart.title}
                 </h4>
 
                 {/* SVG Doughnut */}
@@ -218,33 +281,21 @@ function SeoOverviewSection() {
                     />
                   </svg>
                   <div className="absolute inset-0 flex items-center justify-center flex-col">
-                    <span className="text-2xl font-black text-slate-900">72%</span>
+                    <span className="text-2xl font-black text-slate-900">{dashboard.performanceChart.mainValue}</span>
                   </div>
                 </div>
 
                 {/* Legend */}
                 <div className="space-y-1.5 text-xs font-bold pt-2 border-t border-slate-100">
-                  <div className="flex items-center justify-between">
-                    <span className="flex items-center gap-1.5 text-slate-700">
-                      <span className="w-2.5 h-2.5 rounded-full bg-[#2196F3]" />
-                      <span>72%</span>
-                    </span>
-                    <span className="text-slate-500 font-semibold text-[11px]">Organic Traffic</span>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <span className="flex items-center gap-1.5 text-slate-700">
-                      <span className="w-2.5 h-2.5 rounded-full bg-[#93c5fd]" />
-                      <span>24%</span>
-                    </span>
-                    <span className="text-slate-500 font-semibold text-[11px]">Direct Traffic</span>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <span className="flex items-center gap-1.5 text-slate-700">
-                      <span className="w-2.5 h-2.5 rounded-full bg-slate-300" />
-                      <span>4%</span>
-                    </span>
-                    <span className="text-slate-500 font-semibold text-[11px]">Others</span>
-                  </div>
+                  {dashboard.performanceChart.segments.map((seg, idx) => (
+                    <div key={idx} className="flex items-center justify-between">
+                      <span className="flex items-center gap-1.5 text-slate-700">
+                        <span className={`w-2.5 h-2.5 rounded-full ${seg.color.startsWith('#') ? '' : 'bg-slate-300'}`} style={seg.color.startsWith('#') ? { backgroundColor: seg.color } : {}} />
+                        <span>{seg.percentage}%</span>
+                      </span>
+                      <span className="text-slate-500 font-semibold text-[11px]">{seg.label}</span>
+                    </div>
+                  ))}
                 </div>
 
               </div>
@@ -258,11 +309,11 @@ function SeoOverviewSection() {
               <div className="md:col-span-7 bg-white rounded-2xl p-5 border border-blue-100 shadow-md flex flex-col justify-between">
                 <div className="flex items-center justify-between mb-4">
                   <div>
-                    <h4 className="text-xs font-black text-slate-900 tracking-wider uppercase">ORGANIC TRAFFIC GROWTH</h4>
-                    <span className="text-[11px] font-bold text-slate-400">Last 6 Months</span>
+                    <h4 className="text-xs font-black text-slate-900 tracking-wider uppercase">{dashboard.trafficGrowth.title}</h4>
+                    <span className="text-[11px] font-bold text-slate-400">{dashboard.trafficGrowth.subtitle}</span>
                   </div>
                   <span className="bg-[#2196F3] text-white text-xs font-extrabold px-3 py-1 rounded-full shadow-xs">
-                    ↑ 124%
+                    {dashboard.trafficGrowth.growthBadge}
                   </span>
                 </div>
 
@@ -295,12 +346,9 @@ function SeoOverviewSection() {
                 </div>
 
                 <div className="flex justify-between text-[11px] font-bold text-slate-400 px-1 pt-1 border-t border-slate-100">
-                  <span>Jan</span>
-                  <span>Feb</span>
-                  <span>Mar</span>
-                  <span>Apr</span>
-                  <span>May</span>
-                  <span>Jun</span>
+                  {dashboard.trafficGrowth.months.map((m, idx) => (
+                    <span key={idx}>{m}</span>
+                  ))}
                 </div>
               </div>
 
@@ -314,7 +362,7 @@ function SeoOverviewSection() {
                 </div>
 
                 <div className="divide-y divide-slate-100 text-xs font-bold text-slate-800">
-                  {keywords.map((kw, idx) => (
+                  {dashboard.topKeywords.map((kw, idx) => (
                     <div key={idx} className="flex justify-between items-center py-2 hover:bg-slate-50 transition-colors rounded-lg px-1">
                       <span className="text-slate-700 font-bold truncate max-w-[160px]">{kw.name}</span>
                       <span className="w-5 h-5 rounded-full bg-blue-50 text-[#2196F3] font-black text-[11px] flex items-center justify-center">
@@ -565,7 +613,12 @@ export default function ServicePage() {
         {/* =========================================================
             EXCLUSIVELY FOR SEO SERVICE PAGE
            ========================================================= */}
-        {isSeoPage && <SeoOverviewSection />}
+        {isSeoPage && (
+          <>
+            <SeoOverviewSection />
+            <SeoStrategiesSection />
+          </>
+        )}
 
       </div>
     </div>
