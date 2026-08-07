@@ -342,20 +342,20 @@ export default function ServicePage() {
   const isSeoPage = !slug || slug === 'seo-services' || slug.toLowerCase().includes('seo')
 
   return (
-    <div className="service-page bg-gradient-to-b from-slate-50 via-white to-blue-50/40 min-h-screen text-slate-800 pt-24 sm:pt-28 pb-20 font-sans overflow-hidden">
+    <div className="service-page bg-gradient-to-b from-white via-[#f0f7ff] to-[#eaf5ff] min-h-screen text-slate-800 pt-24 sm:pt-28 pb-20 font-sans overflow-hidden">
       <div className="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* =========================================================
-            HERO BANNER SECTION
+            HERO BANNER SECTION (Matches Careers Page Design)
            ========================================================= */}
-        <div className="relative bg-gradient-to-r from-[#003eb3] via-[#005bf0] to-[#0038b3] rounded-3xl p-6 sm:p-10 lg:p-14 text-white shadow-2xl overflow-hidden border border-blue-400/20">
+        <div className="relative bg-gradient-to-r from-[#004bb8] via-[#2196F3] to-[#004bb8] rounded-3xl p-6 sm:p-10 lg:p-14 text-white shadow-2xl overflow-hidden border border-blue-400/20">
 
-          {/* Background Radial Dots Grid Overlay */}
+          {/* Subtle Radial Dots Overlay matching Careers Page */}
           <div
-            className="absolute inset-0 opacity-20 pointer-events-none"
+            className="absolute inset-0 opacity-10 pointer-events-none"
             style={{
-              backgroundImage: `radial-gradient(circle at 2px 2px, rgba(255,255,255,0.9) 1px, transparent 0)`,
-              backgroundSize: '24px 24px'
+              backgroundImage: `radial-gradient(circle at 2px 2px, rgba(255,255,255,0.8) 1px, transparent 0)`,
+              backgroundSize: '32px 32px'
             }}
           />
 
