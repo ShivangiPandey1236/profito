@@ -27,7 +27,14 @@ import {
   Link as LinkIcon,
   Globe,
   Zap,
-  Lock
+  Lock,
+  Eye,
+  UserCheck,
+  Plus,
+  Minus,
+  Clock,
+  Rocket,
+  Star
 } from 'lucide-react'
 import { getServiceBySlug } from '../data/services'
 import {
@@ -38,7 +45,9 @@ import {
   seoScopeData,
   seoApproachData,
   seoExplainedData,
-  seoCtaSectionData
+  seoCtaSectionData,
+  seoBenefitsData,
+  seoFaqData
 } from '../data/seoServiceSectionData'
 import ctaImage from '../assets/cta-default-image.webp'
 
@@ -1385,6 +1394,171 @@ function SeoExplainedSection() {
   )
 }
 
+function SeoFaqSection() {
+  const [openFaqId, setOpenFaqId] = useState('faq-1')
+
+  const faqIconMap = {
+    FileText,
+    Clock,
+    Globe,
+    BarChart3,
+    Users,
+    Rocket,
+    Star
+  }
+
+  const toggleFaq = (id) => {
+    setOpenFaqId(openFaqId === id ? null : id)
+  }
+
+  return (
+    <section className="mt-16 sm:mt-24 relative">
+      {/* Background Radial Orbs */}
+      <div className="absolute top-1/4 -left-10 w-96 h-96 bg-blue-100/40 rounded-full blur-3xl pointer-events-none -z-10" />
+      <div className="absolute bottom-10 right-0 w-80 h-80 bg-[#c5f015]/15 rounded-full blur-3xl pointer-events-none -z-10" />
+
+      {/* Main Card Container */}
+      <div className="bg-[#f8fafc]/80 border border-slate-100 rounded-[36px] sm:rounded-[44px] p-6 sm:p-10 lg:p-14 shadow-[0_15px_45px_rgba(0,0,0,0.03)] relative overflow-hidden">
+
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start relative z-10">
+
+          {/* LEFT COLUMN: Title & Action Buttons (Span 5) */}
+          <div className="lg:col-span-5 flex flex-col items-start text-left space-y-6 lg:sticky lg:top-28">
+
+            {/* Top Pill Badge */}
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-slate-200/80 text-xs font-extrabold tracking-wider uppercase shadow-2xs text-slate-700">
+              <div className="w-6 h-6 rounded-full bg-blue-50 text-[#2196F3] flex items-center justify-center">
+                <HelpCircle className="w-3.5 h-3.5 text-[#2196F3]" />
+              </div>
+              <span>{seoFaqData.badge}</span>
+            </div>
+
+            {/* Polka Dots Decorator */}
+            <div className="opacity-20 pointer-events-none mb-2">
+              <div className="grid grid-cols-6 gap-1.5">
+                {[...Array(24)].map((_, i) => (
+                  <div key={i} className="w-1.5 h-1.5 rounded-full bg-[#2196F3]" />
+                ))}
+              </div>
+            </div>
+
+            {/* Main Headline */}
+            <h2 className="text-3xl sm:text-4xl lg:text-[2.8rem] font-black !text-[#0a0a0a] tracking-tight leading-[1.15]">
+              {seoFaqData.titleLine1} <br />
+              {seoFaqData.titleLine2} <br />
+              <span className="text-[#2196F3]">{seoFaqData.titleHighlight}</span>
+            </h2>
+
+            {/* Two-tone Accent Line Divider */}
+            <div className="flex items-center gap-1.5 my-1">
+              <span className="w-10 h-1 bg-[#2196F3] rounded-full" />
+              <span className="w-2.5 h-2.5 bg-[#c5f015] rounded-full" />
+              <span className="w-10 h-1 bg-[#c5f015] rounded-full" />
+            </div>
+
+            {/* Subtitle Description */}
+            <p className="text-slate-600 text-sm sm:text-base font-medium leading-relaxed max-w-md">
+              {seoFaqData.description}
+            </p>
+
+            {/* Action Buttons Row */}
+            <div className="flex items-center gap-3 flex-wrap pt-3 w-full">
+              <a
+                href="#contact"
+                className="bg-[#2196F3] hover:bg-[#0066ff] text-white font-extrabold text-xs sm:text-sm px-6 py-3.5 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 flex items-center gap-2 cursor-pointer"
+              >
+                <MessageSquare className="w-4 h-4 text-white" />
+                <span>{seoFaqData.primaryButtonText}</span>
+              </a>
+
+              <a
+                href="#all-faqs"
+                className="bg-white hover:bg-slate-50 text-[#2196F3] border border-[#2196F3]/40 font-extrabold text-xs sm:text-sm px-6 py-3.5 rounded-xl shadow-2xs hover:shadow-xs transition-all duration-300 flex items-center gap-2 cursor-pointer"
+              >
+                <span>{seoFaqData.secondaryButtonText}</span>
+                <ArrowRight className="w-4 h-4 text-[#2196F3]" />
+              </a>
+            </div>
+
+          </div>
+
+          {/* RIGHT COLUMN: Interactive FAQ Accordion List (Span 7) */}
+          <div className="lg:col-span-7 flex flex-col gap-3.5 w-full">
+            {seoFaqData.faqs.map((faq) => {
+              const isOpen = openFaqId === faq.id
+              const FaqIcon = faqIconMap[faq.iconName] || FileText
+
+              return (
+                <div
+                  key={faq.id}
+                  className={`bg-white rounded-2xl border transition-all duration-300 overflow-hidden shadow-2xs ${
+                    isOpen
+                      ? 'border-[#2196F3]/40 shadow-md'
+                      : 'border-slate-100 hover:border-slate-200'
+                  }`}
+                >
+                  {/* Accordion Item Header Button */}
+                  <button
+                    onClick={() => toggleFaq(faq.id)}
+                    className="w-full p-4 sm:p-5 flex items-center justify-between gap-4 text-left cursor-pointer group"
+                  >
+                    <div className="flex items-center gap-3.5">
+                      {/* Left Icon Circle */}
+                      <div
+                        className={`w-9 h-9 rounded-full flex items-center justify-center shrink-0 transition-colors ${
+                          isOpen
+                            ? 'bg-[#2196F3] text-white'
+                            : 'bg-[#eef6ff] text-[#2196F3] group-hover:bg-[#2196F3] group-hover:text-white'
+                        }`}
+                      >
+                        {isOpen ? (
+                          <Minus className="w-4 h-4 text-white stroke-[3]" />
+                        ) : (
+                          <FaqIcon className="w-4 h-4" />
+                        )}
+                      </div>
+
+                      {/* Question Text */}
+                      <h4 className="text-sm sm:text-base font-extrabold !text-slate-900 leading-snug group-hover:text-[#2196F3] transition-colors">
+                        {faq.question}
+                      </h4>
+                    </div>
+
+                    {/* Right Expand Icon */}
+                    <div
+                      className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-colors ${
+                        isOpen
+                          ? 'bg-transparent text-transparent'
+                          : 'bg-[#eef6ff] text-[#2196F3] group-hover:bg-[#2196F3] group-hover:text-white'
+                      }`}
+                    >
+                      {!isOpen && <Plus className="w-4 h-4 stroke-[2.5]" />}
+                    </div>
+                  </button>
+
+                  {/* Accordion Item Expanded Content */}
+                  {isOpen && (
+                    <div className="bg-[#f4f8fe]/80 p-5 border-t border-slate-100/80 flex items-start gap-4 animate-fadeIn">
+                      <div className="w-12 h-12 rounded-2xl bg-white border border-blue-100 text-[#2196F3] flex items-center justify-center shrink-0 shadow-2xs">
+                        <FaqIcon className="w-6 h-6 text-[#2196F3]" />
+                      </div>
+                      <p className="text-slate-600 text-xs sm:text-sm font-medium leading-relaxed pt-1">
+                        {faq.answer}
+                      </p>
+                    </div>
+                  )}
+                </div>
+              )
+            })}
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+  )
+}
+
 function SeoCtaSection() {
   const [websiteUrl, setWebsiteUrl] = useState('')
 
@@ -1550,6 +1724,133 @@ function SeoCtaSection() {
 
           </div>
 
+        </div>
+
+      </div>
+    </section>
+  )
+}
+
+function SeoBenefitsSection() {
+  const benefitIconMap = {
+    Eye,
+    UserCheck,
+    TrendingUp,
+    Target
+  }
+
+  return (
+    <section className="mt-16 sm:mt-24 relative">
+      {/* Background Orbs */}
+      <div className="absolute top-10 left-10 w-96 h-96 bg-blue-100/40 rounded-full blur-3xl pointer-events-none -z-10" />
+      <div className="absolute bottom-10 right-10 w-80 h-80 bg-[#c5f015]/15 rounded-full blur-3xl pointer-events-none -z-10" />
+
+      {/* Main Card Container */}
+      <div className="bg-[#f8fafc]/80 border border-slate-100 rounded-[36px] sm:rounded-[44px] p-6 sm:p-10 lg:p-12 shadow-[0_15px_45px_rgba(0,0,0,0.03)] relative overflow-hidden">
+
+        {/* Section Header */}
+        <div className="text-center max-w-4xl mx-auto mb-10 sm:mb-14 px-4">
+          
+          {/* Top Pill Badge */}
+          <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white border border-slate-200/80 text-xs font-bold tracking-wider uppercase mb-5 shadow-2xs">
+            <div className="w-6 h-6 rounded-full bg-[#2196F3] text-white flex items-center justify-center">
+              <Zap className="w-3.5 h-3.5 text-white" />
+            </div>
+            <span className="text-[#84cc16] font-extrabold">{seoBenefitsData.badge}</span>
+            <span className="text-slate-300">|</span>
+            <div className="flex items-center gap-1">
+              <span className="w-2 h-2 rounded-full bg-[#2196F3]" />
+              <span className="w-2 h-2 rounded-full bg-[#c5f015]" />
+            </div>
+          </div>
+
+          {/* Main Headline */}
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black !text-[#0a0a0a] tracking-tight mb-3 leading-tight">
+            {seoBenefitsData.titlePrefix}
+            <span className="text-[#2196F3]">{seoBenefitsData.titleHighlight}</span>
+          </h2>
+
+          {/* Two-tone Accent Line Divider */}
+          <div className="flex items-center justify-center gap-1.5 my-4">
+            <span className="w-10 h-1 bg-[#2196F3] rounded-full" />
+            <span className="w-2.5 h-2.5 bg-[#c5f015] rounded-full" />
+            <span className="w-10 h-1 bg-[#c5f015] rounded-full" />
+          </div>
+
+          {/* Subtitle Description */}
+          <p className="text-slate-600 text-sm sm:text-base leading-relaxed max-w-3xl mx-auto font-medium">
+            {seoBenefitsData.description}
+          </p>
+        </div>
+
+        {/* 4 Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {seoBenefitsData.cards.map((card) => {
+            const IconComp = benefitIconMap[card.iconName] || Eye
+
+            return (
+              <div
+                key={card.number}
+                className="bg-white rounded-3xl p-6 sm:p-7 border border-slate-100 shadow-[0_10px_30px_rgba(0,0,0,0.03)] hover:shadow-[0_20px_45px_rgba(33,150,243,0.08)] transition-all duration-300 flex flex-col justify-between relative overflow-hidden group hover:-translate-y-1"
+              >
+                <div>
+                  {/* Top Row: Icon Box & Number Badge */}
+                  <div className="flex items-start justify-between mb-6">
+                    
+                    {/* Icon Box with Polka Dots */}
+                    <div className="relative">
+                      <div
+                        className="w-16 h-16 rounded-2xl flex items-center justify-center shrink-0 shadow-2xs relative z-10 transition-transform duration-300 group-hover:scale-105"
+                        style={{ backgroundColor: card.bgColor, color: card.color }}
+                      >
+                        <IconComp className="w-8 h-8" strokeWidth="2.2" />
+                      </div>
+
+                      {/* Soft Polka Dots Behind Icon Box */}
+                      <div className="absolute top-2 -right-4 opacity-25 pointer-events-none z-0">
+                        <div className="grid grid-cols-3 gap-1">
+                          {[...Array(9)].map((_, i) => (
+                            <div key={i} className="w-1 h-1 rounded-full bg-slate-400" />
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Number Badge */}
+                    <div
+                      className="px-3 py-1 rounded-xl text-xs font-black tracking-wider"
+                      style={{ backgroundColor: card.bgColor, color: card.color }}
+                    >
+                      {card.number}
+                    </div>
+
+                  </div>
+
+                  {/* Card Title */}
+                  <h3 className="text-lg sm:text-xl font-black !text-slate-900 leading-snug tracking-tight mb-2.5 group-hover:text-[#2196F3] transition-colors">
+                    {card.title}
+                  </h3>
+
+                  {/* Short Color Bar Under Title */}
+                  <div
+                    className="w-8 h-1 rounded-full mb-4"
+                    style={{ backgroundColor: card.color }}
+                  />
+
+                  {/* Description Paragraph */}
+                  <p className="text-slate-600 text-xs sm:text-sm font-medium leading-relaxed">
+                    {card.description}
+                  </p>
+                </div>
+
+                {/* Bottom Color Strip Border Accent */}
+                <div
+                  className="h-1.5 w-full rounded-b-3xl absolute bottom-0 left-0 right-0 transition-opacity duration-300"
+                  style={{ backgroundColor: card.color }}
+                />
+              </div>
+            )
+          })}
         </div>
 
       </div>
@@ -1794,7 +2095,9 @@ export default function ServicePage() {
             <PlatformSeoSection />
             <SeoApproachSection />
             <SeoScopeSection />
+            <SeoBenefitsSection />
             <SeoExplainedSection />
+            <SeoFaqSection />
             <SeoCtaSection />
           </>
         )}

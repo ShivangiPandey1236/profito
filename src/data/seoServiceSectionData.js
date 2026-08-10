@@ -556,3 +556,100 @@ export const seoCtaSectionData = {
   ]
 }
 
+export const seoBenefitsData = {
+  badge: "NEXT-GEN SEO BENEFITS",
+  titlePrefix: "Why Your Business Need ",
+  titleHighlight: "Next-Gen SEO Services",
+  description: "Most users research products/services through search engines before making a decision. If your business is not visible there, you risk losing potential customers. This is where search engine optimization services play a crucial role by improving your website's visibility across SERPs and AI platforms.",
+  cards: [
+    {
+      number: "01",
+      title: "Increased Online Visibility",
+      description: "Our SEO team understands the importance of online visibility. We improve visibility by optimizing your website for relevant keywords, building a strong content plan, and enhancing technical SEO, link building, and PR activities.",
+      color: "#2196F3",
+      bgColor: "#eef6ff",
+      iconName: "Eye"
+    },
+    {
+      number: "02",
+      title: "High-Quality Leads",
+      description: "Rankings, our SEO experts focus on all aspects of SEO, from technical optimization and content creation to link building, to drive targeted traffic. With our best SEO services, you can stay ahead of competitors and generate consistent, high-quality leads.",
+      color: "#00d487",
+      bgColor: "#e6fbf3",
+      iconName: "UserCheck"
+    },
+    {
+      number: "03",
+      title: "Sustainable Business Growth",
+      description: "SEO supports sustainable business growth by building a strong and lasting online presence. We help businesses stay ahead of the competition with customized search engine optimization services, focused on delivering maximum visibility.",
+      color: "#00bcd4",
+      bgColor: "#e0f7fa",
+      iconName: "TrendingUp"
+    },
+    {
+      number: "04",
+      title: "Better ROI & Long-Term Results",
+      description: "Unlike paid ads, SEO delivers long-term results with compounding returns. It's a cost-effective strategy that brings continuous traffic, higher conversions, and measurable ROI for your business.",
+      color: "#ffba00",
+      bgColor: "#fff8e6",
+      iconName: "Target"
+    }
+  ]
+}
+
+export const seoFaqData = {
+  badge: "FAQS",
+  titleLine1: "Frequently",
+  titleLine2: "Asked",
+  titleHighlight: "Questions",
+  description: "We are here to help you with any questions you may have.",
+  primaryButtonText: "Speak to an expert",
+  secondaryButtonText: "Read more FAQs",
+  faqs: [
+    {
+      id: "faq-1",
+      question: "What digital marketing services does Profito Interactive offer?",
+      answer: "Profito Interactive offers a wide range of digital marketing services including SEO, PPC, Social Media Marketing, Content Marketing, Web Design, and more — tailored to help your business grow online.",
+      iconName: "FileText"
+    },
+    {
+      id: "faq-2",
+      question: "How long does it take to see results from SEO?",
+      answer: "SEO is a long-term investment. Most businesses start seeing noticeable improvements in rankings, traffic, and leads within 3 to 6 months, depending on competition and website history.",
+      iconName: "Clock"
+    },
+    {
+      id: "faq-3",
+      question: "Do you work with businesses outside of India?",
+      answer: "Yes! We partner with clients globally across the US, UK, UAE, Australia, and Europe, providing localized and international SEO strategies that deliver measurable growth.",
+      iconName: "Globe"
+    },
+    {
+      id: "faq-4",
+      question: "How do you measure the success of a campaign?",
+      answer: "We track key performance metrics including organic traffic growth, keyword rankings, conversion rates, organic leads, bounce rate, and overall ROI using transparent weekly and monthly analytics reports.",
+      iconName: "BarChart3"
+    },
+    {
+      id: "faq-5",
+      question: "Can you help with both B2B and B2C marketing?",
+      answer: "Absolutely! We tailor our search engine optimization and digital marketing strategies specifically for B2B lead generation and B2C consumer conversions based on your target audience behavior.",
+      iconName: "Users"
+    },
+    {
+      id: "faq-6",
+      question: "How do I get started with Profito Interactive?",
+      answer: "Getting started is simple! Contact us for a free SEO audit and consultation. Our experts will analyze your website, discuss your business goals, and create a customized growth plan.",
+      iconName: "Rocket"
+    },
+    {
+      id: "faq-7",
+      question: "What makes Profito Interactive different from other agencies?",
+      answer: "We combine AI-driven SEO technologies, data-backed strategies, 100% transparent reporting, and dedicated account managers to deliver sustainable revenue growth rather than just temporary rankings.",
+      iconName: "Star"
+    }
+  ]
+}
+
+
+
