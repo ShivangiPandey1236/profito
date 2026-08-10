@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import {
   ChevronRight,
@@ -17,10 +17,30 @@ import {
   Award,
   ShoppingCart,
   Activity,
-  Scale
+  Scale,
+  Layers,
+  Settings,
+  Code,
+  HelpCircle,
+  User,
+  DollarSign,
+  Link as LinkIcon,
+  Globe,
+  Zap,
+  Lock
 } from 'lucide-react'
 import { getServiceBySlug } from '../data/services'
-import { seoServiceSectionData, seoStrategiesData } from '../data/seoServiceSectionData'
+import {
+  seoServiceSectionData,
+  aiSeoServicesData,
+  seoStrategiesData,
+  platformSeoSectionData,
+  seoScopeData,
+  seoApproachData,
+  seoExplainedData,
+  seoCtaSectionData
+} from '../data/seoServiceSectionData'
+import ctaImage from '../assets/cta-default-image.webp'
 
 const iconMap = {
   Award,
@@ -71,7 +91,7 @@ function SeoStrategiesSection() {
               className="bg-white rounded-3xl border border-[#2196F3]/20 shadow-[0_15px_45px_rgba(33,150,243,0.08)] hover:shadow-[0_20px_50px_rgba(33,150,243,0.15)] transition-all duration-300 hover:-translate-y-1.5 overflow-hidden flex flex-col sm:flex-row group relative min-h-[220px]"
             >
               {/* Left Column: Blue Container with Image & Lime Icon Badge */}
-              <div className="sm:w-[48%] bg-gradient-to-br from-[#005bf0] via-[#0066ff] to-[#0040c0] relative flex items-center justify-center overflow-hidden min-h-[210px] p-4">
+              <div className="sm:w-[48%] bg-gradient-to-br from-[#005bf0] via-[#0066ff] to-[#2196F3] relative flex items-center justify-center overflow-hidden min-h-[210px] p-4">
 
                 {/* Circular Lime Icon Badge */}
                 <div className="absolute top-4 left-4 z-20 w-12 h-12 rounded-full bg-[#bcd32e] text-[#0a0a0a] border-2 border-white shadow-md flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
@@ -94,7 +114,7 @@ function SeoStrategiesSection() {
 
                 {/* Title with Blue Accent Bar */}
                 <div className="flex items-center gap-2 mb-4">
-                  <span className="w-1.5 h-6 bg-[#0066ff] rounded-full inline-block" />
+                  <span className="w-1.5 h-6 bg-[#2196F3] rounded-full inline-block" />
                   <h3 className="text-xl font-black text-[#0a0a0a] tracking-tight" style={{ color: '#0a0a0a' }}>
                     {card.title}
                   </h3>
@@ -104,7 +124,7 @@ function SeoStrategiesSection() {
                 <div className="grid grid-cols-2 gap-4 mb-6">
                   {/* Stat 1 */}
                   <div>
-                    <div className="text-2xl sm:text-3xl font-black text-[#0066ff] leading-none mb-1">
+                    <div className="text-2xl sm:text-3xl font-black text-[#2196F3] leading-none mb-1">
                       {card.stat1.value}
                     </div>
                     <div className="text-xs font-bold text-[#555555] leading-tight" style={{ color: '#555555' }}>
@@ -114,7 +134,7 @@ function SeoStrategiesSection() {
 
                   {/* Stat 2 */}
                   <div className="pl-3 border-l border-slate-100">
-                    <div className="text-2xl sm:text-3xl font-black text-[#0066ff] leading-none mb-1">
+                    <div className="text-2xl sm:text-3xl font-black text-[#2196F3] leading-none mb-1">
                       {card.stat2.value}
                     </div>
                     <div className="text-xs font-bold text-[#555555] leading-tight" style={{ color: '#555555' }}>
@@ -124,7 +144,7 @@ function SeoStrategiesSection() {
                 </div>
 
                 {/* Action Arrow Circle Button */}
-                <div className="absolute bottom-5 right-5 w-9 h-9 rounded-full bg-[#0066ff] text-white flex items-center justify-center shadow-md group-hover:bg-[#0a0a0a] group-hover:scale-110 transition-all duration-300 cursor-pointer">
+                <div className="absolute bottom-5 right-5 w-9 h-9 rounded-full bg-[#2196F3] text-white flex items-center justify-center shadow-md group-hover:bg-[#0a0a0a] group-hover:scale-110 transition-all duration-300 cursor-pointer">
                   <ArrowRight className="w-4 h-4 text-white" />
                 </div>
 
@@ -384,6 +404,1159 @@ function SeoOverviewSection() {
   )
 }
 
+function NationalSeoIcon() {
+  return (
+    <div className="w-24 h-24 rounded-full bg-[#eaf3ff] border border-[#d0e4ff] flex items-center justify-center relative shadow-xs group-hover:scale-105 transition-transform duration-300">
+      <svg className="w-14 h-14" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="28" cy="28" r="18" stroke="#1e293b" strokeWidth="2.5" fill="none" />
+        <ellipse cx="28" cy="28" rx="8" ry="18" stroke="#1e293b" strokeWidth="2.5" fill="none" />
+        <line x1="10" y1="28" x2="46" y2="28" stroke="#1e293b" strokeWidth="2.5" />
+        <line x1="13" y1="18" x2="43" y2="18" stroke="#1e293b" strokeWidth="1.8" strokeDasharray="2 2" />
+        <line x1="13" y1="38" x2="43" y2="38" stroke="#1e293b" strokeWidth="1.8" strokeDasharray="2 2" />
+
+        {/* Magnifying Glass Overlay */}
+        <circle cx="42" cy="42" r="9" stroke="#2196F3" strokeWidth="3" fill="#eaf3ff" />
+        <line x1="48.5" y1="48.5" x2="56" y2="56" stroke="#2196F3" strokeWidth="3.5" strokeLinecap="round" />
+      </svg>
+    </div>
+  )
+}
+
+function LocalSeoIcon() {
+  return (
+    <div className="w-24 h-24 rounded-full bg-[#f2f9d8] border border-[#e2f2a8] flex items-center justify-center relative shadow-xs group-hover:scale-105 transition-transform duration-300">
+      <svg className="w-14 h-14" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="26" cy="34" r="18" stroke="#1e293b" strokeWidth="2.5" fill="none" />
+        <ellipse cx="26" cy="34" rx="8" ry="18" stroke="#1e293b" strokeWidth="2.5" fill="none" />
+        <line x1="8" y1="34" x2="44" y2="34" stroke="#1e293b" strokeWidth="2.5" />
+
+        {/* Location Pin 1 (Top Right) */}
+        <g transform="translate(34, 6)">
+          <path d="M9 0C4.58 0 1 3.58 1 8C1 14 9 20 9 20C9 20 17 14 17 8C17 3.58 13.42 0 9 0Z" fill="#bcd32e" stroke="#1e293b" strokeWidth="2" />
+          <circle cx="9" cy="8" r="3" fill="#1e293b" />
+        </g>
+
+        {/* Location Pin 2 (Bottom Right) */}
+        <g transform="translate(38, 36)">
+          <path d="M6 0C3 0 0.6 2.4 0.6 5.4C0.6 9.4 6 13.5 6 13.5C6 13.5 11.4 9.4 11.4 5.4C11.4 2.4 9 0 6 0Z" fill="#bcd32e" stroke="#1e293b" strokeWidth="1.8" />
+          <circle cx="6" cy="5.4" r="2" fill="#1e293b" />
+        </g>
+      </svg>
+    </div>
+  )
+}
+
+function AiSeoIcon() {
+  return (
+    <div className="w-24 h-24 rounded-full bg-[#eaf3ff] border border-[#d0e4ff] flex items-center justify-center relative shadow-xs group-hover:scale-105 transition-transform duration-300">
+      <svg className="w-14 h-14" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+        {/* Monitor Screen */}
+        <rect x="8" y="10" width="46" height="34" rx="4" fill="white" stroke="#1e293b" strokeWidth="2.5" />
+        <line x1="31" y1="44" x2="31" y2="52" stroke="#1e293b" strokeWidth="3" />
+        <line x1="20" y1="52" x2="42" y2="52" stroke="#1e293b" strokeWidth="2.5" strokeLinecap="round" />
+
+        {/* Browser Top Bar & Store Grid */}
+        <path d="M12 14H50V22H12V14Z" fill="#eaf3ff" stroke="#1e293b" strokeWidth="1.8" />
+        <circle cx="17" cy="18" r="1.5" fill="#2196F3" />
+        <circle cx="22" cy="18" r="1.5" fill="#2196F3" />
+        <circle cx="27" cy="18" r="1.5" fill="#2196F3" />
+        <line x1="33" y1="18" x2="46" y2="18" stroke="#2196F3" strokeWidth="2" strokeLinecap="round" />
+
+        {/* Magnifying Glass Overlay */}
+        <circle cx="38" cy="32" r="7" stroke="#2196F3" strokeWidth="2.5" fill="#eaf3ff" />
+        <line x1="43" y1="37" x2="49" y2="43" stroke="#2196F3" strokeWidth="3" strokeLinecap="round" />
+      </svg>
+    </div>
+  )
+}
+
+function EcommerceSeoIcon() {
+  return (
+    <div className="w-24 h-24 rounded-full bg-[#f2f9d8] border border-[#e2f2a8] flex items-center justify-center relative shadow-xs group-hover:scale-105 transition-transform duration-300">
+      <svg className="w-14 h-14" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+        {/* Laptop Frame */}
+        <rect x="10" y="18" width="44" height="28" rx="3" fill="white" stroke="#1e293b" strokeWidth="2.5" />
+        <line x1="6" y1="46" x2="58" y2="46" stroke="#1e293b" strokeWidth="3" strokeLinecap="round" />
+
+        {/* Shopping Window / Cart */}
+        <path d="M16 26H32V32H16V26Z" fill="#f2f9d8" stroke="#1e293b" strokeWidth="1.8" />
+        <path d="M17 38H33L36 30H20L17 38Z" fill="#f2f9d8" stroke="#1e293b" strokeWidth="1.8" strokeLinejoin="round" />
+        <circle cx="21" cy="41" r="1.5" fill="#1e293b" />
+        <circle cx="30" cy="41" r="1.5" fill="#1e293b" />
+
+        {/* Dollar Badge Top Right */}
+        <circle cx="43" cy="16" r="9" fill="#c5f015" stroke="#1e293b" strokeWidth="2" />
+        <text x="43" y="20" textAnchor="middle" fontSize="11" fontWeight="900" fill="#1e293b">$</text>
+      </svg>
+    </div>
+  )
+}
+
+function AiSeoServicesSection() {
+  const {
+    badge,
+    titlePrefix,
+    titleBlue,
+    titleLime,
+    descriptionPrefix,
+    descriptionHighlight,
+    descriptionSuffix,
+    cards
+  } = aiSeoServicesData
+
+  return (
+    <section className="mt-16 sm:mt-24 relative">
+      {/* Subtle Polka Dots Decorator */}
+      <div className="absolute top-12 left-0 opacity-20 pointer-events-none hidden lg:block">
+        <div className="grid grid-cols-4 gap-2">
+          {[...Array(20)].map((_, i) => (
+            <div key={i} className="w-1.5 h-1.5 rounded-full bg-[#0066ff]" />
+          ))}
+        </div>
+      </div>
+      <div className="absolute top-12 right-0 opacity-20 pointer-events-none hidden lg:block">
+        <div className="grid grid-cols-4 gap-2">
+          {[...Array(20)].map((_, i) => (
+            <div key={i} className="w-1.5 h-1.5 rounded-full bg-[#bcd32e]" />
+          ))}
+        </div>
+      </div>
+
+      {/* Section Header */}
+      <div className="text-center max-w-4xl mx-auto mb-12 sm:mb-14 px-4">
+        {/* Top Badge */}
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-slate-200 shadow-xs text-xs font-black tracking-wider uppercase mb-5">
+          <Sparkles className="w-4 h-4 text-[#0066ff] animate-pulse" />
+          <span className="bg-gradient-to-r from-[#0066ff] to-[#c5f015] bg-clip-text text-transparent">
+            {badge}
+          </span>
+        </div>
+
+        {/* Main Title */}
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black !text-[#0a0a0a] tracking-tight mb-4 leading-tight">
+          {titlePrefix}
+          <span className="text-[#2196F3]">{titleBlue}</span>
+          {/* <span className="text-[#c5f015]">{titleLime}</span> */}
+        </h2>
+
+        {/* Two-tone Accent Line Divider */}
+        <div className="flex items-center justify-center gap-1 my-5">
+          <span className="w-12 h-1 bg-[#2196F3] rounded-full" />
+          <span className="w-2.5 h-1 bg-[#2196F3] rounded-full" />
+          <span className="w-2.5 h-1 bg-[#bcd32e] rounded-full" />
+          <span className="w-12 h-1 bg-[#bcd32e] rounded-full" />
+        </div>
+
+        {/* Subtitle Paragraph */}
+        <p className="text-[#555555] text-sm sm:text-base leading-relaxed max-w-3xl mx-auto font-medium">
+          {descriptionPrefix}
+          <strong className="text-[#2196F3] font-bold">{descriptionHighlight}</strong>
+          {descriptionSuffix}
+        </p>
+      </div>
+
+      {/* 4 Cards Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-7 relative z-10">
+        {cards.map((card) => {
+          const isBlue = card.accentColor === 'blue'
+          return (
+            <div
+              key={card.id}
+              className="bg-white rounded-[28px] border border-slate-100 shadow-[0_10px_30px_rgba(0,0,0,0.04)] hover:shadow-[0_20px_45px_rgba(0,0,0,0.09)] transition-all duration-300 hover:-translate-y-1.5 relative overflow-hidden flex flex-col justify-between p-6 sm:p-7 group"
+            >
+              {/* Corner Ribbon Badge */}
+              <div className="absolute top-0 right-0 w-20 h-20 overflow-hidden pointer-events-none z-10">
+                <div
+                  className={`absolute top-3 -right-7 w-28 py-1 text-center font-black text-xs sm:text-sm tracking-wider shadow-xs rotate-45 ${isBlue
+                    ? 'bg-[#2196F3] text-white'
+                    : 'bg-[#bcd32e] text-[#1e293b]'
+                    }`}
+                >
+                  {card.number}
+                </div>
+              </div>
+
+              {/* Icon & Title & Description */}
+              <div className="flex flex-col items-center text-center mt-2">
+                {card.iconType === 'National' && <NationalSeoIcon />}
+                {card.iconType === 'Local' && <LocalSeoIcon />}
+                {card.iconType === 'AiSeo' && <AiSeoIcon />}
+                {card.iconType === 'Ecommerce' && <EcommerceSeoIcon />}
+
+                {/* Accent Short Bar */}
+                <div
+                  className={`w-10 h-1 rounded-full my-5 ${isBlue ? 'bg-[#2196F3]' : 'bg-[#bcd32e]'
+                    }`}
+                />
+
+                {/* Card Title */}
+                <h3 className="text-2xl font-black !text-[#0a0a0a] tracking-tight mb-4">
+                  {card.title}{' '}
+                  <span className={isBlue ? 'text-[#2196F3]' : 'text-[#c5f015]'}>
+                    {card.highlightTitle}
+                  </span>
+                </h3>
+
+                {/* Description */}
+                <p className="text-[#555555] text-sm leading-relaxed font-medium mb-6">
+                  {card.description}
+                </p>
+              </div>
+
+              {/* Action Button */}
+              <a
+                href={card.buttonLink}
+                className={`w-full rounded-xl py-3 px-4 text-xs sm:text-sm font-extrabold flex items-center justify-center gap-2 transition-all duration-300 ${isBlue
+                  ? 'bg-[#eaf3ff] text-[#2196F3] hover:bg-[#2196F3] hover:text-white'
+                  : 'bg-[#f4f8d6] text-[#6f8500] hover:bg-[#bcd32e] hover:text-[#1e293b]'
+                  }`}
+              >
+                <span>{card.buttonText}</span>
+                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+              </a>
+            </div>
+          )
+        })}
+      </div>
+    </section>
+  )
+}
+
+function PlatformSeoSection() {
+  const { badge, titlePrefix, titleHighlight, description, platforms } = platformSeoSectionData
+
+  return (
+    <section className="mt-16 sm:mt-24 relative">
+      {/* Background Soft Orbs Decorator */}
+      <div className="absolute top-1/2 -left-20 w-80 h-80 bg-[#2196F3]/10 rounded-full blur-3xl pointer-events-none -z-10" />
+      <div className="absolute -top-10 -right-20 w-80 h-80 bg-[#c5f015]/15 rounded-full blur-3xl pointer-events-none -z-10" />
+
+      {/* Section Header */}
+      <div className="text-center max-w-4xl mx-auto mb-10 sm:mb-12 px-4">
+        {/* Top Badge */}
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#eef6ff] border border-[#2196F3]/30 text-[#2196F3] font-black text-xs tracking-wider uppercase mb-5 shadow-2xs">
+          <div className="w-5 h-5 rounded-full bg-[#2196F3] text-white flex items-center justify-center">
+            <Layers className="w-3 h-3 text-white" />
+          </div>
+          <span>{badge}</span>
+        </div>
+
+        {/* Main Title */}
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black !text-[#0a0a0a] tracking-tight mb-4 leading-tight">
+          {titlePrefix}
+          <span className="text-[#2196F3]">{titleHighlight}</span>
+        </h2>
+
+        {/* Two-tone Accent Line Divider with Dot */}
+        <div className="flex items-center justify-center gap-1.5 my-4">
+          <span className="w-10 h-1 bg-[#2196F3] rounded-full" />
+          <span className="w-2.5 h-2.5 bg-[#c5f015] rounded-full" />
+          <span className="w-10 h-1 bg-[#c5f015] rounded-full" />
+        </div>
+
+        {/* Subtitle Description */}
+        <p className="text-slate-600 text-sm sm:text-base leading-relaxed max-w-3xl mx-auto font-medium">
+          {description}
+        </p>
+      </div>
+
+      {/* 12 Platform Cards Grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 sm:gap-6 relative z-10">
+        {platforms.map((card) => {
+          const isBlue = card.accentColor === 'blue'
+          return (
+            <div
+              key={card.id}
+              className="bg-white rounded-2xl border border-slate-100 shadow-[0_8px_25px_rgba(0,0,0,0.04)] hover:shadow-[0_16px_35px_rgba(33,150,243,0.12)] transition-all duration-300 hover:-translate-y-1 relative overflow-hidden flex items-center justify-center p-6 h-28 group"
+            >
+              {/* Left Vertical Accent Bar */}
+              <div
+                className={`absolute left-0 top-3 bottom-3 w-1.5 rounded-r-full transition-all duration-300 ${isBlue ? 'bg-[#2196F3]' : 'bg-[#c5f015]'
+                  }`}
+              />
+
+              {/* Platform Logo / Content */}
+              {card.type === 'react' ? (
+                <div className="flex items-center gap-2.5">
+                  <img src={card.image} alt={card.name} className="w-8 h-8" />
+                  <span className="text-xl font-bold text-[#0a0a0a] tracking-tight">React JS</span>
+                </div>
+              ) : (
+                <img
+                  src={card.image}
+                  alt={card.name}
+                  className="max-h-12 max-w-[170px] object-contain group-hover:scale-105 transition-transform duration-300"
+                />
+              )}
+            </div>
+          )
+        })}
+      </div>
+    </section>
+  )
+}
+
+function SeoApproachLeftIllustration() {
+  return (
+    <div className="relative w-full max-w-[280px] mt-6 flex items-center justify-center">
+      {/* Soft Blue Radial Glow */}
+      <div className="absolute w-52 h-52 bg-blue-100/50 rounded-full blur-2xl pointer-events-none -z-10" />
+
+      {/* Bar Chart Illustration */}
+      <div className="relative bg-white/90 backdrop-blur-md rounded-2xl p-4 border border-blue-100 shadow-[0_10px_30px_rgba(33,150,243,0.1)] flex items-end gap-3 h-32 w-56">
+        <div className="w-7 bg-blue-100 rounded-t-lg h-[35%]" />
+        <div className="w-7 bg-[#00bcd4] rounded-t-lg h-[55%]" />
+        <div className="w-7 bg-[#c5f015] rounded-t-lg h-[75%]" />
+        <div className="w-7 bg-[#2196F3] rounded-t-lg h-[100%]" />
+
+        {/* Growth Arrow SVG */}
+        <svg className="absolute inset-0 w-full h-full p-3 pointer-events-none" viewBox="0 0 100 60">
+          <path d="M10,45 Q35,35 60,25 T90,10" fill="none" stroke="#2196F3" strokeWidth="3" strokeLinecap="round" />
+          <path d="M82,10 L90,10 L90,18" fill="none" stroke="#2196F3" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+
+        {/* Target Badge Overlay */}
+        <div className="absolute -top-3 -right-3 w-11 h-11 rounded-full bg-white border-2 border-[#2196F3] text-[#2196F3] flex items-center justify-center shadow-lg animate-pulse">
+          <Target className="w-5 h-5 text-[#2196F3]" />
+        </div>
+      </div>
+    </div>
+  )
+}
+
+function SeoApproachWheel({ steps, activeHoverIndex, setActiveHoverIndex }) {
+  const scopeIconMap = { Search, Target, Users, Settings, TrendingUp, ShieldCheck }
+
+  const cx = 220
+  const cy = 260
+  const rout = 205
+  const rin = 118
+  const rline = 225
+
+  return (
+    <div className="relative w-full max-w-[560px] mx-auto flex items-center justify-center p-2">
+      <svg className="w-full h-auto overflow-visible" viewBox="0 0 460 520">
+        {/* Outer Thin Connecting Arc Line */}
+        <path
+          d={`M ${cx} ${cy - rline} A ${rline} ${rline} 0 0 1 ${cx} ${cy + rline}`}
+          fill="none"
+          stroke="#cbd5e1"
+          strokeWidth="1.5"
+          strokeDasharray="4 4"
+        />
+
+        {/* 6 Semi-circular Donut Slices */}
+        {steps.map((step, idx) => {
+          const startDeg = -90 + idx * 30 + 1.2
+          const endDeg = -90 + (idx + 1) * 30 - 1.2
+          const midDeg = (startDeg + endDeg) / 2
+
+          const r1 = (startDeg * Math.PI) / 180
+          const r2 = (endDeg * Math.PI) / 180
+          const rMid = (midDeg * Math.PI) / 180
+
+          const x1 = cx + rout * Math.cos(r1)
+          const y1 = cy + rout * Math.sin(r1)
+          const x2 = cx + rout * Math.cos(r2)
+          const y2 = cy + rout * Math.sin(r2)
+
+          const x3 = cx + rin * Math.cos(r2)
+          const y3 = cy + rin * Math.sin(r2)
+          const x4 = cx + rin * Math.cos(r1)
+          const y4 = cy + rin * Math.sin(r1)
+
+          // Math for Text & Icon & Node
+          const xNum = cx + (rout - 24) * Math.cos(rMid)
+          const yNum = cy + (rout - 24) * Math.sin(rMid)
+
+          const xIcon = cx + (rin + 28) * Math.cos(rMid)
+          const yIcon = cy + (rin + 28) * Math.sin(rMid)
+
+          const xNode = cx + rline * Math.cos(rMid)
+          const yNode = cy + rline * Math.sin(rMid)
+
+          const isHovered = activeHoverIndex === idx
+          const IconComponent = scopeIconMap[step.iconName] || Search
+
+          return (
+            <g
+              key={step.number}
+              onMouseEnter={() => setActiveHoverIndex(idx)}
+              onMouseLeave={() => setActiveHoverIndex(null)}
+              className="cursor-pointer transition-transform duration-300 group"
+              style={{
+                transformOrigin: `${cx}px ${cy}px`,
+                transform: isHovered ? 'scale(1.04)' : 'scale(1)'
+              }}
+            >
+              {/* Slice Arc Path */}
+              <path
+                d={`M ${x1} ${y1} A ${rout} ${rout} 0 0 1 ${x2} ${y2} L ${x3} ${y3} A ${rin} ${rin} 0 0 0 ${x4} ${y4} Z`}
+                fill={step.color}
+                opacity={isHovered ? 1 : 0.9}
+                className="transition-opacity duration-300 drop-shadow-sm"
+              />
+
+              {/* Number Label */}
+              <text
+                x={xNum}
+                y={yNum}
+                textAnchor="middle"
+                dominantBaseline="central"
+                fill="#ffffff"
+                fontSize="18"
+                fontWeight="900"
+              >
+                {step.number}
+              </text>
+
+              {/* White Icon inside Slice */}
+              <g transform={`translate(${xIcon - 12}, ${yIcon - 12})`}>
+                <IconComponent className="w-6 h-6 text-white" strokeWidth="2.2" />
+              </g>
+
+              {/* Outer Connecting Line Dot Node */}
+              <circle
+                cx={xNode}
+                cy={yNode}
+                r={isHovered ? '7.5' : '6'}
+                fill={step.color}
+                stroke="#ffffff"
+                strokeWidth="2.5"
+                className="transition-all duration-300"
+              />
+            </g>
+          )
+        })}
+
+        {/* Center Circular Badge */}
+        <circle cx={cx} cy={cy} r={rin - 4} fill="#ffffff" filter="drop-shadow(0px 12px 25px rgba(0,0,0,0.08))" />
+        <circle cx={cx} cy={cy} r={rin - 4} fill="none" stroke="#f1f5f9" strokeWidth="2" />
+
+        {/* Center Text: SEO APPROACH */}
+        <text x={cx} y={cy - 16} textAnchor="middle" fill="#0f172a" fontSize="32" fontWeight="900" letterSpacing="-0.5">
+          SEO
+        </text>
+        <text x={cx} y={cy + 14} textAnchor="middle" fill="#64748b" fontSize="13" fontWeight="800" letterSpacing="3.5">
+          APPROACH
+        </text>
+
+        {/* 3 Colorful Dots below Center Text */}
+        <circle cx={cx - 16} cy={cy + 34} r="4" fill="#2196F3" />
+        <circle cx={cx} cy={cy + 34} r="4" fill="#00d487" />
+        <circle cx={cx + 16} cy={cy + 34} r="4" fill="#00bcd4" />
+      </svg>
+    </div>
+  )
+}
+
+function SeoApproachSection() {
+  const [activeHoverIndex, setActiveHoverIndex] = useState(null)
+
+  const scopeIconMap = {
+    Search,
+    Target,
+    Users,
+    Settings,
+    TrendingUp,
+    ShieldCheck
+  }
+
+  return (
+    <section className="mt-16 sm:mt-24 relative">
+      {/* Background Soft Orbs */}
+      <div className="absolute top-1/3 -left-20 w-80 h-80 bg-blue-100/40 rounded-full blur-3xl pointer-events-none -z-10" />
+      <div className="absolute -bottom-10 right-0 w-80 h-80 bg-[#c5f015]/15 rounded-full blur-3xl pointer-events-none -z-10" />
+
+      {/* Main Container Card */}
+      <div className="bg-[#f8fafc]/80 border border-slate-100 rounded-[36px] sm:rounded-[44px] p-6 sm:p-10 lg:p-12 shadow-[0_15px_45px_rgba(0,0,0,0.03)] relative overflow-hidden">
+
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-6 items-center">
+
+          {/* LEFT COLUMN: Title & Description & Illustration (Span 4) */}
+          <div className="lg:col-span-4 flex flex-col items-start text-left">
+            <h2 className="text-3xl sm:text-4xl lg:text-[2.65rem] font-black !text-[#0a0a0a] tracking-tight leading-[1.18] mb-4">
+              {seoApproachData.titlePrefix}{seoApproachData.titleMiddle}
+              <span className="text-[#2196F3]">{seoApproachData.titleHighlightBlue}</span>
+              <span className="text-[#c5f015]">{seoApproachData.titleHighlightLime}</span>
+            </h2>
+
+            {/* Two-tone Accent Line Divider */}
+            <div className="flex items-center gap-1.5 my-4">
+              <span className="w-10 h-1 bg-[#2196F3] rounded-full" />
+              <span className="w-2.5 h-2.5 bg-[#c5f015] rounded-full" />
+              <span className="w-10 h-1 bg-[#c5f015] rounded-full" />
+            </div>
+
+            <p className="text-slate-600 text-sm sm:text-base leading-relaxed font-medium mb-4">
+              {seoApproachData.description}
+            </p>
+
+            <SeoApproachLeftIllustration />
+          </div>
+
+          {/* MIDDLE COLUMN: Interactive Half-Wheel Graphic (Span 4) */}
+          <div className="lg:col-span-4 flex justify-center items-center">
+            <SeoApproachWheel
+              steps={seoApproachData.steps}
+              activeHoverIndex={activeHoverIndex}
+              setActiveHoverIndex={setActiveHoverIndex}
+            />
+          </div>
+
+          {/* RIGHT COLUMN: 6 Step Cards List (Span 4) */}
+          <div className="lg:col-span-4 flex flex-col gap-3.5">
+            {seoApproachData.steps.map((step, idx) => {
+              const isHovered = activeHoverIndex === idx
+              const IconComp = scopeIconMap[step.iconName] || Search
+
+              return (
+                <div
+                  key={step.number}
+                  onMouseEnter={() => setActiveHoverIndex(idx)}
+                  onMouseLeave={() => setActiveHoverIndex(null)}
+                  className={`bg-white rounded-2xl p-4 border transition-all duration-300 flex items-center justify-between gap-3 cursor-pointer group shadow-2xs ${isHovered
+                      ? 'border-[#2196F3] shadow-md -translate-y-0.5'
+                      : 'border-slate-100 hover:border-slate-200'
+                    }`}
+                >
+                  {/* Left Pill Badge Number */}
+                  <div className="flex items-center gap-3.5">
+                    <div
+                      className="w-10 h-10 rounded-full text-white font-black text-xs sm:text-sm flex items-center justify-center shrink-0 shadow-xs"
+                      style={{ backgroundColor: step.color }}
+                    >
+                      {step.number}
+                    </div>
+
+                    {/* Step Title & Subtitle */}
+                    <div className="text-left">
+                      <h4 className="text-sm sm:text-base font-extrabold !text-slate-900 leading-snug group-hover:text-[#2196F3] transition-colors">
+                        {step.title}
+                      </h4>
+                      <p className="text-xs text-slate-500 font-medium line-clamp-2 mt-0.5">
+                        {step.description}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Right Icon Badge */}
+                  <div
+                    className="w-10 h-10 rounded-full flex items-center justify-center shrink-0 border border-slate-100 transition-transform duration-300 group-hover:scale-110"
+                    style={{ backgroundColor: step.bgColor, color: step.color }}
+                  >
+                    <IconComp className="w-5 h-5" style={{ color: step.color }} />
+                  </div>
+                </div>
+              )
+            })}
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+  )
+}
+
+function SeoScopeIllustration() {
+  return (
+    <div className="relative w-full max-w-sm mx-auto flex items-center justify-center p-4">
+      {/* Background Radial Glow */}
+      <div className="absolute w-64 h-64 bg-blue-100/60 rounded-full blur-3xl pointer-events-none -z-10" />
+
+      {/* Background Dashed Rings */}
+      <div className="absolute w-72 h-72 border border-blue-200/50 rounded-full border-dashed animate-spin-slow pointer-events-none" />
+
+      {/* Main Report Document Card */}
+      <div className="relative z-10 w-64 bg-white rounded-2xl border border-slate-100 shadow-[0_15px_40px_rgba(33,150,243,0.12)] p-5 space-y-4 hover:shadow-[0_20px_50px_rgba(33,150,243,0.18)] transition-all duration-300">
+
+        {/* Top Bar with Pie Icon */}
+        <div className="flex items-center gap-3 border-b border-slate-100 pb-3">
+          <div className="w-9 h-9 rounded-xl bg-[#eef6ff] text-[#2196F3] flex items-center justify-center shrink-0">
+            <BarChart3 className="w-5 h-5 text-[#2196F3]" />
+          </div>
+          <div className="space-y-1 flex-1">
+            <div className="h-2.5 bg-slate-200 rounded-full w-20" />
+            <div className="h-2 bg-slate-100 rounded-full w-12" />
+          </div>
+        </div>
+
+        {/* Middle Bar Chart Representation */}
+        <div className="flex items-end justify-between gap-2 h-20 pt-2 px-2 border-b border-slate-100">
+          <div className="w-4 bg-slate-200 rounded-t-md h-[40%]" />
+          <div className="w-4 bg-[#c5f015] rounded-t-md h-[75%]" />
+          <div className="w-4 bg-[#2196F3] rounded-t-md h-[100%]" />
+          <div className="w-4 bg-slate-200 rounded-t-md h-[60%]" />
+        </div>
+
+        {/* Bottom Lines */}
+        <div className="space-y-2 pt-1">
+          <div className="h-2 bg-slate-200 rounded-full w-full" />
+          <div className="h-2 bg-slate-100 rounded-full w-3/4" />
+        </div>
+      </div>
+
+      {/* Floating Top-Right Growth Badge */}
+      <div className="absolute -top-2 -right-2 z-20 bg-white rounded-xl p-2.5 shadow-lg border border-slate-100 flex items-center gap-2 animate-bounce-slow">
+        <div className="w-7 h-7 rounded-lg bg-[#eef6ff] text-[#2196F3] flex items-center justify-center">
+          <TrendingUp className="w-4 h-4 text-[#2196F3]" />
+        </div>
+        <div className="text-[11px] font-black text-slate-800">
+          +145% <span className="text-slate-400 font-bold block text-[9px]">Growth</span>
+        </div>
+      </div>
+
+      {/* Floating Bottom-Left Checkmark Badge */}
+      <div className="absolute bottom-4 -left-3 z-20 bg-white rounded-xl p-2.5 shadow-lg border border-slate-100 flex items-center gap-2">
+        <div className="w-7 h-7 rounded-full bg-[#c5f015] text-slate-900 flex items-center justify-center font-black">
+          ✓
+        </div>
+        <span className="text-[11px] font-extrabold text-slate-800">Audit Passed</span>
+      </div>
+
+      {/* Glass Magnifying Glass Overlay */}
+      <div className="absolute right-4 bottom-8 z-30 transform translate-x-2 translate-y-2">
+        <div className="w-16 h-16 rounded-full border-4 border-[#2196F3] bg-white/40 backdrop-blur-xs flex items-center justify-center shadow-xl">
+          <Search className="w-8 h-8 text-[#2196F3]" />
+        </div>
+      </div>
+    </div>
+  )
+}
+
+function SeoScopeSection() {
+  const [activeTabId, setActiveTabId] = useState(seoScopeData.tabs[0].id)
+  const activeTab = seoScopeData.tabs.find((t) => t.id === activeTabId) || seoScopeData.tabs[0]
+
+  const scopeIconMap = {
+    Search,
+    Target,
+    Users,
+    FileText,
+    Settings,
+    Sparkles,
+    Code,
+    ShieldCheck,
+    BarChart3
+  }
+
+  const ActiveIcon = scopeIconMap[activeTab.iconName] || Search
+
+  return (
+    <section className="mt-16 sm:mt-24 relative">
+      {/* Background Decorative Soft Orbs */}
+      <div className="absolute top-1/2 -left-24 w-96 h-96 bg-blue-100/50 rounded-full blur-3xl pointer-events-none -z-10" />
+      <div className="absolute -top-10 right-0 w-80 h-80 bg-[#c5f015]/15 rounded-full blur-3xl pointer-events-none -z-10" />
+
+      {/* Section Header */}
+      <div className="text-center max-w-4xl mx-auto mb-10 sm:mb-14 px-4">
+        {/* Main Title */}
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black !text-[#0a0a0a] tracking-tight mb-4 leading-tight">
+          {seoScopeData.titlePrefix}
+          <span className="text-[#2196F3]">{seoScopeData.titleHighlight}</span>
+          {seoScopeData.titleSuffix}
+        </h2>
+
+        {/* Two-tone Accent Line Divider with Dot */}
+        <div className="flex items-center justify-center gap-1.5 my-4">
+          <span className="w-10 h-1 bg-[#2196F3] rounded-full" />
+          <span className="w-2.5 h-2.5 bg-[#c5f015] rounded-full" />
+          <span className="w-10 h-1 bg-[#c5f015] rounded-full" />
+        </div>
+      </div>
+
+      {/* Main Grid: Left Tabs Menu + Right Content Display */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start relative z-10">
+
+        {/* LEFT COLUMN: Vertical Navigation Menu (4 Spans on Desktop) */}
+        <div className="lg:col-span-4 flex flex-col gap-2.5">
+          {seoScopeData.tabs.map((tab) => {
+            const isActive = tab.id === activeTabId
+            const TabIcon = scopeIconMap[tab.iconName] || Search
+
+            return (
+              <button
+                key={tab.id}
+                onClick={() => setActiveTabId(tab.id)}
+                className={`relative w-full text-left transition-all duration-300 p-3.5 sm:p-4 rounded-2xl flex items-center justify-between group font-bold text-sm sm:text-base cursor-pointer ${isActive
+                    ? 'bg-[#2196F3] text-white shadow-[0_10px_25px_rgba(33,150,243,0.3)] z-20'
+                    : 'bg-white text-slate-800 hover:bg-slate-50 border border-slate-100 shadow-2xs'
+                  }`}
+              >
+                {/* Left Icon Badge */}
+                <div className="flex items-center gap-3.5">
+                  <div
+                    className={`w-9 h-9 rounded-full flex items-center justify-center shrink-0 transition-colors ${isActive
+                        ? 'bg-white text-[#2196F3]'
+                        : 'bg-[#eef6ff] text-[#2196F3] group-hover:bg-[#2196F3] group-hover:text-white'
+                      }`}
+                  >
+                    <TabIcon className="w-4 h-4" />
+                  </div>
+                  <span className="truncate">{tab.tabTitle}</span>
+                </div>
+
+                {/* Right Arrow / Pointer Indicator */}
+                {isActive ? (
+                  <div className="hidden lg:block absolute -right-3 top-1/2 -translate-y-1/2 w-0 h-0 border-y-[10px] border-y-transparent border-l-[12px] border-l-[#2196F3] pointer-events-none" />
+                ) : (
+                  <ChevronRight className="w-4 h-4 text-[#2196F3] group-hover:translate-x-1 transition-transform" />
+                )}
+              </button>
+            )
+          })}
+        </div>
+
+        {/* RIGHT COLUMN: Active Tab Content Display Card (8 Spans on Desktop) */}
+        <div className="lg:col-span-8 bg-white border border-slate-100 rounded-[32px] p-6 sm:p-10 lg:p-12 shadow-[0_15px_45px_rgba(33,150,243,0.07)] min-h-[480px] flex flex-col justify-between">
+
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+
+            {/* Text Content (Span 7) */}
+            <div className="lg:col-span-7 space-y-6">
+
+              {/* Header Title with Big Icon */}
+              <div className="flex items-center gap-4 mb-2">
+                <div className="w-14 h-14 rounded-2xl bg-[#eef6ff] border border-[#2196F3]/20 text-[#2196F3] flex items-center justify-center shrink-0 shadow-2xs">
+                  <ActiveIcon className="w-7 h-7 text-[#2196F3]" />
+                </div>
+                <div>
+                  <h3 className="text-2xl sm:text-3xl font-black !text-slate-900 tracking-tight">
+                    {activeTab.contentTitlePrefix}
+                    <span className="text-[#2196F3]">{activeTab.contentTitleHighlight}</span>
+                  </h3>
+                  <div className="w-14 h-1 bg-[#c5f015] rounded-full mt-2" />
+                </div>
+              </div>
+
+              {/* Paragraphs */}
+              <div className="space-y-4 text-slate-600 text-sm sm:text-base leading-relaxed font-medium">
+                {activeTab.paragraphs.map((pText, idx) => (
+                  <p key={idx}>{pText}</p>
+                ))}
+              </div>
+
+            </div>
+
+            {/* Graphic Illustration (Span 5) */}
+            <div className="lg:col-span-5 flex items-center justify-center">
+              <SeoScopeIllustration />
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+  )
+}
+
+function SeoExplainedIllustration() {
+  return (
+    <div className="relative w-full max-w-sm mx-auto flex items-center justify-center p-4">
+      {/* Soft Blue Radial Background */}
+      <div className="absolute w-64 h-64 bg-blue-100/50 rounded-full blur-3xl pointer-events-none -z-10" />
+
+      {/* Main Browser Window Box */}
+      <div className="relative z-10 w-full bg-white rounded-3xl border border-slate-100 shadow-[0_15px_40px_rgba(33,150,243,0.12)] overflow-hidden transition-all duration-300 hover:shadow-[0_20px_50px_rgba(33,150,243,0.18)]">
+        
+        {/* Blue Browser Header Bar */}
+        <div className="bg-[#4285f4] p-3 flex items-center gap-1.5">
+          <span className="w-2.5 h-2.5 rounded-full bg-white/80" />
+          <span className="w-2.5 h-2.5 rounded-full bg-white/80" />
+          <span className="w-2.5 h-2.5 rounded-full bg-white/80" />
+        </div>
+
+        {/* Search Bar Row */}
+        <div className="p-4 space-y-5">
+          <div className="bg-[#edf3fe] rounded-full p-2.5 flex items-center justify-between">
+            <div className="h-2.5 bg-white/80 rounded-full w-28 ml-2" />
+            <div className="w-8 h-8 rounded-full bg-[#c5f015] flex items-center justify-center shadow-xs">
+              <Search className="w-4 h-4 text-slate-900" />
+            </div>
+          </div>
+
+          {/* Center SEO Big Text & Rising Bars */}
+          <div className="pt-2 pb-4 text-center">
+            <span className="text-4xl font-black text-[#2196F3] tracking-wider block mb-4">SEO</span>
+
+            {/* Rising Bar Chart Graphic */}
+            <div className="relative flex items-end justify-center gap-3 h-16 max-w-[180px] mx-auto">
+              <div className="w-4 bg-[#2196F3]/40 rounded-t-sm h-[30%]" />
+              <div className="w-4 bg-[#2196F3]/70 rounded-t-sm h-[50%]" />
+              <div className="w-4 bg-[#c5f015] rounded-t-sm h-[75%]" />
+              <div className="w-4 bg-[#2196F3] rounded-t-sm h-[100%]" />
+
+              {/* Upward Green Arrow */}
+              <svg className="absolute -top-3 left-0 w-full h-full pointer-events-none" viewBox="0 0 100 50">
+                <path d="M10,40 Q40,30 85,8" fill="none" stroke="#a3e635" strokeWidth="3.5" strokeLinecap="round" />
+                <path d="M75,8 L85,8 L85,18" fill="none" stroke="#a3e635" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        {/* Polka Dots Decorator in Corner */}
+        <div className="absolute bottom-3 left-3 opacity-20 pointer-events-none">
+          <div className="grid grid-cols-4 gap-1">
+            {[...Array(12)].map((_, i) => (
+              <div key={i} className="w-1 h-1 rounded-full bg-[#2196F3]" />
+            ))}
+          </div>
+        </div>
+
+      </div>
+
+      {/* Floating Bottom-Right Target Circle Badge Overlay */}
+      <div className="absolute -bottom-3 -right-3 z-20 w-20 h-20 rounded-full border-4 border-white bg-[#eef6ff] shadow-xl flex items-center justify-center">
+        <div className="w-12 h-12 rounded-full border-4 border-[#2196F3] bg-white flex items-center justify-center">
+          <Target className="w-6 h-6 text-[#2196F3]" />
+        </div>
+      </div>
+
+    </div>
+  )
+}
+
+function SeoExplainedSection() {
+  const [activeTabId, setActiveTabId] = useState(seoExplainedData.tabs[3].id)
+  const activeTab = seoExplainedData.tabs.find((t) => t.id === activeTabId) || seoExplainedData.tabs[3]
+
+  const explainedIconMap = {
+    HelpCircle,
+    Settings,
+    User,
+    Layers,
+    DollarSign,
+    Search,
+    Award,
+    TrendingUp,
+    Globe,
+    Target,
+    ShieldCheck,
+    ShoppingCart,
+    Users,
+    Sparkles,
+    FileText,
+    Link: LinkIcon
+  }
+
+  return (
+    <section className="mt-16 sm:mt-24 relative">
+      {/* Section Background Soft Glows */}
+      <div className="absolute top-10 left-10 w-96 h-96 bg-blue-100/40 rounded-full blur-3xl pointer-events-none -z-10" />
+      <div className="absolute bottom-10 right-10 w-80 h-80 bg-[#c5f015]/15 rounded-full blur-3xl pointer-events-none -z-10" />
+
+      {/* Main Container Card */}
+      <div className="bg-[#f4f8fe]/60 border border-slate-100/80 rounded-[36px] sm:rounded-[44px] p-6 sm:p-10 lg:p-12 shadow-[0_15px_45px_rgba(0,0,0,0.03)] relative overflow-hidden">
+
+        {/* Section Header */}
+        <div className="text-center max-w-4xl mx-auto mb-8 sm:mb-10 px-4">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black !text-[#0a0a0a] tracking-tight mb-3 leading-tight">
+            {seoExplainedData.titlePrefix}
+            <span className="text-[#2196F3]">{seoExplainedData.titleHighlight}</span>
+          </h2>
+
+          {/* Two-tone Accent Line Divider */}
+          <div className="flex items-center justify-center gap-1.5 my-4">
+            <span className="w-10 h-1 bg-[#2196F3] rounded-full" />
+            <span className="w-2.5 h-2.5 bg-[#c5f015] rounded-full" />
+            <span className="w-10 h-1 bg-[#c5f015] rounded-full" />
+          </div>
+
+          <p className="text-slate-600 text-sm sm:text-base leading-relaxed max-w-3xl mx-auto font-medium">
+            {seoExplainedData.description}
+          </p>
+        </div>
+
+        {/* TOP HORIZONTAL NAVIGATION TABS BAR */}
+        <div className="bg-white rounded-2xl p-2 border border-slate-100 shadow-sm mb-8 overflow-x-auto">
+          <div className="flex items-center justify-between min-w-max gap-2">
+            {seoExplainedData.tabs.map((tab) => {
+              const isActive = tab.id === activeTabId
+              const TabIcon = explainedIconMap[tab.iconName] || HelpCircle
+
+              return (
+                <button
+                  key={tab.id}
+                  onClick={() => setActiveTabId(tab.id)}
+                  className={`flex items-center gap-3 px-5 py-3.5 rounded-xl font-extrabold text-xs sm:text-sm transition-all duration-300 cursor-pointer ${
+                    isActive
+                      ? 'bg-[#2196F3] text-white shadow-md'
+                      : 'bg-white text-slate-700 hover:bg-slate-50 hover:text-[#2196F3]'
+                  }`}
+                >
+                  <div
+                    className={`w-7 h-7 rounded-full flex items-center justify-center shrink-0 ${
+                      isActive
+                        ? 'bg-white/20 text-white'
+                        : tab.isLimeIcon
+                        ? 'bg-[#f7fce5] text-[#84cc16]'
+                        : 'bg-[#eef6ff] text-[#2196F3]'
+                    }`}
+                  >
+                    <TabIcon className="w-4 h-4" />
+                  </div>
+                  <span>{tab.tabTitle}</span>
+                </button>
+              )
+            })}
+          </div>
+        </div>
+
+        {/* MAIN CONTENT DISPLAY CARD (BELOW TAB BAR) */}
+        <div className="bg-white rounded-[32px] border border-slate-100 p-6 sm:p-10 shadow-[0_15px_40px_rgba(33,150,243,0.06)] relative overflow-hidden">
+          
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+
+            {/* LEFT COLUMN: Illustration Graphic (Span 4) */}
+            <div className="lg:col-span-4 flex justify-center items-center">
+              <SeoExplainedIllustration />
+            </div>
+
+            {/* RIGHT COLUMN: Content & Items List (Span 8) */}
+            <div className="lg:col-span-8 space-y-6 text-left">
+
+              {/* Title & Divider */}
+              <div>
+                <h3 className="text-2xl sm:text-3xl font-black !text-slate-900 tracking-tight">
+                  {activeTab.contentTitlePrefix}
+                  <span className="text-[#2196F3]">{activeTab.contentTitleHighlight}</span>
+                </h3>
+                <div className="flex items-center gap-1.5 mt-2.5">
+                  <span className="w-10 h-1 bg-[#2196F3] rounded-full" />
+                  <span className="w-2.5 h-2.5 bg-[#c5f015] rounded-full" />
+                </div>
+              </div>
+
+              {/* Intro Paragraph */}
+              <p className="text-slate-600 text-sm sm:text-base leading-relaxed font-medium">
+                {activeTab.intro}
+              </p>
+
+              {/* Vertical Items List connected with dashed line */}
+              <div className="relative space-y-6 pt-2">
+                {/* Vertical Line Connector */}
+                <div className="absolute left-5 top-4 bottom-4 w-0.5 bg-slate-200 border-l border-dashed border-slate-300 -z-0" />
+
+                {activeTab.items.map((item, idx) => {
+                  const ItemIcon = explainedIconMap[item.iconName] || FileText
+                  const isLime = item.color === 'lime'
+
+                  return (
+                    <div key={idx} className="relative z-10 flex items-start gap-4 group">
+                      {/* Left Circle Icon Badge */}
+                      <div
+                        className={`w-10 h-10 rounded-full border border-slate-100 flex items-center justify-center shrink-0 shadow-2xs group-hover:scale-110 transition-transform ${
+                          isLime
+                            ? 'bg-[#f7fce5] text-[#84cc16]'
+                            : 'bg-[#eef6ff] text-[#2196F3]'
+                        }`}
+                      >
+                        <ItemIcon className="w-5 h-5" />
+                      </div>
+
+                      {/* Text */}
+                      <p className="text-slate-600 text-xs sm:text-sm leading-relaxed font-medium pt-1">
+                        <strong
+                          className={`font-black ${
+                            isLime ? 'text-[#84cc16]' : 'text-[#2196F3]'
+                          }`}
+                        >
+                          {item.label}{' '}
+                        </strong>
+                        {item.description}
+                      </p>
+                    </div>
+                  )
+                })}
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+  )
+}
+
+function SeoCtaSection() {
+  const [websiteUrl, setWebsiteUrl] = useState('')
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    if (websiteUrl.trim()) {
+      alert(`Thank you! We will analyze ${websiteUrl} and generate your custom SEO Growth Plan.`)
+      setWebsiteUrl('')
+    }
+  }
+
+  return (
+    <section className="mt-16 sm:mt-24 relative">
+      {/* Container Box */}
+      <div className="bg-white border border-slate-100 rounded-[36px] sm:rounded-[44px] p-6 sm:p-10 lg:p-14 shadow-[0_20px_50px_rgba(0,0,0,0.04)] relative overflow-hidden">
+        
+        {/* Background Arcs & Decorative Orbs */}
+        <div className="absolute -top-32 -right-32 w-[550px] h-[550px] rounded-full border-[28px] border-[#2196F3]/15 pointer-events-none -z-0" />
+        <div className="absolute -top-40 -right-40 w-[650px] h-[650px] rounded-full border-[3px] border-[#c5f015]/60 pointer-events-none -z-0" />
+        <div className="absolute top-1/2 left-0 w-80 h-80 bg-blue-100/40 rounded-full blur-3xl pointer-events-none -z-10" />
+
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center relative z-10">
+
+          {/* LEFT COLUMN: Form & Content (Span 7) */}
+          <div className="lg:col-span-7 flex flex-col items-start text-left space-y-6">
+
+            {/* Top Pill Badge */}
+            <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-slate-50 border border-slate-200/80 text-xs font-bold tracking-wider uppercase shadow-2xs">
+              <div className="w-6 h-6 rounded-full bg-[#2196F3] text-white flex items-center justify-center">
+                <BarChart3 className="w-3.5 h-3.5 text-white" />
+              </div>
+              <span className="text-slate-700 font-extrabold">{seoCtaSectionData.badge}</span>
+              <span className="text-slate-300">|</span>
+              <div className="flex items-center gap-1">
+                <span className="w-2 h-2 rounded-full bg-[#2196F3]" />
+                <span className="w-2 h-2 rounded-full bg-[#c5f015]" />
+              </div>
+            </div>
+
+            {/* Main Headline */}
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black !text-[#0a0a0a] tracking-tight leading-[1.15]">
+              {seoCtaSectionData.titlePrefix}
+              <span className="text-[#2196F3]">{seoCtaSectionData.titleHighlight}</span>
+              {seoCtaSectionData.titleSuffix}
+            </h2>
+
+            {/* Accent Line Divider */}
+            <div className="flex items-center gap-1.5 my-1">
+              <span className="w-12 h-1 bg-[#2196F3] rounded-full" />
+              <span className="w-2.5 h-2.5 bg-[#2196F3] rounded-full" />
+              <span className="w-12 h-1 bg-[#c5f015] rounded-full" />
+            </div>
+
+            {/* Subtitle Description */}
+            <p className="text-slate-600 text-base sm:text-lg font-medium leading-relaxed max-w-xl">
+              {seoCtaSectionData.descriptionPrefix}
+              <strong className="text-[#84cc16] font-black underline decoration-[#c5f015]/60 underline-offset-4">
+                {seoCtaSectionData.descriptionHighlight}
+              </strong>
+            </p>
+
+            {/* Website Input & CTA Button Form */}
+            <form onSubmit={handleSubmit} className="w-full max-w-xl pt-2">
+              <div className="bg-[#f0f4f9] p-2 rounded-2xl border border-slate-200/80 flex flex-col sm:flex-row items-center gap-2 shadow-inner">
+                <div className="flex items-center gap-3 px-4 py-2.5 flex-1 w-full">
+                  <Globe className="w-5 h-5 text-[#2196F3] shrink-0" />
+                  <input
+                    type="url"
+                    required
+                    value={websiteUrl}
+                    onChange={(e) => setWebsiteUrl(e.target.value)}
+                    placeholder={seoCtaSectionData.inputPlaceholder}
+                    className="w-full bg-transparent text-slate-900 placeholder-slate-400 font-semibold text-sm sm:text-base outline-none"
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  className="w-full sm:w-auto bg-[#2196F3] hover:bg-[#0066ff] text-white font-extrabold text-xs sm:text-sm uppercase tracking-wider px-7 py-4 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center gap-2 shrink-0 cursor-pointer"
+                >
+                  <span>{seoCtaSectionData.buttonText}</span>
+                  <ArrowRight className="w-4 h-4 text-white" />
+                </button>
+              </div>
+            </form>
+
+            {/* Bottom Trust Features Row */}
+            <div className="flex items-center gap-4 sm:gap-6 flex-wrap pt-2 text-xs sm:text-sm font-bold text-slate-600">
+              <div className="flex items-center gap-2">
+                <div className="w-6 h-6 rounded-full bg-blue-50 text-[#2196F3] flex items-center justify-center">
+                  <ShieldCheck className="w-3.5 h-3.5" />
+                </div>
+                <span>No Commitment</span>
+              </div>
+
+              <span className="text-slate-200">|</span>
+
+              <div className="flex items-center gap-2">
+                <div className="w-6 h-6 rounded-full bg-[#f7fce5] text-[#84cc16] flex items-center justify-center">
+                  <Zap className="w-3.5 h-3.5" />
+                </div>
+                <span>Quick & Easy</span>
+              </div>
+
+              <span className="text-slate-200">|</span>
+
+              <div className="flex items-center gap-2">
+                <div className="w-6 h-6 rounded-full bg-blue-50 text-[#2196F3] flex items-center justify-center">
+                  <Lock className="w-3.5 h-3.5" />
+                </div>
+                <span>100% Secure</span>
+              </div>
+            </div>
+
+          </div>
+
+          {/* RIGHT COLUMN: Image & Floating Badges (Span 5) */}
+          <div className="lg:col-span-5 relative flex justify-center items-end min-h-[380px] lg:min-h-[440px] pt-6 lg:pt-0">
+            
+            {/* Main Person Image */}
+            <img
+              src={ctaImage}
+              alt="AI + SEO Experts"
+              className="w-full max-w-md lg:max-w-none h-auto object-contain relative z-10 drop-shadow-2xl hover:scale-[1.02] transition-transform duration-500"
+            />
+
+            {/* Top-Left Floating Growth Analytics Card */}
+            <div className="absolute top-4 left-0 sm:left-4 z-20 bg-white rounded-2xl p-4 shadow-xl border border-slate-100 space-y-2 max-w-[170px] animate-bounce-slow">
+              <div className="flex items-center justify-between text-[11px] font-bold text-slate-500">
+                <span>SEO Growth</span>
+                <div className="w-6 h-6 rounded-full bg-[#c5f015] text-slate-900 flex items-center justify-center">
+                  <Target className="w-3.5 h-3.5 text-slate-900" />
+                </div>
+              </div>
+
+              {/* Rising Mini Bars */}
+              <div className="flex items-end gap-1.5 h-10 pt-1">
+                <div className="w-2.5 bg-blue-100 rounded-t-xs h-[30%]" />
+                <div className="w-2.5 bg-blue-200 rounded-t-xs h-[50%]" />
+                <div className="w-2.5 bg-blue-400 rounded-t-xs h-[75%]" />
+                <div className="w-2.5 bg-[#c5f015] rounded-t-xs h-[100%]" />
+              </div>
+
+              <div className="pt-1 border-t border-slate-100">
+                <span className="text-base font-black text-[#2196F3] block leading-none">+156%</span>
+                <span className="text-[10px] text-slate-400 font-extrabold">Growth</span>
+              </div>
+            </div>
+
+            {/* Bottom-Left Solid Lime Green Arrow Badge */}
+            <div className="absolute bottom-6 left-6 z-20 w-16 h-16 rounded-full bg-[#c5f015] shadow-xl flex items-center justify-center border-4 border-white animate-pulse">
+              <TrendingUp className="w-8 h-8 text-slate-950" />
+            </div>
+
+            {/* Polka Dots Decorator */}
+            <div className="absolute top-12 left-12 opacity-25 pointer-events-none">
+              <div className="grid grid-cols-4 gap-1.5">
+                {[...Array(16)].map((_, i) => (
+                  <div key={i} className="w-1.5 h-1.5 rounded-full bg-[#2196F3]" />
+                ))}
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+  )
+}
+
 export default function ServicePage() {
   const { slug } = useParams()
   const service = getServiceBySlug(slug)
@@ -480,8 +1653,8 @@ export default function ServicePage() {
                     feat.icon === 'Target'
                       ? Target
                       : feat.icon === 'TrendingUp'
-                      ? TrendingUp
-                      : ShieldCheck
+                        ? TrendingUp
+                        : ShieldCheck
                   return (
                     <div
                       key={idx}
@@ -582,10 +1755,10 @@ export default function ServicePage() {
 
                   <div className="bg-white rounded-xl py-3 px-5 flex items-center justify-between shadow-lg hover:shadow-xl transition-shadow">
                     <svg className="h-5 w-auto hover:scale-110 transition-transform cursor-pointer" viewBox="0 0 24 24">
-                      <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
-                      <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
-                      <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
-                      <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+                      <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
+                      <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
+                      <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" />
+                      <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" />
                     </svg>
 
                     <svg className="h-5 w-auto text-[#008394] hover:scale-110 transition-transform cursor-pointer" viewBox="0 0 24 24" fill="currentColor">
@@ -593,7 +1766,7 @@ export default function ServicePage() {
                     </svg>
 
                     <svg className="h-5 w-auto text-[#7c3aed] hover:scale-110 transition-transform cursor-pointer animate-pulse" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M12 0C12 6.627 6.627 12 0 12c6.627 0 12 5.373 12 12 0-6.627 5.373-12 12-12-6.627 0-12-5.373-12-12z"/>
+                      <path d="M12 0C12 6.627 6.627 12 0 12c6.627 0 12 5.373 12 12 0-6.627 5.373-12 12-12-6.627 0-12-5.373-12-12z" />
                     </svg>
 
                     <svg className="h-5 w-auto text-[#10a37f] hover:scale-110 transition-transform cursor-pointer" viewBox="0 0 24 24" fill="currentColor">
@@ -616,7 +1789,13 @@ export default function ServicePage() {
         {isSeoPage && (
           <>
             <SeoOverviewSection />
+            <AiSeoServicesSection />
             <SeoStrategiesSection />
+            <PlatformSeoSection />
+            <SeoApproachSection />
+            <SeoScopeSection />
+            <SeoExplainedSection />
+            <SeoCtaSection />
           </>
         )}
 
@@ -624,4 +1803,5 @@ export default function ServicePage() {
     </div>
   )
 }
+
 

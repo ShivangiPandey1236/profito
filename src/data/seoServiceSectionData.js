@@ -3,6 +3,19 @@ import healthcareImg from '../assets/healthcare.png'
 import realEstateImg from '../assets/real-esatate.png'
 import lawFirmImg from '../assets/law.png'
 
+import wordpressImg from '../assets/WordPress.webp'
+import angularImg from '../assets/Angular.webp'
+import bigcommerceImg from '../assets/bigcommerce.webp'
+import dudaImg from '../assets/Duda.webp'
+import opencartImg from '../assets/opencart.webp'
+import shopifyImg from '../assets/shopify.webp'
+import weeblyImg from '../assets/weebly.webp'
+import wixImg from '../assets/wix.webp'
+import reactImg from '../assets/react.svg'
+import joomlaImg from '../assets/Joomla.webp'
+import laravelImg from '../assets/Laravel.webp'
+import magentoImg from '../assets/magento.webp'
+
 export const seoServiceSectionData = {
   badge: "SEO THAT DRIVES REAL GROWTH",
   titlePrefix: "Best ",
@@ -83,6 +96,62 @@ export const seoServiceSectionData = {
   }
 }
 
+export const aiSeoServicesData = {
+  badge: "SMARTER SEO. STRONGER GROWTH.",
+  titlePrefix: "AI-Powered SEO Services ",
+  titleBlue: "for Growing ",
+  titleLime: "Brands",
+  descriptionPrefix: "We offer a comprehensive range of SEO solutions designed to support sustainable growth across industries, markets, and business sizes. Our ",
+  descriptionHighlight: "affordable SEO services India",
+  descriptionSuffix: " combine strategic planning with proven execution to help businesses grow with confidence and clarity. Explore our services to see how we can support you.",
+  cards: [
+    {
+      id: "national-seo",
+      number: "01",
+      title: "National",
+      highlightTitle: "SEO",
+      accentColor: "blue",
+      iconType: "National",
+      description: "This is basically used for targeting broader audiences. National SEO is mostly used by large businesses & brands to enhance online visibility across the nation.",
+      buttonText: "Explore SEO Plan",
+      buttonLink: "/seo-services#national"
+    },
+    {
+      id: "local-seo",
+      number: "02",
+      title: "Local",
+      highlightTitle: "SEO",
+      accentColor: "lime",
+      iconType: "Local",
+      description: "Local SEO help to improve a website's visibility in specific local areas or geographical location. This is used by small and local businesses to attract nearby customers.",
+      buttonText: "Explore Local SEO",
+      buttonLink: "/seo-services#local"
+    },
+    {
+      id: "ai-seo",
+      number: "03",
+      title: "AI SEO",
+      highlightTitle: "Services",
+      accentColor: "blue",
+      iconType: "AiSeo",
+      description: "Businesses of all sizes can benefit from AI SEO. By using AI-driven optimization strategies, you can improve your brand visibility across SERP and AI-powered platform.",
+      buttonText: "Explore AI SEO Plan",
+      buttonLink: "/seo-services#ai-seo"
+    },
+    {
+      id: "ecommerce-seo",
+      number: "04",
+      title: "E-commerce",
+      highlightTitle: "SEO",
+      accentColor: "lime",
+      iconType: "Ecommerce",
+      description: "Ecommerce SEO is used by online retail or shopping websites. It helps to boost your online stores' visibility, attract relevant traffic & enhance your sales.",
+      buttonText: "Explore Ecommerce SEO",
+      buttonLink: "/seo-services#ecommerce"
+    }
+  ]
+}
+
 export const seoStrategiesData = {
   titlePrefix: "Proven SEO Strategies ",
   titleHighlight: "That Drive Growth",
@@ -122,3 +191,368 @@ export const seoStrategiesData = {
     }
   ]
 }
+
+export const platformSeoSectionData = {
+  badge: "TRUSTED ACROSS PLATFORMS",
+  titlePrefix: "Platform-Focused ",
+  titleHighlight: "SEO Services",
+  description: "We deliver quality SEO services across modern website platforms to improve website performance on traditional SERPs and AI-powered search results. Below are some of the platforms we have worked with.",
+  platforms: [
+    { id: "wordpress", name: "WordPress", image: wordpressImg, accentColor: "blue" },
+    { id: "magento", name: "Magento", image: magentoImg, accentColor: "lime" },
+    { id: "angular", name: "AngularJS", image: angularImg, accentColor: "blue" },
+    { id: "bigcommerce", name: "BIGCOMMERCE", image: bigcommerceImg, accentColor: "lime" },
+    { id: "duda", name: "duda", image: dudaImg, accentColor: "lime" },
+    { id: "joomla", name: "Joomla!", image: joomlaImg, accentColor: "blue" },
+    { id: "laravel", name: "Laravel", image: laravelImg, accentColor: "lime" },
+    { id: "react", name: "React JS", image: reactImg, type: "react", accentColor: "blue" },
+    { id: "opencart", name: "opencart", image: opencartImg, accentColor: "blue" },
+    { id: "shopify", name: "shopify", image: shopifyImg, accentColor: "lime" },
+    { id: "weebly", name: "weebly", image: weeblyImg, accentColor: "blue" },
+    { id: "wix", name: "Wix.com", image: wixImg, accentColor: "lime" }
+  ]
+}
+
+export const seoScopeData = {
+  titlePrefix: "What Our ",
+  titleHighlight: "SEO Services",
+  titleSuffix: " Cover",
+  tabs: [
+    {
+      id: "discovery",
+      tabTitle: "Discovery & Analysis",
+      contentTitlePrefix: "Discovery & ",
+      contentTitleHighlight: "Business Analysis",
+      iconName: "Search",
+      paragraphs: [
+        "This is the foundation for a successful SEO strategy. We begin by understanding your business goals, challenges, target audience, and growth objectives through a focused intake call to ensure complete alignment between our team and your business.",
+        "We evaluate your website's current visibility across traditional search engines and AI-driven search platforms, identifying performance gaps, competitive positioning, and authority opportunities. This includes analyzing how your brand appears in search results and where improvements are needed.",
+        "A comprehensive website audit is done, covering content quality, technical health, indexing, and backlink risks. Based on these results, we create a clear, custom SEO roadmap that outlines what needs to be fixed, optimized, and scaled to support sustainable, long-term growth."
+      ]
+    },
+    {
+      id: "keyword-mapping",
+      tabTitle: "Keyword & Intent Mapping",
+      contentTitlePrefix: "Keyword & ",
+      contentTitleHighlight: "Search Intent Mapping",
+      iconName: "Target",
+      paragraphs: [
+        "Keywords are the bridge between customer intent and your services. We perform in-depth keyword research to identify high-value search terms, transactional queries, and long-tail phrases that drive qualified leads.",
+        "We map search queries to specific funnel stages—top, middle, and bottom of funnel—ensuring every page targets keywords matching user expectations and buying intent.",
+        "Beyond traditional volume metrics, we analyze AI search patterns, conversational prompts, and semantic topic clusters to ensure your brand ranks across all modern discovery platforms."
+      ]
+    },
+    {
+      id: "competitor-analysis",
+      tabTitle: "Competitor Analysis",
+      contentTitlePrefix: "Competitive ",
+      contentTitleHighlight: "Market Intelligence",
+      iconName: "Users",
+      paragraphs: [
+        "Understanding your market competitors reveals valuable gaps and strategic growth opportunities. We perform a thorough analysis of top ranking competitors in your industry.",
+        "We evaluate competitor backlink profiles, content strategies, keyword rankings, and technical architecture to uncover why they rank and how you can outperform them.",
+        "Our strategic insights allow us to target high-yield opportunities, outrank market rivals, and capture market share in competitive search landscapes."
+      ]
+    },
+    {
+      id: "content-ux",
+      tabTitle: "Content & UX Optimization",
+      contentTitlePrefix: "Content & ",
+      contentTitleHighlight: "UX Optimization",
+      iconName: "FileText",
+      paragraphs: [
+        "High-quality content drives organic search success and visitor engagement. We refine and optimize on-page content for clarity, depth, E-E-A-T, and search relevance.",
+        "We align user experience (UX) with content flow, optimizing readability, conversion elements, internal link structures, and call-to-actions to keep visitors engaged.",
+        "By structuring content cleanly with proper header hierarchies and rich snippet targets, we maximize both SERP visibility and on-site conversions."
+      ]
+    },
+    {
+      id: "technical-seo",
+      tabTitle: "Technical SEO",
+      contentTitlePrefix: "Technical ",
+      contentTitleHighlight: "Infrastructure & Health",
+      iconName: "Settings",
+      paragraphs: [
+        "A strong technical foundation ensures search crawlers can efficiently index and rank your web pages without structural bottlenecks.",
+        "We resolve crawl errors, optimize site architecture, fix broken links, enhance page load speed, and ensure seamless mobile responsiveness.",
+        "We continuously monitor Google Search Console metrics, Core Web Vitals, and XML sitemaps to maintain peak website performance and crawl efficiency."
+      ]
+    },
+    {
+      id: "ai-search",
+      tabTitle: "AI Search Optimization",
+      contentTitlePrefix: "AI & LLM ",
+      contentTitleHighlight: "Search Optimization",
+      iconName: "Sparkles",
+      paragraphs: [
+        "Generative search engines like ChatGPT, Perplexity, Google Gemini, and Bing Copilot are transforming how users discover information online.",
+        "We optimize your brand presence for AI answer engines through entity mapping, structured data, conversational Q&A content, and authoritative citation building.",
+        "Positioning your business as a primary trusted reference ensures your brand is recommended in direct AI-generated answers."
+      ]
+    },
+    {
+      id: "schema",
+      tabTitle: "Schema Implementation",
+      contentTitlePrefix: "Schema & ",
+      contentTitleHighlight: "Structured Data Markup",
+      iconName: "Code",
+      paragraphs: [
+        "Structured data helps search engines accurately understand your content type, organization details, services, reviews, and FAQs.",
+        "We implement custom JSON-LD schema markup across product pages, local business listings, articles, and service landing pages.",
+        "This enhances your search listings with rich snippets, star ratings, price info, and FAQ accordions that significantly boost click-through rates (CTR)."
+      ]
+    },
+    {
+      id: "authority-building",
+      tabTitle: "Authority Building",
+      contentTitlePrefix: "Authority & ",
+      contentTitleHighlight: "Link Building",
+      iconName: "ShieldCheck",
+      paragraphs: [
+        "Domain authority and brand reputation are vital ranking factors. We build high-quality, contextual backlinks from reputable industry platforms.",
+        "Our ethical link building strategies focus on digital PR, content outreach, guest publishing, and strategic brand citations.",
+        "We maintain a natural link velocity and audit backlink profiles regularly to defend your website against toxic links or algorithmic penalties."
+      ]
+    },
+    {
+      id: "performance-reporting",
+      tabTitle: "Performance Reporting",
+      contentTitlePrefix: "Transparent ",
+      contentTitleHighlight: "Performance Reporting",
+      iconName: "BarChart3",
+      paragraphs: [
+        "Transparency and measurable outcomes are at the core of our SEO services. We provide comprehensive monthly performance reports detailing key milestones.",
+        "We track keyword positions, organic traffic trends, conversion rates, and ROI metrics using custom Google Analytics 4 and Search Console dashboards.",
+        "Regular review meetings keep you updated on progress, upcoming strategy refinements, and competitive market opportunities."
+      ]
+    }
+  ]
+}
+
+export const seoApproachData = {
+  titlePrefix: "Our SEO ",
+  titleMiddle: "Approach for ",
+  titleHighlightBlue: "Sustainable ",
+  titleHighlightLime: "Growth",
+  description: "We follow a proven, data-driven SEO process that helps businesses improve visibility, attract the right audience, and achieve long-term growth.",
+  steps: [
+    {
+      number: "01",
+      title: "Business & Market Research",
+      description: "We analyze your business, industry, competitors, and audience to find growth opportunities.",
+      color: "#2196F3",
+      bgColor: "#eef6ff",
+      iconName: "Search"
+    },
+    {
+      number: "02",
+      title: "Keyword & Intent Strategy",
+      description: "We identify high-value keywords and search intent to target the right audience.",
+      color: "#c5f015",
+      bgColor: "#f7fce5",
+      iconName: "Target"
+    },
+    {
+      number: "03",
+      title: "Content & UX Optimization",
+      description: "We optimize your content and user experience to match search intent and boost engagement.",
+      color: "#00bcd4",
+      bgColor: "#e0f7fa",
+      iconName: "Users"
+    },
+    {
+      number: "04",
+      title: "Technical SEO",
+      description: "We fix technical issues and optimize your site structure for better crawling and indexing.",
+      color: "#a855f7",
+      bgColor: "#f3e8ff",
+      iconName: "Settings"
+    },
+    {
+      number: "05",
+      title: "Authority & Link Building",
+      description: "We build high-quality backlinks and strengthen your domain authority.",
+      color: "#ec4899",
+      bgColor: "#fce7f3",
+      iconName: "TrendingUp"
+    },
+    {
+      number: "06",
+      title: "Monitoring & Performance",
+      description: "We track performance, analyze data, and continuously refine strategies for growth.",
+      color: "#ffba00",
+      bgColor: "#fff8e6",
+      iconName: "ShieldCheck"
+    }
+  ]
+}
+
+export const seoExplainedData = {
+  titlePrefix: "SEO Services Explained: ",
+  titleHighlight: "What, How & Costs",
+  description: "For businesses seeking affordable SEO services in India, it's important to understand how SEO works before making the right investment. Below are common questions and clear answers to help you understand what SEO is, how it works, and why it matters.",
+  tabs: [
+    {
+      id: "what-is-seo",
+      tabTitle: "What Are SEO Services?",
+      iconName: "HelpCircle",
+      isLimeIcon: false,
+      contentTitlePrefix: "What Are ",
+      contentTitleHighlight: "SEO Services?",
+      intro: "SEO (Search Engine Optimization) services are strategic digital marketing solutions designed to increase your website's visibility on search engine results pages (SERPs) like Google and Bing.",
+      items: [
+        {
+          iconName: "Search",
+          label: "Organic Traffic Growth:",
+          description: "Attract targeted, high-intent users actively searching for your products or services without paying for ad clicks.",
+          color: "blue"
+        },
+        {
+          iconName: "Award",
+          label: "Brand Credibility & Trust:",
+          description: "Ranking high on search engines establishes authority, user trust, and industry leadership in the eyes of potential buyers.",
+          color: "lime"
+        },
+        {
+          iconName: "TrendingUp",
+          label: "Long-Term Digital Equity:",
+          description: "Unlike paid advertising that stops when budget ends, SEO creates compounding, sustainable traffic growth over time.",
+          color: "blue"
+        }
+      ]
+    },
+    {
+      id: "how-it-works",
+      tabTitle: "How Does It Work?",
+      iconName: "Settings",
+      isLimeIcon: false,
+      contentTitlePrefix: "How Does ",
+      contentTitleHighlight: "SEO Work?",
+      intro: "SEO works by aligning your website's technical structure, content quality, and domain authority with search engine algorithms to deliver the best answer for user search queries.",
+      items: [
+        {
+          iconName: "Globe",
+          label: "Crawling & Indexing:",
+          description: "Search engines send automated bots to discover, read, and organize web pages into massive searchable digital databases.",
+          color: "blue"
+        },
+        {
+          iconName: "Target",
+          label: "Relevance & Quality Ranking:",
+          description: "Algorithms evaluate content depth, keyword intent, mobile UX, and page performance to rank top search results.",
+          color: "lime"
+        },
+        {
+          iconName: "ShieldCheck",
+          label: "Authority & Signal Building:",
+          description: "Search engines measure domain trust through quality backlinks, brand references, and positive user engagement signals.",
+          color: "blue"
+        }
+      ]
+    },
+    {
+      id: "who-can-use",
+      tabTitle: "Who Can Use SEO",
+      iconName: "User",
+      isLimeIcon: false,
+      contentTitlePrefix: "Who Can Benefit From ",
+      contentTitleHighlight: "SEO?",
+      intro: "SEO is essential for any business or organization seeking to expand online reach, capture customer demand, and build a scalable competitive advantage.",
+      items: [
+        {
+          iconName: "ShoppingCart",
+          label: "E-Commerce & Online Stores:",
+          description: "Drive product discovery, category traffic, and online store sales directly from organic search queries.",
+          color: "blue"
+        },
+        {
+          iconName: "Users",
+          label: "Local & B2B Businesses:",
+          description: "Connect with nearby buyers searching for local services, professional consultants, or enterprise solutions.",
+          color: "lime"
+        },
+        {
+          iconName: "Sparkles",
+          label: "Startups & Emerging Brands:",
+          description: "Build cost-effective market awareness and outrank established competitors through targeted keyword strategies.",
+          color: "blue"
+        }
+      ]
+    },
+    {
+      id: "types-of-seo",
+      tabTitle: "Type of SEO Services?",
+      iconName: "Layers",
+      isLimeIcon: false,
+      contentTitlePrefix: "Type of ",
+      contentTitleHighlight: "SEO Services?",
+      intro: "Search engine optimization services can be categorized into three key types, and all of them are essential for your SEO marketing strategy. To enhance your website's performance, explore these 3 SEO types.",
+      items: [
+        {
+          iconName: "FileText",
+          label: "On-page optimization:",
+          description: "On-page optimization involves modifying elements of a website's content, including titles, Meta descriptions, headers, and the use of keywords, in order to raise its search engine visibility and enhance user experience.",
+          color: "blue"
+        },
+        {
+          iconName: "Link",
+          label: "Off-page optimization:",
+          description: "Off-page optimization improves a website's visibility, credibility, and search engine rankings by boosting its online presence and building high-quality backlinks in the form of Guest posting, PR & media outreach, broken link building, brand mentions, and more.",
+          color: "lime"
+        },
+        {
+          iconName: "Settings",
+          label: "Technical SEO:",
+          description: "It's include optimizing the technical aspects of a website, like site speed, mobile-friendliness, website structure and ensuring search engines can crawl and index the site easily.",
+          color: "blue"
+        }
+      ]
+    },
+    {
+      id: "cost-of-seo",
+      tabTitle: "Cost of SEO Services",
+      iconName: "DollarSign",
+      isLimeIcon: true,
+      contentTitlePrefix: "Cost of ",
+      contentTitleHighlight: "SEO Services",
+      intro: "SEO pricing varies based on project scope, competitive environment, business goals, and campaign execution speed. Investing in SEO yields exceptionally high ROI.",
+      items: [
+        {
+          iconName: "Award",
+          label: "Custom Tailored Packages:",
+          description: "Flexible monthly retainers customized for local businesses, national brands, or enterprise e-commerce portals.",
+          color: "blue"
+        },
+        {
+          iconName: "FileText",
+          label: "Transparent Pricing Model:",
+          description: "Clear deliverables with no hidden costs covering audits, technical fixes, content creation, and link building.",
+          color: "lime"
+        },
+        {
+          iconName: "TrendingUp",
+          label: "High Return on Investment:",
+          description: "Sustainable organic rankings continue driving qualified leads and revenue long after initial optimizations are deployed.",
+          color: "blue"
+        }
+      ]
+    }
+  ]
+}
+
+export const seoCtaSectionData = {
+  badge: "SEO THAT DRIVES REAL GROWTH",
+  titlePrefix: "Ready to Stay Visible and ",
+  titleHighlight: "Grow Revenue ",
+  titleSuffix: "With SEO?",
+  descriptionPrefix: "Get a personalized look at how our AI + SEO experts can ",
+  descriptionHighlight: "accelerate your growth.",
+  inputPlaceholder: "Enter your website",
+  buttonText: "Get My SEO Growth Plan",
+  trustBadges: [
+    { iconName: "ShieldCheck", label: "No Commitment" },
+    { iconName: "Zap", label: "Quick & Easy" },
+    { iconName: "Lock", label: "100% Secure" }
+  ]
+}
+
