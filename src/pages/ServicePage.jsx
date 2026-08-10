@@ -34,7 +34,9 @@ import {
   Minus,
   Clock,
   Rocket,
-  Star
+  Star,
+  Quote,
+  ChevronLeft
 } from 'lucide-react'
 import { getServiceBySlug } from '../data/services'
 import {
@@ -47,9 +49,20 @@ import {
   seoExplainedData,
   seoCtaSectionData,
   seoBenefitsData,
-  seoFaqData
+  seoFaqData,
+  seoClientsData,
+  seoTestimonialsData
 } from '../data/seoServiceSectionData'
 import ctaImage from '../assets/cta-default-image.webp'
+import bpLogo from '../assets/BP-logo.jpg'
+import uthoLogo from '../assets/utho-logo.png'
+import proboLogo from '../assets/probo-logo.png'
+import ibcmeLogo from '../assets/IBCME-logo.jpg'
+import ajLogo from '../assets/AJ-logo.jpg'
+import indiatvLogo from '../assets/indiatv-logo.jpg'
+import tauLogo from '../assets/tau.jpg'
+import zopperLogo from '../assets/zopper-logo1.png'
+import teamImage from '../assets/team.jpeg'
 
 const iconMap = {
   Award,
@@ -1858,6 +1871,248 @@ function SeoBenefitsSection() {
   )
 }
 
+function SeoClientsSection() {
+  const clientLogoMap = {
+    bpLogo,
+    uthoLogo,
+    proboLogo,
+    ibcmeLogo,
+    ajLogo,
+    indiatvLogo,
+    tauLogo,
+    zopperLogo
+  }
+
+  return (
+    <section className="mt-16 sm:mt-24 relative">
+      {/* Background Soft Orbs */}
+      <div className="absolute top-1/3 -left-20 w-80 h-80 bg-blue-100/40 rounded-full blur-3xl pointer-events-none -z-10" />
+      <div className="absolute -bottom-10 right-0 w-80 h-80 bg-[#bcd32e]/15 rounded-full blur-3xl pointer-events-none -z-10" />
+
+      {/* Main Container Card */}
+      <div className="bg-[#f8fafc]/80 border border-slate-100 rounded-[36px] sm:rounded-[44px] p-6 sm:p-10 lg:p-14 shadow-[0_15px_45px_rgba(0,0,0,0.03)] relative overflow-hidden">
+
+        {/* Section Header */}
+        <div className="text-center max-w-4xl mx-auto mb-10 sm:mb-12 px-4">
+          
+          {/* Top Pill Badge */}
+          <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white border border-slate-200/80 text-xs font-bold tracking-wider uppercase mb-4 shadow-2xs">
+            <div className="w-6 h-6 rounded-full bg-blue-50 text-[#2196f3] flex items-center justify-center">
+              <Users className="w-3.5 h-3.5 text-[#2196f3]" />
+            </div>
+            <span className="text-[#2196f3] font-extrabold">{seoClientsData.badge}</span>
+          </div>
+
+          {/* Main Headline */}
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black !text-[#0a0a0a] tracking-tight mb-3 leading-tight">
+            {seoClientsData.titlePrefix}
+            <span className="text-[#2196f3]">{seoClientsData.titleHighlight}</span>
+          </h2>
+
+          {/* Two-tone Accent Line Divider */}
+          <div className="flex items-center justify-center gap-1.5 my-4">
+            <span className="w-10 h-1 bg-[#2196f3] rounded-full" />
+            <span className="w-2.5 h-2.5 bg-[#bcd32e] rounded-full" />
+            <span className="w-10 h-1 bg-[#bcd32e] rounded-full" />
+          </div>
+
+          {/* Subtitle Description */}
+          <p className="text-slate-600 text-sm sm:text-base leading-relaxed max-w-3xl mx-auto font-medium">
+            {seoClientsData.description}
+          </p>
+        </div>
+
+        {/* Client Logo Cards Grid (4 Cards) */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
+          {seoClientsData.clients.map((client, idx) => {
+            const logoImg = clientLogoMap[client.logoKey]
+
+            return (
+              <div
+                key={idx}
+                className="bg-white rounded-2xl border border-slate-100 p-6 sm:p-8 flex flex-col items-center justify-center min-h-[130px] sm:min-h-[140px] shadow-2xs hover:shadow-lg transition-all duration-300 relative overflow-hidden group hover:-translate-y-1"
+              >
+                {/* Logo Image */}
+                <img
+                  src={logoImg}
+                  alt={client.name}
+                  className="max-h-12 sm:max-h-16 max-w-[85%] w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+                />
+
+                {/* Bottom Color Accent Line */}
+                <div
+                  className="h-1 rounded-full w-12 mx-auto mt-4 transition-all duration-300 group-hover:w-20"
+                  style={{ backgroundColor: client.color }}
+                />
+              </div>
+            )
+          })}
+        </div>
+
+      </div>
+    </section>
+  )
+}
+
+function SeoTestimonialsSection() {
+  const [activeSlide, setActiveSlide] = useState(0)
+  const totalSlides = seoTestimonialsData.testimonials.length
+  const maxSlide = Math.max(0, totalSlides - 4)
+
+  const handlePrev = () => {
+    setActiveSlide((prev) => (prev === 0 ? maxSlide : prev - 1))
+  }
+
+  const handleNext = () => {
+    setActiveSlide((prev) => (prev >= maxSlide ? 0 : prev + 1))
+  }
+
+  return (
+    <section className="mt-16 sm:mt-24 relative">
+      {/* Background Soft Orbs */}
+      <div className="absolute top-10 left-10 w-96 h-96 bg-blue-100/40 rounded-full blur-3xl pointer-events-none -z-10" />
+      <div className="absolute bottom-10 right-10 w-80 h-80 bg-[#c5f015]/15 rounded-full blur-3xl pointer-events-none -z-10" />
+
+      {/* Main Container Card */}
+      <div className="bg-[#f8fafc]/80 border border-slate-100 rounded-[36px] sm:rounded-[44px] p-6 sm:p-10 lg:p-14 shadow-[0_15px_45px_rgba(0,0,0,0.03)] relative overflow-hidden">
+
+        {/* Section Header */}
+        <div className="text-center max-w-4xl mx-auto mb-10 sm:mb-12 px-4">
+          
+          {/* Top Pill Badge */}
+          <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white border border-slate-200/80 text-xs font-bold tracking-wider uppercase mb-4 shadow-2xs">
+            <div className="w-6 h-6 rounded-full bg-[#2196f3] text-white flex items-center justify-center">
+              <Quote className="w-3.5 h-3.5 text-white" />
+            </div>
+            <span className="text-[#2196f3] font-extrabold">{seoTestimonialsData.badge}</span>
+          </div>
+
+          {/* Main Headline */}
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black !text-[#0a0a0a] tracking-tight mb-3 leading-tight">
+            {seoTestimonialsData.titlePrefix}
+            <span className="text-[#2196f3]">{seoTestimonialsData.titleHighlight}</span>
+          </h2>
+
+          {/* Two-tone Accent Line Divider */}
+          <div className="flex items-center justify-center gap-1.5 my-4">
+            <span className="w-10 h-1 bg-[#2196f3] rounded-full" />
+            <span className="w-2.5 h-2.5 bg-[#bcd32e] rounded-full" />
+            <span className="w-10 h-1 bg-[#bcd32e] rounded-full" />
+          </div>
+
+          {/* Subtitle Description */}
+          <p className="text-slate-600 text-sm sm:text-base leading-relaxed max-w-2xl mx-auto font-medium">
+            {seoTestimonialsData.description}
+          </p>
+        </div>
+
+        {/* Carousel / Slider Container with Navigation Arrows */}
+        <div className="relative px-2 sm:px-10">
+
+          {/* Left Arrow Button */}
+          <button
+            onClick={handlePrev}
+            className="absolute -left-2 sm:left-0 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-white border border-slate-200 shadow-md text-slate-700 hover:text-[#2196f3] hover:border-[#2196f3] flex items-center justify-center transition-all duration-300 hover:scale-110 cursor-pointer"
+            aria-label="Previous Testimonial"
+          >
+            <ChevronLeft className="w-5 h-5 stroke-[2.5]" />
+          </button>
+
+          {/* Right Arrow Button */}
+          <button
+            onClick={handleNext}
+            className="absolute -right-2 sm:right-0 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-white border border-slate-200 shadow-md text-slate-700 hover:text-[#2196f3] hover:border-[#2196f3] flex items-center justify-center transition-all duration-300 hover:scale-110 cursor-pointer"
+            aria-label="Next Testimonial"
+          >
+            <ChevronRight className="w-5 h-5 stroke-[2.5]" />
+          </button>
+
+          {/* Overflow-Hidden Slider Viewport */}
+          <div className="overflow-hidden w-full py-2">
+            {/* Horizontal Flex Track */}
+            <div
+              className="flex gap-6 transition-transform duration-500 ease-out"
+              style={{
+                transform: `translateX(calc(-${activeSlide} * (25% + 6px)))`
+              }}
+            >
+              {seoTestimonialsData.testimonials.map((item) => {
+                return (
+                  <div
+                    key={item.id}
+                    className="w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)] shrink-0 bg-white rounded-3xl p-6 border border-slate-100 shadow-[0_10px_30px_rgba(0,0,0,0.03)] hover:shadow-xl transition-all duration-300 flex flex-col justify-between relative overflow-hidden group hover:-translate-y-1"
+                  >
+                    <div>
+                      {/* Top Row: Quote Icon & 5 Stars */}
+                      <div className="flex items-center justify-between mb-4">
+                        {/* Big Light Blue Quote Icon */}
+                        <span className="text-4xl leading-none font-serif text-[#2196f3]/30 font-black">“</span>
+
+                        {/* 5 Yellow Stars */}
+                        <div className="flex items-center gap-1">
+                          {[...Array(item.rating)].map((_, i) => (
+                            <Star key={i} className="w-4 h-4 fill-[#ffba00] text-[#ffba00]" />
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Review Quote Text */}
+                      <p className="text-slate-600 text-xs sm:text-sm leading-relaxed font-medium mb-6">
+                        {item.quote}
+                      </p>
+                    </div>
+
+                    {/* Bottom Author Row with team.jpeg Image */}
+                    <div className="pt-4 border-t border-slate-100 flex items-center gap-3.5">
+                      {/* team.jpeg Avatar */}
+                      <img
+                        src={teamImage}
+                        alt={item.author}
+                        className="w-11 h-11 rounded-full object-cover border-2 border-slate-100 shadow-2xs shrink-0"
+                      />
+
+                      {/* Author Details */}
+                      <div className="text-left leading-snug">
+                        <h4 className="text-sm font-extrabold !text-slate-900">{item.author}</h4>
+                        <p className="text-xs text-slate-500 font-medium">{item.role}</p>
+                        <span
+                          className="text-xs font-bold block mt-0.5"
+                          style={{ color: item.companyColor }}
+                        >
+                          {item.company}
+                        </span>
+                      </div>
+                    </div>
+
+                  </div>
+                )
+              })}
+            </div>
+          </div>
+
+          {/* Bottom Navigation Dots */}
+          <div className="flex items-center justify-center gap-2 mt-8">
+            {Array.from({ length: maxSlide + 1 }).map((_, idx) => (
+              <button
+                key={idx}
+                onClick={() => setActiveSlide(idx)}
+                className={`transition-all duration-300 rounded-full cursor-pointer ${
+                  activeSlide === idx
+                    ? 'w-6 h-2.5 bg-[#2196f3]'
+                    : 'w-2.5 h-2.5 bg-slate-300 hover:bg-slate-400'
+                }`}
+                aria-label={`Go to slide ${idx + 1}`}
+              />
+            ))}
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+  )
+}
+
 export default function ServicePage() {
   const { slug } = useParams()
   const service = getServiceBySlug(slug)
@@ -2095,7 +2350,9 @@ export default function ServicePage() {
             <PlatformSeoSection />
             <SeoApproachSection />
             <SeoScopeSection />
+            <SeoClientsSection />
             <SeoBenefitsSection />
+            <SeoTestimonialsSection />
             <SeoExplainedSection />
             <SeoFaqSection />
             <SeoCtaSection />

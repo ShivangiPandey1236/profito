@@ -651,5 +651,82 @@ export const seoFaqData = {
   ]
 }
 
+export const seoClientsData = {
+  badge: "OUR CLIENTS",
+  titlePrefix: "Trusted by ",
+  titleHighlight: "Corporate Partners",
+  description: "We are proud to serve businesses and brands across a wide range of industries, delivering best SEO services focused on long-term growth. Below are some of the key clients we have worked with:",
+  clients: [
+    { name: "BP Group", logoKey: "bpLogo", color: "#2196f3" },
+    { name: "Utho Cloud", logoKey: "uthoLogo", color: "#bcd32e" },
+    { name: "Probo", logoKey: "proboLogo", color: "#2196f3" },
+    { name: "IBCME", logoKey: "ibcmeLogo", color: "#bcd32e" },
+    { name: "AJ", logoKey: "ajLogo", color: "#2196f3" },
+    { name: "India TV", logoKey: "indiatvLogo", color: "#bcd32e" },
+    { name: "Tau", logoKey: "tauLogo", color: "#2196f3" },
+    { name: "Zopper", logoKey: "zopperLogo", color: "#bcd32e" }
+  ]
+}
+
+export const seoTestimonialsData = {
+  badge: "CLIENT TESTIMONIALS",
+  titlePrefix: "What Our ",
+  titleHighlight: "Clients Say",
+  description: "We take pride in delivering result-driven SEO services that help businesses grow. Here's what our happy clients have to say about working with us.",
+  testimonials: [
+    {
+      id: 1,
+      quote: "Profito Interactive has been a game changer for our online presence. Their SEO strategies boosted our rankings and increased organic traffic significantly.",
+      author: "Amit Sharma",
+      role: "Marketing Head",
+      company: "ChannelSales",
+      companyColor: "#2196f3",
+      rating: 5
+    },
+    {
+      id: 2,
+      quote: "The team is highly professional, transparent, and delivers measurable results. We've seen consistent growth in leads and revenue since partnering with them.",
+      author: "Neha Verma",
+      role: "CEO",
+      company: "Plantasia",
+      companyColor: "#bcd32e",
+      rating: 5
+    },
+    {
+      id: 3,
+      quote: "Their technical SEO expertise and content strategy helped us outrank our top competitors. Excellent communication and timely delivery!",
+      author: "Rahul Mehta",
+      role: "Director",
+      company: "Vortex Flex",
+      companyColor: "#2196f3",
+      rating: 5
+    },
+    {
+      id: 4,
+      quote: "From SEO to overall digital strategy, Profito Interactive understands our goals and delivers beyond expectations. Highly recommended!",
+      author: "Priya Singh",
+      role: "Brand Manager",
+      company: "Baidyanath",
+      companyColor: "#bcd32e",
+      rating: 5
+    },
+    {
+    id: 5,
+    quote: "From SEO to overall digital strategy, Profito Interactive understands our goals and delivers beyond expectations. Highly recommended!",
+    author: "Priya Singh",
+    role: "Brand Manager",
+    company: "Baidyanath",
+    companyColor: "#bcd32e",
+    rating: 5
+    },
+    
+
+    
+  ]
+}
+
+
+
+
 
 
