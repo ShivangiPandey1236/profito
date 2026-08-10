@@ -330,11 +330,18 @@ export const seoScopeData = {
 }
 
 export const seoApproachData = {
+  badge: "OUR SEO PROCESS",
   titlePrefix: "Our SEO ",
   titleMiddle: "Approach for ",
   titleHighlightBlue: "Sustainable ",
   titleHighlightLime: "Growth",
   description: "We follow a proven, data-driven SEO process that helps businesses improve visibility, attract the right audience, and achieve long-term growth.",
+  stats: [
+    { value: "+120%", label: "Organic Growth", iconName: "BarChart3" },
+    { value: "3x", label: "More Visibility", iconName: "Users" },
+    { value: "Long-term", label: "Results", iconName: "Rocket" }
+  ],
+  ctaText: "Grow Your Business with SEO",
   steps: [
     {
       number: "01",

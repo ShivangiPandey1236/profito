@@ -719,29 +719,38 @@ function PlatformSeoSection() {
 }
 
 function SeoApproachLeftIllustration() {
+  const stats = [
+    { value: '+120%', label: 'Organic Growth', icon: BarChart3 },
+    { value: '3x', label: 'More Visibility', icon: Users },
+    { value: 'Long-term', label: 'Results', icon: Rocket }
+  ]
+
   return (
-    <div className="relative w-full max-w-[280px] mt-6 flex items-center justify-center">
-      {/* Soft Blue Radial Glow */}
-      <div className="absolute w-52 h-52 bg-blue-100/50 rounded-full blur-2xl pointer-events-none -z-10" />
-
-      {/* Bar Chart Illustration */}
-      <div className="relative bg-white/90 backdrop-blur-md rounded-2xl p-4 border border-blue-100 shadow-[0_10px_30px_rgba(33,150,243,0.1)] flex items-end gap-3 h-32 w-56">
-        <div className="w-7 bg-blue-100 rounded-t-lg h-[35%]" />
-        <div className="w-7 bg-[#00bcd4] rounded-t-lg h-[55%]" />
-        <div className="w-7 bg-[#c5f015] rounded-t-lg h-[75%]" />
-        <div className="w-7 bg-[#2196F3] rounded-t-lg h-[100%]" />
-
-        {/* Growth Arrow SVG */}
-        <svg className="absolute inset-0 w-full h-full p-3 pointer-events-none" viewBox="0 0 100 60">
-          <path d="M10,45 Q35,35 60,25 T90,10" fill="none" stroke="#2196F3" strokeWidth="3" strokeLinecap="round" />
-          <path d="M82,10 L90,10 L90,18" fill="none" stroke="#2196F3" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-
-        {/* Target Badge Overlay */}
-        <div className="absolute -top-3 -right-3 w-11 h-11 rounded-full bg-white border-2 border-[#2196F3] text-[#2196F3] flex items-center justify-center shadow-lg animate-pulse">
-          <Target className="w-5 h-5 text-[#2196F3]" />
-        </div>
+    <div className="w-full mt-4 space-y-6">
+      {/* 3 Stat Cards Row */}
+      <div className="grid grid-cols-3 gap-2.5 w-full">
+        {stats.map((stat, i) => {
+          const IconComp = stat.icon
+          return (
+            <div
+              key={i}
+              className="bg-white rounded-2xl p-3 border border-slate-100 shadow-2xs text-center flex flex-col items-center justify-between hover:shadow-md transition-all duration-300"
+            >
+              <div className="w-8 h-8 rounded-xl bg-[#eef6ff] text-[#2196F3] flex items-center justify-center mb-1.5">
+                <IconComp className="w-4 h-4 text-[#2196F3]" />
+              </div>
+              <span className="text-sm sm:text-base font-black text-slate-900 leading-none mb-1">{stat.value}</span>
+              <span className="text-[10px] sm:text-[11px] font-bold text-slate-500 leading-tight line-clamp-1">{stat.label}</span>
+            </div>
+          )
+        })}
       </div>
+
+      {/* Grow Your Business CTA Button */}
+      <button className="w-full sm:w-auto bg-gradient-to-r from-[#2196F3] to-[#0066ff] hover:from-[#0066ff] hover:to-[#2196F3] text-white font-extrabold text-xs sm:text-sm uppercase tracking-wider px-7 py-3.5 rounded-full shadow-md hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer group">
+        <span>Grow Your Business with SEO</span>
+        <ArrowRight className="w-4 h-4 text-white group-hover:translate-x-1 transition-transform" />
+      </button>
     </div>
   )
 }
@@ -749,28 +758,39 @@ function SeoApproachLeftIllustration() {
 function SeoApproachWheel({ steps, activeHoverIndex, setActiveHoverIndex }) {
   const scopeIconMap = { Search, Target, Users, Settings, TrendingUp, ShieldCheck }
 
-  const cx = 220
-  const cy = 260
-  const rout = 205
-  const rin = 118
-  const rline = 225
+  const cx = 240
+  const cy = 240
+  const rout = 185
+  const rin = 105
+  const rline = 205
 
   return (
-    <div className="relative w-full max-w-[560px] mx-auto flex items-center justify-center p-2">
-      <svg className="w-full h-auto overflow-visible" viewBox="0 0 460 520">
-        {/* Outer Thin Connecting Arc Line */}
-        <path
-          d={`M ${cx} ${cy - rline} A ${rline} ${rline} 0 0 1 ${cx} ${cy + rline}`}
+    <div className="relative w-full max-w-[520px] mx-auto flex items-center justify-center p-2">
+      <svg className="w-full h-auto overflow-visible" viewBox="0 0 480 480">
+        {/* Outer Thin 360-degree Connecting Circle */}
+        <circle
+          cx={cx}
+          cy={cy}
+          r={rline}
           fill="none"
           stroke="#cbd5e1"
           strokeWidth="1.5"
           strokeDasharray="4 4"
         />
 
-        {/* 6 Semi-circular Donut Slices */}
+        {/* Outer Clockwise Arrowhead Indicator */}
+        <path
+          d={`M ${cx - rline * Math.cos(Math.PI / 4)} ${cy - rline * Math.sin(Math.PI / 4)} l -6 -6 m 6 6 l -6 6`}
+          stroke="#2196F3"
+          strokeWidth="2.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+
+        {/* 6 Full Donut Slices */}
         {steps.map((step, idx) => {
-          const startDeg = -90 + idx * 30 + 1.2
-          const endDeg = -90 + (idx + 1) * 30 - 1.2
+          const startDeg = -120 + idx * 60 + 1.5
+          const endDeg = -120 + (idx + 1) * 60 - 1.5
           const midDeg = (startDeg + endDeg) / 2
 
           const r1 = (startDeg * Math.PI) / 180
@@ -787,7 +807,7 @@ function SeoApproachWheel({ steps, activeHoverIndex, setActiveHoverIndex }) {
           const x4 = cx + rin * Math.cos(r1)
           const y4 = cy + rin * Math.sin(r1)
 
-          // Math for Text & Icon & Node
+          // Math for Number Label & Icon & Outer Node Dot
           const xNum = cx + (rout - 24) * Math.cos(rMid)
           const yNum = cy + (rout - 24) * Math.sin(rMid)
 
@@ -815,7 +835,7 @@ function SeoApproachWheel({ steps, activeHoverIndex, setActiveHoverIndex }) {
               <path
                 d={`M ${x1} ${y1} A ${rout} ${rout} 0 0 1 ${x2} ${y2} L ${x3} ${y3} A ${rin} ${rin} 0 0 0 ${x4} ${y4} Z`}
                 fill={step.color}
-                opacity={isHovered ? 1 : 0.9}
+                opacity={isHovered ? 1 : 0.92}
                 className="transition-opacity duration-300 drop-shadow-sm"
               />
 
@@ -826,22 +846,22 @@ function SeoApproachWheel({ steps, activeHoverIndex, setActiveHoverIndex }) {
                 textAnchor="middle"
                 dominantBaseline="central"
                 fill="#ffffff"
-                fontSize="18"
+                fontSize="16"
                 fontWeight="900"
               >
                 {step.number}
               </text>
 
               {/* White Icon inside Slice */}
-              <g transform={`translate(${xIcon - 12}, ${yIcon - 12})`}>
-                <IconComponent className="w-6 h-6 text-white" strokeWidth="2.2" />
+              <g transform={`translate(${xIcon - 11}, ${yIcon - 11})`}>
+                <IconComponent className="w-5 h-5 text-white" strokeWidth="2.2" />
               </g>
 
               {/* Outer Connecting Line Dot Node */}
               <circle
                 cx={xNode}
                 cy={yNode}
-                r={isHovered ? '7.5' : '6'}
+                r={isHovered ? '7' : '5.5'}
                 fill={step.color}
                 stroke="#ffffff"
                 strokeWidth="2.5"
@@ -855,18 +875,27 @@ function SeoApproachWheel({ steps, activeHoverIndex, setActiveHoverIndex }) {
         <circle cx={cx} cy={cy} r={rin - 4} fill="#ffffff" filter="drop-shadow(0px 12px 25px rgba(0,0,0,0.08))" />
         <circle cx={cx} cy={cy} r={rin - 4} fill="none" stroke="#f1f5f9" strokeWidth="2" />
 
+        {/* Center Top Chart Icon */}
+        <g transform={`translate(${cx - 12}, ${cy - 62})`}>
+          <BarChart3 className="w-6 h-6 text-[#2196F3]" strokeWidth="2.5" />
+        </g>
+
         {/* Center Text: SEO APPROACH */}
-        <text x={cx} y={cy - 16} textAnchor="middle" fill="#0f172a" fontSize="32" fontWeight="900" letterSpacing="-0.5">
+        <text x={cx} y={cy - 10} textAnchor="middle" fill="#0f172a" fontSize="28" fontWeight="900" letterSpacing="-0.5">
           SEO
         </text>
-        <text x={cx} y={cy + 14} textAnchor="middle" fill="#64748b" fontSize="13" fontWeight="800" letterSpacing="3.5">
+        <text x={cx} y={cy + 14} textAnchor="middle" fill="#64748b" fontSize="11" fontWeight="800" letterSpacing="3">
           APPROACH
         </text>
 
-        {/* 3 Colorful Dots below Center Text */}
-        <circle cx={cx - 16} cy={cy + 34} r="4" fill="#2196F3" />
-        <circle cx={cx} cy={cy + 34} r="4" fill="#00d487" />
-        <circle cx={cx + 16} cy={cy + 34} r="4" fill="#00bcd4" />
+        {/* Bottom Curved Line Accent */}
+        <path
+          d={`M ${cx - 20} ${cy + 26} Q ${cx} ${cy + 32} ${cx + 20} ${cy + 26}`}
+          fill="none"
+          stroke="#2196F3"
+          strokeWidth="3"
+          strokeLinecap="round"
+        />
       </svg>
     </div>
   )
@@ -895,29 +924,38 @@ function SeoApproachSection() {
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-6 items-center">
 
-          {/* LEFT COLUMN: Title & Description & Illustration (Span 4) */}
-          <div className="lg:col-span-4 flex flex-col items-start text-left">
-            <h2 className="text-3xl sm:text-4xl lg:text-[2.65rem] font-black !text-[#0a0a0a] tracking-tight leading-[1.18] mb-4">
+          {/* LEFT COLUMN: Title & Description & 3 Stat Cards & CTA (Span 4) */}
+          <div className="lg:col-span-4 flex flex-col items-start text-left space-y-4">
+
+            {/* Top Pill Badge */}
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-slate-200/80 text-xs font-extrabold tracking-wider uppercase shadow-2xs text-slate-700">
+              <div className="w-6 h-6 rounded-full bg-[#eef6ff] text-[#2196F3] flex items-center justify-center">
+                <BarChart3 className="w-3.5 h-3.5 text-[#2196F3]" />
+              </div>
+              <span>{seoApproachData.badge || 'OUR SEO PROCESS'}</span>
+            </div>
+
+            <h2 className="text-3xl sm:text-4xl lg:text-[2.65rem] font-black !text-[#0a0a0a] tracking-tight leading-[1.18]">
               {seoApproachData.titlePrefix}{seoApproachData.titleMiddle}
               <span className="text-[#2196F3]">{seoApproachData.titleHighlightBlue}</span>
               <span className="text-[#c5f015]">{seoApproachData.titleHighlightLime}</span>
             </h2>
 
             {/* Two-tone Accent Line Divider */}
-            <div className="flex items-center gap-1.5 my-4">
+            <div className="flex items-center gap-1.5 my-1">
               <span className="w-10 h-1 bg-[#2196F3] rounded-full" />
               <span className="w-2.5 h-2.5 bg-[#c5f015] rounded-full" />
               <span className="w-10 h-1 bg-[#c5f015] rounded-full" />
             </div>
 
-            <p className="text-slate-600 text-sm sm:text-base leading-relaxed font-medium mb-4">
+            <p className="text-slate-600 text-sm sm:text-base leading-relaxed font-medium">
               {seoApproachData.description}
             </p>
 
             <SeoApproachLeftIllustration />
           </div>
 
-          {/* MIDDLE COLUMN: Interactive Half-Wheel Graphic (Span 4) */}
+          {/* MIDDLE COLUMN: Interactive 360 Wheel Graphic (Span 4) */}
           <div className="lg:col-span-4 flex justify-center items-center">
             <SeoApproachWheel
               steps={seoApproachData.steps}
@@ -937,37 +975,49 @@ function SeoApproachSection() {
                   key={step.number}
                   onMouseEnter={() => setActiveHoverIndex(idx)}
                   onMouseLeave={() => setActiveHoverIndex(null)}
-                  className={`bg-white rounded-2xl p-4 border transition-all duration-300 flex items-center justify-between gap-3 cursor-pointer group shadow-2xs ${isHovered
-                      ? 'border-[#2196F3] shadow-md -translate-y-0.5'
-                      : 'border-slate-100 hover:border-slate-200'
+                  className={`bg-white rounded-2xl p-3.5 border transition-all duration-300 flex items-center justify-between gap-3 cursor-pointer group relative overflow-hidden shadow-2xs ${isHovered
+                    ? 'border-[#2196F3] shadow-md -translate-y-0.5'
+                    : 'border-slate-100 hover:border-slate-200'
                     }`}
                 >
-                  {/* Left Pill Badge Number */}
-                  <div className="flex items-center gap-3.5">
+                  {/* Left Solid Color Accent Bar */}
+                  <div
+                    className="absolute left-0 top-0 bottom-0 w-1.5 transition-all duration-300"
+                    style={{ backgroundColor: step.color }}
+                  />
+
+                  {/* Left Pill Badge Number & Title */}
+                  <div className="flex items-center gap-3 pl-2">
+                    {/* Number Badge */}
                     <div
-                      className="w-10 h-10 rounded-full text-white font-black text-xs sm:text-sm flex items-center justify-center shrink-0 shadow-xs"
-                      style={{ backgroundColor: step.color }}
+                      className="w-8 h-8 rounded-xl font-black text-xs flex items-center justify-center shrink-0"
+                      style={{ backgroundColor: step.bgColor, color: step.color }}
                     >
                       {step.number}
                     </div>
 
+                    {/* Circle Icon Badge */}
+                    <div
+                      className="w-8 h-8 rounded-full flex items-center justify-center shrink-0 border border-slate-100"
+                      style={{ backgroundColor: step.bgColor, color: step.color }}
+                    >
+                      <IconComp className="w-4 h-4" style={{ color: step.color }} />
+                    </div>
+
                     {/* Step Title & Subtitle */}
                     <div className="text-left">
-                      <h4 className="text-sm sm:text-base font-extrabold !text-slate-900 leading-snug group-hover:text-[#2196F3] transition-colors">
+                      <h4 className="text-sm font-extrabold !text-slate-900 leading-snug group-hover:text-[#2196F3] transition-colors">
                         {step.title}
                       </h4>
-                      <p className="text-xs text-slate-500 font-medium line-clamp-2 mt-0.5">
+                      <p className="text-xs text-slate-500 font-medium line-clamp-1 mt-0.5">
                         {step.description}
                       </p>
                     </div>
                   </div>
 
-                  {/* Right Icon Badge */}
-                  <div
-                    className="w-10 h-10 rounded-full flex items-center justify-center shrink-0 border border-slate-100 transition-transform duration-300 group-hover:scale-110"
-                    style={{ backgroundColor: step.bgColor, color: step.color }}
-                  >
-                    <IconComp className="w-5 h-5" style={{ color: step.color }} />
+                  {/* Right Arrow Circle Badge */}
+                  <div className="w-7 h-7 rounded-full bg-slate-50 text-slate-400 group-hover:bg-[#2196F3] group-hover:text-white flex items-center justify-center shrink-0 transition-all duration-300">
+                    <ArrowRight className="w-3.5 h-3.5" />
                   </div>
                 </div>
               )
@@ -1102,16 +1152,16 @@ function SeoScopeSection() {
                 key={tab.id}
                 onClick={() => setActiveTabId(tab.id)}
                 className={`relative w-full text-left transition-all duration-300 p-3.5 sm:p-4 rounded-2xl flex items-center justify-between group font-bold text-sm sm:text-base cursor-pointer ${isActive
-                    ? 'bg-[#2196F3] text-white shadow-[0_10px_25px_rgba(33,150,243,0.3)] z-20'
-                    : 'bg-white text-slate-800 hover:bg-slate-50 border border-slate-100 shadow-2xs'
+                  ? 'bg-[#2196F3] text-white shadow-[0_10px_25px_rgba(33,150,243,0.3)] z-20'
+                  : 'bg-white text-slate-800 hover:bg-slate-50 border border-slate-100 shadow-2xs'
                   }`}
               >
                 {/* Left Icon Badge */}
                 <div className="flex items-center gap-3.5">
                   <div
                     className={`w-9 h-9 rounded-full flex items-center justify-center shrink-0 transition-colors ${isActive
-                        ? 'bg-white text-[#2196F3]'
-                        : 'bg-[#eef6ff] text-[#2196F3] group-hover:bg-[#2196F3] group-hover:text-white'
+                      ? 'bg-white text-[#2196F3]'
+                      : 'bg-[#eef6ff] text-[#2196F3] group-hover:bg-[#2196F3] group-hover:text-white'
                       }`}
                   >
                     <TabIcon className="w-4 h-4" />
@@ -1183,7 +1233,7 @@ function SeoExplainedIllustration() {
 
       {/* Main Browser Window Box */}
       <div className="relative z-10 w-full bg-white rounded-3xl border border-slate-100 shadow-[0_15px_40px_rgba(33,150,243,0.12)] overflow-hidden transition-all duration-300 hover:shadow-[0_20px_50px_rgba(33,150,243,0.18)]">
-        
+
         {/* Blue Browser Header Bar */}
         <div className="bg-[#4285f4] p-3 flex items-center gap-1.5">
           <span className="w-2.5 h-2.5 rounded-full bg-white/80" />
@@ -1304,20 +1354,18 @@ function SeoExplainedSection() {
                 <button
                   key={tab.id}
                   onClick={() => setActiveTabId(tab.id)}
-                  className={`flex items-center gap-3 px-5 py-3.5 rounded-xl font-extrabold text-xs sm:text-sm transition-all duration-300 cursor-pointer ${
-                    isActive
+                  className={`flex items-center gap-3 px-5 py-3.5 rounded-xl font-extrabold text-xs sm:text-sm transition-all duration-300 cursor-pointer ${isActive
                       ? 'bg-[#2196F3] text-white shadow-md'
                       : 'bg-white text-slate-700 hover:bg-slate-50 hover:text-[#2196F3]'
-                  }`}
+                    }`}
                 >
                   <div
-                    className={`w-7 h-7 rounded-full flex items-center justify-center shrink-0 ${
-                      isActive
+                    className={`w-7 h-7 rounded-full flex items-center justify-center shrink-0 ${isActive
                         ? 'bg-white/20 text-white'
                         : tab.isLimeIcon
-                        ? 'bg-[#f7fce5] text-[#84cc16]'
-                        : 'bg-[#eef6ff] text-[#2196F3]'
-                    }`}
+                          ? 'bg-[#f7fce5] text-[#84cc16]'
+                          : 'bg-[#eef6ff] text-[#2196F3]'
+                      }`}
                   >
                     <TabIcon className="w-4 h-4" />
                   </div>
@@ -1330,7 +1378,7 @@ function SeoExplainedSection() {
 
         {/* MAIN CONTENT DISPLAY CARD (BELOW TAB BAR) */}
         <div className="bg-white rounded-[32px] border border-slate-100 p-6 sm:p-10 shadow-[0_15px_40px_rgba(33,150,243,0.06)] relative overflow-hidden">
-          
+
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
 
             {/* LEFT COLUMN: Illustration Graphic (Span 4) */}
@@ -1371,11 +1419,10 @@ function SeoExplainedSection() {
                     <div key={idx} className="relative z-10 flex items-start gap-4 group">
                       {/* Left Circle Icon Badge */}
                       <div
-                        className={`w-10 h-10 rounded-full border border-slate-100 flex items-center justify-center shrink-0 shadow-2xs group-hover:scale-110 transition-transform ${
-                          isLime
+                        className={`w-10 h-10 rounded-full border border-slate-100 flex items-center justify-center shrink-0 shadow-2xs group-hover:scale-110 transition-transform ${isLime
                             ? 'bg-[#f7fce5] text-[#84cc16]'
                             : 'bg-[#eef6ff] text-[#2196F3]'
-                        }`}
+                          }`}
                       >
                         <ItemIcon className="w-5 h-5" />
                       </div>
@@ -1383,9 +1430,8 @@ function SeoExplainedSection() {
                       {/* Text */}
                       <p className="text-slate-600 text-xs sm:text-sm leading-relaxed font-medium pt-1">
                         <strong
-                          className={`font-black ${
-                            isLime ? 'text-[#84cc16]' : 'text-[#2196F3]'
-                          }`}
+                          className={`font-black ${isLime ? 'text-[#84cc16]' : 'text-[#2196F3]'
+                            }`}
                         >
                           {item.label}{' '}
                         </strong>
@@ -1504,11 +1550,10 @@ function SeoFaqSection() {
               return (
                 <div
                   key={faq.id}
-                  className={`bg-white rounded-2xl border transition-all duration-300 overflow-hidden shadow-2xs ${
-                    isOpen
+                  className={`bg-white rounded-2xl border transition-all duration-300 overflow-hidden shadow-2xs ${isOpen
                       ? 'border-[#2196F3]/40 shadow-md'
                       : 'border-slate-100 hover:border-slate-200'
-                  }`}
+                    }`}
                 >
                   {/* Accordion Item Header Button */}
                   <button
@@ -1518,11 +1563,10 @@ function SeoFaqSection() {
                     <div className="flex items-center gap-3.5">
                       {/* Left Icon Circle */}
                       <div
-                        className={`w-9 h-9 rounded-full flex items-center justify-center shrink-0 transition-colors ${
-                          isOpen
+                        className={`w-9 h-9 rounded-full flex items-center justify-center shrink-0 transition-colors ${isOpen
                             ? 'bg-[#2196F3] text-white'
                             : 'bg-[#eef6ff] text-[#2196F3] group-hover:bg-[#2196F3] group-hover:text-white'
-                        }`}
+                          }`}
                       >
                         {isOpen ? (
                           <Minus className="w-4 h-4 text-white stroke-[3]" />
@@ -1539,11 +1583,10 @@ function SeoFaqSection() {
 
                     {/* Right Expand Icon */}
                     <div
-                      className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-colors ${
-                        isOpen
+                      className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-colors ${isOpen
                           ? 'bg-transparent text-transparent'
                           : 'bg-[#eef6ff] text-[#2196F3] group-hover:bg-[#2196F3] group-hover:text-white'
-                      }`}
+                        }`}
                     >
                       {!isOpen && <Plus className="w-4 h-4 stroke-[2.5]" />}
                     </div>
@@ -1587,7 +1630,7 @@ function SeoCtaSection() {
     <section className="mt-16 sm:mt-24 relative">
       {/* Container Box */}
       <div className="bg-white border border-slate-100 rounded-[36px] sm:rounded-[44px] p-6 sm:p-10 lg:p-14 shadow-[0_20px_50px_rgba(0,0,0,0.04)] relative overflow-hidden">
-        
+
         {/* Background Arcs & Decorative Orbs */}
         <div className="absolute -top-32 -right-32 w-[550px] h-[550px] rounded-full border-[28px] border-[#2196F3]/15 pointer-events-none -z-0" />
         <div className="absolute -top-40 -right-40 w-[650px] h-[650px] rounded-full border-[3px] border-[#c5f015]/60 pointer-events-none -z-0" />
@@ -1690,7 +1733,7 @@ function SeoCtaSection() {
 
           {/* RIGHT COLUMN: Image & Floating Badges (Span 5) */}
           <div className="lg:col-span-5 relative flex justify-center items-end min-h-[380px] lg:min-h-[440px] pt-6 lg:pt-0">
-            
+
             {/* Main Person Image */}
             <img
               src={ctaImage}
@@ -1763,7 +1806,7 @@ function SeoBenefitsSection() {
 
         {/* Section Header */}
         <div className="text-center max-w-4xl mx-auto mb-10 sm:mb-14 px-4">
-          
+
           {/* Top Pill Badge */}
           <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white border border-slate-200/80 text-xs font-bold tracking-wider uppercase mb-5 shadow-2xs">
             <div className="w-6 h-6 rounded-full bg-[#2196F3] text-white flex items-center justify-center">
@@ -1809,7 +1852,7 @@ function SeoBenefitsSection() {
                 <div>
                   {/* Top Row: Icon Box & Number Badge */}
                   <div className="flex items-start justify-between mb-6">
-                    
+
                     {/* Icon Box with Polka Dots */}
                     <div className="relative">
                       <div
@@ -1894,7 +1937,7 @@ function SeoClientsSection() {
 
         {/* Section Header */}
         <div className="text-center max-w-4xl mx-auto mb-10 sm:mb-12 px-4">
-          
+
           {/* Top Pill Badge */}
           <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white border border-slate-200/80 text-xs font-bold tracking-wider uppercase mb-4 shadow-2xs">
             <div className="w-6 h-6 rounded-full bg-blue-50 text-[#2196f3] flex items-center justify-center">
@@ -1978,7 +2021,7 @@ function SeoTestimonialsSection() {
 
         {/* Section Header */}
         <div className="text-center max-w-4xl mx-auto mb-10 sm:mb-12 px-4">
-          
+
           {/* Top Pill Badge */}
           <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white border border-slate-200/80 text-xs font-bold tracking-wider uppercase mb-4 shadow-2xs">
             <div className="w-6 h-6 rounded-full bg-[#2196f3] text-white flex items-center justify-center">
@@ -2096,11 +2139,10 @@ function SeoTestimonialsSection() {
               <button
                 key={idx}
                 onClick={() => setActiveSlide(idx)}
-                className={`transition-all duration-300 rounded-full cursor-pointer ${
-                  activeSlide === idx
+                className={`transition-all duration-300 rounded-full cursor-pointer ${activeSlide === idx
                     ? 'w-6 h-2.5 bg-[#2196f3]'
                     : 'w-2.5 h-2.5 bg-slate-300 hover:bg-slate-400'
-                }`}
+                  }`}
                 aria-label={`Go to slide ${idx + 1}`}
               />
             ))}
