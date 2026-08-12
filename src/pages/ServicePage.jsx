@@ -912,7 +912,7 @@ function SeoApproachSection() {
     TrendingUp,
     ShieldCheck
   }
-
+ 
   return (
     <section className="mt-16 sm:mt-24 relative">
       {/* Background Soft Orbs */}
