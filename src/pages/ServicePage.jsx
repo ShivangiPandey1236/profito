@@ -1141,47 +1141,83 @@ function SeoScopeSection() {
       {/* Main Grid: Left Tabs Menu + Right Content Display */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start relative z-10">
 
-        {/* LEFT COLUMN: Vertical Navigation Menu (4 Spans on Desktop) */}
+        {/* LEFT COLUMN: Vertical Navigation Menu (4 Spans on Desktop) / Accordion (Mobile) */}
         <div className="lg:col-span-4 flex flex-col gap-2.5">
           {seoScopeData.tabs.map((tab) => {
             const isActive = tab.id === activeTabId
             const TabIcon = scopeIconMap[tab.iconName] || Search
 
             return (
-              <button
-                key={tab.id}
-                onClick={() => setActiveTabId(tab.id)}
-                className={`relative w-full text-left transition-all duration-300 p-3.5 sm:p-4 rounded-2xl flex items-center justify-between group font-bold text-sm sm:text-base cursor-pointer ${isActive
-                  ? 'bg-[#2196F3] text-white shadow-[0_10px_25px_rgba(33,150,243,0.3)] z-20'
-                  : 'bg-white text-slate-800 hover:bg-slate-50 border border-slate-100 shadow-2xs'
-                  }`}
-              >
-                {/* Left Icon Badge */}
-                <div className="flex items-center gap-3.5">
-                  <div
-                    className={`w-9 h-9 rounded-full flex items-center justify-center shrink-0 transition-colors ${isActive
-                      ? 'bg-white text-[#2196F3]'
-                      : 'bg-[#eef6ff] text-[#2196F3] group-hover:bg-[#2196F3] group-hover:text-white'
-                      }`}
-                  >
-                    <TabIcon className="w-4 h-4" />
+              <div key={tab.id} className="flex flex-col gap-2.5">
+                <button
+                  type="button"
+                  onClick={() => setActiveTabId(tab.id)}
+                  className={`relative w-full text-left transition-all duration-300 p-3.5 sm:p-4 rounded-2xl flex items-center justify-between group font-bold text-sm sm:text-base cursor-pointer ${isActive
+                    ? 'bg-[#2196F3] text-white shadow-[0_10px_25px_rgba(33,150,243,0.3)] z-20'
+                    : 'bg-white text-slate-800 hover:bg-slate-50 border border-slate-100 shadow-2xs'
+                    }`}
+                >
+                  {/* Left Icon Badge */}
+                  <div className="flex items-center gap-3.5 min-w-0">
+                    <div
+                      className={`w-9 h-9 rounded-full flex items-center justify-center shrink-0 transition-colors ${isActive
+                        ? 'bg-white text-[#2196F3]'
+                        : 'bg-[#eef6ff] text-[#2196F3] group-hover:bg-[#2196F3] group-hover:text-white'
+                        }`}
+                    >
+                      <TabIcon className="w-4 h-4" />
+                    </div>
+                    <span className="truncate">{tab.tabTitle}</span>
                   </div>
-                  <span className="truncate">{tab.tabTitle}</span>
-                </div>
 
-                {/* Right Arrow / Pointer Indicator */}
-                {isActive ? (
-                  <div className="hidden lg:block absolute -right-3 top-1/2 -translate-y-1/2 w-0 h-0 border-y-[10px] border-y-transparent border-l-[12px] border-l-[#2196F3] pointer-events-none" />
-                ) : (
-                  <ChevronRight className="w-4 h-4 text-[#2196F3] group-hover:translate-x-1 transition-transform" />
+                  {/* Right Arrow / Pointer Indicator */}
+                  {isActive ? (
+                    <>
+                      <ChevronRight className="w-4 h-4 text-white rotate-90 transition-transform duration-300 lg:hidden shrink-0" />
+                      <div className="hidden lg:block absolute -right-3 top-1/2 -translate-y-1/2 w-0 h-0 border-y-[10px] border-y-transparent border-l-[12px] border-l-[#2196F3] pointer-events-none" />
+                    </>
+                  ) : (
+                    <ChevronRight className="w-4 h-4 text-[#2196F3] group-hover:translate-x-1 transition-transform shrink-0" />
+                  )}
+                </button>
+
+                {/* Mobile Accordion Content Panel: opens directly under active keypoint */}
+                {isActive && (
+                  <div className="lg:hidden bg-white border border-slate-100 rounded-2xl p-5 sm:p-7 shadow-[0_10px_30px_rgba(33,150,243,0.08)] space-y-5 transition-all duration-300 overflow-hidden">
+                    {/* Header Title with Big Icon */}
+                    <div className="flex items-center gap-3.5">
+                      <div className="w-12 h-12 rounded-2xl bg-[#eef6ff] border border-[#2196F3]/20 text-[#2196F3] flex items-center justify-center shrink-0 shadow-2xs">
+                        <TabIcon className="w-6 h-6 text-[#2196F3]" />
+                      </div>
+                      <div>
+                        <h3 className="text-xl sm:text-2xl font-black !text-slate-900 tracking-tight">
+                          {tab.contentTitlePrefix}
+                          <span className="text-[#2196F3]">{tab.contentTitleHighlight}</span>
+                        </h3>
+                        <div className="w-12 h-1 bg-[#c5f015] rounded-full mt-1.5" />
+                      </div>
+                    </div>
+
+                    {/* Paragraphs */}
+                    <div className="space-y-3 text-slate-600 text-sm leading-relaxed font-medium">
+                      {tab.paragraphs.map((pText, idx) => (
+                        <p key={idx}>{pText}</p>
+                      ))}
+                    </div>
+
+                    {/* Graphic Illustration */}
+                    <div className="pt-2 flex items-center justify-center overflow-hidden">
+                      <SeoScopeIllustration />
+                    </div>
+                  </div>
                 )}
-              </button>
+              </div>
             )
           })}
         </div>
 
         {/* RIGHT COLUMN: Active Tab Content Display Card (8 Spans on Desktop) */}
-        <div className="lg:col-span-8 bg-white border border-slate-100 rounded-[32px] p-6 sm:p-10 lg:p-12 shadow-[0_15px_45px_rgba(33,150,243,0.07)] min-h-[480px] flex flex-col justify-between">
+        <div className="hidden lg:flex lg:col-span-8 bg-white border border-slate-100 rounded-[32px] p-6 sm:p-10 lg:p-12 shadow-[0_15px_45px_rgba(33,150,243,0.07)] min-h-[480px] flex-col justify-between">
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
 
