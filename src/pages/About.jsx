@@ -513,23 +513,23 @@ const About = () => {
   ];
 
   return (
-    <div className="about-page-wrapper bg-gradient-to-b from-white via-[#f4faff] to-[#eaf5ff] pt-32 pb-24 px-4 sm:px-6 lg:px-8 overflow-hidden min-h-screen text-black">
+    <div className="about-page-wrapper bg-gradient-to-b from-white via-[#f4faff] to-[#eaf5ff] pt-24 sm:pt-32 pb-16 sm:pb-24 px-4 sm:px-6 lg:px-8 overflow-hidden min-h-screen text-black">
       <div ref={containerRef} className="max-w-[1400px] mx-auto">
 
         {/* SECTION 1: Main Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start mb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start mb-12 sm:mb-16">
 
           {/* Left Column: Heading, Intro, CTAs & Stats Strip (Span 6) */}
           <div className="lg:col-span-6 flex flex-col">
 
             {/* Badge matching Hero Badge */}
-            <div className="reveal-left inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#2196F3]/10 border border-[#2196F3]/30 text-primary font-bold text-xs uppercase tracking-wider mb-6 w-fit shadow-xs">
+            <div className="reveal-left inline-flex items-center gap-2 px-3.5 sm:px-4 py-1.5 rounded-full bg-[#2196F3]/10 border border-[#2196F3]/30 text-primary font-bold text-xs uppercase tracking-wider mb-4 sm:mb-6 w-fit shadow-xs">
               <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
               <span>ABOUT US</span>
             </div>
 
             {/* Main Headline with Hero Highlight style */}
-            <h1 className="reveal-left reveal-delay-1 text-4xl sm:text-5xl lg:text-[3.25rem] font-black text-[#0a0a0a] leading-[1.12] tracking-tight mb-6" style={{ color: '#0a0a0a' }}>
+            <h1 className="reveal-left reveal-delay-1 text-3xl sm:text-5xl lg:text-[3.25rem] font-black text-[#0a0a0a] leading-[1.15] tracking-tight mb-4 sm:mb-6" style={{ color: '#0a0a0a' }}>
               We Help Businesses <br className="hidden sm:inline" />
               Grow in the{' '}
               <span className="bg-gradient-to-r from-[#2196F3] via-[#42a5f5] to-[#2196F3] bg-clip-text text-transparent animate-text-shimmer">
@@ -538,7 +538,7 @@ const About = () => {
             </h1>
 
             {/* Paragraphs */}
-            <div className="reveal-left reveal-delay-2 space-y-4 text-[#444444] text-base sm:text-lg leading-relaxed mb-8 max-w-xl">
+            <div className="reveal-left reveal-delay-2 space-y-4 text-[#444444] text-sm sm:text-lg leading-relaxed mb-6 sm:mb-8 max-w-xl">
               <p style={{ color: '#444444' }}>
                 <strong className="text-[#0a0a0a] font-extrabold" style={{ color: '#0a0a0a' }}>Profito Interactive Growth Partners</strong> is a full-service digital marketing agency dedicated to delivering innovative strategies that drive visibility, engage audiences, and accelerate business growth.
               </p>
@@ -548,10 +548,10 @@ const About = () => {
             </div>
 
             {/* CTAs matching Hero buttons */}
-            <div className="reveal-left reveal-delay-3 flex flex-wrap items-center gap-4 mb-10">
+            <div className="reveal-left reveal-delay-3 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 mb-8 sm:mb-10">
               <a
                 href="#timeline"
-                className="btn-shine-effect inline-flex items-center gap-3 bg-primary hover:bg-[#0a0a0a] text-white font-semibold text-sm px-6 py-3.5 rounded-full shadow-lg shadow-primary/25 border-2 border-primary hover:border-[#0a0a0a] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl group"
+                className="btn-shine-effect w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-primary hover:bg-[#0a0a0a] text-white font-semibold text-sm px-6 py-3.5 rounded-full shadow-lg shadow-primary/25 border-2 border-primary hover:border-[#0a0a0a] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl group"
               >
                 <span className="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center transition-transform group-hover:rotate-45">
                   <ArrowRight className="w-3.5 h-3.5 text-white" />
@@ -561,7 +561,7 @@ const About = () => {
 
               <a
                 href="#why-choose-us"
-                className="inline-flex items-center gap-2 border-2 border-primary/30 hover:border-primary bg-white/90 hover:bg-white text-[#333333] hover:text-primary font-bold text-sm px-6 py-3.5 rounded-full transition-all duration-300 hover:-translate-y-0.5 shadow-xs hover:shadow-md group"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 border-2 border-primary/30 hover:border-primary bg-white/90 hover:bg-white text-[#333333] hover:text-primary font-bold text-sm px-6 py-3.5 rounded-full transition-all duration-300 hover:-translate-y-0.5 shadow-xs hover:shadow-md group"
               >
                 <span className="text-[#333333] font-extrabold group-hover:text-primary" style={{ color: '#333333' }}>Why Choose Us</span>
                 <ArrowRight className="w-4 h-4 text-[#333333] group-hover:text-primary transition-transform group-hover:translate-x-1" />
@@ -569,65 +569,65 @@ const About = () => {
             </div>
 
             {/* Stats Strip matching Hero stats card styling */}
-            <div className="reveal-left reveal-delay-4 bg-white/90 backdrop-blur-md border border-[#2196F3]/15 shadow-[0_12px_36px_-10px_rgba(33,150,243,0.12)] rounded-2xl p-5 sm:p-6 grid grid-cols-3 gap-3 divide-x divide-zinc-200 max-w-xl hover:border-[#2196F3]/30 transition-all duration-300">
+            <div className="reveal-left reveal-delay-4 bg-white/90 backdrop-blur-md border border-[#2196F3]/15 shadow-[0_12px_36px_-10px_rgba(33,150,243,0.12)] rounded-2xl p-3.5 sm:p-6 grid grid-cols-3 gap-2 sm:gap-3 divide-x divide-zinc-200 max-w-xl hover:border-[#2196F3]/30 transition-all duration-300">
               {/* Stat 1 */}
-              <div className="flex items-center gap-3 px-2 sm:px-3 first:pl-0 group">
-                <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-[#2196F3]/10 border border-[#2196F3]/20 flex items-center justify-center text-primary shrink-0 group-hover:scale-110 group-hover:bg-primary group-hover:text-white transition-all duration-300">
-                  <Trophy className="w-5 h-5" />
+              <div className="flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-1.5 sm:gap-3 px-1 sm:px-3 first:pl-0 group">
+                <div className="w-8 h-8 sm:w-11 sm:h-11 rounded-xl bg-[#2196F3]/10 border border-[#2196F3]/20 flex items-center justify-center text-primary shrink-0 group-hover:scale-110 group-hover:bg-primary group-hover:text-white transition-all duration-300">
+                  <Trophy className="w-4 h-4 sm:w-5 sm:h-5" />
                 </div>
                 <div>
-                  <div className="text-xl sm:text-2xl font-black text-[#0a0a0a] leading-none mb-1" style={{ color: '#0a0a0a' }}>
+                  <div className="text-base sm:text-2xl font-black text-[#0a0a0a] leading-none mb-0.5 sm:mb-1" style={{ color: '#0a0a0a' }}>
                     <CountUp end={12} suffix="+" />
                   </div>
-                  <div className="text-xs font-bold text-[#555555] leading-tight" style={{ color: '#555555' }}>Years Experience</div>
+                  <div className="text-[10px] sm:text-xs font-bold text-[#555555] leading-tight" style={{ color: '#555555' }}>Years Experience</div>
                 </div>
               </div>
 
               {/* Stat 2 */}
-              <div className="flex items-center gap-3 px-2 sm:px-3 group">
-                <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-[#2196F3]/10 border border-[#2196F3]/20 flex items-center justify-center text-primary shrink-0 group-hover:scale-110 group-hover:bg-primary group-hover:text-white transition-all duration-300">
-                  <Users className="w-5 h-5" />
+              <div className="flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-1.5 sm:gap-3 px-1 sm:px-3 group">
+                <div className="w-8 h-8 sm:w-11 sm:h-11 rounded-xl bg-[#2196F3]/10 border border-[#2196F3]/20 flex items-center justify-center text-primary shrink-0 group-hover:scale-110 group-hover:bg-primary group-hover:text-white transition-all duration-300">
+                  <Users className="w-4 h-4 sm:w-5 sm:h-5" />
                 </div>
                 <div>
-                  <div className="text-xl sm:text-2xl font-black text-[#0a0a0a] leading-none mb-1" style={{ color: '#0a0a0a' }}>
+                  <div className="text-base sm:text-2xl font-black text-[#0a0a0a] leading-none mb-0.5 sm:mb-1" style={{ color: '#0a0a0a' }}>
                     <CountUp end={650} suffix="+" />
                   </div>
-                  <div className="text-xs font-bold text-[#555555] leading-tight" style={{ color: '#555555' }}>Happy Clients</div>
+                  <div className="text-[10px] sm:text-xs font-bold text-[#555555] leading-tight" style={{ color: '#555555' }}>Happy Clients</div>
                 </div>
               </div>
 
               {/* Stat 3 */}
-              <div className="flex items-center gap-3 px-2 sm:px-3 group">
-                <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-[#2196F3]/10 border border-[#2196F3]/20 flex items-center justify-center text-primary shrink-0 group-hover:scale-110 group-hover:bg-primary group-hover:text-white transition-all duration-300">
-                  <TrendingUp className="w-5 h-5" />
+              <div className="flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-1.5 sm:gap-3 px-1 sm:px-3 group">
+                <div className="w-8 h-8 sm:w-11 sm:h-11 rounded-xl bg-[#2196F3]/10 border border-[#2196F3]/20 flex items-center justify-center text-primary shrink-0 group-hover:scale-110 group-hover:bg-primary group-hover:text-white transition-all duration-300">
+                  <TrendingUp className="w-4 h-4 sm:w-5 sm:h-5" />
                 </div>
                 <div>
-                  <div className="text-xl sm:text-2xl font-black text-[#0a0a0a] leading-none mb-1" style={{ color: '#0a0a0a' }}>
+                  <div className="text-base sm:text-2xl font-black text-[#0a0a0a] leading-none mb-0.5 sm:mb-1" style={{ color: '#0a0a0a' }}>
                     <CountUp end={98} suffix="%" />
                   </div>
-                  <div className="text-xs font-bold text-[#555555] leading-tight" style={{ color: '#555555' }}>Retention Rate</div>
+                  <div className="text-[10px] sm:text-xs font-bold text-[#555555] leading-tight" style={{ color: '#555555' }}>Retention Rate</div>
                 </div>
               </div>
             </div>
 
           </div>
 
-          {/* Middle Column: Vertical Timeline (Span 2) */}
-          <div id="timeline" className="reveal-on-scroll reveal-delay-2 lg:col-span-2 flex flex-col items-center justify-center py-6 relative">
-            <div className="relative flex flex-col items-center space-y-9 sm:space-y-10 my-auto">
+          {/* Middle Column: Vertical/Horizontal Timeline (Span 2) */}
+          <div id="timeline" className="reveal-on-scroll reveal-delay-2 lg:col-span-2 flex flex-col items-center justify-center py-4 lg:py-6 relative my-2 lg:my-0 w-full overflow-hidden">
+            <div className="relative w-full flex flex-row lg:flex-col items-center justify-between lg:justify-center overflow-x-auto lg:overflow-visible pb-3 lg:pb-0 px-2 lg:px-0 space-x-4 lg:space-x-0 lg:space-y-8 scrollbar-none [scrollbar-width:none]">
 
-              {/* Vertical connecting line with animated pulse gradient */}
-              <div className="timeline-pulse-line absolute top-3 bottom-3 w-0.5 left-1/2 -translate-x-1/2 z-0 rounded-full" />
+              {/* Connecting line */}
+              <div className="timeline-pulse-line absolute top-3 lg:top-3 left-4 right-4 lg:left-1/2 lg:right-auto bottom-auto lg:bottom-3 h-0.5 lg:h-auto lg:w-0.5 -translate-y-1/2 lg:translate-y-0 lg:-translate-x-1/2 z-0 rounded-full" />
 
               {timelineEvents.map((event, idx) => (
-                <div key={idx} className="relative z-10 flex flex-col items-center text-center group cursor-pointer">
+                <div key={idx} className="relative z-10 flex flex-col items-center text-center group cursor-pointer shrink-0 min-w-[100px] sm:min-w-[120px] lg:min-w-0">
                   {/* Node Dot */}
                   <div className="w-5 h-5 rounded-full bg-primary border-4 border-white shadow-[0_0_12px_rgba(33,150,243,0.4)] group-hover:scale-130 group-hover:bg-[#0a0a0a] transition-all duration-300" />
 
                   {/* Event Text */}
-                  <div className="mt-1 bg-white/95 px-2.5 py-1 rounded-lg border border-[#2196F3]/20 shadow-xs group-hover:border-primary group-hover:shadow-md group-hover:-translate-y-1 transition-all duration-300">
-                    <span className="block font-black text-primary text-sm leading-none">{event.year}</span>
-                    <span className="block text-[0.75rem] font-bold text-[#0a0a0a] mt-0.5 whitespace-nowrap" style={{ color: '#0a0a0a' }}>{event.title}</span>
+                  <div className="mt-1.5 bg-white/95 px-2 sm:px-2.5 py-1 rounded-lg border border-[#2196F3]/20 shadow-xs group-hover:border-primary group-hover:shadow-md group-hover:-translate-y-1 transition-all duration-300">
+                    <span className="block font-black text-primary text-xs sm:text-sm leading-none">{event.year}</span>
+                    <span className="block text-[0.7rem] sm:text-[0.75rem] font-bold text-[#0a0a0a] mt-0.5 whitespace-nowrap" style={{ color: '#0a0a0a' }}>{event.title}</span>
                   </div>
                 </div>
               ))}
@@ -637,7 +637,7 @@ const About = () => {
 
           {/* Right Column: "Trusted by Businesses Worldwide" Card (Span 4) */}
           <div className="reveal-right reveal-delay-3 lg:col-span-4" ref={progressRef}>
-            <div className="bg-gradient-to-b from-[#f4faff] via-white to-[#eaf5ff] border border-[#2196F3]/20 shadow-[0_15px_40px_rgba(33,150,243,0.1)] rounded-3xl p-6 sm:p-8 relative overflow-hidden flex flex-col justify-between h-full hover:shadow-[0_20px_50px_rgba(33,150,243,0.15)] transition-all duration-500">
+            <div className="bg-gradient-to-b from-[#f4faff] via-white to-[#eaf5ff] border border-[#2196F3]/20 shadow-[0_15px_40px_rgba(33,150,243,0.1)] rounded-3xl p-5 sm:p-8 relative overflow-hidden flex flex-col justify-between h-full hover:shadow-[0_20px_50px_rgba(33,150,243,0.15)] transition-all duration-500">
 
               {/* Ambient Background Glows */}
               <div className="animate-float-orb absolute -top-20 -right-20 w-48 h-48 bg-primary/10 rounded-full blur-3xl pointer-events-none" />
@@ -645,48 +645,48 @@ const About = () => {
 
               <div>
                 {/* 5 Stars using Homepage #2196F3 fill */}
-                <div className="flex items-center gap-1 text-primary mb-4">
+                <div className="flex items-center gap-1 text-primary mb-3 sm:mb-4">
                   {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="animate-star-pop w-5 h-5 fill-primary text-primary" style={{ animationDelay: `${i * 0.08}s` }} />
+                    <Star key={i} className="animate-star-pop w-4 h-4 sm:w-5 sm:h-5 fill-primary text-primary" style={{ animationDelay: `${i * 0.08}s` }} />
                   ))}
                 </div>
 
                 {/* Card Title */}
-                <h2 className="text-2xl sm:text-3xl font-black text-[#0a0a0a] tracking-tight mb-5 leading-snug" style={{ color: '#0a0a0a' }}>
+                <h2 className="text-xl sm:text-3xl font-black text-[#0a0a0a] tracking-tight mb-4 sm:mb-5 leading-snug" style={{ color: '#0a0a0a' }}>
                   Trusted by <br />
                   Businesses Worldwide
                 </h2>
 
                 {/* Quote Box */}
-                <div className="relative bg-white/90 border border-[#2196F3]/20 rounded-2xl p-4 sm:p-5 mb-6 shadow-xs group hover:border-primary/50 transition-all duration-300">
-                  <Quote className="w-8 h-8 text-primary/20 absolute top-3 right-3 pointer-events-none" />
-                  <p className="text-[#333333] italic text-sm sm:text-base leading-relaxed font-bold relative z-10" style={{ color: '#333333' }}>
+                <div className="relative bg-white/90 border border-[#2196F3]/20 rounded-2xl p-3.5 sm:p-5 mb-5 sm:mb-6 shadow-xs group hover:border-primary/50 transition-all duration-300">
+                  <Quote className="w-6 h-6 sm:w-8 sm:h-8 text-primary/20 absolute top-3 right-3 pointer-events-none" />
+                  <p className="text-[#333333] italic text-xs sm:text-base leading-relaxed font-bold relative z-10" style={{ color: '#333333' }}>
                     “We believe every campaign should create measurable business growth, not just impressions.”
                   </p>
                 </div>
 
                 {/* Checklist */}
-                <ul className="space-y-3 mb-8">
+                <ul className="space-y-2.5 sm:space-y-3 mb-6 sm:mb-8">
                   {checklistItems.map((item, i) => (
-                    <li key={i} className="flex items-center gap-3 text-[#0a0a0a] font-extrabold text-sm sm:text-base group">
-                      <div className="w-5 h-5 rounded-full bg-primary/10 text-primary flex items-center justify-center shrink-0 group-hover:bg-primary group-hover:text-white transition-colors duration-300">
-                        <CheckCircle2 className="w-4 h-4" />
+                    <li key={i} className="flex items-center gap-2.5 sm:gap-3 text-[#0a0a0a] font-extrabold text-xs sm:text-base group">
+                      <div className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-primary/10 text-primary flex items-center justify-center shrink-0 group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+                        <CheckCircle2 className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                       </div>
-                      <span className="text-[#0a0a0a] font-extrabold text-sm sm:text-base" style={{ color: '#0a0a0a' }}>{item}</span>
+                      <span className="text-[#0a0a0a] font-extrabold text-xs sm:text-base" style={{ color: '#0a0a0a' }}>{item}</span>
                     </li>
                   ))}
                 </ul>
               </div>
 
               {/* Progress Bar Section */}
-              <div className="pt-5 border-t border-[#2196F3]/15">
+              <div className="pt-4 sm:pt-5 border-t border-[#2196F3]/15">
                 <div className="flex justify-between items-center mb-2">
-                  <span className="font-extrabold text-sm text-[#0a0a0a]" style={{ color: '#0a0a0a' }}>Growth Success</span>
-                  <span className="font-black text-sm text-primary">
+                  <span className="font-extrabold text-xs sm:text-sm text-[#0a0a0a]" style={{ color: '#0a0a0a' }}>Growth Success</span>
+                  <span className="font-black text-xs sm:text-sm text-primary">
                     <CountUp end={92} suffix="%" />
                   </span>
                 </div>
-                <div className="w-full h-3 bg-primary/10 rounded-full overflow-hidden p-0.5">
+                <div className="w-full h-2.5 sm:h-3 bg-primary/10 rounded-full overflow-hidden p-0.5">
                   <div
                     className="h-full bg-gradient-to-r from-primary via-[#42a5f5] to-primary rounded-full transition-all duration-1200 cubic-bezier(0.16,1,0.3,1) shadow-xs"
                     style={{ width: progressWidth }}
