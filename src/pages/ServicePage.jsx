@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import {
   ChevronRight,
@@ -1263,39 +1263,39 @@ function SeoScopeSection() {
 
 function SeoExplainedIllustration() {
   return (
-    <div className="relative w-full max-w-sm mx-auto flex items-center justify-center p-4">
+    <div className="relative w-full max-w-xs sm:max-w-sm mx-auto flex items-center justify-center p-2 sm:p-4">
       {/* Soft Blue Radial Background */}
-      <div className="absolute w-64 h-64 bg-blue-100/50 rounded-full blur-3xl pointer-events-none -z-10" />
+      <div className="absolute w-48 sm:w-64 h-48 sm:h-64 bg-blue-100/50 rounded-full blur-3xl pointer-events-none -z-10" />
 
       {/* Main Browser Window Box */}
-      <div className="relative z-10 w-full bg-white rounded-3xl border border-slate-100 shadow-[0_15px_40px_rgba(33,150,243,0.12)] overflow-hidden transition-all duration-300 hover:shadow-[0_20px_50px_rgba(33,150,243,0.18)]">
+      <div className="relative z-10 w-full bg-white rounded-2xl sm:rounded-3xl border border-slate-100 shadow-[0_15px_40px_rgba(33,150,243,0.12)] overflow-hidden transition-all duration-300 hover:shadow-[0_20px_50px_rgba(33,150,243,0.18)]">
 
         {/* Blue Browser Header Bar */}
-        <div className="bg-[#4285f4] p-3 flex items-center gap-1.5">
-          <span className="w-2.5 h-2.5 rounded-full bg-white/80" />
-          <span className="w-2.5 h-2.5 rounded-full bg-white/80" />
-          <span className="w-2.5 h-2.5 rounded-full bg-white/80" />
+        <div className="bg-[#4285f4] p-2.5 sm:p-3 flex items-center gap-1.5">
+          <span className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-white/80" />
+          <span className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-white/80" />
+          <span className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-white/80" />
         </div>
 
         {/* Search Bar Row */}
-        <div className="p-4 space-y-5">
-          <div className="bg-[#edf3fe] rounded-full p-2.5 flex items-center justify-between">
-            <div className="h-2.5 bg-white/80 rounded-full w-28 ml-2" />
-            <div className="w-8 h-8 rounded-full bg-[#c5f015] flex items-center justify-center shadow-xs">
-              <Search className="w-4 h-4 text-slate-900" />
+        <div className="p-3.5 sm:p-4 space-y-4 sm:space-y-5">
+          <div className="bg-[#edf3fe] rounded-full p-2 sm:p-2.5 flex items-center justify-between">
+            <div className="h-2.5 bg-white/80 rounded-full w-20 sm:w-28 ml-2" />
+            <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#c5f015] flex items-center justify-center shadow-xs">
+              <Search className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-slate-900" />
             </div>
           </div>
 
           {/* Center SEO Big Text & Rising Bars */}
-          <div className="pt-2 pb-4 text-center">
-            <span className="text-4xl font-black text-[#2196F3] tracking-wider block mb-4">SEO</span>
+          <div className="pt-1 sm:pt-2 pb-3 sm:pb-4 text-center">
+            <span className="text-3xl sm:text-4xl font-black text-[#2196F3] tracking-wider block mb-3 sm:mb-4">SEO</span>
 
             {/* Rising Bar Chart Graphic */}
-            <div className="relative flex items-end justify-center gap-3 h-16 max-w-[180px] mx-auto">
-              <div className="w-4 bg-[#2196F3]/40 rounded-t-sm h-[30%]" />
-              <div className="w-4 bg-[#2196F3]/70 rounded-t-sm h-[50%]" />
-              <div className="w-4 bg-[#c5f015] rounded-t-sm h-[75%]" />
-              <div className="w-4 bg-[#2196F3] rounded-t-sm h-[100%]" />
+            <div className="relative flex items-end justify-center gap-2.5 sm:gap-3 h-14 sm:h-16 max-w-[160px] sm:max-w-[180px] mx-auto">
+              <div className="w-3.5 sm:w-4 bg-[#2196F3]/40 rounded-t-sm h-[30%]" />
+              <div className="w-3.5 sm:w-4 bg-[#2196F3]/70 rounded-t-sm h-[50%]" />
+              <div className="w-3.5 sm:w-4 bg-[#c5f015] rounded-t-sm h-[75%]" />
+              <div className="w-3.5 sm:w-4 bg-[#2196F3] rounded-t-sm h-[100%]" />
 
               {/* Upward Green Arrow */}
               <svg className="absolute -top-3 left-0 w-full h-full pointer-events-none" viewBox="0 0 100 50">
@@ -1318,9 +1318,9 @@ function SeoExplainedIllustration() {
       </div>
 
       {/* Floating Bottom-Right Target Circle Badge Overlay */}
-      <div className="absolute -bottom-3 -right-3 z-20 w-20 h-20 rounded-full border-4 border-white bg-[#eef6ff] shadow-xl flex items-center justify-center">
-        <div className="w-12 h-12 rounded-full border-4 border-[#2196F3] bg-white flex items-center justify-center">
-          <Target className="w-6 h-6 text-[#2196F3]" />
+      <div className="absolute -bottom-2 -right-2 sm:-bottom-3 sm:-right-3 z-20 w-16 h-16 sm:w-20 sm:h-20 rounded-full border-4 border-white bg-[#eef6ff] shadow-xl flex items-center justify-center">
+        <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border-4 border-[#2196F3] bg-white flex items-center justify-center">
+          <Target className="w-5 h-5 sm:w-6 sm:h-6 text-[#2196F3]" />
         </div>
       </div>
 
@@ -1354,34 +1354,34 @@ function SeoExplainedSection() {
   return (
     <section className="mt-16 sm:mt-24 relative">
       {/* Section Background Soft Glows */}
-      <div className="absolute top-10 left-10 w-96 h-96 bg-blue-100/40 rounded-full blur-3xl pointer-events-none -z-10" />
-      <div className="absolute bottom-10 right-10 w-80 h-80 bg-[#c5f015]/15 rounded-full blur-3xl pointer-events-none -z-10" />
+      <div className="absolute top-10 left-10 w-72 sm:w-96 h-72 sm:h-96 bg-blue-100/40 rounded-full blur-3xl pointer-events-none -z-10" />
+      <div className="absolute bottom-10 right-10 w-64 sm:w-80 h-64 sm:h-80 bg-[#c5f015]/15 rounded-full blur-3xl pointer-events-none -z-10" />
 
       {/* Main Container Card */}
-      <div className="bg-[#f4f8fe]/60 border border-slate-100/80 rounded-[36px] sm:rounded-[44px] p-6 sm:p-10 lg:p-12 shadow-[0_15px_45px_rgba(0,0,0,0.03)] relative overflow-hidden">
+      <div className="bg-[#f4f8fe]/60 border border-slate-100/80 rounded-[28px] sm:rounded-[36px] lg:rounded-[44px] p-4 sm:p-8 lg:p-12 shadow-[0_15px_45px_rgba(0,0,0,0.03)] relative overflow-hidden">
 
         {/* Section Header */}
-        <div className="text-center max-w-4xl mx-auto mb-8 sm:mb-10 px-4">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black !text-[#0a0a0a] tracking-tight mb-3 leading-tight">
+        <div className="text-center max-w-4xl mx-auto mb-6 sm:mb-10 px-2 sm:px-4">
+          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black !text-[#0a0a0a] tracking-tight mb-3 leading-tight">
             {seoExplainedData.titlePrefix}
             <span className="text-[#2196F3]">{seoExplainedData.titleHighlight}</span>
           </h2>
 
           {/* Two-tone Accent Line Divider */}
-          <div className="flex items-center justify-center gap-1.5 my-4">
+          <div className="flex items-center justify-center gap-1.5 my-3 sm:my-4">
             <span className="w-10 h-1 bg-[#2196F3] rounded-full" />
             <span className="w-2.5 h-2.5 bg-[#c5f015] rounded-full" />
             <span className="w-10 h-1 bg-[#c5f015] rounded-full" />
           </div>
 
-          <p className="text-slate-600 text-sm sm:text-base leading-relaxed max-w-3xl mx-auto font-medium">
+          <p className="text-slate-600 text-xs sm:text-base leading-relaxed max-w-3xl mx-auto font-medium">
             {seoExplainedData.description}
           </p>
         </div>
 
         {/* TOP HORIZONTAL NAVIGATION TABS BAR */}
-        <div className="bg-white rounded-2xl p-2 border border-slate-100 shadow-sm mb-8 overflow-x-auto">
-          <div className="flex items-center justify-between min-w-max gap-2">
+        <div className="bg-white rounded-2xl p-1.5 sm:p-2 border border-slate-100 shadow-sm mb-6 sm:mb-8 overflow-x-auto scrollbar-none [scrollbar-width:none] [-ms-overflow-style:none]">
+          <div className="flex items-center justify-start sm:justify-between min-w-max gap-1.5 sm:gap-2">
             {seoExplainedData.tabs.map((tab) => {
               const isActive = tab.id === activeTabId
               const TabIcon = explainedIconMap[tab.iconName] || HelpCircle
@@ -1390,20 +1390,20 @@ function SeoExplainedSection() {
                 <button
                   key={tab.id}
                   onClick={() => setActiveTabId(tab.id)}
-                  className={`flex items-center gap-3 px-5 py-3.5 rounded-xl font-extrabold text-xs sm:text-sm transition-all duration-300 cursor-pointer ${isActive
+                  className={`flex items-center gap-2 sm:gap-3 px-3.5 sm:px-5 py-2.5 sm:py-3.5 rounded-xl font-extrabold text-xs sm:text-sm transition-all duration-300 cursor-pointer whitespace-nowrap ${isActive
                       ? 'bg-[#2196F3] text-white shadow-md'
                       : 'bg-white text-slate-700 hover:bg-slate-50 hover:text-[#2196F3]'
                     }`}
                 >
                   <div
-                    className={`w-7 h-7 rounded-full flex items-center justify-center shrink-0 ${isActive
+                    className={`w-6 h-6 sm:w-7 sm:h-7 rounded-full flex items-center justify-center shrink-0 ${isActive
                         ? 'bg-white/20 text-white'
                         : tab.isLimeIcon
                           ? 'bg-[#f7fce5] text-[#84cc16]'
                           : 'bg-[#eef6ff] text-[#2196F3]'
                       }`}
                   >
-                    <TabIcon className="w-4 h-4" />
+                    <TabIcon className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                   </div>
                   <span>{tab.tabTitle}</span>
                 </button>
@@ -1413,9 +1413,9 @@ function SeoExplainedSection() {
         </div>
 
         {/* MAIN CONTENT DISPLAY CARD (BELOW TAB BAR) */}
-        <div className="bg-white rounded-[32px] border border-slate-100 p-6 sm:p-10 shadow-[0_15px_40px_rgba(33,150,243,0.06)] relative overflow-hidden">
+        <div className="bg-white rounded-2xl sm:rounded-[32px] border border-slate-100 p-4 sm:p-8 lg:p-10 shadow-[0_15px_40px_rgba(33,150,243,0.06)] relative overflow-hidden">
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-12 items-center">
 
             {/* LEFT COLUMN: Illustration Graphic (Span 4) */}
             <div className="lg:col-span-4 flex justify-center items-center">
@@ -1423,48 +1423,48 @@ function SeoExplainedSection() {
             </div>
 
             {/* RIGHT COLUMN: Content & Items List (Span 8) */}
-            <div className="lg:col-span-8 space-y-6 text-left">
+            <div className="lg:col-span-8 space-y-5 sm:space-y-6 text-left">
 
               {/* Title & Divider */}
               <div>
-                <h3 className="text-2xl sm:text-3xl font-black !text-slate-900 tracking-tight">
+                <h3 className="text-xl sm:text-3xl font-black !text-slate-900 tracking-tight">
                   {activeTab.contentTitlePrefix}
                   <span className="text-[#2196F3]">{activeTab.contentTitleHighlight}</span>
                 </h3>
-                <div className="flex items-center gap-1.5 mt-2.5">
-                  <span className="w-10 h-1 bg-[#2196F3] rounded-full" />
-                  <span className="w-2.5 h-2.5 bg-[#c5f015] rounded-full" />
+                <div className="flex items-center gap-1.5 mt-2 sm:mt-2.5">
+                  <span className="w-8 sm:w-10 h-1 bg-[#2196F3] rounded-full" />
+                  <span className="w-2 h-2 sm:w-2.5 sm:h-2.5 bg-[#c5f015] rounded-full" />
                 </div>
               </div>
 
               {/* Intro Paragraph */}
-              <p className="text-slate-600 text-sm sm:text-base leading-relaxed font-medium">
+              <p className="text-slate-600 text-xs sm:text-base leading-relaxed font-medium">
                 {activeTab.intro}
               </p>
 
               {/* Vertical Items List connected with dashed line */}
-              <div className="relative space-y-6 pt-2">
+              <div className="relative space-y-5 sm:space-y-6 pt-1 sm:pt-2">
                 {/* Vertical Line Connector */}
-                <div className="absolute left-5 top-4 bottom-4 w-0.5 bg-slate-200 border-l border-dashed border-slate-300 -z-0" />
+                <div className="absolute left-4.5 sm:left-5 top-3.5 sm:top-4 bottom-3.5 sm:bottom-4 w-0.5 bg-slate-200 border-l border-dashed border-slate-300 -z-0" />
 
                 {activeTab.items.map((item, idx) => {
                   const ItemIcon = explainedIconMap[item.iconName] || FileText
                   const isLime = item.color === 'lime'
 
                   return (
-                    <div key={idx} className="relative z-10 flex items-start gap-4 group">
+                    <div key={idx} className="relative z-10 flex items-start gap-3.5 sm:gap-4 group">
                       {/* Left Circle Icon Badge */}
                       <div
-                        className={`w-10 h-10 rounded-full border border-slate-100 flex items-center justify-center shrink-0 shadow-2xs group-hover:scale-110 transition-transform ${isLime
+                        className={`w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-slate-100 flex items-center justify-center shrink-0 shadow-2xs group-hover:scale-110 transition-transform ${isLime
                             ? 'bg-[#f7fce5] text-[#84cc16]'
                             : 'bg-[#eef6ff] text-[#2196F3]'
                           }`}
                       >
-                        <ItemIcon className="w-5 h-5" />
+                        <ItemIcon className="w-4 h-4 sm:w-5 sm:h-5" />
                       </div>
 
                       {/* Text */}
-                      <p className="text-slate-600 text-xs sm:text-sm leading-relaxed font-medium pt-1">
+                      <p className="text-slate-600 text-xs sm:text-sm leading-relaxed font-medium pt-0.5 sm:pt-1">
                         <strong
                           className={`font-black ${isLime ? 'text-[#84cc16]' : 'text-[#2196F3]'
                             }`}
@@ -2035,8 +2035,34 @@ function SeoClientsSection() {
 
 function SeoTestimonialsSection() {
   const [activeSlide, setActiveSlide] = useState(0)
+  const [cardsPerView, setCardsPerView] = useState(4)
+  const [touchStart, setTouchStart] = useState(null)
+  const [touchEnd, setTouchEnd] = useState(null)
+
   const totalSlides = seoTestimonialsData.testimonials.length
-  const maxSlide = Math.max(0, totalSlides - 4)
+
+  useEffect(() => {
+    const handleResize = () => {
+      const width = window.innerWidth
+      if (width < 640) {
+        setCardsPerView(1)
+      } else if (width < 1024) {
+        setCardsPerView(2)
+      } else {
+        setCardsPerView(4)
+      }
+    }
+
+    handleResize()
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
+
+  const maxSlide = Math.max(0, totalSlides - cardsPerView)
+
+  useEffect(() => {
+    setActiveSlide((prev) => Math.min(prev, maxSlide))
+  }, [maxSlide])
 
   const handlePrev = () => {
     setActiveSlide((prev) => (prev === 0 ? maxSlide : prev - 1))
@@ -2046,20 +2072,44 @@ function SeoTestimonialsSection() {
     setActiveSlide((prev) => (prev >= maxSlide ? 0 : prev + 1))
   }
 
+  const minSwipeDistance = 50
+
+  const onTouchStart = (e) => {
+    setTouchEnd(null)
+    setTouchStart(e.targetTouches[0].clientX)
+  }
+
+  const onTouchMove = (e) => {
+    setTouchEnd(e.targetTouches[0].clientX)
+  }
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return
+    const distance = touchStart - touchEnd
+    const isLeftSwipe = distance > minSwipeDistance
+    const isRightSwipe = distance < -minSwipeDistance
+
+    if (isLeftSwipe) {
+      handleNext()
+    } else if (isRightSwipe) {
+      handlePrev()
+    }
+  }
+
   return (
     <section className="mt-16 sm:mt-24 relative">
       {/* Background Soft Orbs */}
-      <div className="absolute top-10 left-10 w-96 h-96 bg-blue-100/40 rounded-full blur-3xl pointer-events-none -z-10" />
-      <div className="absolute bottom-10 right-10 w-80 h-80 bg-[#c5f015]/15 rounded-full blur-3xl pointer-events-none -z-10" />
+      <div className="absolute top-10 left-10 w-72 sm:w-96 h-72 sm:h-96 bg-blue-100/40 rounded-full blur-3xl pointer-events-none -z-10" />
+      <div className="absolute bottom-10 right-10 w-64 sm:w-80 h-64 sm:h-80 bg-[#c5f015]/15 rounded-full blur-3xl pointer-events-none -z-10" />
 
       {/* Main Container Card */}
-      <div className="bg-[#f8fafc]/80 border border-slate-100 rounded-[36px] sm:rounded-[44px] p-6 sm:p-10 lg:p-14 shadow-[0_15px_45px_rgba(0,0,0,0.03)] relative overflow-hidden">
+      <div className="bg-[#f8fafc]/80 border border-slate-100 rounded-[28px] sm:rounded-[36px] lg:rounded-[44px] p-4 sm:p-8 lg:p-14 shadow-[0_15px_45px_rgba(0,0,0,0.03)] relative overflow-hidden">
 
         {/* Section Header */}
-        <div className="text-center max-w-4xl mx-auto mb-10 sm:mb-12 px-4">
+        <div className="text-center max-w-4xl mx-auto mb-8 sm:mb-12 px-2 sm:px-4">
 
           {/* Top Pill Badge */}
-          <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white border border-slate-200/80 text-xs font-bold tracking-wider uppercase mb-4 shadow-2xs">
+          <div className="inline-flex items-center gap-2.5 px-3.5 sm:px-4 py-1.5 rounded-full bg-white border border-slate-200/80 text-xs font-bold tracking-wider uppercase mb-4 shadow-2xs">
             <div className="w-6 h-6 rounded-full bg-[#2196f3] text-white flex items-center justify-center">
               <Quote className="w-3.5 h-3.5 text-white" />
             </div>
@@ -2067,7 +2117,7 @@ function SeoTestimonialsSection() {
           </div>
 
           {/* Main Headline */}
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black !text-[#0a0a0a] tracking-tight mb-3 leading-tight">
+          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black !text-[#0a0a0a] tracking-tight mb-3 leading-tight">
             {seoTestimonialsData.titlePrefix}
             <span className="text-[#2196f3]">{seoTestimonialsData.titleHighlight}</span>
           </h2>
@@ -2080,63 +2130,68 @@ function SeoTestimonialsSection() {
           </div>
 
           {/* Subtitle Description */}
-          <p className="text-slate-600 text-sm sm:text-base leading-relaxed max-w-2xl mx-auto font-medium">
+          <p className="text-slate-600 text-xs sm:text-base leading-relaxed max-w-2xl mx-auto font-medium">
             {seoTestimonialsData.description}
           </p>
         </div>
 
         {/* Carousel / Slider Container with Navigation Arrows */}
-        <div className="relative px-2 sm:px-10">
+        <div className="relative px-3 sm:px-10 lg:px-12">
 
           {/* Left Arrow Button */}
           <button
             onClick={handlePrev}
-            className="absolute -left-2 sm:left-0 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-white border border-slate-200 shadow-md text-slate-700 hover:text-[#2196f3] hover:border-[#2196f3] flex items-center justify-center transition-all duration-300 hover:scale-110 cursor-pointer"
+            className="absolute -left-2 sm:left-0 top-1/2 -translate-y-1/2 z-20 w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-white border border-slate-200 shadow-md text-slate-700 hover:text-[#2196f3] hover:border-[#2196f3] flex items-center justify-center transition-all duration-300 hover:scale-110 cursor-pointer"
             aria-label="Previous Testimonial"
           >
-            <ChevronLeft className="w-5 h-5 stroke-[2.5]" />
+            <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5 stroke-[2.5]" />
           </button>
 
           {/* Right Arrow Button */}
           <button
             onClick={handleNext}
-            className="absolute -right-2 sm:right-0 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-white border border-slate-200 shadow-md text-slate-700 hover:text-[#2196f3] hover:border-[#2196f3] flex items-center justify-center transition-all duration-300 hover:scale-110 cursor-pointer"
+            className="absolute -right-2 sm:right-0 top-1/2 -translate-y-1/2 z-20 w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-white border border-slate-200 shadow-md text-slate-700 hover:text-[#2196f3] hover:border-[#2196f3] flex items-center justify-center transition-all duration-300 hover:scale-110 cursor-pointer"
             aria-label="Next Testimonial"
           >
-            <ChevronRight className="w-5 h-5 stroke-[2.5]" />
+            <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 stroke-[2.5]" />
           </button>
 
           {/* Overflow-Hidden Slider Viewport */}
-          <div className="overflow-hidden w-full py-2">
+          <div
+            className="overflow-hidden w-full py-2 touch-pan-y"
+            onTouchStart={onTouchStart}
+            onTouchMove={onTouchMove}
+            onTouchEnd={onTouchEnd}
+          >
             {/* Horizontal Flex Track */}
             <div
-              className="flex gap-6 transition-transform duration-500 ease-out"
+              className="flex gap-4 sm:gap-6 transition-transform duration-500 ease-out"
               style={{
-                transform: `translateX(calc(-${activeSlide} * (25% + 6px)))`
+                transform: `translateX(calc(-${activeSlide} * ((100% + ${cardsPerView === 1 ? '16px' : '24px'}) / ${cardsPerView})))`
               }}
             >
               {seoTestimonialsData.testimonials.map((item) => {
                 return (
                   <div
                     key={item.id}
-                    className="w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)] shrink-0 bg-white rounded-3xl p-6 border border-slate-100 shadow-[0_10px_30px_rgba(0,0,0,0.03)] hover:shadow-xl transition-all duration-300 flex flex-col justify-between relative overflow-hidden group hover:-translate-y-1"
+                    className="w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)] shrink-0 bg-white rounded-2xl sm:rounded-3xl p-5 sm:p-6 border border-slate-100 shadow-[0_10px_30px_rgba(0,0,0,0.03)] hover:shadow-xl transition-all duration-300 flex flex-col justify-between relative overflow-hidden group hover:-translate-y-1 select-none"
                   >
                     <div>
                       {/* Top Row: Quote Icon & 5 Stars */}
-                      <div className="flex items-center justify-between mb-4">
+                      <div className="flex items-center justify-between mb-3 sm:mb-4">
                         {/* Big Light Blue Quote Icon */}
-                        <span className="text-4xl leading-none font-serif text-[#2196f3]/30 font-black">“</span>
+                        <span className="text-3xl sm:text-4xl leading-none font-serif text-[#2196f3]/30 font-black">“</span>
 
                         {/* 5 Yellow Stars */}
                         <div className="flex items-center gap-1">
                           {[...Array(item.rating)].map((_, i) => (
-                            <Star key={i} className="w-4 h-4 fill-[#ffba00] text-[#ffba00]" />
+                            <Star key={i} className="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-[#ffba00] text-[#ffba00]" />
                           ))}
                         </div>
                       </div>
 
                       {/* Review Quote Text */}
-                      <p className="text-slate-600 text-xs sm:text-sm leading-relaxed font-medium mb-6">
+                      <p className="text-slate-600 text-xs sm:text-sm leading-relaxed font-medium mb-5 sm:mb-6">
                         {item.quote}
                       </p>
                     </div>
@@ -2147,15 +2202,15 @@ function SeoTestimonialsSection() {
                       <img
                         src={teamImage}
                         alt={item.author}
-                        className="w-11 h-11 rounded-full object-cover border-2 border-slate-100 shadow-2xs shrink-0"
+                        className="w-10 h-10 sm:w-11 sm:h-11 rounded-full object-cover border-2 border-slate-100 shadow-2xs shrink-0"
                       />
 
                       {/* Author Details */}
                       <div className="text-left leading-snug">
-                        <h4 className="text-sm font-extrabold !text-slate-900">{item.author}</h4>
-                        <p className="text-xs text-slate-500 font-medium">{item.role}</p>
+                        <h4 className="text-xs sm:text-sm font-extrabold !text-slate-900">{item.author}</h4>
+                        <p className="text-[11px] sm:text-xs text-slate-500 font-medium">{item.role}</p>
                         <span
-                          className="text-xs font-bold block mt-0.5"
+                          className="text-[11px] sm:text-xs font-bold block mt-0.5"
                           style={{ color: item.companyColor }}
                         >
                           {item.company}
@@ -2170,14 +2225,14 @@ function SeoTestimonialsSection() {
           </div>
 
           {/* Bottom Navigation Dots */}
-          <div className="flex items-center justify-center gap-2 mt-8">
+          <div className="flex items-center justify-center gap-1.5 sm:gap-2 mt-6 sm:mt-8">
             {Array.from({ length: maxSlide + 1 }).map((_, idx) => (
               <button
                 key={idx}
                 onClick={() => setActiveSlide(idx)}
                 className={`transition-all duration-300 rounded-full cursor-pointer ${activeSlide === idx
-                    ? 'w-6 h-2.5 bg-[#2196f3]'
-                    : 'w-2.5 h-2.5 bg-slate-300 hover:bg-slate-400'
+                    ? 'w-5 sm:w-6 h-2 sm:h-2.5 bg-[#2196f3]'
+                    : 'w-2 sm:w-2.5 h-2 sm:h-2.5 bg-slate-300 hover:bg-slate-400'
                   }`}
                 aria-label={`Go to slide ${idx + 1}`}
               />
