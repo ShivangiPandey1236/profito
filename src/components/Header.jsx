@@ -286,6 +286,10 @@ export default function Header() {
       ]
     },
     {
+      name: 'Portfolio',
+      path: '/portfolio'
+    },
+    {
       name: 'About',
       columns: [
         {
@@ -376,62 +380,81 @@ export default function Header() {
                 key={index}
                 className="flex items-center h-full group"
               >
-                <button className="bg-transparent border-none cursor-pointer font-sans text-[0.95rem] font-semibold text-black flex items-center gap-1.5 py-4 transition-colors duration-150 hover:text-primary group-hover:text-primary">
-                  {item.name} <ChevronDown size={14} className="transition-all duration-250 opacity-70 group-hover:rotate-180 group-hover:opacity-100" />
-                </button>
-                <div className="absolute top-full left-8 right-8 bg-white border border-black/8 rounded-2xl shadow-[0_15px_40px_rgba(0,0,0,0.08)] p-8 transition-opacity duration-150 z-50 flex gap-8 before:content-[''] before:absolute before:bottom-full before:left-0 before:right-0 before:h-4 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto">
-                  {item.columns.map((column, colIdx) => (
-                    <div key={colIdx} className="flex-1 flex flex-col gap-6 pl-6 border-l border-black/5 first:border-l-0 first:pl-0">
-                      {column.sections.map((section, secIdx) => (
-                        <div key={secIdx} className="flex flex-col gap-3">
-                          <h4 className="text-[0.8rem] font-extrabold tracking-wider !text-primary uppercase flex items-center gap-2 relative pl-2.5 before:content-[''] before:absolute before:left-0 before:top-[1.5px] before:w-[3px] before:h-[13px] before:bg-primary before:rounded-sm text-left">
-                            {section.title}
-                          </h4>
-                          <ul className="flex flex-col gap-1 text-left">
-                            {section.items.map((subItem, itemIdx) => {
-                              const isAboutUs = subItem === 'About Us';
-                              const isContactUs = subItem === 'Contact Us';
-                              const isCareers = subItem === 'Careers' || subItem === 'Career';
-                              return (
-                                <li key={itemIdx}>
-                                  {isAboutUs ? (
-                                    <Link
-                                      to="/about"
-                                      className="text-[0.85rem] font-semibold text-zinc-700 hover:text-primary hover:bg-primary/6 hover:translate-x-1 rounded-lg pl-2 pr-2 hover:pl-4 py-1 transition-all duration-200 block text-left -mx-2 sub-item-link"
-                                    >
-                                      {subItem}
-                                    </Link>
-                                  ) : isContactUs ? (
-                                    <Link
-                                      to="/contact-us"
-                                      className="text-[0.85rem] font-semibold text-zinc-700 hover:text-primary hover:bg-primary/6 hover:translate-x-1 rounded-lg pl-2 pr-2 hover:pl-4 py-1 transition-all duration-200 block text-left -mx-2 sub-item-link"
-                                    >
-                                      {subItem}
-                                    </Link>
-                                  ) : isCareers ? (
-                                    <Link
-                                      to="/careers"
-                                      className="text-[0.85rem] font-semibold text-zinc-700 hover:text-primary hover:bg-primary/6 hover:translate-x-1 rounded-lg pl-2 pr-2 hover:pl-4 py-1 transition-all duration-200 block text-left -mx-2 sub-item-link"
-                                    >
-                                      {subItem}
-                                    </Link>
-                                  ) : (
-                                    <Link
-                                      to={`/service/${subItem.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '')}`}
-                                      className="text-[0.85rem] font-semibold text-zinc-700 hover:text-primary hover:bg-primary/6 hover:translate-x-1 rounded-lg pl-2 pr-2 hover:pl-4 py-1 transition-all duration-200 block text-left -mx-2 sub-item-link"
-                                    >
-                                      {subItem}
-                                    </Link>
-                                  )}
-                                </li>
-                              );
-                            })}
-                          </ul>
+                {item.path ? (
+                  <Link
+                    to={item.path}
+                    className="bg-transparent border-none cursor-pointer font-sans text-[0.95rem] font-semibold text-black flex items-center gap-1.5 py-4 transition-colors duration-150 hover:text-primary group-hover:text-primary"
+                  >
+                    {item.name}
+                  </Link>
+                ) : (
+                  <>
+                    <button className="bg-transparent border-none cursor-pointer font-sans text-[0.95rem] font-semibold text-black flex items-center gap-1.5 py-4 transition-colors duration-150 hover:text-primary group-hover:text-primary">
+                      {item.name} <ChevronDown size={14} className="transition-all duration-250 opacity-70 group-hover:rotate-180 group-hover:opacity-100" />
+                    </button>
+                    <div className="absolute top-full left-8 right-8 bg-white border border-black/8 rounded-2xl shadow-[0_15px_40px_rgba(0,0,0,0.08)] p-8 transition-opacity duration-150 z-50 flex gap-8 before:content-[''] before:absolute before:bottom-full before:left-0 before:right-0 before:h-4 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto">
+                      {item.columns.map((column, colIdx) => (
+                        <div key={colIdx} className="flex-1 flex flex-col gap-6 pl-6 border-l border-black/5 first:border-l-0 first:pl-0">
+                          {column.sections.map((section, secIdx) => (
+                            <div key={secIdx} className="flex flex-col gap-3">
+                              <h4 className="text-[0.8rem] font-extrabold tracking-wider !text-primary uppercase flex items-center gap-2 relative pl-2.5 before:content-[''] before:absolute before:left-0 before:top-[1.5px] before:w-[3px] before:h-[13px] before:bg-primary before:rounded-sm text-left">
+                                {section.title}
+                              </h4>
+                              <ul className="flex flex-col gap-1 text-left">
+                                {section.items.map((subItem, itemIdx) => {
+                                  const isAboutUs = subItem === 'About Us';
+                                  const isContactUs = subItem === 'Contact Us';
+                                  const isCareers = subItem === 'Careers' || subItem === 'Career';
+                                  const isPortfolio = subItem === 'Our Portfolio' || subItem === 'Portfolio' || subItem === 'Case Studies';
+                                  return (
+                                    <li key={itemIdx}>
+                                      {isAboutUs ? (
+                                        <Link
+                                          to="/about"
+                                          className="text-[0.85rem] font-semibold text-zinc-700 hover:text-primary hover:bg-primary/6 hover:translate-x-1 rounded-lg pl-2 pr-2 hover:pl-4 py-1 transition-all duration-200 block text-left -mx-2 sub-item-link"
+                                        >
+                                          {subItem}
+                                        </Link>
+                                      ) : isContactUs ? (
+                                        <Link
+                                          to="/contact-us"
+                                          className="text-[0.85rem] font-semibold text-zinc-700 hover:text-primary hover:bg-primary/6 hover:translate-x-1 rounded-lg pl-2 pr-2 hover:pl-4 py-1 transition-all duration-200 block text-left -mx-2 sub-item-link"
+                                        >
+                                          {subItem}
+                                        </Link>
+                                      ) : isCareers ? (
+                                        <Link
+                                          to="/careers"
+                                          className="text-[0.85rem] font-semibold text-zinc-700 hover:text-primary hover:bg-primary/6 hover:translate-x-1 rounded-lg pl-2 pr-2 hover:pl-4 py-1 transition-all duration-200 block text-left -mx-2 sub-item-link"
+                                        >
+                                          {subItem}
+                                        </Link>
+                                      ) : isPortfolio ? (
+                                        <Link
+                                          to="/portfolio"
+                                          className="text-[0.85rem] font-semibold text-zinc-700 hover:text-primary hover:bg-primary/6 hover:translate-x-1 rounded-lg pl-2 pr-2 hover:pl-4 py-1 transition-all duration-200 block text-left -mx-2 sub-item-link"
+                                        >
+                                          {subItem}
+                                        </Link>
+                                      ) : (
+                                        <Link
+                                          to={`/service/${subItem.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '')}`}
+                                          className="text-[0.85rem] font-semibold text-zinc-700 hover:text-primary hover:bg-primary/6 hover:translate-x-1 rounded-lg pl-2 pr-2 hover:pl-4 py-1 transition-all duration-200 block text-left -mx-2 sub-item-link"
+                                        >
+                                          {subItem}
+                                        </Link>
+                                      )}
+                                    </li>
+                                  );
+                                })}
+                              </ul>
+                            </div>
+                          ))}
                         </div>
                       ))}
                     </div>
-                  ))}
-                </div>
+                  </>
+                )}
               </div>
             ))}
           </nav>
@@ -460,70 +483,91 @@ export default function Header() {
         <nav className="flex flex-col gap-4">
           {navItems.map((item, index) => (
             <div key={index} className="border-b border-black/5 pb-3">
-              <button
-                className={`w-full flex justify-between items-center bg-transparent border-none font-sans text-[1.05rem] font-semibold ${activeDropdown === index ? 'text-primary' : 'text-black'} py-2 cursor-pointer text-left transition-colors duration-150`}
-                onClick={() => setActiveDropdown(activeDropdown === index ? null : index)}
-              >
-                <span>{item.name}</span>
-                <ChevronDown size={16} className={`transition-transform duration-250 ${activeDropdown === index ? 'rotate-180 text-primary' : 'text-black'}`} />
-              </button>
-              <div className={`overflow-hidden flex flex-col gap-4 pl-4 transition-all duration-250 ${activeDropdown === index ? 'max-h-[1000px] pt-2 pb-2' : 'max-h-0'}`}>
-                {item.columns.map((column, colIdx) => (
-                  <div key={colIdx} className="flex flex-col gap-3">
-                    {column.sections.map((section, secIdx) => (
-                      <div key={secIdx} className="flex flex-col gap-2">
-                        <h4 className="text-[0.8rem] font-extrabold tracking-wider !text-primary uppercase flex items-center gap-2 relative pl-2.5 before:content-[''] before:absolute before:left-0 before:top-[1.5px] before:w-[3px] before:h-[13px] before:bg-primary before:rounded-sm text-left">
-                          {section.title}
-                        </h4>
-                        <ul className="flex flex-col gap-1 text-left">
-                          {section.items.map((subItem, itemIdx) => {
-                            const isAboutUs = subItem === 'About Us';
-                            const isContactUs = subItem === 'Contact Us';
-                            const isCareers = subItem === 'Careers' || subItem === 'Career';
-                            return (
-                              <li key={itemIdx}>
-                                {isAboutUs ? (
-                                  <Link
-                                    to="/about"
-                                    className="text-[0.85rem] font-semibold text-zinc-700 hover:text-primary hover:bg-primary/6 hover:translate-x-1 rounded-lg pl-2 pr-2 hover:pl-4 py-1 transition-all duration-200 block text-left -mx-2 sub-item-link"
-                                    onClick={() => setIsOpen(false)}
-                                  >
-                                    {subItem}
-                                  </Link>
-                                ) : isContactUs ? (
-                                  <Link
-                                    to="/contact-us"
-                                    className="text-[0.85rem] font-semibold text-zinc-700 hover:text-primary hover:bg-primary/6 hover:translate-x-1 rounded-lg pl-2 pr-2 hover:pl-4 py-1 transition-all duration-200 block text-left -mx-2 sub-item-link"
-                                    onClick={() => setIsOpen(false)}
-                                  >
-                                    {subItem}
-                                  </Link>
-                                ) : isCareers ? (
-                                  <Link
-                                    to="/careers"
-                                    className="text-[0.85rem] font-semibold text-zinc-700 hover:text-primary hover:bg-primary/6 hover:translate-x-1 rounded-lg pl-2 pr-2 hover:pl-4 py-1 transition-all duration-200 block text-left -mx-2 sub-item-link"
-                                    onClick={() => setIsOpen(false)}
-                                  >
-                                    {subItem}
-                                  </Link>
-                                ) : (
-                                  <Link
-                                    to={`/service/${subItem.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '')}`}
-                                    className="text-[0.85rem] font-semibold text-zinc-700 hover:text-primary hover:bg-primary/6 hover:translate-x-1 rounded-lg pl-2 pr-2 hover:pl-4 py-1 transition-all duration-200 block text-left -mx-2 sub-item-link"
-                                    onClick={() => setIsOpen(false)}
-                                  >
-                                    {subItem}
-                                  </Link>
-                                )}
-                              </li>
-                            );
-                          })}
-                        </ul>
+              {item.path ? (
+                <Link
+                  to={item.path}
+                  className="w-full flex justify-between items-center bg-transparent border-none font-sans text-[1.05rem] font-semibold text-black py-2 cursor-pointer text-left transition-colors duration-150 hover:text-primary"
+                  onClick={() => setIsOpen(false)}
+                >
+                  <span>{item.name}</span>
+                </Link>
+              ) : (
+                <>
+                  <button
+                    className={`w-full flex justify-between items-center bg-transparent border-none font-sans text-[1.05rem] font-semibold ${activeDropdown === index ? 'text-primary' : 'text-black'} py-2 cursor-pointer text-left transition-colors duration-150`}
+                    onClick={() => setActiveDropdown(activeDropdown === index ? null : index)}
+                  >
+                    <span>{item.name}</span>
+                    <ChevronDown size={16} className={`transition-transform duration-250 ${activeDropdown === index ? 'rotate-180 text-primary' : 'text-black'}`} />
+                  </button>
+                  <div className={`overflow-hidden flex flex-col gap-4 pl-4 transition-all duration-250 ${activeDropdown === index ? 'max-h-[1000px] pt-2 pb-2' : 'max-h-0'}`}>
+                    {item.columns.map((column, colIdx) => (
+                      <div key={colIdx} className="flex flex-col gap-3">
+                        {column.sections.map((section, secIdx) => (
+                          <div key={secIdx} className="flex flex-col gap-2">
+                            <h4 className="text-[0.8rem] font-extrabold tracking-wider !text-primary uppercase flex items-center gap-2 relative pl-2.5 before:content-[''] before:absolute before:left-0 before:top-[1.5px] before:w-[3px] before:h-[13px] before:bg-primary before:rounded-sm text-left">
+                              {section.title}
+                            </h4>
+                            <ul className="flex flex-col gap-1 text-left">
+                              {section.items.map((subItem, itemIdx) => {
+                                const isAboutUs = subItem === 'About Us';
+                                const isContactUs = subItem === 'Contact Us';
+                                const isCareers = subItem === 'Careers' || subItem === 'Career';
+                                const isPortfolio = subItem === 'Our Portfolio' || subItem === 'Portfolio' || subItem === 'Case Studies';
+                                return (
+                                  <li key={itemIdx}>
+                                    {isAboutUs ? (
+                                      <Link
+                                        to="/about"
+                                        className="text-[0.85rem] font-semibold text-zinc-700 hover:text-primary hover:bg-primary/6 hover:translate-x-1 rounded-lg pl-2 pr-2 hover:pl-4 py-1 transition-all duration-200 block text-left -mx-2 sub-item-link"
+                                        onClick={() => setIsOpen(false)}
+                                      >
+                                        {subItem}
+                                      </Link>
+                                    ) : isContactUs ? (
+                                      <Link
+                                        to="/contact-us"
+                                        className="text-[0.85rem] font-semibold text-zinc-700 hover:text-primary hover:bg-primary/6 hover:translate-x-1 rounded-lg pl-2 pr-2 hover:pl-4 py-1 transition-all duration-200 block text-left -mx-2 sub-item-link"
+                                        onClick={() => setIsOpen(false)}
+                                      >
+                                        {subItem}
+                                      </Link>
+                                    ) : isCareers ? (
+                                      <Link
+                                        to="/careers"
+                                        className="text-[0.85rem] font-semibold text-zinc-700 hover:text-primary hover:bg-primary/6 hover:translate-x-1 rounded-lg pl-2 pr-2 hover:pl-4 py-1 transition-all duration-200 block text-left -mx-2 sub-item-link"
+                                        onClick={() => setIsOpen(false)}
+                                      >
+                                        {subItem}
+                                      </Link>
+                                    ) : isPortfolio ? (
+                                      <Link
+                                        to="/portfolio"
+                                        className="text-[0.85rem] font-semibold text-zinc-700 hover:text-primary hover:bg-primary/6 hover:translate-x-1 rounded-lg pl-2 pr-2 hover:pl-4 py-1 transition-all duration-200 block text-left -mx-2 sub-item-link"
+                                        onClick={() => setIsOpen(false)}
+                                      >
+                                        {subItem}
+                                      </Link>
+                                    ) : (
+                                      <Link
+                                        to={`/service/${subItem.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '')}`}
+                                        className="text-[0.85rem] font-semibold text-zinc-700 hover:text-primary hover:bg-primary/6 hover:translate-x-1 rounded-lg pl-2 pr-2 hover:pl-4 py-1 transition-all duration-200 block text-left -mx-2 sub-item-link"
+                                        onClick={() => setIsOpen(false)}
+                                      >
+                                        {subItem}
+                                      </Link>
+                                    )}
+                                  </li>
+                                );
+                              })}
+                            </ul>
+                          </div>
+                        ))}
                       </div>
                     ))}
                   </div>
-                ))}
-              </div>
+                </>
+              )}
             </div>
           ))}
           <div className="mt-6 pt-4">

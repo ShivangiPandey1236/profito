@@ -68,8 +68,8 @@ export default function Footer() {
       links: [
         { name: 'QR Code Generator', href: '#qr-code-generator' },
         { name: 'Help Center', href: '#help-center' },
-        { name: 'Case Studies', href: '#case-studies' },
-        { name: 'Our Portfolio', href: '#our-portfolio' },
+        { name: 'Case Studies', href: '/portfolio' },
+        { name: 'Our Portfolio', href: '/portfolio' },
         { name: 'Client Testimonials', href: '#client-testimonials' },
         { name: 'Offers & Discounts', href: '#offers-discounts' }
       ]

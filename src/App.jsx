@@ -6,6 +6,7 @@ import About from './pages/About'
 import ContactUs from './pages/ContactUs'
 import Careers from './pages/Careers'
 import ServicePage from './pages/ServicePage'
+import Portfolio from './pages/Portfolio'
 
 function App() {
   return (
@@ -17,6 +18,9 @@ function App() {
         <Route path="/contact" element={<ContactUs />} />
         <Route path="/careers" element={<Careers />} />
         <Route path="/career" element={<Careers />} />
+        <Route path="/portfolio" element={<Portfolio />} />
+        <Route path="/our-portfolio" element={<Portfolio />} />
+        <Route path="/case-studies" element={<Portfolio />} />
         <Route path="/service" element={<ServicePage />} />
         <Route path="/service/:slug" element={<ServicePage />} />
         <Route path="/services" element={<ServicePage />} />
