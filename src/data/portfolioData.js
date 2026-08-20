@@ -1,5 +1,89 @@
 // Portfolio Page Data Store
 
+export const HERO_BANNER_DATA = {
+  badge: 'DIGITAL SOLUTIONS THAT DELIVER RESULTS',
+  titlePrefix: 'The ',
+  titleHighlight: 'Profito',
+  titleSuffix: ' Portfolio',
+  subtitle: 'When you partner with Profito, we take care of the heavy lifting, so you can enjoy more website traffic, leads, and revenue.',
+  primaryBtnText: 'View Case Studies',
+  primaryBtnLink: '#case-studies',
+  secondaryBtnText: 'View Design Portfolio',
+  secondaryBtnLink: '#portfolio-grid'
+}
+
+export const TESTIMONIALS_SECTION_DATA = {
+  badge: 'TESTIMONIALS',
+  title: 'What Our Clients Say',
+  subtitleLine1: "We're proud to have earned the trust of amazing clients.",
+  subtitleLine2: "Here's what they have to say about working with us.",
+  items: [
+    {
+      id: 1,
+      quote: 'Profito transformed our website into a powerful growth engine. Their team is responsive, skilled, and delivers beyond expectations.',
+      author: 'Rohit Sharma',
+      role: 'Marketing Head',
+      company: 'StockDaddy',
+      accent: 'blue',
+      avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=250&q=80'
+    },
+    {
+      id: 2,
+      quote: 'The Profito team is highly skilled and understands our business goals perfectly. Their SEO and content strategies have boosted our traffic and leads significantly.',
+      author: 'Sneha Patil',
+      role: 'Digital Head',
+      company: 'DY Patil University',
+      accent: 'lime',
+      avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=250&q=80'
+    },
+    {
+      id: 3,
+      quote: 'From website development to ongoing support, Profito has been an incredible partner. Their attention to detail and commitment are unmatched.',
+      author: 'Amit Verma',
+      role: 'Director',
+      company: 'GCL Broking',
+      accent: 'blue',
+      avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=250&q=80'
+    },
+    {
+      id: 4,
+      quote: 'Working with Profito was a game-changer for our e-commerce platform. Our site speed improved by 60% and online sales doubled within 3 months.',
+      author: 'Vikram Malhotra',
+      role: 'CTO',
+      company: 'Volt Electronics',
+      accent: 'lime',
+      avatar: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=250&q=80'
+    },
+    {
+      id: 5,
+      quote: 'Their data-driven digital marketing campaigns brought us qualified leads faster than any other agency we have worked with in the past.',
+      author: 'Priya Ananth',
+      role: 'Growth Head',
+      company: 'Aura Couture',
+      accent: 'blue',
+      avatar: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=250&q=80'
+    },
+    {
+      id: 6,
+      quote: 'Profito delivered our complex custom web application ahead of schedule with flawless code quality and exceptional user experience.',
+      author: 'Siddharth Rao',
+      role: 'Founder',
+      company: 'OmniShop D2C',
+      accent: 'lime',
+      avatar: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=250&q=80'
+    },
+    {
+      id: 7,
+      quote: 'Exceptional team! Their AI automation solutions streamlined our patient onboarding and reduced manual administrative effort by 40%.',
+      author: 'Meera Nair',
+      role: 'Managing Director',
+      company: 'HealthPulse Network',
+      accent: 'blue',
+      avatar: 'https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?auto=format&fit=crop&w=250&q=80'
+    }
+  ]
+}
+
 export const PORTFOLIO_STATS = [
   {
     end: 500,
@@ -47,6 +131,214 @@ export const PORTFOLIO_FEATURED_QUOTE = {
   author: 'Marcus Vance',
   role: 'CTO, FinEdge Global Trading'
 }
+
+// ── OUR PORTFOLIO SECTION DATA ──
+export const OUR_PORTFOLIO_CATEGORIES = [
+  { id: 'All', label: 'All', icon: 'Grid' },
+  { id: 'Automobile', label: 'Automobile', icon: 'Car' },
+  { id: 'BFSI', label: 'BFSI', icon: 'Landmark' },
+  { id: 'Broking', label: 'Broking', icon: 'Handshake' },
+  { id: 'Business Services', label: 'Business Services', icon: 'Briefcase' },
+  { id: 'E-Commerce', label: 'E-Commerce', icon: 'ShoppingCart' },
+  { id: 'EdTech', label: 'EdTech', icon: 'GraduationCap' },
+  { id: 'Education', label: 'Education', icon: 'GraduationCap' },
+  { id: 'Electronics & Appliances', label: 'Electronics & Appliances', icon: 'Tv' },
+  { id: 'Fashion', label: 'Fashion', icon: 'Shirt' },
+  { id: 'FMCG', label: 'FMCG', icon: 'ShoppingBag' },
+  { id: 'Healthcare', label: 'Healthcare', icon: 'HeartPulse' },
+  { id: 'Home & Building', label: 'Home & Building', icon: 'Building' },
+  { id: 'Hospitality', label: 'Hospitality', icon: 'Utensils' },
+  { id: 'Hospitals & Clinics', label: 'Hospitals & Clinics', icon: 'Hospital' },
+  { id: 'Insurance', label: 'Insurance', icon: 'ShieldCheck' },
+  { id: 'IT/Technology', label: 'IT/Technology', icon: 'Cpu' },
+  { id: 'Manufacturing & Industrial', label: 'Manufacturing & Industrial', icon: 'Factory' },
+  { id: 'Others', label: 'Others', icon: 'LayoutGrid' },
+  { id: 'Real Estate', label: 'Real Estate', icon: 'Building2' },
+  { id: 'SaaS & Telecom', label: 'SaaS & Telecom', icon: 'Radio' }
+]
+
+export const OUR_PORTFOLIO_CARDS = [
+  {
+    id: 'stock-daddy',
+    title: 'Stock Daddy',
+    categoryTag: 'EdTech, Education',
+    categories: ['EdTech', 'Education'],
+    imageType: 'stockDaddy',
+    tags: ['PPC', 'SEO', 'Performance Marketing'],
+    accent: 'blue'
+  },
+  {
+    id: 'dy-patil',
+    title: 'DY Patil University',
+    categoryTag: 'Education, EdTech',
+    categories: ['Education', 'EdTech'],
+    imageType: 'dyPatil',
+    tags: ['Content', 'LLM Tool', 'SEO'],
+    accent: 'lime'
+  },
+  {
+    id: 'gcl-broking',
+    title: 'GCL Broking',
+    categoryTag: 'Broking, BFSI',
+    categories: ['Broking', 'BFSI'],
+    imageType: 'stockDaddy',
+    tags: ['Content', 'SEO', 'Website maintenance'],
+    accent: 'blue'
+  },
+  {
+    id: 'drive-auto',
+    title: 'DriveAuto Global',
+    categoryTag: 'Automobile',
+    categories: ['Automobile'],
+    imageType: 'dyPatil',
+    tags: ['Meta Ads', 'PPC', 'Lead Gen'],
+    accent: 'lime'
+  },
+  {
+    id: 'finedge-bfsi',
+    title: 'FinEdge Banking',
+    categoryTag: 'BFSI, Finance',
+    categories: ['BFSI'],
+    imageType: 'stockDaddy',
+    tags: ['App Marketing', 'SEO', 'CRO'],
+    accent: 'blue'
+  },
+  {
+    id: 'vanguard-services',
+    title: 'Vanguard Corp',
+    categoryTag: 'Business Services',
+    categories: ['Business Services'],
+    imageType: 'dyPatil',
+    tags: ['B2B Lead Gen', 'LinkedIn Ads', 'SEO'],
+    accent: 'lime'
+  },
+  {
+    id: 'omnishop-ecom',
+    title: 'OmniShop D2C',
+    categoryTag: 'E-Commerce',
+    categories: ['E-Commerce'],
+    imageType: 'stockDaddy',
+    tags: ['Meta Ads', 'Google Shopping', 'SEO'],
+    accent: 'blue'
+  },
+  {
+    id: 'volt-appliances',
+    title: 'Volt Electronics',
+    categoryTag: 'Electronics & Appliances',
+    categories: ['Electronics & Appliances'],
+    imageType: 'dyPatil',
+    tags: ['Performance Ads', 'CRO', 'Branding'],
+    accent: 'lime'
+  },
+  {
+    id: 'aura-fashion',
+    title: 'Aura Couture',
+    categoryTag: 'Fashion, D2C',
+    categories: ['Fashion'],
+    imageType: 'stockDaddy',
+    tags: ['Influencer Ads', 'Social Media', 'Shopify SEO'],
+    accent: 'blue'
+  },
+  {
+    id: 'verda-fmcg',
+    title: 'Verda Organics',
+    categoryTag: 'FMCG, Consumer Goods',
+    categories: ['FMCG'],
+    imageType: 'dyPatil',
+    tags: ['Packaging UI', 'Social Marketing', 'SEO'],
+    accent: 'lime'
+  },
+  {
+    id: 'healthpulse-care',
+    title: 'HealthPulse Network',
+    categoryTag: 'Healthcare',
+    categories: ['Healthcare'],
+    imageType: 'stockDaddy',
+    tags: ['AI Bot', 'WhatsApp CRM', 'SEO'],
+    accent: 'blue'
+  },
+  {
+    id: 'apex-building',
+    title: 'Apex Interiors',
+    categoryTag: 'Home & Building',
+    categories: ['Home & Building'],
+    imageType: 'dyPatil',
+    tags: ['Google PPC', 'Local SEO', 'Web Design'],
+    accent: 'lime'
+  },
+  {
+    id: 'urbanstay-hotels',
+    title: 'UrbanStay Luxury',
+    categoryTag: 'Hospitality',
+    categories: ['Hospitality'],
+    imageType: 'stockDaddy',
+    tags: ['Booking App', 'Local SEO', 'PPC'],
+    accent: 'blue'
+  },
+  {
+    id: 'medicare-clinics',
+    title: 'MediCare Clinics',
+    categoryTag: 'Hospitals & Clinics',
+    categories: ['Hospitals & Clinics', 'Healthcare'],
+    imageType: 'dyPatil',
+    tags: ['Patient Booking', 'SEO', 'Local Ads'],
+    accent: 'lime'
+  },
+  {
+    id: 'shieldguard-insurance',
+    title: 'ShieldGuard Insurance',
+    categoryTag: 'Insurance, BFSI',
+    categories: ['Insurance', 'BFSI'],
+    imageType: 'stockDaddy',
+    tags: ['Lead Gen', 'PPC', 'CRO'],
+    accent: 'blue'
+  },
+  {
+    id: 'utho-tech',
+    title: 'UTHO Cloud Infra',
+    categoryTag: 'IT/Technology',
+    categories: ['IT/Technology'],
+    imageType: 'dyPatil',
+    tags: ['Cloud Strategy', 'B2B Marketing', 'SEO'],
+    accent: 'lime'
+  },
+  {
+    id: 'steelcore-industrial',
+    title: 'SteelCore Global',
+    categoryTag: 'Manufacturing & Industrial',
+    categories: ['Manufacturing & Industrial'],
+    imageType: 'stockDaddy',
+    tags: ['Export SEO', 'B2B Portal', 'PPC'],
+    accent: 'blue'
+  },
+  {
+    id: 'probo-others',
+    title: 'Probo Trade',
+    categoryTag: 'Others, Fintech',
+    categories: ['Others'],
+    imageType: 'dyPatil',
+    tags: ['Mobile App Marketing', 'Growth', 'SEO'],
+    accent: 'lime'
+  },
+  {
+    id: 'skyline-realestate',
+    title: 'Skyline Realty',
+    categoryTag: 'Real Estate',
+    categories: ['Real Estate'],
+    imageType: 'stockDaddy',
+    tags: ['Meta Lead Ads', 'Virtual Tours', 'SEO'],
+    accent: 'blue'
+  },
+  {
+    id: 'saasify-telecom',
+    title: 'SaaSify AI Engine',
+    categoryTag: 'SaaS & Telecom',
+    categories: ['SaaS & Telecom', 'IT/Technology'],
+    imageType: 'dyPatil',
+    tags: ['AI SDR Bot', 'Automation', 'LinkedIn Ads'],
+    accent: 'lime'
+  }
+]
 
 export const PORTFOLIO_PROJECTS = [
   {

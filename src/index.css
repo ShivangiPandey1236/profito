@@ -1891,8 +1891,8 @@ a {
 
 .clients-section {
   position: relative;
-  background: #ffffff;
-  padding: 100px 0 60px;
+  background: transparent;
+  padding: 60px 0 40px;
   overflow: hidden;
 }
 
@@ -1901,10 +1901,10 @@ a {
   top: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 80px;
+  width: 90px;
   height: 3px;
   border-radius: 9999px;
-  background: linear-gradient(90deg, #2196F3, #42a5f5);
+  background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
 }
 
 /* ── Inner container (heading + stats only — marquee is full-bleed) ── */
@@ -1929,7 +1929,7 @@ a {
 /* ── Heading block ── */
 .clients-heading-block {
   text-align: center;
-  margin-bottom: 60px;
+  margin-bottom: 50px;
   opacity: 0;
   transform: translateY(24px);
   transition:
@@ -1947,17 +1947,18 @@ a {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: rgba(33, 150, 243, 0.1);
-  border: 1px solid rgba(33, 150, 243, 0.3);
+  background: rgba(33, 150, 243, 0.08);
+  border: 1.5px solid rgba(33, 150, 243, 0.3);
   color: var(--color-primary);
   font-family: var(--font-sans);
   font-size: 0.78rem;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  padding: 6px 16px;
+  padding: 6px 18px;
   border-radius: 9999px;
-  margin-bottom: 24px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 12px rgba(33, 150, 243, 0.06);
 }
 
 .clients-badge-dot {
@@ -1975,11 +1976,12 @@ a {
   font-weight: 800;
   line-height: 1.13;
   letter-spacing: -0.03em;
-  color: #0a0a0a;
-  margin: 0 auto 20px;
+  color: #0b132b;
+  margin: 0 auto 16px;
 }
 
 .clients-title-highlight {
+  color: var(--color-primary);
   background: linear-gradient(90deg, #2196F3 0%, #42a5f5 50%, #2196F3 100%);
   background-size: 200% auto;
   -webkit-background-clip: text;
@@ -4265,4 +4267,178 @@ a {
 
 .animate-service-badge-bounce {
   animation: serviceBadgeBounce 3s ease-in-out infinite;
+}
+
+/* ===========================
+   PORTFOLIO HERO BANNER
+   =========================== */
+.portfolio-hero-banner {
+  position: relative;
+  background: linear-gradient(180deg, #f8fafc 0%, #ffffff 50%, #f0f7ff 100%);
+  border-radius: 2.25rem;
+  overflow: hidden;
+  border: 1px solid rgba(33, 150, 243, 0.18);
+  box-shadow: 0 20px 60px -15px rgba(33, 150, 243, 0.12), 0 0 0 1px rgba(188, 211, 46, 0.25);
+  color: #0f172a;
+}
+
+.portfolio-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #ffffff;
+  border: 1.5px solid rgba(33, 150, 243, 0.3);
+  box-shadow: 0 4px 14px rgba(33, 150, 243, 0.08);
+  border-radius: 9999px;
+  padding: 8px 22px;
+  transition: all 0.3s ease;
+}
+
+.portfolio-hero-badge:hover {
+  border-color: var(--color-accent);
+  box-shadow: 0 6px 20px rgba(188, 211, 46, 0.25);
+  transform: translateY(-1px);
+}
+
+.portfolio-hero-title {
+  font-family: var(--font-sans);
+  font-weight: 800;
+  color: #0b132b;
+  letter-spacing: -0.03em;
+  line-height: 1.12;
+}
+
+.portfolio-hero-title-span {
+  color: var(--color-primary);
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.portfolio-hero-title-span:hover {
+  transform: scale(1.02);
+}
+
+.portfolio-hero-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.portfolio-hero-divider-line-left {
+  width: 90px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--color-primary));
+}
+
+.portfolio-hero-divider-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--color-primary) 50%, var(--color-accent) 50%);
+  box-shadow: 0 0 8px rgba(33, 150, 243, 0.4);
+}
+
+.portfolio-hero-divider-line-right {
+  width: 90px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-accent), transparent);
+}
+
+.portfolio-hero-subtitle {
+  font-family: var(--font-sans);
+  color: #475569;
+  font-weight: 500;
+  line-height: 1.65;
+}
+
+.portfolio-hero-btn-primary {
+  background-color: var(--color-primary);
+  color: #ffffff !important;
+  border: 2px solid var(--color-primary);
+  box-shadow: 0 8px 24px rgba(33, 150, 243, 0.35);
+  border-radius: 1rem;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.portfolio-hero-btn-primary:hover {
+  background-color: #1976D2;
+  border-color: #1976D2;
+  box-shadow: 0 12px 30px rgba(33, 150, 243, 0.45);
+  transform: translateY(-2px);
+}
+
+.portfolio-hero-btn-secondary {
+  background-color: #ffffff;
+  color: #0b132b !important;
+  border: 2px solid rgba(33, 150, 243, 0.35);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+  border-radius: 1rem;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.portfolio-hero-btn-secondary:hover {
+  border-color: var(--color-accent);
+  color: var(--color-primary) !important;
+  box-shadow: 0 8px 24px rgba(188, 211, 46, 0.3);
+  transform: translateY(-2px);
+}
+
+/* ===========================
+   OUR PORTFOLIO SECTION
+   =========================== */
+.our-portfolio-section {
+  position: relative;
+}
+
+.our-portfolio-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: 9999px;
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  user-select: none;
+  white-space: nowrap;
+}
+
+.our-portfolio-pill-active {
+  background-color: var(--color-primary);
+  color: #ffffff;
+  box-shadow: 0 6px 18px rgba(33, 150, 243, 0.35);
+  border: 1.5px solid var(--color-primary);
+}
+
+.our-portfolio-pill-inactive {
+  background-color: #ffffff;
+  color: #334155;
+  border: 1.5px solid rgba(226, 232, 240, 0.85);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+.our-portfolio-pill-inactive:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(33, 150, 243, 0.12);
+}
+
+.our-portfolio-card {
+  position: relative;
+  background: #ffffff;
+  border-radius: 1.75rem;
+  border: 1.5px solid rgba(241, 245, 249, 0.9);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.our-portfolio-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px -12px rgba(33, 150, 243, 0.15);
+  border-color: rgba(33, 150, 243, 0.3);
 }

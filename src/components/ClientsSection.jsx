@@ -64,15 +64,13 @@ export default function ClientsSection() {
         <div className="clients-heading-block" ref={headingRef}>
           <span className="clients-badge">
             <span className="clients-badge-dot" aria-hidden="true" />
-            Our Clients
+            Our Valued Partners
           </span>
           <h2 className="clients-title">
-            Trusted by{' '}
-            <span className="clients-title-highlight">Global Brands</span>
+            Trusted by <span className="clients-title-highlight">Global Brands & Leaders</span>
           </h2>
           <p className="clients-subtitle">
-            As a leading digital marketing company in India, Profito works with global
-            brands to deliver consistent, growth-focused digital results.
+            As a leading digital growth and technology agency, Profito partners with industry leaders worldwide to engineer high-impact results.
           </p>
         </div>
 
