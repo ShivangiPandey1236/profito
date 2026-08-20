@@ -46,6 +46,7 @@ import {
 } from 'lucide-react'
 import CTASection from '../components/CTASection'
 import ClientsSection from '../components/ClientsSection'
+import FAQSection from '../components/FAQSection'
 import {
   HERO_BANNER_DATA,
   TESTIMONIALS_SECTION_DATA,
@@ -573,9 +574,9 @@ export default function Portfolio() {
           )}
         </div>
 
-        {/* ── CLIENTS SECTION (UNDER OUR PORTFOLIO) ── */}
-        <div className="reveal-on-scroll mb-16">
-          <ClientsSection />
+        {/* ── CTA SECTION (UNDER OUR PORTFOLIO) ── */}
+        <div className="reveal-on-scroll mb-20">
+          <CTASection />
         </div>
 
         {/* ── WHAT OUR CLIENTS SAY (TESTIMONIALS SECTION) ── */}
@@ -728,6 +729,16 @@ export default function Portfolio() {
               })}
             </div>
           </div>
+        </div>
+
+        {/* ── FAQ SECTION ── */}
+        <div className="reveal-on-scroll mb-20">
+          <FAQSection />
+        </div>
+
+        {/* ── OUR VALUED PARTNERS (CLIENTS SECTION UNDER FAQS) ── */}
+        <div className="reveal-on-scroll -mb-20">
+          <ClientsSection />
         </div>
 
         {/* ── ORIGINAL HERO SECTION (COMMENTED OUT AS REQUESTED) ── */}
@@ -1019,9 +1030,6 @@ export default function Portfolio() {
         </div>
         */}
 
-        {/* ── CTA SECTION ── */}
-        <CTASection />
-
       </div>
 
       {/* ── INTERACTIVE PROJECT DETAIL MODAL DIALOG ── */}
@@ -1052,7 +1060,8 @@ export default function Portfolio() {
 
             {/* Modal Body */}
             <div className="p-6 sm:p-8 space-y-8">
-              {/* Metrics Grid */}
+              {/* Metrics Grid */}Let's Grow Your Brand with AI
+
               <div>
                 <h4 className="text-xs font-black uppercase tracking-wider text-primary mb-3">
                   Key Quantifiable Results

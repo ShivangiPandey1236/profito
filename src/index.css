@@ -3059,8 +3059,11 @@ a {
 
 .faq-section {
   position: relative;
-  background: #222;
-  padding: 100px 80px;
+  width: 100vw;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #18181b;
+  padding: 100px 0;
   overflow: hidden;
 }
 
@@ -3102,8 +3105,9 @@ a {
 .faq-inner {
   position: relative;
   z-index: 1;
-  max-width: 1200px;
+  max-width: 1280px;
   margin: 0 auto;
+  padding: 0 40px;
   display: grid;
   grid-template-columns: 380px 1fr;
   gap: 80px;
@@ -3406,23 +3410,25 @@ a {
 /* ── Responsive ── */
 @media (max-width: 1100px) {
   .faq-section {
-    padding: 80px 48px;
+    padding: 80px 0;
   }
 
   .faq-inner {
     grid-template-columns: 320px 1fr;
     gap: 56px;
+    padding: 0 32px;
   }
 }
 
 @media (max-width: 900px) {
   .faq-section {
-    padding: 72px 32px;
+    padding: 72px 0;
   }
 
   .faq-inner {
     grid-template-columns: 1fr;
     gap: 48px;
+    padding: 0 24px;
   }
 
   .faq-left {
@@ -3440,7 +3446,11 @@ a {
 
 @media (max-width: 576px) {
   .faq-section {
-    padding: 60px 20px;
+    padding: 60px 0;
+  }
+
+  .faq-inner {
+    padding: 0 16px;
   }
 
   .faq-left-ctas {
