@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
+import { Link } from 'react-router-dom'
 import {
   ExternalLink,
   Search,
@@ -422,14 +423,14 @@ export default function Portfolio() {
                   <ArrowRight className="w-4 h-4 text-white transition-transform group-hover:translate-x-1" />
                 </a>
 
-                <a
-                  href={HERO_BANNER_DATA.secondaryBtnLink}
+                <Link
+                  to={HERO_BANNER_DATA.secondaryBtnLink}
                   className="portfolio-hero-btn-secondary w-full sm:w-auto font-bold text-sm sm:text-base px-8 py-4 inline-flex items-center justify-center gap-3 group"
                 >
                   <LayoutGrid className="w-5 h-5 text-[#2196F3]" />
                   <span className="font-extrabold">{HERO_BANNER_DATA.secondaryBtnText}</span>
                   <ArrowRight className="w-4 h-4 text-[#2196F3] transition-transform group-hover:translate-x-1" />
-                </a>
+                </Link>
               </div>
             </div>
           </div>

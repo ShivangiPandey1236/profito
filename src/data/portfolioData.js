@@ -9,7 +9,7 @@ export const HERO_BANNER_DATA = {
   primaryBtnText: 'View Case Studies',
   primaryBtnLink: '#case-studies',
   secondaryBtnText: 'View Design Portfolio',
-  secondaryBtnLink: '#portfolio-grid'
+  secondaryBtnLink: '/design-portfolio'
 }
 
 export const TESTIMONIALS_SECTION_DATA = {
