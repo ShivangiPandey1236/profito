@@ -3,7 +3,8 @@ import { Code2, Eye, ChevronLeft, ChevronRight, ShoppingBag, LayoutGrid, X, Exte
 import {
   DESIGN_PORTFOLIO_HERO_DATA,
   DESIGN_PORTFOLIO_CATEGORIES,
-  DESIGN_PORTFOLIO_PROJECTS
+  DESIGN_PORTFOLIO_PROJECTS,
+  TESTIMONIALS_SECTION_DATA
 } from '../data/designPortfolioData'
 import echonBImg from '../assets/echon-b.png'
 import FAQSection from '../components/FAQSection'
@@ -13,6 +14,36 @@ export default function DesignPortfolio() {
   const [activeCategory, setActiveCategory] = useState('All')
   const [currentPage, setCurrentPage] = useState(1)
   const [selectedProject, setSelectedProject] = useState(null)
+  const [isMobile, setIsMobile] = useState(false)
+
+  // Track responsive mobile state for testimonials items per page
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 640)
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
+
+  // Testimonials Carousel & Pagination Logic
+  const [currentTestimonialIndex, setCurrentTestimonialIndex] = useState(0)
+  const testimonialsPerPage = isMobile ? 1 : 3
+  const totalTestimonialPages = Math.ceil(
+    TESTIMONIALS_SECTION_DATA.items.length / testimonialsPerPage
+  )
+
+  const handleNextTestimonial = () => {
+    setCurrentTestimonialIndex((prev) => (prev + 1) % totalTestimonialPages)
+  }
+
+  const handlePrevTestimonial = () => {
+    setCurrentTestimonialIndex((prev) => (prev - 1 + totalTestimonialPages) % totalTestimonialPages)
+  }
+
+  const startTestimonialIdx = currentTestimonialIndex * testimonialsPerPage
+  const visibleTestimonials = TESTIMONIALS_SECTION_DATA.items.slice(
+    startTestimonialIdx,
+    startTestimonialIdx + testimonialsPerPage
+  )
 
   // Filter projects by category
   const filteredProjects = DESIGN_PORTFOLIO_PROJECTS.filter((proj) => {
@@ -155,15 +186,14 @@ export default function DesignPortfolio() {
               <button
                 key={cat.id}
                 onClick={() => handleCategoryChange(cat.id)}
-                className={`px-6 py-2.5 rounded-full text-xs sm:text-sm font-extrabold flex items-center gap-2.5 transition-all duration-300 cursor-pointer ${
-                  isActive
+                className={`px-6 py-2.5 rounded-full text-xs sm:text-sm font-extrabold flex items-center gap-2.5 transition-all duration-300 cursor-pointer ${isActive
                     ? 'bg-[#2196F3] text-white shadow-md shadow-sky-500/25 border border-[#2196F3]'
                     : 'bg-white text-zinc-700 border border-slate-200/90 shadow-xs hover:border-[#2196F3]/60 hover:text-[#2196F3] hover:shadow-sm'
-                }`}
+                  }`}
               >
                 {cat.type === 'wordpress' && (
                   <svg className={`w-4 h-4 ${isActive ? 'text-white' : 'text-[#2196F3]'}`} viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 2a10 10 0 1010 10A10.011 10.011 0 0012 2zm0 18.2A8.2 8.2 0 014.86 8.52L9.4 20.25a8.28 8.28 0 01-2.54-.05zm-4.3-8.8a1.38 1.38 0 011.37-1.34c.7 0 1.2.4 1.2 1.1a3 3 0 01-.4 1.34L7.54 16.2A8.17 8.17 0 017.7 11.4zm4.3 8.3L9.5 12.8a1.8 1.8 0 01.3-.9c.4-.6.9-1.2 1.8-1.2a1.4 1.4 0 011.4 1.5 5 5 0 01-.5 2zm5.4-3.5a8.17 8.17 0 01-4.7 3.9l2.7-7.9a1.4 1.4 0 011.2-.9c.5 0 .8.3.8.8a2 2 0 01-.1.4z"/>
+                    <path d="M12 2a10 10 0 1010 10A10.011 10.011 0 0012 2zm0 18.2A8.2 8.2 0 014.86 8.52L9.4 20.25a8.28 8.28 0 01-2.54-.05zm-4.3-8.8a1.38 1.38 0 011.37-1.34c.7 0 1.2.4 1.2 1.1a3 3 0 01-.4 1.34L7.54 16.2A8.17 8.17 0 017.7 11.4zm4.3 8.3L9.5 12.8a1.8 1.8 0 01.3-.9c.4-.6.9-1.2 1.8-1.2a1.4 1.4 0 011.4 1.5 5 5 0 01-.5 2zm5.4-3.5a8.17 8.17 0 01-4.7 3.9l2.7-7.9a1.4 1.4 0 011.2-.9c.5 0 .8.3.8.8a2 2 0 01-.1.4z" />
                   </svg>
                 )}
                 {cat.type === 'php' && (
@@ -247,11 +277,10 @@ export default function DesignPortfolio() {
                 <button
                   key={pageNum}
                   onClick={() => setCurrentPage(pageNum)}
-                  className={`w-8 h-8 rounded-full text-xs sm:text-sm font-extrabold flex items-center justify-center transition-all duration-200 cursor-pointer ${
-                    isActive
+                  className={`w-8 h-8 rounded-full text-xs sm:text-sm font-extrabold flex items-center justify-center transition-all duration-200 cursor-pointer ${isActive
                       ? 'bg-[#2196F3] text-white shadow-md shadow-sky-500/25'
                       : 'text-slate-600 hover:bg-slate-100'
-                  }`}
+                    }`}
                 >
                   {pageNum}
                 </button>
@@ -274,8 +303,160 @@ export default function DesignPortfolio() {
       {/* <div className="w-full mt-16 sm:mt-24 -mb-20 overflow-hidden">
         <FAQSection />
       </div> */}
-        <div className="w-full mt-16 sm:mt-24  overflow-hidden">
+      <div className="w-full mt-16 sm:mt-24 overflow-hidden">
         <CTASection />
+      </div>
+
+      {/* ── WHAT OUR CLIENTS SAY (TESTIMONIALS SECTION) ── */}
+      <div className="relative py-12 sm:py-16 mt-16 sm:mt-24 mb-12 overflow-hidden rounded-3xl bg-gradient-to-b from-white/80 via-white to-sky-50/50 border border-slate-100/80 shadow-sm">
+        {/* Top-Right Green Corner Background Decorative Shape */}
+        <div className="absolute -top-12 -right-12 w-48 h-48 sm:w-64 sm:h-64 rounded-full bg-[#bcd32e] opacity-85 pointer-events-none z-0" />
+
+        {/* Bottom-Left Blue Layered Waves Decorative Shape */}
+        <div className="absolute -bottom-10 -left-10 w-56 h-56 sm:w-72 sm:h-72 pointer-events-none z-0">
+          <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full opacity-90">
+            <circle cx="20" cy="180" r="120" fill="#2196F3" opacity="0.3" />
+            <circle cx="10" cy="190" r="90" fill="#2196F3" opacity="0.6" />
+            <circle cx="0" cy="200" r="60" fill="#0088FF" opacity="0.9" />
+          </svg>
+        </div>
+
+        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6">
+          {/* Header Block */}
+          <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
+            {/* Top Badge with Side Lines */}
+            <div className="inline-flex items-center gap-3 mb-3">
+              <span className="w-6 h-[2.5px] rounded-full bg-[#2196F3]" />
+              <span className="text-[#2196F3] font-bold text-xs sm:text-sm tracking-widest uppercase">
+                {TESTIMONIALS_SECTION_DATA.badge}
+              </span>
+              <span className="w-6 h-[2.5px] rounded-full bg-[#bcd32e]" />
+            </div>
+
+            {/* Main Headline */}
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black !text-[#0b132b] mb-4 tracking-tight leading-tight">
+              {TESTIMONIALS_SECTION_DATA.title}
+            </h2>
+
+            {/* Subtitle Lines */}
+            <p className="text-[#475569] text-sm sm:text-base font-medium leading-relaxed">
+              {TESTIMONIALS_SECTION_DATA.subtitleLine1}
+              <br />
+              {TESTIMONIALS_SECTION_DATA.subtitleLine2}
+            </p>
+
+            {/* Small Dual-Color Center Bar */}
+            <div className="flex items-center justify-center gap-1 mt-5">
+              <span className="w-8 h-1 rounded-full bg-[#2196F3]" />
+              <span className="w-8 h-1 rounded-full bg-[#bcd32e]" />
+            </div>
+          </div>
+
+          {/* Testimonials Grid Wrapper with Navigation Arrows */}
+          <div className="relative px-2 sm:px-10">
+            {/* Left Navigation Arrow Button */}
+            <button
+              onClick={handlePrevTestimonial}
+              className="absolute -left-3 sm:-left-5 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white border border-slate-200 shadow-lg text-[#0b132b] hover:bg-[#2196F3] hover:text-white hover:border-[#2196F3] transition-all duration-300 flex items-center justify-center z-20 cursor-pointer group"
+              aria-label="Previous testimonial"
+            >
+              <ChevronLeft className="w-5 h-5 group-hover:-translate-x-0.5 transition-transform duration-200" />
+            </button>
+
+            {/* Right Navigation Arrow Button */}
+            <button
+              onClick={handleNextTestimonial}
+              className="absolute -right-3 sm:-right-5 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white border border-slate-200 shadow-lg text-[#0b132b] hover:bg-[#2196F3] hover:text-white hover:border-[#2196F3] transition-all duration-300 flex items-center justify-center z-20 cursor-pointer group"
+              aria-label="Next testimonial"
+            >
+              <ChevronRight className="w-5 h-5 group-hover:translate-x-0.5 transition-transform duration-200" />
+            </button>
+
+            {/* Testimonials 3-Card Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 min-h-[320px]">
+              {visibleTestimonials.map((item) => {
+                const isLime = item.accent === 'lime'
+
+                return (
+                  <div
+                    key={item.id}
+                    className="bg-white rounded-2xl p-6 sm:p-8 border border-slate-100/90 shadow-[0_10px_30px_-10px_rgba(0,0,0,0.06)] hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
+                  >
+                    {/* Top Quote Icon */}
+                    <div>
+                      <div className="mb-2">
+                        <span
+                          className={`font-serif text-5xl sm:text-6xl font-bold leading-none select-none block ${
+                            isLime ? 'text-[#bcd32e]' : 'text-[#2196F3]'
+                          }`}
+                        >
+                          “
+                        </span>
+                      </div>
+
+                      {/* Quote Text */}
+                      <p className="text-[#334155] text-sm sm:text-[15px] font-medium leading-relaxed mb-6">
+                        {item.quote}
+                      </p>
+                    </div>
+
+                    {/* Footer Author Row */}
+                    <div>
+                      {/* Light Divider */}
+                      <div className="w-full h-[1px] bg-slate-100 mb-5" />
+
+                      <div className="flex items-center gap-3.5">
+                        <img
+                          src={item.avatar}
+                          alt={item.author}
+                          className={`w-12 h-12 rounded-full object-cover border-2 shadow-xs ${
+                            isLime
+                              ? 'border-[#bcd32e]/40 bg-[#bcd32e]/10'
+                              : 'border-sky-200 bg-sky-50'
+                          }`}
+                        />
+                        <div>
+                          <h4 className="text-sm sm:text-base font-bold !text-[#0b132b] leading-tight">
+                            {item.author}
+                          </h4>
+                          <p className="text-xs font-semibold text-[#64748b] mt-0.5">
+                            {item.role}
+                          </p>
+                          <p
+                            className={`text-xs font-bold mt-0.5 ${
+                              isLime ? 'text-[#62720d]' : 'text-[#2196F3]'
+                            }`}
+                          >
+                            {item.company}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )
+              })}
+            </div>
+          </div>
+
+          {/* Interactive Navigation Dots */}
+          <div className="flex items-center justify-center gap-2 mt-10">
+            {Array.from({ length: totalTestimonialPages }).map((_, idx) => {
+              const isActive = currentTestimonialIndex === idx
+              return (
+                <button
+                  key={idx}
+                  onClick={() => setCurrentTestimonialIndex(idx)}
+                  className={`transition-all duration-300 rounded-full cursor-pointer ${
+                    isActive
+                      ? 'w-8 h-2.5 bg-[#2196F3]'
+                      : 'w-2.5 h-2.5 bg-slate-300 hover:bg-[#bcd32e]'
+                  }`}
+                  aria-label={`Go to testimonial page ${idx + 1}`}
+                />
+              )
+            })}
+          </div>
+        </div>
       </div>
 
 

@@ -159,3 +159,67 @@ export const DESIGN_PORTFOLIO_PROJECTS = [
     technologies: ['React', 'Node.js', 'HTML']
   }
 ]
+
+export const TESTIMONIALS_SECTION_DATA = {
+  badge: 'TESTIMONIALS',
+  title: 'What Our Clients Say',
+  subtitleLine1: "We're proud to have earned the trust of amazing clients.",
+  subtitleLine2: "Here's what they have to say about working with us.",
+  items: [
+    {
+      id: 1,
+      quote: 'Profito built our custom e-commerce web portal with exceptional attention to detail. Our page speed score jumped to 98 and conversions grew instantly.',
+      author: 'Rohit Sharma',
+      role: 'Co-Founder',
+      company: 'BathXpertz',
+      accent: 'blue',
+      avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=250&q=80'
+    },
+    {
+      id: 2,
+      quote: 'The team transformed our web identity into a modern, responsive masterpiece. Their UX expertise and frontend engineering are top-notch.',
+      author: 'Sneha Patil',
+      role: 'Creative Director',
+      company: 'Echon Design Studios',
+      accent: 'lime',
+      avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=250&q=80'
+    },
+    {
+      id: 3,
+      quote: 'Our high-traffic news portal runs seamlessly even under heavy load spikes thanks to Profito’s scalable architecture and optimized codebase.',
+      author: 'Amit Verma',
+      role: 'Editor in Chief',
+      company: 'Morocco World News',
+      accent: 'blue',
+      avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=250&q=80'
+    },
+    {
+      id: 4,
+      quote: 'Working with Profito on our web redesign was smooth and efficient. They delivered ahead of schedule with flawless responsive layouts.',
+      author: 'Vikram Malhotra',
+      role: 'Head of Marketing',
+      company: 'Dreamworx Marketing',
+      accent: 'lime',
+      avatar: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=250&q=80'
+    },
+    {
+      id: 5,
+      quote: 'From custom UI design to smooth animations and clean code, Profito exceeded all our expectations for our corporate portal.',
+      author: 'Priya Ananth',
+      role: 'Brand Manager',
+      company: 'Allspace Group',
+      accent: 'blue',
+      avatar: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=250&q=80'
+    },
+    {
+      id: 6,
+      quote: 'Profito engineered our web application with precision. Their responsive design work helped us boost mobile user retention by 45%.',
+      author: 'Siddharth Rao',
+      role: 'Founder & Lead Editor',
+      company: 'Writoholic Platform',
+      accent: 'lime',
+      avatar: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=250&q=80'
+    }
+  ]
+}
+
