@@ -465,3 +465,67 @@ export const CASE_STUDIES_LIST = [
     results: 'Doubled sales pipeline velocity and expanded global distributor partnerships.'
   }
 ]
+
+export const TESTIMONIALS_SECTION_DATA = {
+  badge: 'TESTIMONIALS',
+  title: 'What Our Clients Say',
+  subtitleLine1: "We're proud to have earned the trust of amazing clients.",
+  subtitleLine2: "Here's what they have to say about working with us.",
+  items: [
+    {
+      id: 1,
+      quote: 'Profito transformed our financial platform organic search authority. Their case study strategies generated over $1.4M in new platform volume in 6 months.',
+      author: 'Rohit Sharma',
+      role: 'Marketing Head',
+      company: 'StockDaddy',
+      accent: 'blue',
+      avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=250&q=80'
+    },
+    {
+      id: 2,
+      quote: 'The data-driven SEO & LLM content strategies delivered measurable ROI within 90 days. Their case study methodology is rock solid.',
+      author: 'Sneha Patil',
+      role: 'Digital Head',
+      company: 'DY Patil University',
+      accent: 'lime',
+      avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=250&q=80'
+    },
+    {
+      id: 3,
+      quote: 'From technical website optimization to ongoing performance campaigns, Profito has been an invaluable growth partner.',
+      author: 'Amit Verma',
+      role: 'Director',
+      company: 'GCL Broking',
+      accent: 'blue',
+      avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=250&q=80'
+    },
+    {
+      id: 4,
+      quote: 'Our site performance and lead conversion rates doubled within 3 months of implementing Profito’s full-funnel optimization strategy.',
+      author: 'Vikram Malhotra',
+      role: 'CTO',
+      company: 'Volt Electronics',
+      accent: 'lime',
+      avatar: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=250&q=80'
+    },
+    {
+      id: 5,
+      quote: 'Profito’s targeted digital campaigns brought qualified B2B leads faster and at a much lower CAC than any other partner.',
+      author: 'Priya Ananth',
+      role: 'Growth Head',
+      company: 'Aura Couture',
+      accent: 'blue',
+      avatar: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=250&q=80'
+    },
+    {
+      id: 6,
+      quote: 'The AI automation workflows Profito deployed streamlined our operations and cut administrative response time by over 50%.',
+      author: 'Siddharth Rao',
+      role: 'Founder',
+      company: 'OmniShop D2C',
+      accent: 'lime',
+      avatar: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=250&q=80'
+    }
+  ]
+}
+
