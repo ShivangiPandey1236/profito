@@ -414,14 +414,14 @@ export default function Portfolio() {
 
               {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-5">
-                <a
-                  href={HERO_BANNER_DATA.primaryBtnLink}
+                <Link
+                  to={HERO_BANNER_DATA.primaryBtnLink}
                   className="portfolio-hero-btn-primary w-full sm:w-auto font-bold text-sm sm:text-base px-8 py-4 inline-flex items-center justify-center gap-3 group"
                 >
                   <Folder className="w-5 h-5 text-white" />
                   <span className="font-extrabold">{HERO_BANNER_DATA.primaryBtnText}</span>
                   <ArrowRight className="w-4 h-4 text-white transition-transform group-hover:translate-x-1" />
-                </a>
+                </Link>
 
                 <Link
                   to={HERO_BANNER_DATA.secondaryBtnLink}

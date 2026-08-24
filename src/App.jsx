@@ -8,6 +8,7 @@ import Careers from './pages/Careers'
 import ServicePage from './pages/ServicePage'
 import Portfolio from './pages/Portfolio'
 import DesignPortfolio from './pages/DesignPortfolio'
+import CaseStudies from './pages/CaseStudies'
 
 function App() {
   return (
@@ -21,7 +22,7 @@ function App() {
         <Route path="/career" element={<Careers />} />
         <Route path="/portfolio" element={<Portfolio />} />
         <Route path="/our-portfolio" element={<Portfolio />} />
-        <Route path="/case-studies" element={<Portfolio />} />
+        <Route path="/case-studies" element={<CaseStudies />} />
         <Route path="/design-portfolio" element={<DesignPortfolio />} />
         <Route path="/service" element={<ServicePage />} />
         <Route path="/service/:slug" element={<ServicePage />} />

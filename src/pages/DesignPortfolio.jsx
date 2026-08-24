@@ -6,6 +6,8 @@ import {
   DESIGN_PORTFOLIO_PROJECTS
 } from '../data/designPortfolioData'
 import echonBImg from '../assets/echon-b.png'
+import FAQSection from '../components/FAQSection'
+import CTASection from '../components/CTASection'
 
 export default function DesignPortfolio() {
   const [activeCategory, setActiveCategory] = useState('All')
@@ -268,6 +270,15 @@ export default function DesignPortfolio() {
         )}
       </div>
 
+      {/* ── FULL WIDTH FAQ SECTION ── */}
+      {/* <div className="w-full mt-16 sm:mt-24 -mb-20 overflow-hidden">
+        <FAQSection />
+      </div> */}
+        <div className="w-full mt-16 sm:mt-24  overflow-hidden">
+        <CTASection />
+      </div>
+
+
       {/* ── PROJECT DETAILS MODAL POPUP ── */}
       {selectedProject && (
         <div
@@ -371,7 +382,7 @@ export default function DesignPortfolio() {
                       (tech, i) => (
                         <span
                           key={i}
-                          className="bg-[#fbbc04] !text-[#0b132b] font-bold text-xs sm:text-sm px-4.5 py-2 rounded-full shadow-2xs border border-amber-400/40 inline-flex items-center gap-1"
+                          className="bg-[#bcd32e] !text-[#0b132b] font-bold text-xs sm:text-sm px-4.5 py-2 rounded-full shadow-2xs border border-amber-400/40 inline-flex items-center gap-1"
                         >
                           {tech}
                         </span>

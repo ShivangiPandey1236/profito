@@ -7,7 +7,7 @@ export const HERO_BANNER_DATA = {
   titleSuffix: ' Portfolio',
   subtitle: 'When you partner with Profito, we take care of the heavy lifting, so you can enjoy more website traffic, leads, and revenue.',
   primaryBtnText: 'View Case Studies',
-  primaryBtnLink: '#case-studies',
+  primaryBtnLink: '/case-studies',
   secondaryBtnText: 'View Design Portfolio',
   secondaryBtnLink: '/design-portfolio'
 }
