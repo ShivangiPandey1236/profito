@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { ArrowRight } from 'lucide-react'
 import { ASO_PACKAGES_DATA } from '../data/asoPackagesData'
 import ClientsSection from '../components/ClientsSection'
+import CTASection from '../components/CTASection'
 
 export default function AsoPackages() {
   const { hero, billingCycles, plans } = ASO_PACKAGES_DATA
@@ -234,8 +235,13 @@ export default function AsoPackages() {
       </section>
 
       {/* ── CLIENTS / VALUED PARTNERS SECTION ── */}
-      <div className="mt-16 sm:mt-24">
+      <div className="mb-10">
         <ClientsSection />
+      </div>
+
+      {/* ── CTA SECTION ── */}
+      <div className="mb-12">
+        <CTASection />
       </div>
     </div>
   )
