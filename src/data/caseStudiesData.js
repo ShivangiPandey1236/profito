@@ -1,5 +1,6 @@
 // Case Studies Page Data Store
 import scsiImg from '../assets/SCSI-case-study.png'
+import casestudy from '../assets/casestudy-new.png'
 import pinnacleImg from '../assets/pinnacle.png'
 import moroccoImg from '../assets/moroccoworldnews-s.png'
 import writoholicImg from '../assets/writoholic-s.png'
@@ -89,7 +90,7 @@ export const CASE_STUDIES_LIST = [
     title: 'SCSISD',
     subtitle: 'Manufacturing company, developing superior-quality SCSI storage devices',
     category: 'PPC',
-    image: scsiImg,
+    image: casestudy,
     metrics: [
       { label: 'ROAS', value: '6.2x' },
       { label: 'Sales Volume', value: '+280%' },

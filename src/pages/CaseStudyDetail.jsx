@@ -92,66 +92,92 @@ export default function CaseStudyDetail() {
       </div>
 
       {/* ── CASE STUDY DETAILS SPLIT SECTION ── */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start mb-20">
-        {/* Left Side: Case Study Preview Image */}
-        <div className="lg:col-span-6">
-          <div className="rounded-3xl overflow-hidden bg-slate-900 border border-slate-200 shadow-xl relative group">
-            <img
-              src={project.image}
-              alt={project.title}
-              className="w-full h-auto object-cover group-hover:scale-102 transition-transform duration-500"
-            />
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch mb-20">
+        {/* Left Side: Performance Overview Graph Card */}
+        <div className="lg:col-span-6 flex flex-col">
+          <div className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/90 shadow-sm flex flex-col justify-between h-full">
+            {/* Header: Title & Trend Badge */}
+            <div className="flex items-center justify-between gap-4 mb-6">
+              <h2 className="text-2xl sm:text-3xl font-black !text-[#0b132b] tracking-tight">
+                Performance Overview
+              </h2>
+              <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-emerald-50 border border-emerald-200/70 text-emerald-600 font-bold text-xs shrink-0 shadow-2xs">
+                <TrendingUp className="w-3.5 h-3.5 text-emerald-600" />
+                <span>Strong Upward Trend</span>
+              </div>
+            </div>
+
+            {/* Performance Overview Image */}
+            <div className="flex-1 flex items-center justify-center p-2 rounded-2xl bg-slate-50/50 border border-slate-100">
+              <img
+                src={project.image || casestudyNewImg}
+                alt={project.title || "Performance Overview"}
+                className="w-full h-auto object-contain rounded-xl"
+              />
+            </div>
           </div>
         </div>
 
-        {/* Right Side: Challenge, Solution & Results */}
-        <div className="lg:col-span-6 flex flex-col gap-8">
-          {/* Challenge Card */}
-          <div className="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200/90 shadow-xs">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-600 flex items-center justify-center font-bold">
-                <Target className="w-5 h-5" />
-              </div>
-              <h2 className="text-xl sm:text-2xl font-black !text-[#0b132b]">
+        {/* Right Side: Challenge, Solution & Results Cards */}
+        <div className="lg:col-span-6 flex flex-col gap-5 sm:gap-6 justify-between">
+          {/* Card 01: Challenge Card */}
+          <div className="bg-white rounded-2xl p-6 sm:p-7 border border-slate-200/90 shadow-sm relative overflow-hidden flex items-start gap-5 sm:gap-6 transition-all duration-300 hover:shadow-md group">
+            <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-amber-500 rounded-l-2xl" />
+            <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-amber-500/10 text-amber-600 flex items-center justify-center shrink-0">
+              <Target className="w-8 h-8 sm:w-9 sm:h-9 text-amber-600" />
+            </div>
+            <div className="flex-1 min-w-0">
+              <span className="text-amber-500 font-extrabold text-sm sm:text-base mb-1 block">
+                01
+              </span>
+              <h2 className="text-xl sm:text-2xl font-black !text-[#0b132b] mb-2 tracking-tight">
                 The Challenge
               </h2>
+              <p className="text-slate-600 text-sm sm:text-base font-medium leading-relaxed">
+                {project.challenge ||
+                  `${project.title} required targeted international B2B buyer acquisition for industrial SCSI hardware components with high conversion efficiency.`}
+              </p>
             </div>
-            <p className="text-slate-600 text-sm sm:text-base font-medium leading-relaxed">
-              {project.challenge ||
-                `${project.title} needed a high-performance digital marketing architecture to break through aggressive search competition and drive scalable, qualified sales leads.`}
-            </p>
           </div>
 
-          {/* Solution Card */}
-          <div className="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200/90 shadow-xs">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 rounded-xl bg-[#2196F3]/10 text-[#2196F3] flex items-center justify-center font-bold">
-                <TrendingUp className="w-5 h-5" />
-              </div>
-              <h2 className="text-xl sm:text-2xl font-black !text-[#0b132b]">
+          {/* Card 02: Solution Card */}
+          <div className="bg-white rounded-2xl p-6 sm:p-7 border border-slate-200/90 shadow-sm relative overflow-hidden flex items-start gap-5 sm:gap-6 transition-all duration-300 hover:shadow-md group">
+            <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-[#2196F3] rounded-l-2xl" />
+            <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-[#2196F3]/10 text-[#2196F3] flex items-center justify-center shrink-0">
+              <TrendingUp className="w-8 h-8 sm:w-9 sm:h-9 text-[#2196F3]" />
+            </div>
+            <div className="flex-1 min-w-0">
+              <span className="text-[#2196F3] font-extrabold text-sm sm:text-base mb-1 block">
+                02
+              </span>
+              <h2 className="text-xl sm:text-2xl font-black !text-[#0b132b] mb-2 tracking-tight">
                 Our Solution
               </h2>
+              <p className="text-slate-600 text-sm sm:text-base font-medium leading-relaxed">
+                {project.solution ||
+                  `Built precision Google Search & Display PPC funnels targeting global OEM procurement managers and industrial hardware specifiers.`}
+              </p>
             </div>
-            <p className="text-slate-600 text-sm sm:text-base font-medium leading-relaxed">
-              {project.solution ||
-                `Profito Interactive deployed a targeted multi-channel strategy including technical SEO enhancements, high-converting PPC funnels, authoritative content marketing, and real-time CRM tracking.`}
-            </p>
           </div>
 
-          {/* Results Card */}
-          <div className="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200/90 shadow-xs">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-600 flex items-center justify-center font-bold">
-                <Award className="w-5 h-5" />
-              </div>
-              <h2 className="text-xl sm:text-2xl font-black !text-[#0b132b]">
+          {/* Card 03: Results Card */}
+          <div className="bg-white rounded-2xl p-6 sm:p-7 border border-slate-200/90 shadow-sm relative overflow-hidden flex items-start gap-5 sm:gap-6 transition-all duration-300 hover:shadow-md group">
+            <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-[#bcd32e] rounded-l-2xl" />
+            <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-emerald-500/10 text-[#bcd32e] flex items-center justify-center shrink-0">
+              <Award className="w-8 h-8 sm:w-9 sm:h-9 text-[#bcd32e]" />
+            </div>
+            <div className="flex-1 min-w-0">
+              <span className="text-[#bcd32e] font-extrabold text-sm sm:text-base mb-1 block">
+                03
+              </span>
+              <h2 className="text-xl sm:text-2xl font-black !text-[#0b132b] mb-2 tracking-tight">
                 Key Results & ROI
               </h2>
+              <p className="text-slate-600 text-sm sm:text-base font-medium leading-relaxed">
+                {project.results ||
+                  `Delivered a 6.2x return on ad spend (ROAS) and expanded global distributor orders across 14 countries.`}
+              </p>
             </div>
-            <p className="text-slate-600 text-sm sm:text-base font-medium leading-relaxed">
-              {project.results ||
-                `Delivered exceptional growth metrics within 90 days, scaling qualified leads and establishing top search authority for ${project.title}.`}
-            </p>
           </div>
         </div>
       </div>
