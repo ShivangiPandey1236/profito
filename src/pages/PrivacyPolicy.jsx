@@ -5,72 +5,68 @@ import {
   ChevronRight,
   ShieldCheck,
   Lock,
-  FileCheck,
   UserCheck,
   Database,
   Cpu,
-  Cookie,
   Share2,
-  Shield,
   Clock,
-  Globe,
   HeartHandshake,
   RefreshCw,
   Mail,
   Search,
   CheckCircle2,
-  HelpCircle,
   ArrowUp,
   Sparkles,
   Check,
-  ChevronDown
+  Copy,
+  FileText,
+  BookOpen,
+  Target,
+  Shield,
+  Scale
 } from 'lucide-react';
 import { PRIVACY_DATA } from '../data/privacyData';
 
 export default function PrivacyPolicy() {
   const [searchQuery, setSearchQuery] = useState('');
-  const [activeSection, setActiveSection] = useState('information-collection');
-  const [openFaqIndex, setOpenFaqIndex] = useState(0);
+  const [activeSection, setActiveSection] = useState('sec-1-introduction');
   const [showBackToTop, setShowBackToTop] = useState(false);
   const [copiedEmail, setCopiedEmail] = useState(false);
-  const [requestSubmitted, setRequestSubmitted] = useState(false);
-  const [requestType, setRequestType] = useState('Data Access Request');
-  const [requestEmail, setRequestEmail] = useState('');
-  const [requestMessage, setRequestMessage] = useState('');
 
-  // Icon Mapping Helper
+  // Dynamic Lucide Icon Mapper
   const renderIcon = (iconName, className = "w-5 h-5") => {
     const icons = {
+      FileText: <FileText className={className} />,
+      BookOpen: <BookOpen className={className} />,
+      Target: <Target className={className} />,
       ShieldCheck: <ShieldCheck className={className} />,
-      Lock: <Lock className={className} />,
-      FileCheck: <FileCheck className={className} />,
-      UserCheck: <UserCheck className={className} />,
       Database: <Database className={className} />,
       Cpu: <Cpu className={className} />,
-      Cookie: <Cookie className={className} />,
       Share2: <Share2 className={className} />,
-      Shield: <Shield className={className} />,
       Clock: <Clock className={className} />,
-      Globe: <Globe className={className} />,
+      Lock: <Lock className={className} />,
+      UserCheck: <UserCheck className={className} />,
+      Shield: <Shield className={className} />,
       HeartHandshake: <HeartHandshake className={className} />,
       RefreshCw: <RefreshCw className={className} />,
+      Scale: <Scale className={className} />,
       Mail: <Mail className={className} />
     };
-    return icons[iconName] || <Shield className={className} />;
+    return icons[iconName] || <FileText className={className} />;
   };
 
-  // Handle Scroll to Section
+  // Scroll to section handler
   const scrollToSection = (id) => {
     setActiveSection(id);
     const element = document.getElementById(id);
     if (element) {
-      const yOffset = -120; // Account for fixed header
+      const yOffset = -120; // Account for sticky header offset
       const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
       window.scrollTo({ top: y, behavior: 'smooth' });
     }
   };
 
-  // Scroll back to top listener & Active section observer
+  // Back to top & active section scroll listener
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 400) {
@@ -79,13 +75,12 @@ export default function PrivacyPolicy() {
         setShowBackToTop(false);
       }
 
-      // Update active section based on scroll position
       const sections = PRIVACY_DATA.sections;
       for (let i = sections.length - 1; i >= 0; i--) {
         const el = document.getElementById(sections[i].id);
         if (el) {
           const rect = el.getBoundingClientRect();
-          if (rect.top <= 200) {
+          if (rect.top <= 220) {
             setActiveSection(sections[i].id);
             break;
           }
@@ -97,33 +92,21 @@ export default function PrivacyPolicy() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleCopyEmail = () => {
-    navigator.clipboard.writeText(PRIVACY_DATA.meta.dpoEmail);
+  const handleCopyEmail = (email) => {
+    navigator.clipboard.writeText(email);
     setCopiedEmail(true);
     setTimeout(() => setCopiedEmail(false), 3000);
   };
 
-  const handleRequestSubmit = (e) => {
-    e.preventDefault();
-    setRequestSubmitted(true);
-    setTimeout(() => setRequestSubmitted(false), 5000);
-    setRequestEmail('');
-    setRequestMessage('');
-  };
-
-  // Filter sections by search query
+  // Filter sections based on search input
   const filteredSections = PRIVACY_DATA.sections.filter((sec) => {
     if (!searchQuery.trim()) return true;
-    const query = searchQuery.toLowerCase();
-    const titleMatch = sec.title.toLowerCase().includes(query);
-    const subtitleMatch = sec.subtitle.toLowerCase().includes(query);
-    const contentMatch = sec.subsections.some(
-      (sub) =>
-        sub.title.toLowerCase().includes(query) ||
-        sub.content.toLowerCase().includes(query) ||
-        (sub.bullets && sub.bullets.some((b) => b.toLowerCase().includes(query)))
-    );
-    return titleMatch || subtitleMatch || contentMatch;
+    const q = searchQuery.toLowerCase();
+    const titleMatch = sec.title.toLowerCase().includes(q);
+    const leadMatch = sec.lead && sec.lead.toLowerCase().includes(q);
+    const listMatch = sec.listItems && sec.listItems.some((item) => item.toLowerCase().includes(q));
+    const defMatch = sec.definitions && sec.definitions.some((def) => def.term.toLowerCase().includes(q) || def.text.toLowerCase().includes(q));
+    return titleMatch || leadMatch || listMatch || defMatch;
   });
 
   return (
@@ -131,10 +114,9 @@ export default function PrivacyPolicy() {
       <div className="max-w-[1450px] mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* =========================================================
-            1. HERO BANNER SECTION
+            HERO BANNER SECTION
            ========================================================= */}
-        <div className="relative bg-gradient-to-r from-[#00398a] via-[#004bb8] to-[#2196F3] rounded-3xl p-6 sm:p-12 lg:p-14 text-white shadow-2xl overflow-hidden mb-12">
-          {/* Subtle Grid Background Pattern */}
+        <div className="relative bg-gradient-to-r from-[#00398a] via-[#004bb8] to-[#2196F3] rounded-3xl p-6 sm:p-12 lg:p-14 text-white shadow-2xl overflow-hidden mb-8">
           <div
             className="absolute inset-0 opacity-10 pointer-events-none"
             style={{
@@ -143,7 +125,7 @@ export default function PrivacyPolicy() {
             }}
           />
 
-          <div className="relative z-10 max-w-4xl">
+          <div className="relative z-10 max-w-4xl text-left">
             {/* Breadcrumb */}
             <nav className="flex items-center gap-2 text-xs sm:text-sm font-semibold mb-6 text-white/90">
               <Link to="/" className="inline-flex items-center gap-1.5 hover:text-[#bcd32e] transition-colors">
@@ -160,7 +142,7 @@ export default function PrivacyPolicy() {
               <span>{PRIVACY_DATA.hero.badge}</span>
             </div>
 
-            {/* Title */}
+            {/* Main Headline */}
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white leading-tight tracking-tight mb-6">
               {PRIVACY_DATA.hero.titleHighlight} <span className="text-[#bcd32e]">{PRIVACY_DATA.hero.titleMain}</span>
               <span className="block w-20 h-1 bg-[#bcd32e] rounded-full mt-3" />
@@ -171,12 +153,12 @@ export default function PrivacyPolicy() {
               {PRIVACY_DATA.hero.subtitle}
             </p>
 
-            {/* Stats / Governance Indicators */}
+            {/* Key Indicators */}
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-4 border-t border-white/15">
               {PRIVACY_DATA.hero.stats.map((stat, idx) => (
                 <div key={idx} className="bg-white/10 backdrop-blur-md rounded-2xl p-3.5 border border-white/10 text-left">
                   <span className="block text-[11px] font-bold uppercase tracking-wider text-white/70">{stat.label}</span>
-                  <span className="block text-lg font-black text-[#bcd32e] mt-0.5">{stat.value}</span>
+                  <span className="block text-base sm:text-lg font-black text-[#bcd32e] mt-0.5">{stat.value}</span>
                 </div>
               ))}
             </div>
@@ -184,43 +166,23 @@ export default function PrivacyPolicy() {
         </div>
 
         {/* =========================================================
-            2. KEY PRIVACY PILLARS (4 Glass Cards)
+            KEY HIGHLIGHTS BAR & REAL-TIME SEARCH
            ========================================================= */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-          {PRIVACY_DATA.keyPillars.map((pillar) => (
-            <div
-              key={pillar.id}
-              className="bg-white border border-[#2196F3]/15 rounded-3xl p-6 shadow-sm hover:shadow-md hover:border-[#2196F3]/40 transition-all text-left group"
-            >
-              <div className="w-12 h-12 rounded-2xl bg-[#e0f2fe] border border-[#2196F3]/20 text-[#2196F3] flex items-center justify-center mb-4 group-hover:bg-[#2196F3] group-hover:text-white group-hover:scale-110 transition-all duration-300">
-                {renderIcon(pillar.icon, "w-6 h-6")}
-              </div>
-              <h3 className="text-base font-extrabold text-slate-900 mb-2 font-sans">{pillar.title}</h3>
-              <p className="text-slate-600 text-xs leading-relaxed font-medium">{pillar.desc}</p>
-            </div>
-          ))}
-        </div>
-
-        {/* =========================================================
-            3. SEARCH BAR & META TIMESTAMPS
-           ========================================================= */}
-        <div className="bg-white rounded-3xl border border-slate-200/80 p-5 sm:p-6 mb-10 shadow-xs flex flex-col md:flex-row items-center justify-between gap-4">
-          {/* Metadata */}
+        <div className="bg-white rounded-3xl border border-slate-200/90 p-5 sm:p-6 mb-8 shadow-xs flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-4 text-xs font-bold text-slate-500 flex-wrap">
             <span className="flex items-center gap-1.5 bg-slate-100 px-3 py-1.5 rounded-full text-slate-700">
               <Clock className="w-3.5 h-3.5 text-[#2196F3]" />
-              Last Updated: <span className="text-slate-900 font-extrabold">{PRIVACY_DATA.meta.lastUpdated}</span>
+              Last Modified: <span className="!text-slate-900 font-extrabold">{PRIVACY_DATA.meta.lastUpdated}</span>
             </span>
             <span className="flex items-center gap-1.5 bg-slate-100 px-3 py-1.5 rounded-full text-slate-700">
               <ShieldCheck className="w-3.5 h-3.5 text-[#728500]" />
-              Effective Date: <span className="text-slate-900 font-extrabold">{PRIVACY_DATA.meta.effectiveDate}</span>
+              Company: <span className="!text-slate-900 font-extrabold">{PRIVACY_DATA.meta.companyName}</span>
             </span>
             <span className="flex items-center gap-1.5 bg-slate-100 px-3 py-1.5 rounded-full text-slate-700">
               Version: <span className="text-[#2196F3] font-extrabold">{PRIVACY_DATA.meta.version}</span>
             </span>
           </div>
 
-          {/* Search Box */}
           <div className="relative w-full md:w-80">
             <div className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400">
               <Search className="w-4 h-4" />
@@ -229,7 +191,7 @@ export default function PrivacyPolicy() {
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search policy topics..."
+              placeholder="Search policy sections..."
               className="w-full bg-slate-50 border border-slate-200 rounded-full pl-10 pr-4 py-2.5 text-xs sm:text-sm font-semibold text-slate-800 placeholder:text-slate-400 focus:bg-white focus:border-[#2196F3] focus:ring-4 focus:ring-[#2196F3]/10 focus:outline-none transition-all"
             />
             {searchQuery && (
@@ -244,118 +206,128 @@ export default function PrivacyPolicy() {
         </div>
 
         {/* =========================================================
-            4. MAIN CONTENT AREA (Sidebar Nav + Policy Sections)
+            TOP STICKY QUICK NAVIGATION BAR (FULL WIDTH INDEX)
            ========================================================= */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        <div className="sticky top-[72px] sm:top-[108px] z-40 bg-white/95 backdrop-blur-md border border-slate-200/90 rounded-3xl p-3.5 shadow-md mb-10 overflow-x-auto flex items-center gap-2">
+          {PRIVACY_DATA.quickNav.map((navItem) => {
+            const isActive = activeSection === navItem.id;
+            return (
+              <button
+                key={navItem.id}
+                onClick={() => scrollToSection(navItem.id)}
+                className={`px-4 py-2 rounded-2xl text-xs font-extrabold whitespace-nowrap transition-all cursor-pointer ${isActive
+                    ? 'bg-[#2196F3] text-white shadow-md shadow-[#2196F3]/25 scale-102'
+                    : 'bg-slate-100 text-slate-700 hover:bg-slate-200 hover:text-[#2196F3]'
+                  }`}
+              >
+                {navItem.label}
+              </button>
+            );
+          })}
+        </div>
 
-          {/* Sticky Sidebar Navigation (Desktop) */}
-          <aside className="lg:col-span-4 sticky top-28 hidden lg:block">
-            <div className="bg-white border border-slate-200/90 rounded-3xl p-6 shadow-sm">
-              <div className="flex items-center gap-2 mb-4 pb-3 border-b border-slate-100">
-                <FileCheck className="w-5 h-5 text-[#2196F3]" />
-                <h3 className="text-sm font-black uppercase text-slate-900 tracking-wider">Policy Contents</h3>
-              </div>
-
-              <nav className="flex flex-col gap-1.5 text-left max-h-[calc(100vh-220px)] overflow-y-auto pr-1">
-                {PRIVACY_DATA.quickNav.map((navItem) => {
-                  const isActive = activeSection === navItem.id;
-                  return (
-                    <button
-                      key={navItem.id}
-                      onClick={() => scrollToSection(navItem.id)}
-                      className={`text-left text-xs font-bold py-2.5 px-3.5 rounded-2xl transition-all cursor-pointer flex items-center justify-between ${
-                        isActive
-                          ? 'bg-[#2196F3] text-white shadow-md shadow-[#2196F3]/20 translate-x-1'
-                          : 'text-slate-600 hover:bg-slate-100 hover:text-[#2196F3]'
-                      }`}
-                    >
-                      <span className="truncate">{navItem.label}</span>
-                      <ChevronRight className={`w-3.5 h-3.5 shrink-0 ${isActive ? 'text-white' : 'text-slate-400'}`} />
-                    </button>
-                  );
-                })}
-              </nav>
-
-              {/* Direct DPO Email Box */}
-              <div className="mt-6 pt-4 border-t border-slate-100 bg-[#e0f2fe]/40 rounded-2xl p-4 border border-[#2196F3]/20 text-left">
-                <span className="block text-[11px] font-black uppercase text-[#2196F3] tracking-wider mb-1">
-                  Have Privacy Questions?
-                </span>
-                <p className="text-xs text-slate-600 font-medium mb-3">
-                  Reach our Data Protection Officer directly:
-                </p>
-                <div className="flex items-center gap-2 bg-white rounded-xl p-2 border border-slate-200">
-                  <Mail className="w-4 h-4 text-[#2196F3] shrink-0" />
-                  <span className="text-[11px] font-bold text-slate-800 truncate">{PRIVACY_DATA.meta.dpoEmail}</span>
-                  <button
-                    onClick={handleCopyEmail}
-                    className="ml-auto p-1.5 rounded-lg bg-slate-100 hover:bg-[#2196F3] hover:text-white text-slate-600 transition-colors"
-                    title="Copy Email"
-                  >
-                    {copiedEmail ? <Check className="w-3.5 h-3.5 text-green-600" /> : <Copy className="w-3.5 h-3.5" />}
-                  </button>
-                </div>
-              </div>
+        {/* =========================================================
+            FULL WIDTH POLICY SECTIONS (SECTIONS 1 TO 15)
+           ========================================================= */}
+        <main className="w-full flex flex-col gap-8 text-left">
+          {filteredSections.length === 0 ? (
+            <div className="bg-white rounded-3xl p-12 border border-slate-200 text-center w-full">
+              <FileText className="w-12 h-12 text-slate-300 mx-auto mb-4" />
+              <h3 className="text-lg font-bold text-slate-800 mb-2">No Matching Sections Found</h3>
+              <p className="text-sm text-slate-500 mb-6">
+                Try searching for keywords like "DPDP", "GDPR", "Cookies", "Retention", or "Rights".
+              </p>
+              <button
+                onClick={() => setSearchQuery('')}
+                className="px-5 py-2.5 rounded-full bg-[#2196F3] text-white font-bold text-xs"
+              >
+                Reset Search
+              </button>
             </div>
-          </aside>
-
-          {/* Main Sections Content */}
-          <main className="lg:col-span-8 flex flex-col gap-8 text-left">
-            {filteredSections.length === 0 ? (
-              <div className="bg-white rounded-3xl p-12 border border-slate-200 text-center">
-                <HelpCircle className="w-12 h-12 text-slate-300 mx-auto mb-4" />
-                <h3 className="text-lg font-bold text-slate-800 mb-2">No Matching Privacy Terms Found</h3>
-                <p className="text-sm text-slate-500 mb-6">
-                  Try searching for keywords like "cookies", "GDPR", "encryption", or "deletion".
-                </p>
-                <button
-                  onClick={() => setSearchQuery('')}
-                  className="px-5 py-2.5 rounded-full bg-[#2196F3] text-white font-bold text-xs"
-                >
-                  Reset Search
-                </button>
-              </div>
-            ) : (
-              filteredSections.map((sec) => (
-                <article
-                  key={sec.id}
-                  id={sec.id}
-                  className="bg-white border border-slate-200/90 rounded-3xl p-6 sm:p-8 lg:p-10 shadow-xs hover:shadow-md transition-shadow relative overflow-hidden group scroll-mt-28"
-                >
-                  {/* Top Badge & Icon */}
-                  <div className="flex items-center justify-between gap-4 mb-4 flex-wrap">
-                    <span className="px-3.5 py-1 rounded-full bg-[#bcd32e]/25 text-[#4c5900] font-black text-xs uppercase tracking-wider">
-                      {sec.badge}
-                    </span>
-                    <div className="w-10 h-10 rounded-xl bg-[#e0f2fe] text-[#2196F3] flex items-center justify-center border border-[#2196F3]/20">
-                      {renderIcon(sec.icon, "w-5 h-5")}
-                    </div>
+          ) : (
+            filteredSections.map((sec) => (
+              <article
+                key={sec.id}
+                id={sec.id}
+                className="w-full bg-white border border-slate-200/90 rounded-3xl p-6 sm:p-10 lg:p-12 shadow-xs hover:shadow-md transition-shadow relative overflow-hidden group scroll-mt-36"
+              >
+                {/* Top Badge & Icon */}
+                <div className="flex items-center justify-between gap-4 mb-4 flex-wrap">
+                  <span className="px-3.5 py-1 rounded-full bg-[#bcd32e]/25 text-[#4c5900] font-black text-xs uppercase tracking-wider">
+                    SECTION {sec.number}
+                  </span>
+                  <div className="w-11 h-11 rounded-2xl bg-[#e0f2fe] text-[#2196F3] flex items-center justify-center border border-[#2196F3]/20">
+                    {renderIcon(sec.icon, "w-6 h-6")}
                   </div>
+                </div>
 
-                  {/* Title & Subtitle */}
-                  <h2 className="text-2xl sm:text-3xl font-black text-slate-900 mb-3 group-hover:text-[#2196F3] transition-colors">
-                    {sec.title}
-                  </h2>
-                  <p className="text-slate-600 text-sm sm:text-base leading-relaxed font-medium mb-6">
-                    {sec.subtitle}
+                {/* Section Title */}
+                <h2 className="text-xl sm:text-2xl lg:text-3xl font-black !text-slate-900 mb-4 group-hover:text-[#2196F3] transition-colors uppercase tracking-tight">
+                  {sec.number}. {sec.title}
+                </h2>
+
+                {/* Lead Text */}
+                {sec.lead && (
+                  <p className="text-slate-700 text-sm sm:text-base lg:text-lg leading-relaxed font-medium mb-5">
+                    {sec.lead}
                   </p>
+                )}
 
-                  {/* Subsections */}
-                  <div className="space-y-6 pt-4 border-t border-slate-100">
-                    {sec.subsections.map((sub, sIdx) => (
-                      <div key={sIdx} className="space-y-3">
-                        <h3 className="text-base font-extrabold text-slate-800 flex items-center gap-2">
-                          <span className="w-2 h-2 rounded-full bg-[#2196F3]" />
-                          {sub.title}
+                {/* Paragraphs */}
+                {sec.paragraphs && sec.paragraphs.map((pText, pIdx) => (
+                  <p key={pIdx} className="text-slate-600 text-sm sm:text-base leading-relaxed font-normal mb-4">
+                    {pText}
+                  </p>
+                ))}
+
+                {/* List Items */}
+                {sec.listItems && (
+                  <ul className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-6 pl-1">
+                    {sec.listItems.map((item, itemIdx) => (
+                      <li key={itemIdx} className="flex items-start gap-3 text-xs sm:text-sm text-slate-700 leading-relaxed font-medium bg-slate-50/60 p-3.5 rounded-2xl border border-slate-100">
+                        <CheckCircle2 className="w-4 h-4 text-[#2196F3] shrink-0 mt-0.5" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+
+                {/* Definitions Cards Grid (for Section 2, Section 4 - Full Width 3 Columns) */}
+                {sec.definitions && (
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mb-6">
+                    {sec.definitions.map((def, dIdx) => (
+                      <div key={dIdx} className="bg-slate-50/90 border border-slate-200/80 rounded-2xl p-5 text-left flex flex-col justify-between hover:border-[#2196F3]/30 transition-colors">
+                        <div>
+                          <span className="block text-xs font-black text-[#2196F3] uppercase tracking-wider mb-2">
+                            "{def.term}"
+                          </span>
+                          <p className="text-xs sm:text-sm text-slate-600 font-medium leading-relaxed">
+                            {def.text}
+                          </p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                {/* Subsection Blocks (for Section 3, Section 5 - Full Width 2 Columns) */}
+                {sec.blocks && (
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    {sec.blocks.map((block, bIdx) => (
+                      <div key={bIdx} className="bg-slate-50/70 border border-slate-200/70 rounded-2xl p-6">
+                        <h3 className="text-base font-extrabold !text-slate-900 mb-3 font-sans">
+                          {block.heading}
                         </h3>
-                        <p className="text-slate-600 text-sm leading-relaxed font-normal">
-                          {sub.content}
-                        </p>
-                        {sub.bullets && (
-                          <ul className="space-y-2 mt-3 pl-2">
-                            {sub.bullets.map((bItem, bIdx) => (
-                              <li key={bIdx} className="flex items-start gap-3 text-xs sm:text-sm text-slate-700 leading-relaxed font-medium">
-                                <CheckCircle2 className="w-4 h-4 text-[#2196F3] shrink-0 mt-0.5" />
+                        {block.text && (
+                          <p className="text-xs sm:text-sm text-slate-600 font-medium mb-4">
+                            {block.text}
+                          </p>
+                        )}
+                        {block.items && (
+                          <ul className="space-y-2.5">
+                            {block.items.map((bItem, biIdx) => (
+                              <li key={biIdx} className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-700 font-medium leading-relaxed">
+                                <span className="w-2 h-2 rounded-full bg-[#2196F3] shrink-0 mt-1.5" />
                                 <span>{bItem}</span>
                               </li>
                             ))}
@@ -364,150 +336,117 @@ export default function PrivacyPolicy() {
                       </div>
                     ))}
                   </div>
+                )}
 
-                  {/* Key Takeaway Box */}
-                  {sec.takeaway && (
-                    <div className="mt-8 p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-[#e0f2fe]/60 to-[#f0f7ff] border border-[#2196F3]/20 flex items-start gap-3">
-                      <ShieldCheck className="w-5 h-5 text-[#2196F3] shrink-0 mt-0.5" />
-                      <div>
-                        <span className="block text-[11px] font-black uppercase text-[#2196F3] tracking-wider mb-0.5">
-                          KEY PRIVACY TAKEAWAY
-                        </span>
-                        <p className="text-xs sm:text-sm font-bold text-slate-800">
-                          {sec.takeaway}
-                        </p>
+                {/* Grievance Redressal Card (Section 11 - Full Width Banner) */}
+                {sec.grievanceCard && (
+                  <div className="bg-gradient-to-br from-[#00398a] via-[#004bb8] to-[#2196F3] rounded-3xl p-6 sm:p-8 text-white shadow-lg my-6">
+                    <h3 className="text-lg font-black text-[#bcd32e] uppercase tracking-wider mb-4">
+                      Grievance / Privacy Contact
+                    </h3>
+                    <p className="text-base font-extrabold text-white mb-4">
+                      {sec.grievanceCard.company}
+                    </p>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-xs sm:text-sm text-white/90">
+                      <div className="bg-white/10 rounded-2xl p-4 border border-white/15">
+                        <span className="block text-[10px] uppercase font-bold text-white/70 mb-1">Email</span>
+                        <a href={`mailto:${sec.grievanceCard.email}`} className="font-bold text-white hover:text-[#bcd32e]">
+                          {sec.grievanceCard.email}
+                        </a>
+                      </div>
+                      <div className="bg-white/10 rounded-2xl p-4 border border-white/15">
+                        <span className="block text-[10px] uppercase font-bold text-white/70 mb-1">Phone</span>
+                        <a href={`tel:${sec.grievanceCard.phone}`} className="font-bold text-white hover:text-[#bcd32e]">
+                          {sec.grievanceCard.phone}
+                        </a>
+                      </div>
+                      <div className="bg-white/10 rounded-2xl p-4 border border-white/15">
+                        <span className="block text-[10px] uppercase font-bold text-white/70 mb-1">Corporate Office</span>
+                        <span className="font-semibold text-white">{sec.grievanceCard.address}</span>
                       </div>
                     </div>
-                  )}
-                </article>
-              ))
-            )}
-
-            {/* =========================================================
-                5. FREQUENTLY ASKED PRIVACY QUESTIONS (FAQ)
-               ========================================================= */}
-            <section className="bg-white border border-slate-200/90 rounded-3xl p-6 sm:p-8 lg:p-10 shadow-xs mt-4">
-              <div className="flex items-center gap-2.5 mb-2 text-[#2196F3]">
-                <HelpCircle className="w-5 h-5 text-[#2196F3]" />
-                <span className="text-xs font-black uppercase tracking-wider">CLEAR ANSWERS</span>
-              </div>
-              <h2 className="text-2xl sm:text-3xl font-black text-slate-900 mb-6">
-                Privacy & Data Security FAQs
-              </h2>
-
-              <div className="space-y-4">
-                {PRIVACY_DATA.faqs.map((faq, fIdx) => {
-                  const isOpen = openFaqIndex === fIdx;
-                  return (
-                    <div
-                      key={fIdx}
-                      className="border border-slate-200 rounded-2xl overflow-hidden transition-all"
-                    >
-                      <button
-                        onClick={() => setOpenFaqIndex(isOpen ? null : fIdx)}
-                        className="w-full p-5 text-left font-extrabold text-sm sm:text-base text-slate-900 flex items-center justify-between gap-4 bg-slate-50/50 hover:bg-slate-50 transition-colors"
-                      >
-                        <span>{faq.question}</span>
-                        <ChevronDown className={`w-5 h-5 text-[#2196F3] shrink-0 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
-                      </button>
-                      {isOpen && (
-                        <div className="p-5 pt-2 text-xs sm:text-sm text-slate-600 leading-relaxed font-medium bg-white border-t border-slate-100">
-                          {faq.answer}
-                        </div>
-                      )}
-                    </div>
-                  );
-                })}
-              </div>
-            </section>
-
-            {/* =========================================================
-                6. DIRECT PRIVACY RIGHTS REQUEST FORM
-               ========================================================= */}
-            <section className="bg-gradient-to-br from-[#00398a] via-[#004bb8] to-[#2196F3] rounded-3xl p-6 sm:p-10 text-white shadow-xl relative overflow-hidden">
-              <div className="relative z-10 max-w-2xl">
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 text-[#bcd32e] font-black text-xs uppercase tracking-wider mb-4">
-                  <UserCheck className="w-3.5 h-3.5 text-[#bcd32e]" />
-                  <span>DATA SUBJECT RIGHTS PORTAL</span>
-                </div>
-
-                <h2 className="text-2xl sm:text-3xl font-black text-white mb-2">
-                  Submit a Data Rights or Deletion Request
-                </h2>
-                <p className="text-white/80 text-xs sm:text-sm font-medium mb-6">
-                  Need a copy of your personal data or wish to request full account erasure? Complete this form for priority DPO action.
-                </p>
-
-                {requestSubmitted && (
-                  <div className="mb-6 p-4 rounded-2xl bg-[#bcd32e] text-[#0f172a] font-extrabold flex items-center gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-[#0f172a] shrink-0" />
-                    <span className="text-xs sm:text-sm">Request Submitted Successfully! Our DPO will contact you within 24 hours.</span>
                   </div>
                 )}
 
-                <form onSubmit={handleRequestSubmit} className="space-y-4">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-xs font-bold uppercase tracking-wider mb-1.5 text-white/90">
-                        Request Type *
-                      </label>
-                      <select
-                        value={requestType}
-                        onChange={(e) => setRequestType(e.target.value)}
-                        className="w-full bg-white/10 border border-white/25 rounded-xl px-3.5 py-3 text-xs sm:text-sm font-bold text-white focus:bg-white focus:text-slate-900 focus:outline-none transition-colors cursor-pointer"
-                      >
-                        <option value="Data Access Request" className="text-slate-900 font-bold">Data Access / Export Request</option>
-                        <option value="Data Erasure Request" className="text-slate-900 font-bold">Data Erasure / Account Deletion</option>
-                        <option value="Marketing Opt-Out" className="text-slate-900 font-bold">Marketing Unsubscribe / Opt-out</option>
-                        <option value="General Inquiry" className="text-slate-900 font-bold">General DPO Privacy Inquiry</option>
-                      </select>
-                    </div>
-
-                    <div>
-                      <label className="block text-xs font-bold uppercase tracking-wider mb-1.5 text-white/90">
-                        Your Email Address *
-                      </label>
-                      <input
-                        type="email"
-                        required
-                        value={requestEmail}
-                        onChange={(e) => setRequestEmail(e.target.value)}
-                        placeholder="you@company.com"
-                        className="w-full bg-white/10 border border-white/25 rounded-xl px-3.5 py-3 text-xs sm:text-sm font-medium text-white placeholder:text-white/50 focus:bg-white focus:text-slate-900 focus:outline-none transition-colors"
-                      />
+                {/* Contact Information Card (Section 15 - Full Width Banner) */}
+                {sec.contactCard && (
+                  <div className="bg-gradient-to-br from-[#00398a] via-[#004bb8] to-[#2196F3] rounded-3xl p-6 sm:p-8 text-white shadow-lg my-6">
+                    <h3 className="text-lg font-black text-[#bcd32e] uppercase tracking-wider mb-6">
+                      Profito Interactive Pvt. Ltd.
+                    </h3>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 text-xs sm:text-sm">
+                      <div className="bg-white/10 rounded-2xl p-4 border border-white/15">
+                        <span className="block text-[10px] uppercase font-bold text-white/70 mb-1">Website</span>
+                        <a href={`https://${sec.contactCard.website}`} target="_blank" rel="noopener noreferrer" className="font-bold text-[#bcd32e] hover:underline">
+                          {sec.contactCard.website}
+                        </a>
+                      </div>
+                      <div className="bg-white/10 rounded-2xl p-4 border border-white/15">
+                        <span className="block text-[10px] uppercase font-bold text-white/70 mb-1">General & Sales Email</span>
+                        <a href={`mailto:${sec.contactCard.generalEmail}`} className="font-bold text-white hover:text-[#bcd32e]">
+                          {sec.contactCard.generalEmail}
+                        </a>
+                      </div>
+                      <div className="bg-white/10 rounded-2xl p-4 border border-white/15">
+                        <span className="block text-[10px] uppercase font-bold text-white/70 mb-1">HR Email</span>
+                        <a href={`mailto:${sec.contactCard.hrEmail}`} className="font-bold text-white hover:text-[#bcd32e]">
+                          {sec.contactCard.hrEmail}
+                        </a>
+                      </div>
+                      <div className="bg-white/10 rounded-2xl p-4 border border-white/15">
+                        <span className="block text-[10px] uppercase font-bold text-white/70 mb-1">Telephone</span>
+                        <a href={`tel:${sec.contactCard.phone}`} className="font-bold text-white hover:text-[#bcd32e]">
+                          {sec.contactCard.phone}
+                        </a>
+                      </div>
+                      <div className="sm:col-span-2 md:col-span-4 pt-4 border-t border-white/20 flex items-center justify-between flex-wrap gap-3">
+                        <div>
+                          <span className="block text-[10px] uppercase font-bold text-white/70 mb-1">Corporate Office Address</span>
+                          <span className="font-semibold text-white">{sec.contactCard.office}</span>
+                        </div>
+                        <button
+                          onClick={() => handleCopyEmail(sec.contactCard.generalEmail)}
+                          className="px-4 py-2 rounded-xl bg-[#bcd32e] hover:bg-white text-[#0f172a] text-xs font-extrabold transition-all shadow-md flex items-center gap-2 cursor-pointer"
+                        >
+                          {copiedEmail ? <Check className="w-3.5 h-3.5 text-[#0f172a]" /> : <Copy className="w-3.5 h-3.5" />}
+                          <span>{copiedEmail ? 'Copied' : 'Copy Email'}</span>
+                        </button>
+                      </div>
                     </div>
                   </div>
+                )}
 
-                  <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider mb-1.5 text-white/90">
-                      Additional Details / Special Instructions *
-                    </label>
-                    <textarea
-                      rows="3"
-                      required
-                      value={requestMessage}
-                      onChange={(e) => setRequestMessage(e.target.value)}
-                      placeholder="Please specify any particular data points or account identifiers..."
-                      className="w-full bg-white/10 border border-white/25 rounded-xl p-3.5 text-xs sm:text-sm font-medium text-white placeholder:text-white/50 focus:bg-white focus:text-slate-900 focus:outline-none transition-colors"
-                    />
+                {/* Footnote / Bullet list (e.g. Section 1, Section 7, Section 9) */}
+                {sec.footnoteHeading && (
+                  <div className="mt-6 pt-5 border-t border-slate-100">
+                    <h4 className="text-xs sm:text-sm font-black uppercase text-slate-800 tracking-wider mb-3">
+                      {sec.footnoteHeading}
+                    </h4>
+                    {sec.footnoteText && (
+                      <p className="text-xs sm:text-sm text-slate-600 font-medium mb-3">
+                        {sec.footnoteText}
+                      </p>
+                    )}
+                    {sec.footnoteBullets && (
+                      <ul className="grid grid-cols-1 md:grid-cols-2 gap-2.5 pl-1">
+                        {sec.footnoteBullets.map((fBullet, fbIdx) => (
+                          <li key={fbIdx} className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-700 font-medium bg-slate-50/50 p-3 rounded-xl border border-slate-100">
+                            <span className="w-2 h-2 rounded-full bg-[#2196F3] shrink-0 mt-1.5" />
+                            <span>{fBullet}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
                   </div>
-
-                  <button
-                    type="submit"
-                    className="w-full sm:w-auto bg-[#bcd32e] hover:bg-white text-[#0f172a] font-extrabold text-sm py-3.5 px-8 rounded-xl shadow-lg transition-all duration-200 hover:-translate-y-0.5 cursor-pointer flex items-center justify-center gap-2"
-                  >
-                    <span>Submit Official Privacy Request</span>
-                    <ChevronRight className="w-4 h-4 text-[#0f172a]" />
-                  </button>
-                </form>
-              </div>
-            </section>
-          </main>
-        </div>
+                )}
+              </article>
+            ))
+          )}
+        </main>
 
       </div>
 
-      {/* Floating Back-to-Top Button */}
+      {/* Floating Back to Top Button */}
       {showBackToTop && (
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
