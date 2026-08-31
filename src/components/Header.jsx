@@ -305,7 +305,7 @@ export default function Header() {
           sections: [
             {
               title: 'Company',
-              items: ['About Us', 'Our Team', 'Awards & Recognition', 'Careers']
+              items: ['About Us', 'Privacy Policy', 'Careers']
             }
           ]
         },
@@ -404,6 +404,7 @@ export default function Header() {
                               <ul className="flex flex-col gap-1 text-left">
                                 {section.items.map((subItem, itemIdx) => {
                                   const isAboutUs = subItem === 'About Us';
+                                  const isPrivacyPolicy = subItem === 'Privacy Policy' || subItem === 'Privacy';
                                   const isContactUs = subItem === 'Contact Us';
                                   const isCareers = subItem === 'Careers' || subItem === 'Career';
                                   const isPortfolio = subItem === 'Our Portfolio' || subItem === 'Portfolio';
@@ -415,6 +416,13 @@ export default function Header() {
                                       {isAboutUs ? (
                                         <Link
                                           to="/about"
+                                          className="text-[0.85rem] font-semibold text-zinc-700 hover:text-primary hover:bg-primary/6 hover:translate-x-1 rounded-lg pl-2 pr-2 hover:pl-4 py-1 transition-all duration-200 block text-left -mx-2 sub-item-link"
+                                        >
+                                          {subItem}
+                                        </Link>
+                                      ) : isPrivacyPolicy ? (
+                                        <Link
+                                          to="/privacy-policy"
                                           className="text-[0.85rem] font-semibold text-zinc-700 hover:text-primary hover:bg-primary/6 hover:translate-x-1 rounded-lg pl-2 pr-2 hover:pl-4 py-1 transition-all duration-200 block text-left -mx-2 sub-item-link"
                                         >
                                           {subItem}
@@ -536,6 +544,7 @@ export default function Header() {
                             <ul className="flex flex-col gap-1 text-left">
                               {section.items.map((subItem, itemIdx) => {
                                 const isAboutUs = subItem === 'About Us';
+                                const isPrivacyPolicy = subItem === 'Privacy Policy' || subItem === 'Privacy';
                                 const isContactUs = subItem === 'Contact Us';
                                 const isCareers = subItem === 'Careers' || subItem === 'Career';
                                 const isPortfolio = subItem === 'Our Portfolio' || subItem === 'Portfolio';
@@ -547,6 +556,14 @@ export default function Header() {
                                     {isAboutUs ? (
                                       <Link
                                         to="/about"
+                                        className="text-[0.85rem] font-semibold text-zinc-700 hover:text-primary hover:bg-primary/6 hover:translate-x-1 rounded-lg pl-2 pr-2 hover:pl-4 py-1 transition-all duration-200 block text-left -mx-2 sub-item-link"
+                                        onClick={() => setIsOpen(false)}
+                                      >
+                                        {subItem}
+                                      </Link>
+                                    ) : isPrivacyPolicy ? (
+                                      <Link
+                                        to="/privacy-policy"
                                         className="text-[0.85rem] font-semibold text-zinc-700 hover:text-primary hover:bg-primary/6 hover:translate-x-1 rounded-lg pl-2 pr-2 hover:pl-4 py-1 transition-all duration-200 block text-left -mx-2 sub-item-link"
                                         onClick={() => setIsOpen(false)}
                                       >

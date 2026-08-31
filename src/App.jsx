@@ -11,6 +11,7 @@ import DesignPortfolio from './pages/DesignPortfolio'
 import CaseStudies from './pages/CaseStudies'
 import CaseStudyDetail from './pages/CaseStudyDetail'
 import AsoPackages from './pages/AsoPackages'
+import PrivacyPolicy from './pages/PrivacyPolicy'
 
 function App() {
   return (
@@ -29,6 +30,8 @@ function App() {
         <Route path="/design-portfolio" element={<DesignPortfolio />} />
         <Route path="/aso-packages" element={<AsoPackages />} />
         <Route path="/aso-packages-plans" element={<AsoPackages />} />
+        <Route path="/privacy" element={<PrivacyPolicy />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/service" element={<ServicePage />} />
         <Route path="/service/:slug" element={<ServicePage />} />
         <Route path="/services" element={<ServicePage />} />

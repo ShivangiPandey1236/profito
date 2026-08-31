@@ -78,7 +78,7 @@ export default function Footer() {
       title: 'COMPANY',
       links: [
         { name: 'About Us', href: '/about' },
-        { name: 'Our Team', href: '#our-team' },
+        { name: 'Privacy Policy', href: '/privacy-policy' },
         { name: 'Careers', href: '/careers' },
         { name: 'Write For Us', href: '#write-for-us' },
         { name: 'Contact Us', href: '/contact-us' },
@@ -363,7 +363,7 @@ export default function Footer() {
             © {new Date().getFullYear()} Profito Interactive. All Rights Reserved.
           </p>
           <div className="flex gap-6">
-            <a href="#privacy" className="text-zinc-500 text-[0.82rem] font-semibold hover:text-white transition-colors duration-150">Privacy</a>
+            <Link to="/privacy-policy" className="text-zinc-500 text-[0.82rem] font-semibold hover:text-white transition-colors duration-150">Privacy</Link>
             <a href="#terms" className="text-zinc-500 text-[0.82rem] font-semibold hover:text-white transition-colors duration-150">Terms</a>
             <a href="#sitemap" className="text-zinc-500 text-[0.82rem] font-semibold hover:text-white transition-colors duration-150">Sitemap</a>
           </div>
