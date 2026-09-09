@@ -215,13 +215,13 @@ export default function CaseStudies() {
             </div>
           </div>
 
-          <a
-            href="#proposal"
+          <Link
+            to="/get-a-quote"
             className="w-8 h-8 rounded-full bg-white text-[#0b132b] flex items-center justify-center font-bold shadow-md hover:scale-110 transition-transform shrink-0"
             aria-label="Get a proposal"
           >
             <ArrowRight className="w-4 h-4 text-[#0b132b]" />
-          </a>
+          </Link>
         </div>
       </div>
 

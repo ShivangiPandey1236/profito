@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react'
+import { Link } from 'react-router-dom'
 import { ArrowRight, Star, CheckCircle } from 'lucide-react'
 import leftHand from '../assets/left-side.png'
 import rightHand from '../assets/right-side.png'
@@ -360,10 +361,10 @@ export default function Hero() {
 
         {/* CTAs */}
         <div className="hero-ctas">
-          <a href="#proposal" className="hero-btn-primary" id="hero-cta-proposal">
+          <Link to="/get-a-quote" className="hero-btn-primary" id="hero-cta-proposal">
             Get a Free Proposal
             <ArrowRight size={17} className="hero-btn-arrow" />
-          </a>
+          </Link>
           <a href="#strategy" className="hero-btn-secondary" id="hero-cta-strategy">
             Get Your Free AI Growth Strategy
           </a>

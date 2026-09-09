@@ -1149,13 +1149,13 @@ export default function Portfolio() {
                 >
                   Close
                 </button>
-                <a
-                  href="#proposal"
+                <Link
+                  to="/get-a-quote"
                   onClick={() => setSelectedProject(null)}
                   className="bg-primary hover:bg-black !text-white font-bold text-xs sm:text-sm px-6 py-2.5 rounded-full transition-all duration-200 shadow-md inline-flex items-center gap-2"
                 >
                   Get Free Proposal <ArrowRight className="w-4 h-4" />
-                </a>
+                </Link>
               </div>
             </div>
 

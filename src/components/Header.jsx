@@ -494,9 +494,9 @@ export default function Header() {
 
           {/* CTA Action */}
           <div className="max-[992px]:hidden">
-            <a href="#proposal" className="bg-primary !text-white border border-primary rounded-full py-3 px-6 font-semibold inline-flex items-center gap-2 text-[0.95rem] shadow-[0_4px_14px_rgba(33,150,243,0.25)] transition-all duration-250 hover:bg-black hover:border-black hover:!text-white hover:-translate-y-0.5 hover:shadow-[0_6px_20px_rgba(0,0,0,0.15)] group">
+            <Link to="/get-a-quote" className="bg-primary !text-white border border-primary rounded-full py-3 px-6 font-semibold inline-flex items-center gap-2 text-[0.95rem] shadow-[0_4px_14px_rgba(33,150,243,0.25)] transition-all duration-250 hover:bg-black hover:border-black hover:!text-white hover:-translate-y-0.5 hover:shadow-[0_6px_20px_rgba(0,0,0,0.15)] group">
               Get a Free Proposal <ArrowRight size={16} className="transition-transform duration-150 group-hover:translate-x-[3px]" />
-            </a>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -640,9 +640,9 @@ export default function Header() {
             </div>
           ))}
           <div className="mt-6 pt-4">
-            <a href="#proposal" className="bg-primary !text-white border border-primary rounded-full py-3 px-6 font-semibold inline-flex items-center gap-2 text-[0.95rem] shadow-[0_4px_14px_rgba(33,150,243,0.25)] transition-all duration-250 hover:bg-black hover:border-black hover:!text-white hover:-translate-y-0.5 hover:shadow-[0_6px_20px_rgba(0,0,0,0.15)] group w-full justify-center" onClick={() => { setIsOpen(false); setActiveDropdown(null); }}>
+            <Link to="/get-a-quote" className="bg-primary !text-white border border-primary rounded-full py-3 px-6 font-semibold inline-flex items-center gap-2 text-[0.95rem] shadow-[0_4px_14px_rgba(33,150,243,0.25)] transition-all duration-250 hover:bg-black hover:border-black hover:!text-white hover:-translate-y-0.5 hover:shadow-[0_6px_20px_rgba(0,0,0,0.15)] group w-full justify-center" onClick={() => { setIsOpen(false); setActiveDropdown(null); }}>
               Get a Free Proposal <ArrowRight size={16} className="transition-transform duration-150 group-hover:translate-x-[3px]" />
-            </a>
+            </Link>
           </div>
         </nav>
       </div>

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import { Code2, Eye, ChevronLeft, ChevronRight, ShoppingBag, LayoutGrid, X, ExternalLink } from 'lucide-react'
 import {
   DESIGN_PORTFOLIO_HERO_DATA,
@@ -576,13 +577,13 @@ export default function DesignPortfolio() {
 
               {/* Bottom Action Buttons */}
               <div className="pt-5 border-t border-slate-200/80 flex flex-col sm:flex-row items-center gap-3">
-                <a
-                  href="#proposal"
+                <Link
+                  to="/get-a-quote"
                   onClick={closeProjectModal}
                   className="w-full sm:w-auto flex-1 bg-[#2196F3] hover:bg-[#1976D2] !text-white font-extrabold text-sm sm:text-base px-6 py-3.5 rounded-full text-center shadow-md hover:shadow-lg transition-all duration-200 hover:-translate-y-0.5"
                 >
                   Get A Free Quote Now
-                </a>
+                </Link>
                 <a
                   href="/contact-us"
                   onClick={closeProjectModal}
