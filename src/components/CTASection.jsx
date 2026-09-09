@@ -34,7 +34,7 @@ export default function CTASection() {
   }
 
   return (
-    <section className="cta-section">
+    <section className="cta-section" id="strategy">
       {/* Background glow orbs */}
       <div className="cta-orb cta-orb-left" aria-hidden="true" />
       <div className="cta-orb cta-orb-right" aria-hidden="true" />

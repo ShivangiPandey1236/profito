@@ -365,7 +365,18 @@ export default function Hero() {
             Get a Free Proposal
             <ArrowRight size={17} className="hero-btn-arrow" />
           </Link>
-          <a href="#strategy" className="hero-btn-secondary" id="hero-cta-strategy">
+          <a
+            href="#strategy"
+            className="hero-btn-secondary"
+            id="hero-cta-strategy"
+            onClick={(e) => {
+              e.preventDefault()
+              const el = document.getElementById('strategy')
+              if (el) {
+                el.scrollIntoView({ behavior: 'smooth' })
+              }
+            }}
+          >
             Get Your Free AI Growth Strategy
           </a>
         </div>
