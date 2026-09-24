@@ -13,6 +13,7 @@ import CaseStudyDetail from './pages/CaseStudyDetail'
 import AsoPackages from './pages/AsoPackages'
 import PrivacyPolicy from './pages/PrivacyPolicy'
 import GetAQuote from './pages/GetAQuote'
+import TermsAndConditions from './pages/TermsAndConditions'
 
 function App() {
   return (
@@ -33,6 +34,9 @@ function App() {
         <Route path="/aso-packages-plans" element={<AsoPackages />} />
         <Route path="/privacy" element={<PrivacyPolicy />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/terms" element={<TermsAndConditions />} />
+        <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
+        <Route path="/terms-conditions" element={<TermsAndConditions />} />
         <Route path="/get-a-quote" element={<GetAQuote />} />
         <Route path="/get-quote" element={<GetAQuote />} />
         <Route path="/proposal" element={<GetAQuote />} />

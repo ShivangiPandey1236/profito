@@ -79,6 +79,7 @@ export default function Footer() {
       links: [
         { name: 'About Us', href: '/about' },
         { name: 'Privacy Policy', href: '/privacy-policy' },
+        { name: 'Terms & Conditions', href: '/terms-and-conditions' },
         { name: 'Careers', href: '/careers' },
         { name: 'Write For Us', href: '#write-for-us' },
         { name: 'Contact Us', href: '/contact-us' },
@@ -364,7 +365,7 @@ export default function Footer() {
           </p>
           <div className="flex gap-6">
             <Link to="/privacy-policy" className="text-zinc-500 text-[0.82rem] font-semibold hover:text-white transition-colors duration-150">Privacy</Link>
-            <a href="#terms" className="text-zinc-500 text-[0.82rem] font-semibold hover:text-white transition-colors duration-150">Terms</a>
+            <Link to="/terms-and-conditions" className="text-zinc-500 text-[0.82rem] font-semibold hover:text-white transition-colors duration-150">Terms &amp; Conditions</Link>
             <a href="#sitemap" className="text-zinc-500 text-[0.82rem] font-semibold hover:text-white transition-colors duration-150">Sitemap</a>
           </div>
         </div>

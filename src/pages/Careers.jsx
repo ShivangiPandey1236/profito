@@ -187,7 +187,7 @@ export default function Careers() {
   };
 
   return (
-    <div className="careers-page bg-gradient-to-b from-white via-[#f0f7ff] to-[#eaf5ff] min-h-screen text-slate-800 pt-28 sm:pt-32 pb-24 overflow-hidden font-sans">
+    <div className="careers-page bg-gradient-to-b from-white via-[#f0f7ff] to-[#eaf5ff] min-h-screen text-slate-800 pt-28 sm:pt-32 pb-12 sm:pb-16 overflow-hidden font-sans">
       <div className="max-w-[1450px] mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* =========================================================
