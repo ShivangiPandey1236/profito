@@ -101,6 +101,7 @@ export default function Header() {
     },
     {
       name: 'Web & App',
+      path: '/web-development',
       columns: [
         {
           sections: [
@@ -381,7 +382,7 @@ export default function Header() {
                 key={index}
                 className="flex items-center h-full group"
               >
-                {item.path ? (
+                {item.path && !item.columns ? (
                   <Link
                     to={item.path}
                     className="bg-transparent border-none cursor-pointer font-sans text-[0.95rem] font-semibold text-black flex items-center gap-1.5 py-4 transition-colors duration-150 hover:text-primary group-hover:text-primary"
@@ -390,9 +391,18 @@ export default function Header() {
                   </Link>
                 ) : (
                   <>
-                    <button className="bg-transparent border-none cursor-pointer font-sans text-[0.95rem] font-semibold text-black flex items-center gap-1.5 py-4 transition-colors duration-150 hover:text-primary group-hover:text-primary">
-                      {item.name} <ChevronDown size={14} className="transition-all duration-250 opacity-70 group-hover:rotate-180 group-hover:opacity-100" />
-                    </button>
+                    {item.path ? (
+                      <Link
+                        to={item.path}
+                        className="bg-transparent border-none cursor-pointer font-sans text-[0.95rem] font-semibold text-black flex items-center gap-1.5 py-4 transition-colors duration-150 hover:text-primary group-hover:text-primary"
+                      >
+                        {item.name} <ChevronDown size={14} className="transition-all duration-250 opacity-70 group-hover:rotate-180 group-hover:opacity-100" />
+                      </Link>
+                    ) : (
+                      <button className="bg-transparent border-none cursor-pointer font-sans text-[0.95rem] font-semibold text-black flex items-center gap-1.5 py-4 transition-colors duration-150 hover:text-primary group-hover:text-primary">
+                        {item.name} <ChevronDown size={14} className="transition-all duration-250 opacity-70 group-hover:rotate-180 group-hover:opacity-100" />
+                      </button>
+                    )}
                     <div className="absolute top-full left-8 right-8 bg-white border border-black/8 rounded-2xl shadow-[0_15px_40px_rgba(0,0,0,0.08)] p-8 transition-opacity duration-150 z-50 flex gap-8 before:content-[''] before:absolute before:bottom-full before:left-0 before:right-0 before:h-4 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto">
                       {item.columns.map((column, colIdx) => (
                         <div key={colIdx} className="flex-1 flex flex-col gap-6 pl-6 border-l border-black/5 first:border-l-0 first:pl-0">
@@ -411,6 +421,7 @@ export default function Header() {
                                   const isCaseStudies = subItem === 'Case Studies';
                                   const isDesignPortfolio = subItem === 'Design Portfolio';
                                   const isAsoPackages = subItem === 'App Store Optimization (ASO)' || subItem === 'ASO Packages' || subItem === 'ASO Packages & Plans';
+                                  const isWebDev = subItem === 'Web Development' || subItem === 'Custom Web Development';
                                   return (
                                     <li key={itemIdx}>
                                       {isAboutUs ? (
@@ -465,6 +476,13 @@ export default function Header() {
                                       ) : isAsoPackages ? (
                                         <Link
                                           to="/aso-packages"
+                                          className="text-[0.85rem] font-semibold text-zinc-700 hover:text-primary hover:bg-primary/6 hover:translate-x-1 rounded-lg pl-2 pr-2 hover:pl-4 py-1 transition-all duration-200 block text-left -mx-2 sub-item-link"
+                                        >
+                                          {subItem}
+                                        </Link>
+                                      ) : isWebDev ? (
+                                        <Link
+                                          to="/web-development"
                                           className="text-[0.85rem] font-semibold text-zinc-700 hover:text-primary hover:bg-primary/6 hover:translate-x-1 rounded-lg pl-2 pr-2 hover:pl-4 py-1 transition-all duration-200 block text-left -mx-2 sub-item-link"
                                         >
                                           {subItem}
@@ -551,6 +569,7 @@ export default function Header() {
                                 const isCaseStudies = subItem === 'Case Studies';
                                 const isDesignPortfolio = subItem === 'Design Portfolio';
                                 const isAsoPackages = subItem === 'App Store Optimization (ASO)' || subItem === 'ASO Packages' || subItem === 'ASO Packages & Plans';
+                                const isWebDev = subItem === 'Web Development' || subItem === 'Custom Web Development';
                                 return (
                                   <li key={itemIdx}>
                                     {isAboutUs ? (
@@ -612,6 +631,14 @@ export default function Header() {
                                     ) : isAsoPackages ? (
                                       <Link
                                         to="/aso-packages"
+                                        className="text-[0.85rem] font-semibold text-zinc-700 hover:text-primary hover:bg-primary/6 hover:translate-x-1 rounded-lg pl-2 pr-2 hover:pl-4 py-1 transition-all duration-200 block text-left -mx-2 sub-item-link"
+                                        onClick={() => setIsOpen(false)}
+                                      >
+                                        {subItem}
+                                      </Link>
+                                    ) : isWebDev ? (
+                                      <Link
+                                        to="/web-development"
                                         className="text-[0.85rem] font-semibold text-zinc-700 hover:text-primary hover:bg-primary/6 hover:translate-x-1 rounded-lg pl-2 pr-2 hover:pl-4 py-1 transition-all duration-200 block text-left -mx-2 sub-item-link"
                                         onClick={() => setIsOpen(false)}
                                       >

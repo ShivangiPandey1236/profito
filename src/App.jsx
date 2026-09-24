@@ -14,6 +14,7 @@ import AsoPackages from './pages/AsoPackages'
 import PrivacyPolicy from './pages/PrivacyPolicy'
 import GetAQuote from './pages/GetAQuote'
 import TermsAndConditions from './pages/TermsAndConditions'
+import WebDevelopment from './pages/WebDevelopment'
 
 function App() {
   return (
@@ -30,6 +31,8 @@ function App() {
         <Route path="/case-studies" element={<CaseStudies />} />
         <Route path="/case-studies/:id" element={<CaseStudyDetail />} />
         <Route path="/design-portfolio" element={<DesignPortfolio />} />
+        <Route path="/web-development" element={<WebDevelopment />} />
+        <Route path="/web-app" element={<WebDevelopment />} />
         <Route path="/aso-packages" element={<AsoPackages />} />
         <Route path="/aso-packages-plans" element={<AsoPackages />} />
         <Route path="/privacy" element={<PrivacyPolicy />} />
