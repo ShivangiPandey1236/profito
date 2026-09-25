@@ -1,7 +1,8 @@
 import React, { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
-import { Bot, FileSearch, TrendingUp, Sparkles, Smartphone, ShieldCheck, Code2, ArrowRight, Monitor, Paintbrush, Gauge, Layers, User, Building2 } from 'lucide-react'
+import { Bot, FileSearch, TrendingUp, Sparkles, Smartphone, ShieldCheck, Code2, ArrowRight, Monitor, Paintbrush, Gauge, Layers, User, Building2, PenLine, Rocket, FlaskConical, Headphones, Globe, Box, Megaphone, Wrench, Cloud, ClipboardCheck } from 'lucide-react'
 import CTASection from '../components/CTASection'
+import TechStackSection from '../components/TechStackSection'
 
 import aiAssistantsImg from '../assets/web-devlopemnt-ai.avif'
 import intelligentSearchImg from '../assets/Intelligent Search.jpg'
@@ -48,6 +49,81 @@ export default function WebDevelopment() {
     }
   ]
 
+  const tailoredServicesData = [
+    {
+      id: 'ai',
+      title: 'Artificial Intelligence',
+      description: 'Use AI tools to boost efficiency. Advanced AI solutions lower gas fees and latency, enhancing user experience.',
+      icon: Bot,
+    },
+    {
+      id: 'app-dev',
+      title: 'App Development',
+      description: 'Use advanced technology to enhance app development. Incorporating top frameworks helps streamline processes for a better user experience.',
+      icon: Smartphone,
+    },
+    {
+      id: 'websites',
+      title: 'Websites',
+      description: 'Explore Web development with cutting-edge technologies. Modern practices help create faster, responsive websites that boost user engagement.',
+      icon: Globe,
+    },
+    {
+      id: 'product-dev',
+      title: 'Product Development',
+      description: 'Use innovative technology to enhance product development. Embrace solutions to optimize workflows and user satisfaction.',
+      icon: Box,
+    },
+    {
+      id: 'software-dev',
+      title: 'Software Development',
+      description: 'Use advanced development tools to enhance efficiency. Businesses can reduce gas fees and latency for a better user experience.',
+      icon: Code2,
+    },
+    {
+      id: 'cyber-security',
+      title: 'Cyber Security',
+      description: 'Protect products and customer trust with AppSec, auth, encryption, pen testing, and DevSecOps practices.',
+      icon: ShieldCheck,
+    },
+    {
+      id: 'digital-marketing',
+      title: 'Digital Marketing',
+      description: 'Elevate your brand with data-driven strategies. Maximize ROI through targeted campaigns and personalized content.',
+      icon: Megaphone,
+    },
+    {
+      id: 'staffing',
+      title: 'Staffing',
+      description: 'Support continues post-launch with updates and monitoring. We offer flexible solutions to keep your website optimal.',
+      icon: User,
+    },
+    {
+      id: 'maintenance',
+      title: 'Maintenance',
+      description: 'Keep products healthy after go-live with monitoring, updates, backups, and SLA-backed support.',
+      icon: Wrench,
+    },
+    {
+      id: 'it-outsourcing',
+      title: 'IT Outsourcing',
+      description: 'Optimize your IT infrastructure with expert outsourcing. Focus on core business functions while we handle your technology needs, ensuring efficiency.',
+      icon: Cloud,
+    },
+    {
+      id: 'testing',
+      title: 'Testing',
+      description: 'Ensure peak performance through rigorous QA. Employing automated testing loops guarantees a seamless and reliable user experience.',
+      icon: ClipboardCheck,
+    },
+    {
+      id: 'consultancy',
+      title: 'Consultancy',
+      description: 'Our consultancy services aim to harness AI for improved efficiency. We focus on strategies that enhance user experience by optimizing processes.',
+      icon: Headphones,
+    },
+  ]
+
   return (
     <div className="pt-28 sm:pt-36 pb-20 px-4 sm:px-6 lg:px-8 max-w-[1600px] mx-auto min-h-screen text-black">
       {/* 1st Section: Autoplay Background Video */}
@@ -82,7 +158,7 @@ export default function WebDevelopment() {
         {/* Main Heading */}
         <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black text-center !text-[#0f172a] tracking-tight mb-16 font-sans">
           With{' '}
-          <span className="bg-gradient-to-r from-[#2196F3] via-[#00a0ff] to-[#bcd32e] bg-clip-text !text-transparent">
+          <span className="text-[#2196F3]">
             Generative AI
           </span>{' '}
           <Sparkles className="inline-block w-8 h-8 sm:w-10 sm:h-10 text-[#2196F3] -mt-2 animate-pulse" />
@@ -149,7 +225,7 @@ export default function WebDevelopment() {
             {/* Main Heading with explicit color overrides */}
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black !text-[#0f172a] tracking-tight mb-6 font-sans leading-tight">
               Mobile Apps That{' '}
-              <span className="inline-block bg-gradient-to-r from-[#2196F3] via-[#00a0ff] to-[#bcd32e] bg-clip-text !text-transparent">
+              <span className="inline-block text-[#2196F3]">
                 Drive Results
               </span>
             </h2>
@@ -259,7 +335,7 @@ export default function WebDevelopment() {
             {/* Main Heading */}
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black !text-[#0f172a] tracking-tight mb-4 font-sans leading-tight">
               Transforming Industries{' '}
-              <span className="block bg-gradient-to-r from-[#2196F3] via-[#00a0ff] to-[#6366f1] bg-clip-text !text-transparent">
+              <span className="block text-[#2196F3]">
                 Through Blockchain
               </span>
             </h2>
@@ -364,7 +440,7 @@ export default function WebDevelopment() {
             {/* Main Heading */}
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black !text-[#0f172a] tracking-tight mb-6 font-sans leading-[1.15]">
               Website Development{' '}
-              <span className="block bg-gradient-to-r from-[#2196F3] via-[#00a0ff] to-[#bcd32e] bg-clip-text !text-transparent">
+              <span className="block text-[#2196F3]">
                 That Drives Growth.
               </span>
             </h2>
@@ -438,6 +514,162 @@ export default function WebDevelopment() {
               />
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Technology Stack Section */}
+      <TechStackSection />
+
+      {/* Our Development Process Section */}
+      <section className="mb-24 py-8 sm:py-12">
+        {/* Eyebrow */}
+        <div className="flex items-center justify-center gap-3 mb-4">
+          <span className="w-8 h-[2.5px] bg-[#2196F3] rounded-full"></span>
+          <span className="text-xs sm:text-sm font-extrabold tracking-widest text-[#475569] uppercase font-sans">
+            OUR PROCESS
+          </span>
+          <span className="w-8 h-[2.5px] bg-[#bcd32e] rounded-full"></span>
+        </div>
+
+        {/* Heading */}
+        <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black text-center !text-[#0f172a] tracking-tight mb-4 font-sans leading-tight">
+          Our{' '}
+          <span className="text-[#2196F3]">
+            Development
+          </span>{' '}
+          Process
+        </h2>
+
+        {/* Subtitle */}
+        <p className="text-slate-500 text-base sm:text-lg text-center font-sans leading-relaxed mb-14 sm:mb-16 max-w-2xl mx-auto">
+          Empower Your Projects With The Right Talent, The Right Skills, And The Right Commitment.
+        </p>
+
+        {/* Steps */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-0">
+          {[
+            {
+              num: '01',
+              icon: PenLine,
+              title: 'Planning & Design',
+              desc: 'We define your goals, understand your project scope, and create a tailored development roadmap aligned to your needs.',
+            },
+            {
+              num: '02',
+              icon: Code2,
+              title: 'Expert Development',
+              desc: 'Our engineers build robust, scalable solutions using modern frameworks that integrate seamlessly with your existing systems.',
+            },
+            {
+              num: '03',
+              icon: FlaskConical,
+              title: 'Testing & Launch',
+              desc: 'Every solution undergoes rigorous quality assurance, security testing, and validation before going live.',
+            },
+            {
+              num: '04',
+              icon: Headphones,
+              title: 'Ongoing Support',
+              desc: 'We provide continuous updates, technical support, and proactive maintenance to keep your solutions running at their best.',
+            },
+          ].map((step, idx, arr) => {
+            const IconComp = step.icon
+            const isLast = idx === arr.length - 1
+            return (
+              <div key={idx} className="flex flex-col sm:flex-row lg:flex-col items-start relative">
+                {/* Step content */}
+                <div className="flex-1 px-6 sm:px-5 lg:px-7 pb-10 sm:pb-0 lg:pb-0">
+                  {/* Icon + Number row */}
+                  <div className="flex items-center gap-4 mb-5">
+                    {/* Icon box */}
+                    <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#2196F3] to-[#0d6ecc] text-white flex items-center justify-center shadow-lg shadow-blue-300/30 shrink-0">
+                      <IconComp className="w-7 h-7 stroke-[1.8]" />
+                    </div>
+                    {/* Step number */}
+                    <span className="text-5xl sm:text-6xl font-black text-[#2196F3]/15 leading-none select-none font-sans">
+                      {step.num}
+                    </span>
+                  </div>
+
+                  {/* Title */}
+                  <h3 className="text-lg sm:text-xl font-bold !text-[#0f172a] mb-2.5 font-sans leading-snug">
+                    {step.title}
+                  </h3>
+
+                  {/* Description */}
+                  <p className="text-slate-500 text-sm sm:text-base leading-relaxed font-sans">
+                    {step.desc}
+                  </p>
+                </div>
+
+                {/* Arrow connector — right of each step except last */}
+                {!isLast && (
+                  <div className="hidden lg:flex items-start pt-6 shrink-0">
+                    <ArrowRight className="w-6 h-6 text-slate-300" />
+                  </div>
+                )}
+
+                {/* Mobile/tablet: bottom divider instead of arrow */}
+                {!isLast && (
+                  <div className="lg:hidden w-px self-stretch bg-slate-200 mx-5 hidden sm:block" />
+                )}
+              </div>
+            )
+          })}
+        </div>
+      </section>
+
+      {/* Tailored Services Section */}
+      <section className="mb-24 py-8 sm:py-12">
+        {/* Eyebrow */}
+        <div className="flex items-center justify-center gap-3 mb-4">
+          <span className="w-8 h-[2.5px] bg-[#2196F3] rounded-full"></span>
+          <span className="text-xs sm:text-sm font-extrabold tracking-widest text-[#475569] uppercase font-sans">
+            TAILORED SERVICES
+          </span>
+          <span className="w-8 h-[2.5px] bg-[#bcd32e] rounded-full"></span>
+        </div>
+
+        {/* Heading */}
+        <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black text-center !text-[#0f172a] tracking-tight mb-4 font-sans leading-tight">
+          For{' '}
+          <span className="text-[#2196F3]">
+            Modern Business
+          </span>{' '}
+          Needs
+        </h2>
+
+        {/* Subtitle */}
+        <p className="text-slate-500 text-base sm:text-lg text-center font-sans leading-relaxed mb-12 sm:mb-16 max-w-2xl mx-auto">
+          We deliver innovative solutions to help you build, grow and stay ahead in the digital world.
+        </p>
+
+        {/* 12 Cards Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-7 items-stretch">
+          {tailoredServicesData.map((service) => {
+            const IconComp = service.icon
+            return (
+              <div
+                key={service.id}
+                className="group bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-7 border border-slate-200/80 shadow-md shadow-slate-100 hover:shadow-xl hover:shadow-blue-500/10 hover:border-[#2196F3]/40 transition-all duration-300 hover:-translate-y-1 flex items-start gap-4 sm:gap-5"
+              >
+                {/* Icon Box */}
+                <div className="w-12 h-12 sm:w-13 sm:h-13 rounded-2xl bg-[#e0f2fe] text-[#2196F3] group-hover:bg-gradient-to-br group-hover:from-[#2196F3] group-hover:to-[#0d6ecc] group-hover:text-white flex items-center justify-center shrink-0 transition-all duration-300 shadow-sm group-hover:shadow-md group-hover:shadow-blue-400/30">
+                  <IconComp className="w-6 h-6 stroke-[2]" />
+                </div>
+
+                {/* Content */}
+                <div className="flex-1 min-w-0">
+                  <h3 className="text-base sm:text-lg font-bold !text-[#0f172a] group-hover:!text-[#2196F3] mb-2 font-sans transition-colors duration-200 leading-snug">
+                    {service.title}
+                  </h3>
+                  <p className="text-slate-500 text-xs sm:text-sm leading-relaxed font-sans">
+                    {service.description}
+                  </p>
+                </div>
+              </div>
+            )
+          })}
         </div>
       </section>
 
