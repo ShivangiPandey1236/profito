@@ -1,12 +1,14 @@
 import React, { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
-import { Bot, FileSearch, TrendingUp, Sparkles, Smartphone, ShieldCheck, Code2, ArrowRight } from 'lucide-react'
+import { Bot, FileSearch, TrendingUp, Sparkles, Smartphone, ShieldCheck, Code2, ArrowRight, Monitor, Paintbrush, Gauge, Layers, User, Building2 } from 'lucide-react'
 import CTASection from '../components/CTASection'
 
 import aiAssistantsImg from '../assets/web-devlopemnt-ai.avif'
 import intelligentSearchImg from '../assets/Intelligent Search.jpg'
 import predictiveAnalyticsImg from '../assets/predictive.jpg'
 import mobileAppImg from '../assets/mobile-app-n.png'
+import websiteDevelopmentImg from '../assets/website developemtt.png'
+import blockchainImg from '../assets/blochain.png'
 
 export default function WebDevelopment() {
   const videoRef = useRef(null)
@@ -222,6 +224,216 @@ export default function WebDevelopment() {
               <img
                 src={mobileAppImg}
                 alt="Mobile Apps That Drive Results"
+                className="w-full h-auto object-contain drop-shadow-2xl hover:scale-105 transition-transform duration-500"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 4th Section: Transforming Industries Through Blockchain Section */}
+      <section className="mb-24 py-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          {/* Left Column: 3D Ethereum Robotic Hand Visual Asset Image */}
+          <div className="lg:col-span-5 flex justify-center items-center">
+            <div className="relative w-full max-w-[480px] lg:max-w-[440px]">
+              <img
+                src={blockchainImg}
+                alt="Transforming Industries Through Blockchain"
+                className="w-full h-auto object-contain drop-shadow-2xl hover:scale-105 transition-transform duration-500"
+              />
+            </div>
+          </div>
+
+          {/* Right Column: Heading, Subtitle & 5 Cards Grid */}
+          <div className="lg:col-span-7 flex flex-col justify-center">
+            {/* Top Eyebrow Subtitle */}
+            <div className="flex items-center gap-3 mb-4">
+              <span className="w-8 h-[2.5px] bg-[#2196F3] rounded-full"></span>
+              <span className="text-xs sm:text-sm font-extrabold tracking-widest text-[#475569] uppercase font-sans">
+                BLOCKCHAIN & WEB3
+              </span>
+              <span className="w-8 h-[2.5px] bg-[#bcd32e] rounded-full"></span>
+            </div>
+
+            {/* Main Heading */}
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black !text-[#0f172a] tracking-tight mb-4 font-sans leading-tight">
+              Transforming Industries{' '}
+              <span className="block bg-gradient-to-r from-[#2196F3] via-[#00a0ff] to-[#6366f1] bg-clip-text !text-transparent">
+                Through Blockchain
+              </span>
+            </h2>
+
+            {/* Subtitle Paragraph */}
+            <p className="text-slate-600 text-base sm:text-lg font-medium leading-relaxed mb-10 font-sans max-w-2xl">
+              Harness The Power Of Blockchain Technology For Secure And Transparent Financial Transactions
+            </p>
+
+            {/* 5 Feature Cards Grid (Row 1: 3 Cards, Row 2: 2 Cards) */}
+            <div className="flex flex-col gap-5">
+              {/* Top Row: 3 Cards */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
+                {/* Card 1 */}
+                <div className="bg-[#f0f9ff]/70 border border-sky-100/80 p-5 rounded-2xl flex flex-col justify-between hover:shadow-md transition-all duration-300">
+                  <div>
+                    <div className="w-11 h-11 rounded-xl bg-[#e0f2fe] text-[#2196F3] flex items-center justify-center mb-3">
+                      <User className="w-5 h-5 stroke-[2.2]" />
+                    </div>
+                    <h3 className="text-base font-bold !text-[#0f172a] mb-1.5 font-sans leading-snug">
+                      Consulting and Strategy
+                    </h3>
+                    <p className="text-xs text-slate-600 leading-relaxed font-sans">
+                      Reduce risk with a clear roadmap. We handle use case validation, platform selection, and architecture to ensure visible MVPs.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Card 2 */}
+                <div className="bg-[#f0f9ff]/70 border border-sky-100/80 p-5 rounded-2xl flex flex-col justify-between hover:shadow-md transition-all duration-300">
+                  <div>
+                    <div className="w-11 h-11 rounded-xl bg-[#e0f2fe] text-[#2196F3] flex items-center justify-center mb-3">
+                      <Code2 className="w-5 h-5 stroke-[2.2]" />
+                    </div>
+                    <h3 className="text-base font-bold !text-[#0f172a] mb-1.5 font-sans leading-snug">
+                      dApp's & Smart Contracts
+                    </h3>
+                    <p className="text-xs text-slate-600 leading-relaxed font-sans">
+                      Engineered for scalability. We build robust, secure smart contracts and decentralized application with rigorous testing.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Card 3 */}
+                <div className="bg-[#f0f9ff]/70 border border-sky-100/80 p-5 rounded-2xl flex flex-col justify-between hover:shadow-md transition-all duration-300">
+                  <div>
+                    <div className="w-11 h-11 rounded-xl bg-[#e0f2fe] text-[#2196F3] flex items-center justify-center mb-3">
+                      <Layers className="w-5 h-5 stroke-[2.2]" />
+                    </div>
+                    <h3 className="text-base font-bold !text-[#0f172a] mb-1.5 font-sans leading-snug">
+                      Layer-2 Development
+                    </h3>
+                    <p className="text-xs text-slate-600 leading-relaxed font-sans">
+                      Increase throughput and lower costs. We implement high performance L2 solutions to reduce gas fees and latency for better UX.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Bottom Row: 2 Cards */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                {/* Card 4 */}
+                <div className="bg-[#f0f9ff]/70 border border-sky-100/80 p-5 rounded-2xl flex flex-col justify-between hover:shadow-md transition-all duration-300">
+                  <div>
+                    <div className="w-11 h-11 rounded-xl bg-[#e0f2fe] text-[#2196F3] flex items-center justify-center mb-3">
+                      <Building2 className="w-5 h-5 stroke-[2.2]" />
+                    </div>
+                    <h3 className="text-base font-bold !text-[#0f172a] mb-1.5 font-sans leading-snug">
+                      Enterprise and Permissioned Networks
+                    </h3>
+                    <p className="text-xs text-slate-600 leading-relaxed font-sans">
+                      We focus on governance and privacy. Our commitment ensures compliance with the highest standards.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Card 5 */}
+                <div className="bg-[#f0f9ff]/70 border border-sky-100/80 p-5 rounded-2xl flex flex-col justify-between hover:shadow-md transition-all duration-300">
+                  <div>
+                    <div className="w-11 h-11 rounded-xl bg-[#e0f2fe] text-[#2196F3] flex items-center justify-center mb-3">
+                      <ShieldCheck className="w-5 h-5 stroke-[2.2]" />
+                    </div>
+                    <h3 className="text-base font-bold !text-[#0f172a] mb-1.5 font-sans leading-snug">
+                      Security & Compliance
+                    </h3>
+                    <p className="text-xs text-slate-600 leading-relaxed font-sans">
+                      We prioritize security in engineering and follow global standards like GDPR and ISO/IEC 27001 to protect your data.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 5th Section: Website Development That Drives Growth Section */}
+      <section className="mb-24 py-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          {/* Left Column: Heading, Paragraph, CTA & 4 Horizontal Feature Badges */}
+          <div className="lg:col-span-6 flex flex-col justify-center">
+            {/* Main Heading */}
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black !text-[#0f172a] tracking-tight mb-6 font-sans leading-[1.15]">
+              Website Development{' '}
+              <span className="block bg-gradient-to-r from-[#2196F3] via-[#00a0ff] to-[#bcd32e] bg-clip-text !text-transparent">
+                That Drives Growth.
+              </span>
+            </h2>
+
+            {/* Subtitle Paragraph */}
+            <p className="text-slate-600 text-base sm:text-lg leading-relaxed mb-8 font-sans max-w-xl">
+              We build modern, high-performing websites that help your business stand out, engage users, and achieve real results.
+            </p>
+
+            {/* CTA Button */}
+            <div className="mb-14">
+              <Link
+                to="/get-a-quote"
+                className="bg-primary !text-white border border-primary rounded-full py-3.5 px-8 font-semibold inline-flex items-center gap-2 text-base shadow-[0_4px_14px_rgba(33,150,243,0.25)] transition-all duration-250 hover:bg-black hover:border-black hover:!text-white hover:-translate-y-0.5"
+              >
+                Get Started <ArrowRight className="w-5 h-5" />
+              </Link>
+            </div>
+
+            {/* Bottom 4 Horizontal Features Bar */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 pt-6 border-t border-slate-200/80">
+              {/* Feature 1 */}
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-xl bg-[#e0f2fe] text-[#2196F3] flex items-center justify-center shrink-0">
+                  <Monitor className="w-5 h-5 stroke-[2.2]" />
+                </div>
+                <span className="text-xs sm:text-sm font-bold !text-[#0f172a] font-sans leading-tight">
+                  Responsive Websites
+                </span>
+              </div>
+
+              {/* Feature 2 */}
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-xl bg-[#e0f2fe] text-[#2196F3] flex items-center justify-center shrink-0">
+                  <Paintbrush className="w-5 h-5 stroke-[2.2]" />
+                </div>
+                <span className="text-xs sm:text-sm font-bold !text-[#0f172a] font-sans leading-tight">
+                  Modern UI/UX
+                </span>
+              </div>
+
+              {/* Feature 3 */}
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-xl bg-[#e0f2fe] text-[#2196F3] flex items-center justify-center shrink-0">
+                  <Gauge className="w-5 h-5 stroke-[2.2]" />
+                </div>
+                <span className="text-xs sm:text-sm font-bold !text-[#0f172a] font-sans leading-tight">
+                  Fast Performance
+                </span>
+              </div>
+
+              {/* Feature 4 */}
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-xl bg-[#e0f2fe] text-[#2196F3] flex items-center justify-center shrink-0">
+                  <Layers className="w-5 h-5 stroke-[2.2]" />
+                </div>
+                <span className="text-xs sm:text-sm font-bold !text-[#0f172a] font-sans leading-tight">
+                  Scalable Solutions
+                </span>
+              </div>
+            </div>
+          </div>
+
+          {/* Right Column: 3D Illustration Graphic Asset Image */}
+          <div className="lg:col-span-6 flex justify-center items-center">
+            <div className="relative w-full max-w-[920px]">
+              <img
+                src={websiteDevelopmentImg}
+                alt="Website Development That Drives Growth"
                 className="w-full h-auto object-contain drop-shadow-2xl hover:scale-105 transition-transform duration-500"
               />
             </div>
