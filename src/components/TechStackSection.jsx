@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Code2, Server, Smartphone, Cloud, Database, ArrowRight } from 'lucide-react'
+import { Code2, Server, Smartphone, Cloud, Database, ArrowRight, ChevronRight } from 'lucide-react'
 
 // Custom high-quality SVG icons for tech stack items
 const TechIcons = {
@@ -760,35 +760,34 @@ export default function TechStackSection() {
   const ActiveIcon = activeCategory.icon
 
   return (
-    <section className="mb-24 pb-6 sm:pb-8 py-4 sm:py-6">
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 xl:gap-12 items-stretch">
-        {/* Left Column: Heading, Subtitle & Interactive Vertical Tabs Sidebar */}
-        <div className="lg:col-span-4 flex flex-col justify-between h-full">
-          <div>
-            {/* Top Eyebrow Subtitle */}
-            <div className="flex items-center gap-3 mb-3 sm:mb-4">
-              <span className="text-xs sm:text-sm font-extrabold tracking-widest text-[#2196F3] uppercase font-sans">
-                TECHNOLOGY STACK
-              </span>
-              <span className="w-10 h-[2px] bg-[#2196F3] rounded-full"></span>
-            </div>
+    <section className="mb-24 py-8 sm:py-12">
+      {/* Top Eyebrow Subtitle (Matching existing page section heading style) */}
+      <div className="flex items-center justify-center gap-3 mb-4">
+        <span className="w-8 h-[2.5px] bg-[#2196F3] rounded-full"></span>
+        <span className="text-xs sm:text-sm font-extrabold tracking-widest text-[#475569] uppercase font-sans">
+          TECHNOLOGY STACK
+        </span>
+        <span className="w-8 h-[2.5px] bg-[#bcd32e] rounded-full"></span>
+      </div>
 
-            {/* Main Heading */}
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black !text-[#0f172a] tracking-tight mb-4 font-sans leading-[1.15]">
-              Future Ready{' '}
-              <span className="block text-[#2196F3]">
-                Technology Stack
-              </span>
-            </h2>
+      {/* Main Heading (Matching existing page section heading style) */}
+      <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black text-center !text-[#0f172a] tracking-tight mb-4 font-sans leading-tight">
+        Future Ready{' '}
+        <span className="text-[#2196F3]">
+          Technology Stack
+        </span>
+      </h2>
 
-            {/* Paragraph */}
-            <p className="text-slate-600 text-sm sm:text-base leading-relaxed mb-6 lg:mb-8 font-sans max-w-md">
-              We work with modern technologies to build fast, responsive and scalable web applications that deliver great user experiences.
-            </p>
-          </div>
+      {/* Subtitle Paragraph */}
+      <p className="text-slate-600 text-base sm:text-lg text-center font-sans leading-relaxed mb-12 sm:mb-16 max-w-2xl mx-auto">
+        We work with modern technologies to build fast, responsive and scalable web applications that deliver great user experiences.
+      </p>
 
-          {/* Category Tabs (Vertical List on Desktop, Horizontal Pill Row on Mobile) */}
-          <div className="flex lg:flex-col overflow-x-auto lg:overflow-visible gap-2 sm:gap-2.5 pb-2 lg:pb-0 scrollbar-none max-w-full">
+      {/* Outer Card Container (Matching screenshot layout) */}
+      <div className="bg-[#f5f8fc]/80 rounded-3xl sm:rounded-[36px] border border-slate-200/80 p-4 sm:p-6 lg:p-8 shadow-xl shadow-slate-200/40">
+        <div className="flex flex-col lg:flex-row gap-6 lg:gap-8 items-stretch">
+          {/* Left Sidebar Category Tabs */}
+          <div className="w-full lg:w-72 shrink-0 flex flex-row lg:flex-col overflow-x-auto lg:overflow-visible gap-2.5 sm:gap-3 pb-2 lg:pb-0 scrollbar-none">
             {categories.map((category) => {
               const IconComp = category.icon
               const isActive = activeTab === category.id
@@ -796,71 +795,62 @@ export default function TechStackSection() {
                 <button
                   key={category.id}
                   onClick={() => setActiveTab(category.id)}
-                  className={`flex items-center justify-between px-4 py-3 sm:px-5 sm:py-3.5 rounded-2xl text-left transition-all duration-300 shrink-0 lg:w-full group cursor-pointer ${
+                  className={`flex items-center justify-between px-4 py-3.5 sm:px-5 sm:py-4 rounded-2xl text-left transition-all duration-300 shrink-0 w-auto lg:w-full group cursor-pointer ${
                     isActive
-                      ? 'bg-[#e0f2fe]/90 text-[#2196F3] font-bold border border-sky-200/90 shadow-sm shadow-sky-100'
-                      : 'bg-slate-50/80 lg:bg-transparent text-slate-600 hover:text-slate-900 hover:bg-slate-100/80 border border-slate-100 lg:border-transparent'
+                      ? 'bg-[#2196F3] text-white font-bold shadow-lg shadow-blue-500/25 border border-transparent'
+                      : 'bg-white text-slate-700 hover:text-slate-900 hover:bg-slate-50 border border-slate-200/80 shadow-sm'
                   }`}
                 >
                   <div className="flex items-center gap-3 sm:gap-3.5">
                     <div
-                      className={`w-8 h-8 sm:w-9 sm:h-9 rounded-xl flex items-center justify-center transition-colors shrink-0 ${
+                      className={`w-9 h-9 sm:w-10 sm:h-10 rounded-xl flex items-center justify-center transition-colors shrink-0 ${
                         isActive
-                          ? 'bg-[#2196F3] text-white shadow-md shadow-blue-500/20'
-                          : 'bg-slate-100 text-slate-500 group-hover:bg-slate-200 group-hover:text-slate-800'
+                          ? 'bg-white text-[#2196F3] shadow-sm'
+                          : 'bg-[#e0f2fe] text-[#2196F3]'
                       }`}
                     >
                       <IconComp className="w-4 h-4 sm:w-5 sm:h-5 stroke-[2.2]" />
                     </div>
-                    <span className="text-xs sm:text-sm lg:text-base font-bold font-sans tracking-wide whitespace-nowrap">
+                    <span className="text-sm sm:text-base font-bold font-sans tracking-wide whitespace-nowrap">
                       {category.name}
                     </span>
                   </div>
 
-                  {isActive && (
-                    <ArrowRight className="w-4 h-4 text-[#2196F3] ml-2.5 hidden lg:inline-block shrink-0" />
-                  )}
+                  <ChevronRight
+                    className={`w-5 h-5 transition-transform duration-200 ml-3 hidden lg:inline-block shrink-0 ${
+                      isActive ? 'text-white' : 'text-slate-400 group-hover:translate-x-0.5'
+                    }`}
+                  />
                 </button>
               )
             })}
           </div>
-        </div>
 
-        {/* Right Column: Interactive White Panel Display Card */}
-        <div className="lg:col-span-8 flex flex-col h-full">
-          <div className="bg-white rounded-3xl sm:rounded-[32px] border border-slate-200/80 shadow-xl shadow-slate-200/40 p-5 sm:p-7 lg:p-8 flex flex-col h-full transition-all duration-300 overflow-hidden">
+          {/* Right Main Display Card */}
+          <div className="flex-1 bg-white rounded-2xl sm:rounded-3xl p-5 sm:p-7 lg:p-8 border border-slate-200/80 shadow-sm flex flex-col justify-between min-h-[420px]">
             {/* Top Bar inside Card */}
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-5 mb-5 border-b border-slate-100">
-              <div className="flex items-center gap-3 sm:gap-3.5">
-                <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-2xl bg-[#2196F3] text-white flex items-center justify-center shadow-md shadow-blue-500/20 shrink-0">
-                  <ActiveIcon className="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.2]" />
-                </div>
-                <h3 className="text-xl sm:text-2xl lg:text-3xl font-black !text-[#0f172a] font-sans tracking-tight">
-                  {activeCategory.name}
-                </h3>
+            <div className="flex items-center gap-3.5 pb-5 mb-6 border-b border-slate-100">
+              <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-2xl bg-[#2196F3] text-white flex items-center justify-center shadow-md shadow-blue-500/20 shrink-0">
+                <ActiveIcon className="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.2]" />
               </div>
-
-              <div className="flex items-center gap-3">
-                <span className="hidden sm:block w-10 lg:w-12 h-[1px] bg-slate-200"></span>
-                <span className="text-[10px] sm:text-xs font-bold tracking-widest text-slate-400 uppercase font-sans">
-                  {activeCategory.subtitle}
-                </span>
-              </div>
+              <h3 className="text-2xl sm:text-3xl font-extrabold !text-[#0f172a] font-sans tracking-tight">
+                {activeCategory.name}
+              </h3>
             </div>
 
             {/* Grid of Tech Stack Items */}
-            <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-8 gap-3.5 sm:gap-4">
+            <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-8 gap-3 sm:gap-4 flex-1">
               {activeCategory.items.map((item, idx) => {
                 const IconComponent = item.icon
                 return (
                   <div
                     key={idx}
-                    className="bg-white border border-slate-100/90 shadow-[0_2px_12px_rgba(0,0,0,0.03)] hover:shadow-lg hover:border-[#2196F3]/40 hover:-translate-y-1 rounded-2xl p-2.5 sm:p-3 lg:p-3.5 flex flex-col items-center justify-center gap-2 transition-all duration-300 group cursor-pointer h-[100px] sm:h-[108px] lg:h-[112px] w-full"
+                    className="bg-white border border-slate-200/80 shadow-[0_2px_8px_rgba(0,0,0,0.03)] hover:shadow-lg hover:border-[#2196F3]/40 hover:-translate-y-1 rounded-2xl p-2.5 sm:p-3 lg:p-3.5 flex flex-col items-center justify-center gap-2.5 transition-all duration-300 group cursor-pointer h-[104px] sm:h-[112px] w-full"
                   >
-                    <div className="transition-transform duration-300 group-hover:scale-110 flex items-center justify-center shrink-0">
+                    <div className="transition-transform duration-300 group-hover:scale-110 flex items-center justify-center shrink-0 h-9 w-9">
                       <IconComponent />
                     </div>
-                    <span className="text-[10px] sm:text-[11px] font-semibold text-slate-700 group-hover:text-[#2196F3] text-center leading-tight transition-colors font-sans w-full px-0.5 line-clamp-2">
+                    <span className="text-[11px] sm:text-xs font-semibold text-slate-700 group-hover:text-[#2196F3] text-center leading-tight transition-colors font-sans w-full px-0.5 line-clamp-2">
                       {item.name}
                     </span>
                   </div>
@@ -873,3 +863,4 @@ export default function TechStackSection() {
     </section>
   )
 }
+

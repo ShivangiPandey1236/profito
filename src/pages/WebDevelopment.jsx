@@ -1,15 +1,16 @@
 import React, { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
-import { Bot, FileSearch, TrendingUp, Sparkles, Smartphone, ShieldCheck, Code2, ArrowRight, Monitor, Paintbrush, Gauge, Layers, User, Building2, PenLine, Rocket, FlaskConical, Headphones, Globe, Box, Megaphone, Wrench, Cloud, ClipboardCheck } from 'lucide-react'
+import { Bot, FileSearch, TrendingUp, Sparkles, Smartphone, ShieldCheck, Code2, ArrowRight, Monitor, Paintbrush, Gauge, Layers, User, Building2, PenLine, Rocket, FlaskConical, Headphones, Globe, Box, Megaphone, Wrench, Cloud, ClipboardCheck, Users, Settings, BarChart3 } from 'lucide-react'
 import CTASection from '../components/CTASection'
 import TechStackSection from '../components/TechStackSection'
-
+import ClientsSection from '../components/ClientsSection'
 import aiAssistantsImg from '../assets/web-devlopemnt-ai.avif'
 import intelligentSearchImg from '../assets/Intelligent Search.jpg'
 import predictiveAnalyticsImg from '../assets/predictive.jpg'
 import mobileAppImg from '../assets/mobile-app-n.png'
 import websiteDevelopmentImg from '../assets/website developemtt.png'
 import blockchainImg from '../assets/blochain.png'
+import crmDevImg from '../assets/crm-deve.png'
 
 export default function WebDevelopment() {
   const videoRef = useRef(null)
@@ -307,8 +308,10 @@ export default function WebDevelopment() {
         </div>
       </section>
 
+
       {/* 4th Section: Transforming Industries Through Blockchain Section */}
       <section className="mb-24 py-8">
+
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           {/* Left Column: 3D Ethereum Robotic Hand Visual Asset Image */}
           <div className="lg:col-span-5 flex justify-center items-center">
@@ -517,6 +520,120 @@ export default function WebDevelopment() {
         </div>
       </section>
 
+      {/* CRM Development Section */}
+      <section className="mb-24 py-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          {/* Left Column: CRM Illustration Image */}
+          <div className="lg:col-span-5 flex justify-center items-center order-2 lg:order-1">
+            <div className="relative w-full max-w-[540px] lg:max-w-[620px]">
+              <img
+                src={crmDevImg}
+                alt="CRM Solutions That Drive Your Business"
+                className="w-full h-auto object-contain drop-shadow-2xl hover:scale-105 transition-transform duration-500"
+              />
+            </div>
+          </div>
+
+          {/* Right Column: Text, Feature List & CTA */}
+          <div className="lg:col-span-7 flex flex-col justify-center order-1 lg:order-2">
+            {/* Top Eyebrow Subtitle */}
+            <div className="flex items-center gap-3 mb-4">
+              <span className="w-8 h-[2.5px] bg-[#2196F3] rounded-full"></span>
+              <span className="text-xs sm:text-sm font-extrabold tracking-widest text-[#475569] uppercase font-sans">
+                CRM DEVELOPMENT
+              </span>
+              <span className="w-8 h-[2.5px] bg-[#bcd32e] rounded-full"></span>
+            </div>
+
+            {/* Main Heading */}
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black !text-[#0f172a] tracking-tight mb-6 font-sans leading-tight">
+              CRM Solutions That{' '}
+              <span className="block sm:inline text-[#2196F3]">
+                Drive Your Business
+              </span>
+            </h2>
+
+            {/* Subtitle Paragraph */}
+            <p className="text-slate-600 text-base sm:text-lg leading-relaxed mb-8 font-sans max-w-2xl">
+              We build powerful CRM solutions that help you manage customer relationships, streamline operations, and boost sales — all in one place.
+            </p>
+
+            {/* Feature Rows */}
+            <div className="flex flex-col gap-5 mb-10">
+              {/* Feature 1 */}
+              {/* <div className="flex items-start gap-4 group">
+                <div className="w-12 h-12 rounded-2xl bg-[#e0f2fe] text-[#2196F3] flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-110 shadow-sm">
+                  <Users className="w-6 h-6 stroke-[2.2]" />
+                </div>
+                <div>
+                  <h3 className="text-base sm:text-lg font-bold !text-[#0f172a] mb-1 font-sans">
+                    Custom CRM Development
+                  </h3>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-sans max-w-lg">
+                    Tailored CRM solutions to match your business workflows and customer needs.
+                  </p>
+                </div>
+              </div> */}
+
+              {/* Feature 2 */}
+              {/* <div className="flex items-start gap-4 group">
+                <div className="w-12 h-12 rounded-2xl bg-[#f4fce3] text-[#5a6e00] flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-110 shadow-sm">
+                  <ShieldCheck className="w-6 h-6 stroke-[2.2]" />
+                </div>
+                <div>
+                  <h3 className="text-base sm:text-lg font-bold !text-[#0f172a] mb-1 font-sans">
+                    Sales & Customer Management
+                  </h3>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-sans max-w-lg">
+                    Track leads, manage pipelines, and build stronger customer relationships.
+                  </p>
+                </div>
+              </div> */}
+
+              {/* Feature 3 */}
+              <div className="flex items-start gap-4 group">
+                <div className="w-12 h-12 rounded-2xl bg-[#e0f2fe] text-[#2196F3] flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-110 shadow-sm">
+                  <Settings className="w-6 h-6 stroke-[2.2]" />
+                </div>
+                <div>
+                  <h3 className="text-base sm:text-lg font-bold !text-[#0f172a] mb-1 font-sans">
+                    Integration & Automation
+                  </h3>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-sans max-w-lg">
+                    Connect with your existing tools and automate key processes for higher productivity.
+                  </p>
+                </div>
+              </div>
+
+              {/* Feature 4 */}
+              <div className="flex items-start gap-4 group">
+                <div className="w-12 h-12 rounded-2xl bg-[#e0f2fe] text-[#2196F3] flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-110 shadow-sm">
+                  <BarChart3 className="w-6 h-6 stroke-[2.2]" />
+                </div>
+                <div>
+                  <h3 className="text-base sm:text-lg font-bold !text-[#0f172a] mb-1 font-sans">
+                    Analytics & Reporting
+                  </h3>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-sans max-w-lg">
+                    Get real-time insights and make data-driven decisions for sustainable growth.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Build With Us Button */}
+            <div>
+              <Link
+                to="/contact-us"
+                className="bg-primary !text-white border border-primary rounded-full py-3.5 px-8 font-semibold inline-flex items-center gap-2 text-base shadow-[0_4px_14px_rgba(33,150,243,0.25)] transition-all duration-250 hover:bg-black hover:border-black hover:!text-white hover:-translate-y-0.5"
+              >
+                Build With Us <ArrowRight className="w-5 h-5" />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Technology Stack Section */}
       <TechStackSection />
 
@@ -646,21 +763,43 @@ export default function WebDevelopment() {
 
         {/* 12 Cards Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-7 items-stretch">
-          {tailoredServicesData.map((service) => {
+          {tailoredServicesData.map((service, idx) => {
             const IconComp = service.icon
+            const isBlue = idx % 2 === 0
             return (
               <div
                 key={service.id}
-                className="group bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-7 border border-slate-200/80 shadow-md shadow-slate-100 hover:shadow-xl hover:shadow-blue-500/10 hover:border-[#2196F3]/40 transition-all duration-300 hover:-translate-y-1 flex items-start gap-4 sm:gap-5"
+                className={`group relative bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-7 border border-slate-200/80 shadow-md shadow-slate-100/60 transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-start overflow-hidden cursor-pointer ${
+                  isBlue
+                    ? 'hover:shadow-xl hover:shadow-blue-500/12 hover:border-[#2196F3]/40'
+                    : 'hover:shadow-xl hover:shadow-lime-500/15 hover:border-[#bcd32e]/60'
+                }`}
               >
-                {/* Icon Box */}
-                <div className="w-12 h-12 sm:w-13 sm:h-13 rounded-2xl bg-[#e0f2fe] text-[#2196F3] group-hover:bg-gradient-to-br group-hover:from-[#2196F3] group-hover:to-[#0d6ecc] group-hover:text-white flex items-center justify-center shrink-0 transition-all duration-300 shadow-sm group-hover:shadow-md group-hover:shadow-blue-400/30">
+                {/* Left Vertical Accent Bar */}
+                <div
+                  className={`absolute left-0 top-3 bottom-3 w-1.5 rounded-r-full transition-all duration-300 group-hover:w-2 ${
+                    isBlue ? 'bg-[#2196F3]' : 'bg-[#bcd32e]'
+                  }`}
+                />
+
+                {/* Top-Left Icon Box */}
+                <div
+                  className={`w-12 h-12 sm:w-13 sm:h-13 rounded-2xl flex items-center justify-center mb-4 sm:mb-5 shrink-0 transition-all duration-300 shadow-sm group-hover:scale-110 group-hover:rotate-3 ${
+                    isBlue
+                      ? 'bg-[#e0f2fe] text-[#2196F3] group-hover:bg-[#2196F3] group-hover:text-white group-hover:shadow-md group-hover:shadow-blue-400/30'
+                      : 'bg-[#f4fce3] text-[#5a6e00] group-hover:bg-[#bcd32e] group-hover:text-black group-hover:shadow-md group-hover:shadow-lime-400/30'
+                  }`}
+                >
                   <IconComp className="w-6 h-6 stroke-[2]" />
                 </div>
 
                 {/* Content */}
-                <div className="flex-1 min-w-0">
-                  <h3 className="text-base sm:text-lg font-bold !text-[#0f172a] group-hover:!text-[#2196F3] mb-2 font-sans transition-colors duration-200 leading-snug">
+                <div className="flex-1 flex flex-col">
+                  <h3
+                    className={`text-lg sm:text-xl font-extrabold !text-[#0f172a] mb-2 font-sans transition-colors duration-200 leading-snug ${
+                      isBlue ? 'group-hover:!text-[#2196F3]' : 'group-hover:!text-[#5a6e00]'
+                    }`}
+                  >
                     {service.title}
                   </h3>
                   <p className="text-slate-500 text-xs sm:text-sm leading-relaxed font-sans">
@@ -673,6 +812,9 @@ export default function WebDevelopment() {
         </div>
       </section>
 
+  <div className="mb-12">
+        <ClientsSection />
+      </div>
       {/* CTA Section */}
       <div className="mb-12">
         <CTASection />
