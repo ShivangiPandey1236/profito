@@ -15,6 +15,7 @@ import PrivacyPolicy from './pages/PrivacyPolicy'
 import GetAQuote from './pages/GetAQuote'
 import TermsAndConditions from './pages/TermsAndConditions'
 import WebDevelopment from './pages/WebDevelopment'
+import WebsiteDesign from './pages/WebsiteDesign'
 
 function App() {
   return (
@@ -33,6 +34,8 @@ function App() {
         <Route path="/design-portfolio" element={<DesignPortfolio />} />
         <Route path="/web-development" element={<WebDevelopment />} />
         <Route path="/web-app" element={<WebDevelopment />} />
+        <Route path="/website-design" element={<WebsiteDesign />} />
+        <Route path="/website-design-services" element={<WebsiteDesign />} />
         <Route path="/aso-packages" element={<AsoPackages />} />
         <Route path="/aso-packages-plans" element={<AsoPackages />} />
         <Route path="/privacy" element={<PrivacyPolicy />} />
