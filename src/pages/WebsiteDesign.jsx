@@ -21,14 +21,179 @@ import {
   Settings,
   Wand2,
   MousePointerClick,
-  TrendingUp
+  TrendingUp,
+  HeartPulse,
+  ChefHat,
+  Users,
+  GraduationCap,
+  Network,
+  Radio,
+  HeartHandshake,
+  Landmark,
+  Plane,
+  FlaskConical,
+  Lightbulb,
+  Megaphone,
+  Coins,
+  HelpCircle
 } from 'lucide-react'
 import { WEBSITE_DESIGN_HERO_DATA } from '../data/websiteDesignData'
 import websiteDesigningImg from '../assets/website-designing.png'
 import elephantImg from '../assets/elephant(1).png'
 import dentalImg from '../assets/dental.png'
+import webdesignProfitoImg from '../assets/webdesign-profito.png'
+
+const INSIGHT_TABS = [
+  {
+    id: 'what-is-web-design',
+    tabLabel: 'What is web design?',
+    title: 'What is web design?',
+    p1: 'Web design services involve creating and designing the look and feel of a website. It combines graphic design, UI design, and UX design to make sure a website looks good and works well for users.',
+    p2: 'Web designers use various tools to create their designs. These tools include graphic design software, coding languages such as HTML, CSS, and JavaScript, and content management systems (CMS). Web design aims to make an appealing and successful online presence that satisfies the website owner and its users.',
+    icon: Palette,
+  },
+  {
+    id: 'how-does-it-work',
+    tabLabel: 'How does it work?',
+    title: 'How does it work?',
+    p1: 'Web design works by planning, conceptualizing, and arranging content online. Our process starts with understanding user requirements, creating wireframes, and building visual prototypes.',
+    p2: 'Once the visual layout is approved, frontend developers write clean HTML, CSS, and JavaScript code to turn the design into a fully interactive, fast-loading, and responsive website.',
+    icon: Wand2,
+  },
+  {
+    id: 'why-you-need-it',
+    tabLabel: 'Why you need it?',
+    title: 'Why you need it?',
+    p1: "A professional web design builds trust, establishes brand identity, and leaves a strong first impression on visitors. Over 75% of users judge a company's credibility based on its website design.",
+    p2: 'Proper web design optimizes user navigation, improves search engine rankings (SEO), and dramatically increases conversion rates by guiding users towards desired calls-to-action.',
+    icon: HelpCircle,
+  },
+  {
+    id: 'web-design-cost',
+    tabLabel: 'Web design cost?',
+    title: 'Web design cost?',
+    p1: 'The cost of web design depends on the scope, number of pages, custom features, and functionality needed. Standard business websites range from affordable packages to custom enterprise builds.',
+    p2: 'At Profito, we offer transparent, flexible pricing packages tailored to your budget — ensuring high ROI without compromising on design quality or performance.',
+    icon: Coins,
+  },
+]
+
+const MORE_THAN_AGENCY_SERVICES = [
+  {
+    id: 'web-design',
+    title: 'WEB DESIGN',
+    description:
+      'Modern, responsive and user-focused web designs that bring your brand to life.',
+    icon: Palette,
+    link: '/portfolio',
+  },
+  {
+    id: 'app-development',
+    title: 'APP DEVELOPMENT',
+    description:
+      'Powerful and scalable mobile applications tailored to your business needs.',
+    icon: Smartphone,
+    link: '/contact-us',
+  },
+  {
+    id: 'branding',
+    title: 'BRANDING',
+    description:
+      'Create a strong identity with creative branding that makes you stand out.',
+    icon: Lightbulb,
+    link: '/contact-us',
+  },
+  {
+    id: 'digital-marketing',
+    title: 'DIGITAL MARKETING',
+    description:
+      'Grow your online presence with result-driven digital marketing strategies.',
+    icon: Megaphone,
+    link: '/contact-us',
+  },
+]
+
+const INDUSTRIES_WE_SERVE = [
+  { id: 'healthcare', title: 'Healthcare', icon: HeartPulse },
+  { id: 'food', title: 'Food', icon: ChefHat },
+  { id: 'b2b', title: 'B2B', icon: Users },
+  { id: 'education', title: 'Education', icon: GraduationCap },
+  { id: 'associations', title: 'ASSOCIATIONS', icon: Network },
+  { id: 'telecom-tech', title: 'TELECOM/TECH', icon: Radio },
+  { id: 'non-profit', title: 'NON-PROFIT', icon: HeartHandshake },
+  { id: 'financial', title: 'FINANCIAL', icon: Landmark },
+  { id: 'retail', title: 'RETAIL', icon: ShoppingCart },
+  { id: 'utilities', title: 'UTILITIES', icon: Settings },
+  { id: 'travel', title: 'TRAVEL', icon: Plane },
+  { id: 'chemical', title: 'CHEMICAL', icon: FlaskConical },
+]
+
+const OTHER_SERVICES_OFFERED = [
+  {
+    id: 'mobile-responsive',
+    title: 'Mobile Responsive',
+    description:
+      "One of the things that you always need to think about is ensuring that your site is mobile responsive. This is because most people are doing all of their searching using their mobile phone devices and if your web site doesn't work on them, then they won't view them and this is not good sign.",
+    ctaText: 'Get Mobile Responsive',
+    ctaLink: '/contact-us',
+    icon: Smartphone,
+    colorScheme: 'blue',
+  },
+  {
+    id: 'logo-designing',
+    title: 'Logo Designing',
+    description:
+      'Getting your logo designed is easy with us and our team of experts. We can help you to come up with the ideal one that would work for all of your needs, including the style, size and more. Give us a call and we will work with our team of design experts to create the perfect one for you.',
+    ctaText: 'Get Logo',
+    ctaLink: '/contact-us',
+    icon: Palette,
+    colorScheme: 'lime',
+  },
+  {
+    id: 'website-redesigning',
+    title: 'Website Redesigning',
+    description:
+      'You should always make sure that your website is up-to-date, which means that from time to time you would need to have it redesigned. We can help you with this and everything that comes along with it, including the testing and much more, so let us help you and your business.',
+    ctaText: 'Redesign Website',
+    ctaLink: '/contact-us',
+    icon: Monitor,
+    colorScheme: 'blue',
+  },
+  {
+    id: 'mobile-website',
+    title: 'Mobile Website',
+    description:
+      'If you are going to make sure that you are getting the most out of your website, then you should make sure that it is designed for mobile devices. This is very important for any business since you want it to look just as good on the phones and other devices as it does on the laptops.',
+    ctaText: 'Mobile Site Design',
+    ctaLink: '/contact-us',
+    icon: Smartphone,
+    colorScheme: 'lime',
+  },
+  {
+    id: 'html-page',
+    title: 'HTML Page',
+    description:
+      'Creating a page using HTML is simple for us and we can create anything that you can dream of. We simply have to write the appropriate code and we can add widgets, various functions and more to create something professional and amazing that will help your business.',
+    ctaText: 'HTML Page Design',
+    ctaLink: '/contact-us',
+    icon: Code,
+    colorScheme: 'blue',
+  },
+  {
+    id: 'saas-modal',
+    title: 'Saas Modal',
+    description:
+      'If you want us to help you from the start, then we can help you to plan the ideal SAAS model for you. This means that we would help you with the entire development as well as the development and even the necessary unit tests for the site. Get in touch with us for more details.',
+    ctaText: 'Learn More',
+    ctaLink: '/contact-us',
+    icon: Globe,
+    colorScheme: 'lime',
+  },
+]
 
 export default function WebsiteDesign() {
+  const [activeInsightTab, setActiveInsightTab] = React.useState('what-is-web-design')
+
   return (
     <div className="pt-[106px] max-[576px]:pt-[70px]">
 
@@ -907,6 +1072,366 @@ export default function WebsiteDesign() {
 
       </section>
       {/* ─── END BENEFITS OF HIRING SECTION ───────────────────────── */}
+
+      {/* ─── INDUSTRIES WE SERVE SECTION ─────────────────────────── */}
+      <section className="px-4 sm:px-6 lg:px-8 py-16 max-w-[1600px] mx-auto relative">
+
+        {/* Section Header */}
+        <div className="text-center max-w-4xl mx-auto mb-12">
+
+          {/* Top Blue & Lime Accent Bars */}
+          <div className="flex items-center justify-center gap-2 mb-3">
+            <span className="w-10 h-[4px] bg-[#2196F3] rounded-full" />
+            <span className="w-10 h-[4px] bg-[#bcd32e] rounded-full" />
+          </div>
+
+          {/* Headline Title */}
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black !text-[#0b132b] leading-tight mb-3">
+            Industries <span className="!text-[#2196F3]">We Serve</span>
+          </h2>
+
+          {/* Subtitle Description */}
+          <p className="text-slate-600 text-sm sm:text-base lg:text-lg font-medium leading-relaxed max-w-2xl mx-auto">
+            Tailored digital solutions for a wide range of industries
+          </p>
+
+        </div>
+
+        {/* 12 Industries Grid */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 sm:gap-6 max-w-7xl mx-auto">
+          {INDUSTRIES_WE_SERVE.map((item) => {
+            const IconComponent = item.icon
+            return (
+              <div
+                key={item.id}
+                className="bg-white rounded-2xl sm:rounded-3xl p-5 sm:p-6 border border-slate-200/90 shadow-sm hover:shadow-xl hover:-translate-y-1.5 hover:border-[#2196F3]/50 transition-all duration-300 flex flex-col items-center justify-center text-center group"
+              >
+                {/* Icon Container Circle */}
+                <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-[#eef5ff] border border-blue-100 flex items-center justify-center mb-4 group-hover:scale-110 group-hover:bg-[#2196F3] group-hover:border-[#2196F3] group-hover:shadow-md group-hover:shadow-blue-500/25 transition-all duration-300 shadow-xs">
+                  <IconComponent className="w-9 h-9 sm:w-10 sm:h-10 stroke-[1.8] text-[#2196F3] group-hover:text-white transition-colors duration-300" />
+                </div>
+
+                {/* Industry Name */}
+                <h3 className="font-extrabold text-xs sm:text-sm lg:text-base !text-[#0b132b] group-hover:text-[#2196F3] transition-colors duration-200 tracking-wide">
+                  {item.title}
+                </h3>
+
+                {/* Blue & Lime Pill Accent under label */}
+                <div className="flex items-center justify-center gap-1.5 mt-2.5">
+                  <span className="w-4 sm:w-5 h-[3px] bg-[#2196F3] rounded-full" />
+                  <span className="w-4 sm:w-5 h-[3px] bg-[#bcd32e] rounded-full" />
+                </div>
+              </div>
+            )
+          })}
+        </div>
+
+      </section>
+      {/* ─── END INDUSTRIES WE SERVE SECTION ───────────────────── */}
+
+      {/* ─── OTHER WEB DESIGNING SERVICES WE OFFER SECTION ──────── */}
+      <section className="px-4 sm:px-6 lg:px-8 py-16 max-w-[1600px] mx-auto relative">
+
+        {/* Section Header */}
+        <div className="text-center max-w-4xl mx-auto mb-12">
+
+          {/* Top Blue & Lime Accent Bars */}
+          <div className="flex items-center justify-center gap-2 mb-3">
+            <span className="w-10 h-[4px] bg-[#2196F3] rounded-full" />
+            <span className="w-10 h-[4px] bg-[#bcd32e] rounded-full" />
+          </div>
+
+          {/* Headline Title */}
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black !text-[#0b132b] leading-tight mb-3">
+            Other Web Designing Services <span className="!text-[#2196F3]">We Offer</span>
+          </h2>
+
+          {/* Subtitle Description */}
+          <p className="text-slate-800 text-sm sm:text-base font-bold mb-1">
+            Want more traffic to your website?
+          </p>
+          <p className="text-slate-600 text-xs sm:text-sm md:text-base leading-relaxed max-w-3xl mx-auto">
+            As a top website designing company in India, we offer a range of services to help your business succeed online:
+          </p>
+
+        </div>
+
+        {/* 6 Services Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+          {OTHER_SERVICES_OFFERED.map((service) => {
+            const IconComponent = service.icon
+            const isBlue = service.colorScheme === 'blue'
+
+            return (
+              <div
+                key={service.id}
+                className={`bg-white rounded-3xl p-7 sm:p-8 border border-slate-200/90 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 relative flex flex-col justify-between group overflow-hidden h-full ${
+                  isBlue
+                    ? 'hover:border-[#2196F3]/50'
+                    : 'hover:border-[#bcd32e]/80'
+                }`}
+              >
+                <div className="relative z-10">
+                  {/* Icon Container */}
+                  <div
+                    className={`w-16 h-16 rounded-2xl border flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-xs ${
+                      isBlue
+                        ? 'bg-[#eef5ff] border-blue-100 text-[#2196F3] group-hover:bg-[#2196F3] group-hover:text-white'
+                        : 'bg-[#f4f9d8] border-lime-200/80 text-[#658604] group-hover:bg-[#bcd32e] group-hover:text-white'
+                    }`}
+                  >
+                    <IconComponent className="w-8 h-8 stroke-[1.8] transition-colors duration-300" />
+                  </div>
+
+                  {/* Service Title */}
+                  <h3 className="text-xl sm:text-2xl font-black !text-[#0b132b] mb-3 group-hover:text-[#2196F3] transition-colors duration-200">
+                    {service.title}
+                  </h3>
+
+                  {/* Accent Hairline Line */}
+                  <div className="flex items-center gap-1.5 mb-4">
+                    <span className={`h-[3px] w-8 rounded-full ${isBlue ? 'bg-[#2196F3]' : 'bg-[#bcd32e]'}`} />
+                    <span className={`h-[3px] w-4 rounded-full ${isBlue ? 'bg-[#bcd32e]' : 'bg-[#2196F3]'}`} />
+                  </div>
+
+                  {/* Description */}
+                  <p className="text-slate-600 text-sm leading-relaxed mb-6 font-medium">
+                    {service.description}
+                  </p>
+                </div>
+
+                {/* Footer Link / CTA Row */}
+                <div className="relative z-10 pt-4 border-t border-slate-100">
+                  <Link
+                    to={service.ctaLink}
+                    className="inline-flex items-center justify-between w-full group/link"
+                  >
+                    <span className="text-sm font-extrabold text-[#2196F3] group-hover/link:text-[#0b132b] transition-colors duration-200">
+                      {service.ctaText} &rarr;
+                    </span>
+                    <div
+                      className={`w-8 h-8 rounded-full flex items-center justify-center text-white transition-all duration-300 group-hover/link:translate-x-1 shadow-xs ${
+                        isBlue ? 'bg-[#2196F3]' : 'bg-[#bcd32e]'
+                      }`}
+                    >
+                      <ArrowRight className="w-4 h-4 text-white" />
+                    </div>
+                  </Link>
+                </div>
+
+                {/* Background Glow Accent */}
+                <div
+                  className={`absolute -bottom-12 -right-12 w-40 h-40 rounded-full group-hover:scale-150 transition-transform duration-500 pointer-events-none ${
+                    isBlue ? 'bg-[#2196F3]/5' : 'bg-[#bcd32e]/10'
+                  }`}
+                />
+              </div>
+            )
+          })}
+        </div>
+
+      </section>
+      {/* ─── END OTHER WEB DESIGNING SERVICES SECTION ───────────── */}
+
+      {/* ─── AN INSIGHT BEFORE CHOOSING WEB DESIGN COMPANY SECTION ──── */}
+      <section className="px-4 sm:px-6 lg:px-8 py-16 max-w-[1600px] mx-auto relative overflow-hidden bg-gradient-to-b from-[#f8fafc] via-[#f1f5f9] to-[#ffffff] rounded-3xl my-8 shadow-inner border border-slate-100">
+        {/* Top Accent Lines */}
+        <div className="flex items-center justify-center gap-2 mb-4">
+          <span className="w-10 h-[4px] bg-[#2196F3] rounded-full" />
+          <span className="w-10 h-[4px] bg-[#bcd32e] rounded-full" />
+        </div>
+
+        {/* Headline */}
+        <div className="text-center max-w-4xl mx-auto mb-10">
+          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black !text-[#0b132b] tracking-tight leading-tight">
+            An Insight Before Choosing <span className="!text-[#2196F3]">Web Design Company</span>
+          </h2>
+          <p className="mt-4 !text-slate-600 text-sm sm:text-base leading-relaxed max-w-3xl mx-auto">
+            Before picking a web designing company in India, let's take a closer look. Choosing the right one is important because it helps make your online presence look great. It's like picking the perfect outfit for your business. Let's explore some important things to think about before making that choice.
+          </p>
+        </div>
+
+        {/* Tab Buttons Pill Container */}
+        <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 mb-10 max-w-5xl mx-auto">
+          {INSIGHT_TABS.map((tab) => {
+            const isActive = activeInsightTab === tab.id
+            return (
+              <button
+                key={tab.id}
+                onClick={() => setActiveInsightTab(tab.id)}
+                className={`relative px-6 py-3 rounded-full font-bold text-sm sm:text-base transition-all duration-300 cursor-pointer ${
+                  isActive
+                    ? 'bg-[#2196F3] !text-white shadow-lg scale-105'
+                    : 'bg-[#f4f9d8] !text-[#3b5200] border border-lime-200/80 hover:bg-[#ebf4c5] hover:shadow-md'
+                }`}
+              >
+                {tab.tabLabel}
+                {isActive && (
+                  <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-0 h-0 border-l-[7px] border-l-transparent border-r-[7px] border-r-transparent border-t-[8px] border-t-[#2196F3]" />
+                )}
+              </button>
+            )
+          })}
+        </div>
+
+        {/* Active Content Box */}
+        {(() => {
+          const currentTab = INSIGHT_TABS.find((t) => t.id === activeInsightTab) || INSIGHT_TABS[0]
+          const TabIcon = currentTab.icon
+          return (
+            <div className="max-w-5xl mx-auto bg-white rounded-3xl p-6 sm:p-10 lg:p-12 border border-blue-100/80 shadow-xl flex flex-col md:flex-row items-center md:items-start gap-8 transition-all duration-300">
+              {/* Left Icon Display */}
+              <div className="w-28 h-28 sm:w-36 sm:h-36 lg:w-44 lg:h-44 rounded-full bg-gradient-to-br from-[#eef5ff] via-[#e0f2fe] to-[#dbefe6] border-2 border-blue-100 flex items-center justify-center text-[#2196F3] shrink-0 shadow-md">
+                <TabIcon className="w-14 h-14 sm:w-18 sm:h-18 stroke-[1.8] text-[#2196F3]" />
+              </div>
+
+              {/* Right Content */}
+              <div className="flex-1 text-left">
+                <h3 className="text-2xl sm:text-3xl font-black !text-[#0b132b] mb-4">
+                  {currentTab.title}
+                </h3>
+                <p className="!text-slate-600 text-sm sm:text-base leading-relaxed mb-4">
+                  {currentTab.p1}
+                </p>
+                <p className="!text-slate-600 text-sm sm:text-base leading-relaxed">
+                  {currentTab.p2}
+                </p>
+              </div>
+            </div>
+          )
+        })()}
+      </section>
+      {/* ─── END AN INSIGHT BEFORE CHOOSING WEB DESIGN COMPANY SECTION ──── */}
+
+      {/* ─── MORE THAN A WHITE LABEL WEB DESIGN AGENCY SECTION ──── */}
+      <section className="px-4 sm:px-6 lg:px-8 py-16 max-w-[1600px] mx-auto relative overflow-hidden">
+
+        {/* Section Header */}
+        <div className="text-center max-w-4xl mx-auto mb-12">
+
+          {/* Top Blue & Lime Accent Bars */}
+          <div className="flex items-center justify-center gap-2 mb-3">
+            <span className="w-10 h-[4px] bg-[#2196F3] rounded-full" />
+            <span className="w-10 h-[4px] bg-[#bcd32e] rounded-full" />
+          </div>
+
+          {/* Headline Title */}
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black !text-[#0b132b] leading-tight mb-4">
+            More Than A White Label <span className="!text-[#2196F3]">Web Design Agency</span>
+          </h2>
+
+          {/* Subtitle Description */}
+          <p className="text-slate-600 text-sm sm:text-base lg:text-lg font-medium leading-relaxed max-w-3xl mx-auto space-y-1">
+            <span>We are a trusted web design company in India and also your holistic digital partner. By that we mean, we're more than web designing company.</span>
+            <br />
+            <span>Profito provides complete digital solutions to help a business escalate its online presence, and sales.</span>
+          </p>
+
+        </div>
+
+        {/* 4 Cards Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-7 max-w-7xl mx-auto">
+          {MORE_THAN_AGENCY_SERVICES.map((item) => {
+            const IconComponent = item.icon
+            return (
+              <Link
+                key={item.id}
+                to={item.link}
+                className="bg-white rounded-3xl p-7 sm:p-8 border border-slate-200/90 shadow-sm hover:shadow-2xl hover:-translate-y-2 hover:border-[#2196F3]/50 transition-all duration-300 relative flex flex-col justify-between group overflow-hidden h-full bg-gradient-to-br from-white via-white to-[#e8f3ff]/50"
+              >
+                {/* Content */}
+                <div className="relative z-10">
+                  {/* Icon Container Circle */}
+                  <div className="w-18 h-18 sm:w-20 sm:h-20 rounded-full bg-[#eef5ff] border border-blue-100 flex items-center justify-center text-[#2196F3] mb-6 group-hover:scale-110 group-hover:rotate-3 group-hover:bg-[#2196F3] group-hover:text-white transition-all duration-300 shadow-xs">
+                    <IconComponent className="w-8 h-8 sm:w-9 sm:h-9 stroke-[1.8] text-[#2196F3] group-hover:text-white transition-colors duration-300" />
+                  </div>
+
+                  {/* Title */}
+                  <h3 className="font-extrabold text-base sm:text-lg !text-[#0b132b] group-hover:text-[#2196F3] transition-colors duration-200 tracking-wider mb-2 uppercase">
+                    {item.title}
+                  </h3>
+
+                  {/* Description */}
+                  <p className="text-slate-600 text-xs sm:text-sm leading-relaxed mb-6 font-medium">
+                    {item.description}
+                  </p>
+                </div>
+
+                {/* Card Footer Line Accent & Arrow */}
+                <div className="relative z-10 flex items-center gap-1.5 pt-4 border-t border-slate-100/80">
+                  <span className="w-6 h-[3px] bg-[#2196F3] rounded-full" />
+                  <span className="w-4 h-[3px] bg-[#bcd32e] rounded-full" />
+                  <ArrowRight className="w-4 h-4 text-[#2196F3] group-hover:translate-x-1.5 transition-transform duration-300 ml-auto" />
+                </div>
+
+                {/* Bottom-right Corner Gradient Accent */}
+                <div className="absolute -bottom-8 -right-8 w-28 h-28 rounded-full bg-[#2196F3]/10 blur-xl group-hover:scale-150 transition-transform duration-500 pointer-events-none" />
+              </Link>
+            )
+          })}
+        </div>
+
+      </section>
+      {/* ─── END MORE THAN A WHITE LABEL WEB DESIGN AGENCY ──────── */}
+
+      {/* ─── CHOOSE PROFITO FOR WEB DESIGN EXCELLENCE SECTION ───── */}
+      <section className="px-4 sm:px-6 lg:px-8 py-16 sm:py-20 max-w-[1600px] mx-auto relative overflow-hidden bg-gradient-to-br from-[#f8fafc] via-[#ffffff] to-[#f0f7ff] rounded-3xl my-8 border border-slate-100 shadow-sm">
+        
+        {/* Decorative Background Accents */}
+        <div className="absolute -top-24 -right-24 w-96 h-96 bg-[#2196F3]/5 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-[#bcd32e]/10 rounded-full blur-3xl pointer-events-none" />
+
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center relative z-10">
+          
+          {/* Left Text Content */}
+          <div className="lg:col-span-6 flex flex-col justify-center">
+            
+            {/* Pill Badge */}
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#eef5ff] border border-[#d0e3ff] text-[#2196F3] text-xs font-bold uppercase tracking-wider mb-6 w-fit shadow-xs">
+              <span className="w-5 h-[3px] bg-[#2196F3] rounded-full" />
+              <span className="w-5 h-[3px] bg-[#bcd32e] rounded-full" />
+              <span className="!text-[#2196F3]">WEB DESIGN SERVICES</span>
+            </div>
+
+            {/* Headline Title */}
+            <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black !text-[#0b132b] leading-[1.15] mb-6 tracking-tight">
+              Choose Profito for <br className="hidden sm:inline" />
+              <span className="!text-[#2196F3]">Web Design</span> <span className="!text-[#bcd32e]">Excellence</span>
+            </h2>
+
+            {/* Description Paragraphs */}
+            <div className="space-y-5 text-slate-600 text-sm sm:text-base lg:text-lg leading-relaxed font-normal max-w-2xl">
+              <p className="!text-slate-600">
+                Profito is the best web design company in India, and we're here to make a significant impact on your business. Our website design services are budget-friendly, making it easy for you to give your online presence a fresh look. Our website revamping service helps businesses, whether new or established, to get more attention and attract customers.
+              </p>
+              <p className="!text-slate-600">
+                Contact Profito, the top web designing company in India, right away for excellent services for your business. To learn more about what we offer, simply give us a call or send us an email. We're here to help your business shine online.
+              </p>
+            </div>
+
+            {/* Dual Color Horizontal Accent Bar */}
+            <div className="flex items-center gap-2 mt-8">
+              <span className="w-12 h-1.5 bg-[#2196F3] rounded-full" />
+              <span className="w-12 h-1.5 bg-[#bcd32e] rounded-full" />
+            </div>
+
+          </div>
+
+          {/* Right Image Content */}
+          <div className="lg:col-span-6 flex items-center justify-center relative">
+            <div className="relative w-full max-w-2xl">
+              <img
+                src={webdesignProfitoImg}
+                alt="Choose Profito for Web Design Excellence"
+                className="w-full h-auto object-contain drop-shadow-2xl hover:scale-[1.02] transition-transform duration-500 rounded-2xl"
+              />
+            </div>
+          </div>
+
+        </div>
+
+      </section>
+      {/* ─── END CHOOSE PROFITO FOR WEB DESIGN EXCELLENCE ───────── */}
 
     </div>
   )

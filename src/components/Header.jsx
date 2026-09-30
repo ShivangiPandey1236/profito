@@ -542,24 +542,36 @@ export default function Header() {
         <nav className="flex flex-col gap-4">
           {navItems.map((item, index) => (
             <div key={index} className="border-b border-black/5 pb-3">
-              {item.path ? (
-                <Link
-                  to={item.path}
-                  className="w-full flex justify-between items-center bg-transparent border-none font-sans text-[1.05rem] font-semibold text-black py-2 cursor-pointer text-left transition-colors duration-150 hover:text-primary"
-                  onClick={() => setIsOpen(false)}
-                >
-                  <span>{item.name}</span>
-                </Link>
-              ) : (
+              {item.columns && item.columns.length > 0 ? (
                 <>
-                  <button
-                    className={`w-full flex justify-between items-center bg-transparent border-none font-sans text-[1.05rem] font-semibold ${activeDropdown === index ? 'text-primary' : 'text-black'} py-2 cursor-pointer text-left transition-colors duration-150`}
-                    onClick={() => setActiveDropdown(activeDropdown === index ? null : index)}
-                  >
-                    <span>{item.name}</span>
-                    <ChevronDown size={16} className={`transition-transform duration-250 ${activeDropdown === index ? 'rotate-180 text-primary' : 'text-black'}`} />
-                  </button>
-                  <div className={`overflow-hidden flex flex-col gap-4 pl-4 transition-all duration-250 ${activeDropdown === index ? 'max-h-[1000px] pt-2 pb-2' : 'max-h-0'}`}>
+                  <div className="w-full flex justify-between items-center py-2">
+                    {item.path ? (
+                      <Link
+                        to={item.path}
+                        className={`font-sans text-[1.05rem] font-semibold ${activeDropdown === index ? 'text-primary' : 'text-black'} py-1 transition-colors duration-150 hover:text-primary`}
+                        onClick={() => setIsOpen(false)}
+                      >
+                        {item.name}
+                      </Link>
+                    ) : (
+                      <button
+                        type="button"
+                        className={`bg-transparent border-none font-sans text-[1.05rem] font-semibold ${activeDropdown === index ? 'text-primary' : 'text-black'} py-1 cursor-pointer text-left transition-colors duration-150`}
+                        onClick={() => setActiveDropdown(activeDropdown === index ? null : index)}
+                      >
+                        {item.name}
+                      </button>
+                    )}
+                    <button
+                      type="button"
+                      className="bg-transparent border-none p-2 cursor-pointer flex items-center justify-center text-black hover:text-primary transition-colors"
+                      onClick={() => setActiveDropdown(activeDropdown === index ? null : index)}
+                      aria-label={`Toggle ${item.name} menu`}
+                    >
+                      <ChevronDown size={18} className={`transition-transform duration-250 ${activeDropdown === index ? 'rotate-180 text-primary' : 'text-black'}`} />
+                    </button>
+                  </div>
+                  <div className={`overflow-hidden flex flex-col gap-4 pl-4 transition-all duration-250 ${activeDropdown === index ? 'max-h-[1200px] pt-2 pb-2' : 'max-h-0'}`}>
                     {item.columns.map((column, colIdx) => (
                       <div key={colIdx} className="flex flex-col gap-3">
                         {column.sections.map((section, secIdx) => (
@@ -680,6 +692,14 @@ export default function Header() {
                     ))}
                   </div>
                 </>
+              ) : (
+                <Link
+                  to={item.path}
+                  className="w-full flex justify-between items-center bg-transparent border-none font-sans text-[1.05rem] font-semibold text-black py-2 cursor-pointer text-left transition-colors duration-150 hover:text-primary"
+                  onClick={() => setIsOpen(false)}
+                >
+                  <span>{item.name}</span>
+                </Link>
               )}
             </div>
           ))}
