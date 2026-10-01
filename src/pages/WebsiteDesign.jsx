@@ -38,6 +38,7 @@ import {
   HelpCircle
 } from 'lucide-react'
 import { WEBSITE_DESIGN_HERO_DATA } from '../data/websiteDesignData'
+import CTASection from '../components/CTASection'
 import websiteDesigningImg from '../assets/website-designing.png'
 import elephantImg from '../assets/elephant(1).png'
 import dentalImg from '../assets/dental.png'
@@ -848,6 +849,8 @@ export default function WebsiteDesign() {
 
       </section>
       {/* ─── END OUR PROCESS SECTION ─────────────────────────────── */}
+
+      <CTASection />
 
       {/* ─── BENEFITS OF HIRING SECTION ───────────────────────────── */}
       <section className="px-4 sm:px-6 lg:px-8 py-16 max-w-[1600px] mx-auto relative">
