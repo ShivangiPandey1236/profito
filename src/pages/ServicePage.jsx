@@ -80,6 +80,39 @@ const strategyIconMap = {
   Scale
 }
 
+const featureIconMap = {
+  Target,
+  TrendingUp,
+  ShieldCheck,
+  Award,
+  Users,
+  Search,
+  FileText,
+  CheckCircle2,
+  BarChart3,
+  ShoppingCart,
+  Activity,
+  Home,
+  Scale,
+  Layers,
+  Settings,
+  Code,
+  HelpCircle,
+  User,
+  DollarSign,
+  Globe,
+  Zap,
+  Lock,
+  Eye,
+  UserCheck,
+  Plus,
+  Minus,
+  Clock,
+  Rocket,
+  Star,
+  Quote
+}
+
 function SeoStrategiesSection() {
   const { titlePrefix, titleHighlight, description, cards } = seoStrategiesData
 
@@ -2252,7 +2285,7 @@ export default function ServicePage() {
   const isSeoPage = !slug || slug === 'seo-services' || slug.toLowerCase().includes('seo')
 
   return (
-    <div className="service-page bg-gradient-to-b from-white via-[#f0f7ff] to-[#eaf5ff] min-h-screen text-slate-800 pt-24 sm:pt-28 pb-20 font-sans overflow-hidden">
+    <div className="service-page bg-gradient-to-b from-white via-[#f0f7ff] to-[#eaf5ff] min-h-screen text-slate-800 pt-28 sm:pt-36 lg:pt-36 pb-20 font-sans overflow-hidden">
       <div className="max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* =========================================================
@@ -2288,47 +2321,47 @@ export default function ServicePage() {
                   <span>Home</span>
                 </Link>
                 <ChevronRight className="w-4 h-4 text-white/60" />
-                <span className="text-[#c5f015] font-bold">{service.fullTitle}</span>
+                <span className="text-[#c5f015] font-bold">{service?.fullTitle || 'SEO Services'}</span>
               </nav>
 
               {/* Pill Badge */}
               <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-white/20 text-white font-extrabold text-xs uppercase tracking-wider mb-6 backdrop-blur-md shadow-sm hover:border-[#c5f015]/60 transition-colors">
                 <Sparkles className="w-3.5 h-3.5 text-[#c5f015] animate-pulse" />
-                <span>{service.badge || 'AI-POWERED • RESULTS-DRIVEN'}</span>
+                <span>{service?.badge || 'AI-POWERED • RESULTS-DRIVEN'}</span>
               </div>
 
               {/* Main Dynamic Headline */}
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-[1.1] tracking-tight mb-6 uppercase">
                 <span className="relative inline-block text-white group">
-                  {service.titleFirst}
+                  {service?.titleFirst || 'SEO'}
                   <span className="absolute bottom-0 left-0 w-full h-1.5 bg-[#c5f015] rounded-full transition-all duration-300 group-hover:h-2" />
                 </span>{' '}
-                <span className="text-[#c5f015]">{service.titleRest}</span>
+                <span className="text-[#c5f015]">{service?.titleRest || 'SERVICES'}</span>
               </h1>
 
               {/* Subtitle / Description */}
               <p className="text-white/90 text-base sm:text-lg leading-relaxed max-w-2xl mb-8 font-medium">
-                {service.description}
+                {service?.description}
               </p>
 
               {/* CTA Action Buttons */}
               <div className="flex items-center gap-4 flex-wrap mb-10">
                 <a
-                  href={service.primaryCtaLink || '#packages'}
+                  href={service?.primaryCtaLink || '#packages'}
                   className="inline-flex items-center gap-3 bg-[#c5f015] hover:bg-white text-slate-950 font-black text-xs sm:text-sm uppercase tracking-wider px-7 py-3.5 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 active:translate-y-0 group cursor-pointer"
                 >
-                  <span className="text-black font-black">{service.primaryCtaText || 'VIEW PACKAGES'}</span>
+                  <span className="text-black font-black">{service?.primaryCtaText || 'VIEW PACKAGES'}</span>
                   <span className="w-7 h-7 rounded-full bg-slate-950 text-white flex items-center justify-center transition-transform duration-300 group-hover:translate-x-1 group-hover:bg-[#0066ff]">
                     <ArrowRight className="w-4 h-4 text-white" />
                   </span>
                 </a>
 
                 <Link
-                  to={service.secondaryCtaLink || '/contact-us'}
+                  to={service?.secondaryCtaLink || '/contact-us'}
                   className="inline-flex items-center gap-3 bg-white/10 hover:bg-white/20 border border-white/30 hover:border-white/60 text-white font-extrabold text-xs sm:text-sm uppercase tracking-wider px-7 py-3.5 rounded-full backdrop-blur-md transition-all duration-300 hover:-translate-y-1 active:translate-y-0 group"
                 >
                   <MessageSquare className="w-4 h-4 text-[#c5f015] transition-transform duration-300 group-hover:scale-110" />
-                  <span>{service.secondaryCtaText || "LET'S TALK"}</span>
+                  <span>{service?.secondaryCtaText || "LET'S TALK"}</span>
                   <span className="w-7 h-7 rounded-full bg-white/20 text-white flex items-center justify-center transition-transform duration-300 group-hover:translate-x-1 group-hover:bg-[#c5f015] group-hover:text-slate-950">
                     <ArrowRight className="w-4 h-4" />
                   </span>
@@ -2337,13 +2370,14 @@ export default function ServicePage() {
 
               {/* Bottom Feature Badges */}
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 w-full pt-6 border-t border-white/15">
-                {service.features.map((feat, idx) => {
+                {(service?.features || []).map((feat, idx) => {
                   const IconComponent =
-                    feat.icon === 'Target'
+                    featureIconMap[feat.icon] ||
+                    (feat.icon === 'Target'
                       ? Target
                       : feat.icon === 'TrendingUp'
                         ? TrendingUp
-                        : ShieldCheck
+                        : ShieldCheck)
                   return (
                     <div
                       key={idx}
@@ -2385,16 +2419,16 @@ export default function ServicePage() {
 
                   <div className="text-center mb-6">
                     <span className="text-[11px] font-bold tracking-widest text-white/80 uppercase">
-                      {service.stats.label}
+                      {service?.stats?.label || 'ORGANIC TRAFFIC'}
                     </span>
                     <div className="text-4xl sm:text-5xl font-black text-white tracking-tight mt-1 mb-1 group-hover:scale-105 transition-transform duration-300">
-                      {service.stats.value}
+                      {service?.stats?.value || '125K+'}
                     </div>
                     <div className="flex items-center justify-center gap-1.5 text-xs font-semibold text-white/80">
                       <span className="text-[#c5f015] font-extrabold flex items-center gap-0.5 bg-[#c5f015]/10 px-2 py-0.5 rounded-full">
-                        {service.stats.growth}
+                        {service?.stats?.growth || '↑ 48%'}
                       </span>
-                      <span>{service.stats.period}</span>
+                      <span>{service?.stats?.period || 'vs last 6 months'}</span>
                     </div>
                   </div>
 
@@ -2425,11 +2459,11 @@ export default function ServicePage() {
 
                   <div className="bg-white/10 border border-white/15 rounded-2xl p-4 mb-6 backdrop-blur-md hover:bg-white/15 transition-colors">
                     <div className="flex justify-between items-center text-[10px] font-extrabold tracking-wider text-white/80 uppercase mb-3 px-1">
-                      <span>{service.stats.growthSectionTitle}</span>
-                      <span className="text-[#c5f015]">{service.stats.growthSectionSubtitle}</span>
+                      <span>{service?.stats?.growthSectionTitle || 'RANKING GROWTH'}</span>
+                      <span className="text-[#c5f015]">{service?.stats?.growthSectionSubtitle || 'Top Positions'}</span>
                     </div>
                     <div className="grid grid-cols-4 gap-2 text-center divide-x divide-white/10">
-                      {service.stats.metrics.map((metric, idx) => (
+                      {(service?.stats?.metrics || []).map((metric, idx) => (
                         <div key={idx} className="hover:scale-105 transition-transform">
                           <div className="text-base sm:text-lg font-black text-white leading-none">
                             {metric.value}
@@ -2443,22 +2477,22 @@ export default function ServicePage() {
                   </div>
 
                   <div className="bg-white rounded-xl py-3 px-5 flex items-center justify-between shadow-lg hover:shadow-xl transition-shadow">
-                    <svg className="h-5 w-auto hover:scale-110 transition-transform cursor-pointer" viewBox="0 0 24 24">
+                    <svg className="w-5 h-5 hover:scale-110 transition-transform cursor-pointer shrink-0" viewBox="0 0 24 24">
                       <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
                       <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
                       <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" />
                       <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" />
                     </svg>
 
-                    <svg className="h-5 w-auto text-[#008394] hover:scale-110 transition-transform cursor-pointer" viewBox="0 0 24 24" fill="currentColor">
+                    <svg className="w-5 h-5 text-[#008394] hover:scale-110 transition-transform cursor-pointer shrink-0" viewBox="0 0 24 24" fill="currentColor">
                       <path d="M5 3v16.5l4.5 2.5 9.5-5.5-3.5-1.5-6-2.5V7.5L5 3z" />
                     </svg>
 
-                    <svg className="h-5 w-auto text-[#7c3aed] hover:scale-110 transition-transform cursor-pointer animate-pulse" viewBox="0 0 24 24" fill="currentColor">
+                    <svg className="w-5 h-5 text-[#7c3aed] hover:scale-110 transition-transform cursor-pointer animate-pulse shrink-0" viewBox="0 0 24 24" fill="currentColor">
                       <path d="M12 0C12 6.627 6.627 12 0 12c6.627 0 12 5.373 12 12 0-6.627 5.373-12 12-12-6.627 0-12-5.373-12-12z" />
                     </svg>
 
-                    <svg className="h-5 w-auto text-[#10a37f] hover:scale-110 transition-transform cursor-pointer" viewBox="0 0 24 24" fill="currentColor">
+                    <svg className="w-5 h-5 text-[#10a37f] hover:scale-110 transition-transform cursor-pointer shrink-0" viewBox="0 0 24 24" fill="currentColor">
                       <path d="M22.28 9.82c-.28-.86-.78-1.63-1.46-2.24A6.17 6.17 0 0 0 14.5 4.5a6.07 6.07 0 0 0-4.04 1.54 6.17 6.17 0 0 0-5.74 3.02 6.08 6.08 0 0 0-.74 4.26c.28.86.78 1.63 1.46 2.24a6.17 6.17 0 0 0 6.32 3.08 6.07 6.07 0 0 0 4.04-1.54 6.17 6.17 0 0 0 5.74-3.02 6.08 6.08 0 0 0 .74-4.26zM12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12z" />
                     </svg>
                   </div>
