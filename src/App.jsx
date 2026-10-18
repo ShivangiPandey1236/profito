@@ -16,7 +16,8 @@ import GetAQuote from './pages/GetAQuote'
 import TermsAndConditions from './pages/TermsAndConditions'
 import WebDevelopment from './pages/WebDevelopment'
 import WebsiteDesign from './pages/WebsiteDesign'
-
+import Blog from './pages/Blog'
+import BlogPost from "./pages/BlogPost"
 function App() {
   return (
     <Layout>
@@ -50,6 +51,8 @@ function App() {
         <Route path="/service/:slug" element={<ServicePage />} />
         <Route path="/services" element={<ServicePage />} />
         <Route path="/services/:slug" element={<ServicePage />} />
+        <Route path="/blog" element={<Blog />} />
+       <Route path="/blog/:slug" element={<BlogPost />} />
       </Routes>
     </Layout>
   )
