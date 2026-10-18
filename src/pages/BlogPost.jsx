@@ -538,7 +538,207 @@ const BlogPost = () => {
         </div>
     </div>
 </section>
+{/* KEEP READING SECTION */}
+<section
+    className="keep-reading-section bg-[#F8FBFF] px-4 py-12 sm:px-6 lg:px-8 lg:py-16"
+    style={{ color: "#334155" }}
+>
+    <style>{`
+        .keep-reading-section .kr-title,
+        .keep-reading-section .kr-card-title {
+            color: #101A35 !important;
+            -webkit-text-fill-color: #101A35 !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+        }
 
+        .keep-reading-section .kr-description {
+            color: #526783 !important;
+            -webkit-text-fill-color: #526783 !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+        }
+
+        .keep-reading-section .kr-date {
+            color: #64748B !important;
+            -webkit-text-fill-color: #64748B !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+        }
+
+        .keep-reading-section .kr-card:hover .kr-card-title {
+            color: #2196F3 !important;
+            -webkit-text-fill-color: #2196F3 !important;
+        }
+
+        .keep-reading-section .kr-card img {
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+        }
+    `}</style>
+
+    <div className="mx-auto max-w-7xl">
+
+        {/* HEADER */}
+        <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+                <span className="mb-3 inline-flex items-center gap-2 rounded-full border border-[#B9DEFF] bg-[#EAF5FF] px-3 py-1.5 text-xs font-semibold text-[#2196F3]">
+                    <span className="h-2 w-2 rounded-full bg-[#2196F3]" />
+                    KEEP EXPLORING
+                </span>
+
+                <h2 className="kr-title text-3xl font-bold tracking-tight sm:text-4xl">
+                    Keep Reading<span className="text-[#2196F3]">.</span>
+                </h2>
+
+                <p className="kr-description mt-3 max-w-xl text-sm leading-7 sm:text-base">
+                    Explore more insights, practical tips, and the latest digital marketing trends.
+                </p>
+            </div>
+
+            <Link
+                to="/blog"
+                className="inline-flex w-fit items-center gap-2 rounded-full bg-[#2196F3] px-5 py-3 text-sm font-semibold text-white shadow-[0_5px_15px_rgba(33,150,243,0.2)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#1479CC] hover:shadow-lg"
+            >
+                <span className="text-white">View All Blogs</span>
+                <span className="text-white">→</span>
+            </Link>
+        </div>
+
+        {/* EXACTLY 4 BLOG CARDS */}
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {blogPosts
+                .filter((post) => post.slug !== article?.slug)
+                .slice(0, 4)
+                .map((post) => (
+                    <Link
+                        key={post.slug}
+                        to={`/blog/${post.slug}`}
+                        className="kr-card group flex min-w-0 flex-col overflow-hidden rounded-2xl border border-[#E1ECF8] bg-white transition-all duration-300 hover:-translate-y-1 hover:border-[#B9DEFF] hover:shadow-[0_14px_35px_rgba(33,150,243,0.13)]"
+                    >
+                        {/* IMAGE */}
+                        <div className="relative h-44 overflow-hidden bg-[#EAF5FF]">
+                            <img
+                                src={post.image}
+                                alt={post.title}
+                                loading="lazy"
+                                className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                            />
+
+                            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#101A35]/25 to-transparent" />
+
+                            {post.category && (
+                                <span className="absolute left-3 top-3 max-w-[85%] truncate rounded-full border border-white/80 bg-white px-3 py-1.5 text-xs font-semibold text-[#2196F3] shadow-sm">
+                                    {post.category}
+                                </span>
+                            )}
+                        </div>
+
+                        {/* CONTENT */}
+                        <div className="flex flex-1 flex-col p-5">
+                            <h3 className="kr-card-title line-clamp-3 text-sm font-normal leading-snug transition-colors duration-300">
+                                {post.title}
+                            </h3>
+
+                            <div className="mt-auto flex items-center justify-between gap-3 pt-5">
+                                <span className="kr-date text-sm font-medium">
+                                    {post.date}
+                                </span>
+
+                                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-[#B9DEFF] bg-[#EAF5FF] text-lg text-[#2196F3] transition-all duration-300 group-hover:border-[#2196F3] group-hover:bg-[#2196F3] group-hover:text-white">
+                                    →
+                                </span>
+                            </div>
+                        </div>
+                    </Link>
+                ))}
+        </div>
+
+    </div>
+</section>
+ 
+{/* CONTACT CTA SECTION */}
+<section className="bg-[#F8FBFF] px-4 pb-12 pt-4 sm:px-6 lg:px-8 lg:pb-16">
+    <div className="mx-auto max-w-7xl">
+        <div
+            className="relative overflow-hidden rounded-3xl px-5 py-12 text-center shadow-[0_15px_45px_rgba(33,150,243,0.20)] sm:px-10 sm:py-16"
+            style={{
+                background: `
+                    radial-gradient(circle at 85% 80%, rgba(33,150,243,0.55) 0%, transparent 38%),
+                    radial-gradient(circle at 5% 10%, rgba(33,150,243,0.28) 0%, transparent 40%),
+                    linear-gradient(115deg, #12345A 0%, #174B82 45%, #2196F3 100%)
+                `,
+            }}
+        >
+            {/* BLUE GLOW */}
+            <div
+                className="pointer-events-none absolute -right-16 -top-20 h-64 w-64 rounded-full blur-3xl"
+                style={{ background: "rgba(33,150,243,0.30)" }}
+            />
+
+            <div
+                className="pointer-events-none absolute -bottom-24 -left-16 h-64 w-64 rounded-full blur-3xl"
+                style={{ background: "rgba(33,150,243,0.20)" }}
+            />
+
+            {/* DECORATIVE DOTS */}
+            <span className="pointer-events-none absolute left-[15%] top-[25%] h-1.5 w-1.5 rounded-full bg-white/50" />
+            <span className="pointer-events-none absolute right-[18%] top-[35%] h-1 w-1 rounded-full bg-white/60" />
+            <span className="pointer-events-none absolute bottom-[20%] right-[12%] h-2 w-2 rounded-full bg-white/50" />
+
+            {/* CONTENT */}
+            <div className="relative z-10 mx-auto max-w-2xl">
+                <span
+                    className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/10 px-4 py-2 text-xs font-semibold tracking-wider"
+                    style={{ color: "#FFFFFF", WebkitTextFillColor: "#FFFFFF" }}
+                >
+                    <span className="h-2 w-2 rounded-full bg-white" />
+                    LET'S CONNECT
+                </span>
+
+                <h2
+                    className="text-2xl font-bold leading-tight sm:text-3xl lg:text-4xl"
+                    style={{ color: "#FFFFFF", WebkitTextFillColor: "#FFFFFF" }}
+                >
+                    Have a Question About This?
+                </h2>
+
+                <p
+                    className="mx-auto mt-4 max-w-xl text-sm leading-7 sm:text-base"
+                    style={{ color: "#E2EDFA", WebkitTextFillColor: "#E2EDFA" }}
+                >
+                    Let's discuss your goals and find the right digital marketing
+                    solutions for your business.
+                </p>
+
+                {/* CONTACT BUTTON */}
+                <Link
+                    to="/contact"
+                    className="group mt-8 inline-flex items-center justify-center gap-3 rounded-full bg-white px-7 py-4 text-sm font-bold shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl sm:px-9 sm:text-base"
+                    style={{ color: "#2196F3", WebkitTextFillColor: "#2196F3" }}
+                >
+                    <span
+                        style={{ color: "#2196F3", WebkitTextFillColor: "#2196F3" }}
+                    >
+                        Start a Conversation
+                    </span>
+
+                    <svg
+                        className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        aria-hidden="true"
+                    >
+                        <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                </Link>
+            </div>
+        </div>
+    </div>
+</section>
         </main>
     );
 };
