@@ -1,6 +1,7 @@
 import { Link, useParams } from "react-router-dom";
 import { blogPosts } from "../data/blogPosts";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft,ArrowRight } from "lucide-react";
+
 import { useMemo } from "react";
 const BlogPost = () => {
     const { slug } = useParams();
@@ -492,7 +493,7 @@ const BlogPost = () => {
                         <section
                             key={section.title}
                             id={`blog-section-${index + 1}`}
-                            className="scroll-mt-8 border-b border-[#E8F1FA] py-8 last:border-b-0"
+                            className="scroll-mt-24 border-b border-[#E8F1FA] py-8 last:border-b-0"
                         >
                             <div className="flex items-start gap-4">
                                 <span
@@ -646,9 +647,12 @@ const BlogPost = () => {
                                     {post.date}
                                 </span>
 
-                                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-[#B9DEFF] bg-[#EAF5FF] text-lg text-[#2196F3] transition-all duration-300 group-hover:border-[#2196F3] group-hover:bg-[#2196F3] group-hover:text-white">
-                                    →
-                                </span>
+                                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-[#B9DEFF] bg-[#EAF5FF] text-[#2196F3] transition-all duration-300 group-hover:border-[#2196F3] group-hover:bg-[#2196F3] group-hover:text-white">
+    <ArrowRight
+        size={18}
+        className="transition-transform duration-300 group-hover:translate-x-1"
+    />
+</span>
                             </div>
                         </div>
                     </Link>
