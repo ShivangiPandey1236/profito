@@ -291,10 +291,7 @@ export default function Header() {
       name: 'Portfolio',
       path: '/portfolio'
     },
-    {
-      name: 'Blog',
-      path: '/blog'
-    },
+    
     {
       name: 'About',
       columns: [

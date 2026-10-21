@@ -59,8 +59,8 @@ const LatestUpdates = () => {
             </div>
 
             <h2 className="mb-4 text-3xl font-extrabold tracking-tight text-black sm:text-4xl lg:text-5xl" style={{ color: "black" }}>
-              Latest{" "}
-              <span style={{ color: primary }}>Updates</span>
+              Featured{" "}
+              <span style={{ color: primary }}>Blog</span>
             </h2>
 
             <p className="max-w-4xl text-base leading-7 text-[#555555] sm:text-lg">

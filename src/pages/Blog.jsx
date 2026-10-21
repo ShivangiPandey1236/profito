@@ -312,7 +312,7 @@ export default function Blog() {
         {/* PREMIUM CATEGORY CAROUSEL */}
         <div className="reveal-on-scroll is-visible mb-16">
           <div className="relative mx-auto mt-10 max-w-[1500px] px-4 sm:px-8 lg:px-12">
-            <div className="mb-7 flex items-end justify-between gap-4">
+            <div className="mb-7 flex items-end justify-end gap-4">
               <div className="hidden shrink-0 gap-2 sm:flex">
                 <button
                   type="button"
